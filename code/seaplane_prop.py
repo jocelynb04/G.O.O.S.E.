@@ -11,49 +11,6 @@ What changes for the hybrid-electric seaplane
 """
 import math
 
-# ---------------------------------------------------------------------------
-# Requirements (stands in for the requirements JSON)
-# ---------------------------------------------------------------------------
-REQUIREMENTS = {
-    "propulsion": {
-        "n_engines": 2,
-        "BSFC_lb_per_hp_hr": 0.60,        # small turboshaft (PT6 class)
-        "eta_p_cruise": 0.85,
-        "eta_p_loiter": 0.80,
-        "eta_p_climb": 0.80,
-        "P_TO_over_P_max_continuous": 1.1,
-        "engine_power_fraction": 0.70,    # engine power / P_SL (motors = 1.0: electric takeoff)
-        "eta_gearbox": 0.98,              # engine -> propeller
-        "eta_electric": 0.92,             # battery -> cable -> inverter -> motor -> propeller
-        "eta_battery": 0.95,              # charge / discharge
-        "battery_Wh_per_kg": 250,         # pack level, 2036 assumption
-        "battery_kW_per_kg": 1.5,
-        "battery_usable_fraction": 0.64,  # 80% usable SOC x 80% end-of-life capacity
-        "phi": {"takeoff": 1.0, "climb": 0.2, "cruise": 0.0,
-                "descent": 0.0, "loiter": 0.0, "landing": 1.0},
-    },
-    "missions": {
-        "std_mission": {
-            "reserve_fuel_fraction": 0.06,
-            "segments": [
-                {"type": "takeoff", "alt_ft": 0, "time_min": 6, "power_fraction": 0.29},   # taxi 5 min + takeoff 1 min
-                {"type": "climb",   "alt_ft": 10000},
-                {"type": "cruise",  "alt_ft": 10000, "ktas": 180, "distance_nm": 869},  # 1,000 mi
-                {"type": "descent", "alt_ft": 0},
-                {"type": "climb",   "alt_ft": 1500},    # balked landing
-                {"type": "loiter",  "alt_ft": 1500, "ktas": 150, "time_min": 45},
-                {"type": "descent", "alt_ft": 0},
-                {"type": "landing", "alt_ft": 0, "time_min": 9, "power_fraction": 0.19},   # approach 4 min + taxi 5 min
-            ],
-        }
-    },
-}
-
-
-def get_state(alt_ft):
-    #ISA density ratio
-    return {"alt": alt_ft, "sigma": (1 - 6.87559e-6 * alt_ft) ** 4.2559}
-
 # Propulsion model
 class SeaplaneProp:
 
