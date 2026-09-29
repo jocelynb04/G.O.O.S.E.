@@ -19,7 +19,7 @@ class TidalWeights:
         W = J["weights"]
         self.A = W["A"]                      # 0.911, from IHW1
         self.exponent = W["exponent"]        # 0.947, from IHW1
-        self.K_sea = W["K_seaplane"]         # seaplane multiplier
+       
 
         # Fixed payload: passengers + baggage + crew
         P = J["payload"]
@@ -32,7 +32,7 @@ class TidalWeights:
         if W_TO <= 0:
             raise ValueError("W_TO must be positive")   # MATLAB: error(...)
 
-        oew = self.K_sea * self.A * W_TO ** self.exponent   # ^ in MATLAB is ** in Python
+        oew =  self.A * W_TO ** self.exponent   # ^ in MATLAB is ** in Python
 
         if oew >= W_TO:
             raise ValueError("Infeasible: OEW >= W_TO")
