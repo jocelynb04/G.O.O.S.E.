@@ -1,5 +1,6 @@
 # G.O.O.S.E.
 Team 4 Repository
+
 Purpose: 
 The purpose of this repository is to store the code built for Team 4, "Ground and Oceanic Overwing Shuttle Express - G.O.O.S.E." All code developed by team members will be uploaded to this repository and kept up-to-date as developments are made. 
 
