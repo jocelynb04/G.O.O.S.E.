@@ -1,0 +1,71 @@
+{
+  "_comment": "Tidal Flight amphibious seaplane requirements. Same layout as the IHW1 file Ttpa_requirements.json (geometry, design_range_nmi, missions), plus a payload block and a weights block. In IHW1 the payload (1200 lb) and the OEW constants were literals inside TtpaWeights; they live here now so there is one place to change them. Keys starting with an underscore are notes and are never read by code.",
+
+  "geometry": {
+    "_comment": "Preliminary geometry requirements/design assumptions.",
+    "AR": 8,
+    "_src_AR": "PLACEHOLDER carried over from the TTPA. Check against the 65 ft span limit once S_ref is known: b = sqrt(AR * S_ref).",
+    "max_span_ft": 65,
+    "_src_max_span_ft": "RFP aircraft requirement: wingspan below 65 ft."
+  },
+
+  "payload": {
+    "_comment": "Read by TidalWeights as J['payload']. W_payload_fixed = n_passengers*(passenger_weight_lb + baggage_per_passenger_lb) + n_pilots*pilot_weight_lb = 9*230 + 2*180 = 2430 lb.",
+    "n_passengers": 9,
+    "passenger_weight_lb": 180,
+    "baggage_per_passenger_lb": 50,
+    "n_pilots": 2,
+    "pilot_weight_lb": 180,
+    "_src_payload": "RFP: 9 passengers with 50 lb of baggage each and two pilots; passengers and pilots assumed to weigh 180 lb. The TTPA equivalent was 1 pilot + 5 passengers at 200 lb each = 1200 lb."
+  },
+
+  "weights": {
+    "_comment": "Read by TidalWeights as J['weights']. OEW = K_seaplane * A * W_TO^exponent.",
+    "A": 0.911,
+    "exponent": 0.947,
+    "_src_regression": "IHW1 empty-weight regression (Nicolai light-prop fit, We/W0 = 0.911 * W0^-0.053, so We = 0.911 * W0^0.947). Replace if the team adopts a different fit.",
+    "K_seaplane": 1.10,
+    "_src_K_seaplane": "PLACEHOLDER seaplane multiplier (hull/floats, retractable gear, corrosion protection, water loads). Calibrate as (Caravan amphibian OEW) / (Caravan landplane OEW) from the Wipaire and Cessna spec sheets, then cite. Use 1.0 to reproduce the IHW1 equation exactly."
+  },
+
+  "design_range_nmi": 869,
+  "_src_design_range_nmi": "RFP design range of 1000 statute miles = 869 nmi (1 nmi = 1.15078 mi). Payload is the full 9 passengers and 2 pilots.",
+
+  "missions": {
+
+    "_comment": "Mission profile in the IHW1 layout. Requirement data only. Owned by the mission analysis teammate; shown here so the file is complete.",
+
+    "std_mission": {
+
+      "_description": "Design mission: startup, taxi, takeoff, climb, cruise, descent, balked-landing climb, 45 min IFR reserve loiter, descent, landing.",
+
+      "reserve_fuel_fraction": 0.06,
+      "_cite_reserve_fuel_fraction": "PLACEHOLDER carried over from the TTPA as a trapped/unusable allowance. The RFP's 45 min IFR reserve is the loiter segment below. The mission owner decides whether this stays.",
+
+      "segments": [
+
+        { "type": "takeoff", "name": "Takeoff", "alt_ft": 0 },
+
+        { "type": "climb", "name": "Climb", "alt_ft": 10000 },
+
+        { "type": "cruise", "name": "Cruise", "alt_ft": 10000, "ktas": 180, "distance_nm": 869 },
+
+        { "type": "descent", "name": "Descent", "alt_ft": 0 },
+
+        { "type": "climb", "name": "Balked landing climb", "alt_ft": 1000 },
+
+        { "type": "loiter", "name": "IFR reserve", "alt_ft": 1000, "ktas": 110, "time_min": 45 },
+
+        { "type": "descent", "name": "Descent", "alt_ft": 0 },
+
+        { "type": "landing", "name": "Landing", "alt_ft": 0 }
+
+      ],
+
+      "_src_cruise": "RFP: 869 nmi (1000 mi) at 180 KTAS, 10,000 ft density altitude.",
+
+      "_src_loiter": "RFP: 45 min IFR reserve energy, balked landing at the start of the reserve. The 110 KTAS loiter speed is a PLACEHOLDER."
+
+    }
+  }
+}

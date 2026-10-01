@@ -1,21 +1,22 @@
 import json
 import math
+#import tidal_requirements.json 
 
 
 class TidalWeights:
 
     # MATLAB: the properties block and the constructor are combined in __init__
-    def __init__(self, json_path):
+    def __init__(self, ):
         self.W_TO = math.nan                 # lbf, candidate takeoff weight (NaN until sizing sets it)
         self.W_energy = math.nan             # lbf, fuel + battery (NaN until mission analysis sets it)
         self.W_payload_expendable = 0        # lbf
         self.W_payload_fixed = math.nan      # lbf, computed from the payload block below
 
         # MATLAB: J = jsondecode(fileread(json_path));
-        with open(json_path) as f:
+        with open("tidal_requirements.json", "r") as f:
             J = json.load(f)
 
-        # OEW regression: We = K_sea * A * W_TO^exponent
+        # OEW regression: We = A * W_TO^exponent
         W = J["weights"]
         self.A = W["A"]                      # 0.911, from IHW1
         self.exponent = W["exponent"]        # 0.947, from IHW1
@@ -38,3 +39,4 @@ class TidalWeights:
             raise ValueError("Infeasible: OEW >= W_TO")
 
         return oew                                           # Python needs an explicit return
+
