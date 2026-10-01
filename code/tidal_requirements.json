@@ -1,0 +1,356 @@
+{
+  "_comment": "Tidal Flight shared requirements and preliminary design-input file for mission, flight-performance, and constraint analyses.",
+  "_important": "Values tagged RFP are confirmed requirements. Values tagged preliminary must be replaced as the team design matures.",
+
+  "geometry": {
+    "AR": 8.0,
+    "span_limit_ft": 65.0,
+    "design_span_ft": 50.0,
+    "S_ref_ft2": 312.5,
+    "_src_AR": "Preliminary team design assumption.",
+    "_src_span_limit_ft": "Tidal Flight RFP: wingspan must be below 65 ft.",
+    "_src_design_span_ft": "Current team design selection.",
+    "_src_S_ref_ft2": "Calculated from S = b^2/AR = 50^2/8 = 312.5 ft^2."
+  },
+
+  "weights": {
+    "A": 0.911,
+    "exponent": 0.947,
+    "K_seaplane": 1.10,
+    "initial_takeoff_weight_lb": 12000.0,
+    "maximum_takeoff_weight_lb": 12500.0,
+    "sizing_tolerance_lb": 0.1,
+    "sizing_max_iterations": 100,
+    "_src_A_exponent": "Carried from the supplied IHW1/TTPA preliminary OEW regression.",
+    "_note_K_seaplane": "Preliminary seaplane structural-weight factor.",
+    "_src_maximum_takeoff_weight_lb": "Current Part 23 normal-category project limit."
+  },
+
+  "payload": {
+    "n_passengers": 9,
+    "passenger_weight_lb": 180.0,
+    "baggage_per_passenger_lb": 50.0,
+    "n_pilots": 2,
+    "pilot_weight_lb": 180.0,
+    "W_payload_fixed_lb": 2430.0,
+    "_calculation": "9*(180+50) + 2*180 = 2430 lb.",
+    "_src": "Tidal Flight RFP."
+  },
+
+  "legacy_segment_weight_fractions": {
+    "takeoff": 0.984,
+    "climb": 0.990,
+    "descent": 0.992,
+    "landing": 0.992,
+    "_src": "Compatibility inputs carried from the supplied preliminary mission model. Cruise and loiter weight fractions are calculated separately."
+  },
+
+  "aerodynamics": {
+    "CD0_clean": 0.028,
+    "e_clean": 0.810592,
+    "CLmax_clean": 1.50,
+    "CLmax_takeoff": 2.00,
+    "CLmax_landing": 2.30,
+    "CL_stall_margin": 0.20,
+    "delta_CD0_flaps_takeoff": 0.015,
+    "delta_CD0_flaps_landing": 0.065,
+    "delta_CD0_gear_down": 0.020,
+    "delta_CD0_propeller_stopped": 0.005,
+    "delta_e_flaps_takeoff": -0.05,
+    "delta_e_flaps_landing": -0.10,
+    "_src_CD0_clean": "Preliminary value carried from the supplied TTPA aerodynamic model.",
+    "_src_CLmax": "Preliminary team assumptions; replace with high-lift aerodynamic results.",
+    "_src_configuration_increments": "Preliminary values from the supplied constraint-analysis reference/Roskam-based assumptions.",
+    "_note_e": "e_clean is the value produced by aero_polar.py for AR = 8 using e = 1.78*(1 - 0.045*AR^0.68) - 0.64. It is repeated here only for compatibility with the standalone constraint module."
+  },
+
+  "propulsion": {
+    "n_engines": 2,
+    "P_SL_hp": 1200.0,
+    "BSFC_lb_per_hp_hr": 0.40,
+    "eta_p_cruise": 0.82,
+    "eta_p_loiter": 0.72,
+    "eta_p_climb": 0.80,
+    "P_TO_over_P_max_continuous": 1.10,
+    "power_lapse_exponent": 0.80,
+    "engine_power_fraction": 0.80,
+    "eta_gearbox": 0.97,
+    "eta_electric": 0.95,
+    "eta_battery": 0.95,
+    "battery_Wh_per_kg": 300.0,
+    "battery_kW_per_kg": 2.0,
+    "battery_usable_fraction": 0.80,
+    "phi": {
+      "takeoff": 1.00,
+      "climb": 0.40,
+      "cruise": -0.10,
+      "loiter": 0.00,
+      "descent": 0.00,
+      "landing": 1.00
+    },
+    "_src_n_engines": "Current twin-engine/twin-nacelle design assumption.",
+    "_src_P_SL_hp": " total installed sea-level shaft-power, constraint sizing should update this value.",
+    "_src_BSFC_and_prop_efficiency": "Preliminary values carried from the supplied TTPA propulsion reference.",
+    "_src_power_lapse_exponent": "Matches the sigma^0.8 turboshaft assumption hardcoded in seaplane_prop.py.",
+    "_src_hybrid_values": "Preliminary assumptions required by seaplane_prop.py."
+  },
+
+  "rfp_performance_requirements": {
+    "required_range_statute_mi": 1000.0,
+    "required_range_nmi": 868.976,
+    "mission_cruise_speed_ktas": 130.0,
+    "required_cruise_capability_ktas": 180.0,
+    "maximum_operating_speed_ktas": 180.0,
+    "cruise_density_altitude_ft": 10000.0,
+    "best_roc_sea_level_fpm": 2000.0,
+    "best_roc_10000ft_fpm": 500.0,
+    "oei_roc_sea_level_fpm": 450.0,
+    "minimum_roc_sea_level_fpm": 2000.0,
+    "minimum_roc_10000ft_fpm": 500.0,
+    "minimum_oei_roc_sea_level_fpm": 450.0,
+    "takeoff_distance_over_obstacle_ft": 2000.0,
+    "landing_distance_over_obstacle_ft": 2000.0,
+    "obstacle_height_ft": 50.0,
+    "takeoff_landing_density_altitude_ft": 0.0,
+    "ifr_reserve_time_min": 45.0,
+    "crosswind_land_ktas": 20.0,
+    "crosswind_water_ktas": 20.0,
+    "hydrostatic_crosswind_gust_ktas": 40.0,
+    "maximum_wingspan_ft": 65.0,
+    "zero_tailpipe_emissions_takeoff_landing_water": true,
+    "_src": "Tidal Flight RFP.",
+    "_note_cruise": "The team-selected mission cruise is 130 KTAS, while the RFP separately requires 180-KTAS cruise capability at 10,000-ft density altitude."
+  },
+
+  "design_range_nmi": 868.976,
+  "_src_design_range_nmi": "Converted from the RFP minimum range of 1,000 statute miles using 1 nmi = 1.15077945 statute miles.",
+
+  "missions": {
+    "_comment": " models.",
+
+    "std_mission": {
+      "_description": "RFP compliance mission: takeoff, climb, 869-nmi cruise, arrival descent, balked-landing/reserve climb, 45-minute IFR reserve loiter, reserve descent, and landing.",
+      "reserve_fuel_fraction": 0.06,
+      "_src_reserve_fuel_fraction": "Preliminary additional trapped/unusable-energy allowance. The RFP's 45-minute reserve is explicitly represented by the loiter segment.",
+
+      "segments": [
+        {
+          "type": "takeoff",
+          "name": "Takeoff",
+          "alt_ft": 0.0,
+          "phi": 1.00
+        },
+        {
+          "type": "climb",
+          "name": "Climb to cruise",
+          "alt_ft": 10000.0,
+          "phi": 0.40
+        },
+        {
+          "type": "cruise",
+          "name": "Cruise",
+          "alt_ft": 10000.0,
+          "ktas": 130.0,
+          "distance_nm": 868.976,
+          "phi": -0.10
+        },
+        {
+          "type": "descent",
+          "name": "Descent",
+          "alt_ft": 0.0,
+          "phi": 0.00
+        },
+        {
+          "type": "climb",
+          "name": "Balked landing / reserve climb",
+          "alt_ft": 4000.0,
+          "phi": 0.40
+        },
+        {
+          "type": "loiter",
+          "name": "IFR reserve loiter",
+          "alt_ft": 4000.0,
+          "ktas": 120.0,
+          "time_min": 45.0,
+          "phi": 0.00
+        },
+        {
+          "type": "descent",
+          "name": "Reserve descent",
+          "alt_ft": 0.0,
+          "phi": 0.00
+        },
+        {
+          "type": "landing",
+          "name": "Landing",
+          "alt_ft": 0.0,
+          "phi": 1.00
+        }
+      ],
+      "_src_cruise": "Range and altitude from the RFP",
+      "_src_reserve": "The RFP requires 45 minutes of IFR reserve energy and a balked landing at the beginning of the reserve segment.",
+      "_note_reserve_altitude_speed": "The 4,000-ft and 120-KTAS reserve-loiter condition is preliminary and carried from the supplied reference mission."
+    },
+
+    "typical_500nmi_route": {
+      "_description": "Optional typical-route mission retained for trade studies",
+      "reserve_fuel_fraction": 0.06,
+      "segments": [
+        {
+          "type": "takeoff",
+          "name": "Takeoff",
+          "alt_ft": 0.0,
+          "phi": 1.00
+        },
+        {
+          "type": "climb",
+          "name": "Climb to cruise",
+          "alt_ft": 10000.0,
+          "phi": 0.40
+        },
+        {
+          "type": "cruise",
+          "name": "Cruise",
+          "alt_ft": 10000.0,
+          "ktas": 130.0,
+          "distance_nm": 500.0,
+          "phi": -0.10
+        },
+        {
+          "type": "descent",
+          "name": "Descent",
+          "alt_ft": 0.0,
+          "phi": 0.00
+        },
+        {
+          "type": "climb",
+          "name": "Balked landing / reserve climb",
+          "alt_ft": 4000.0,
+          "phi": 0.40
+        },
+        {
+          "type": "loiter",
+          "name": "IFR reserve loiter",
+          "alt_ft": 4000.0,
+          "ktas": 120.0,
+          "time_min": 45.0,
+          "phi": 0.00
+        },
+        {
+          "type": "descent",
+          "name": "Reserve descent",
+          "alt_ft": 0.0,
+          "phi": 0.00
+        },
+        {
+          "type": "landing",
+          "name": "Landing",
+          "alt_ft": 0.0,
+          "phi": 1.00
+        }
+      ]
+    }
+  },
+
+  "constraints": {
+    "_comment": "Matching-diagram conditions. The current climb-rate-to-gradient conversions use preliminary reference climb speeds and should later be coupled directly to the performance model.",
+    "wing_loading_range_psf": [10.0, 60.0],
+    "wing_loading_points": 500,
+    "design_margin_fraction": 0.10,
+
+    "conditions": [
+      {
+        "name": "Water takeoff over 50-ft obstacle",
+        "type": "takeoff",
+        "altitude_ft": 0.0,
+        "distance_ft": 2000.0,
+        "obstacle_height_ft": 50.0,
+        "surface": "calm_water",
+        "config": "takeoff_flaps_gear_down",
+        "beta": 1.0,
+        "max_continuous": false,
+        "oei": false,
+        "power_setting": 1.0,
+        "_src": "Tidal Flight RFP."
+      },
+      {
+        "name": "Water landing over 50-ft obstacle",
+        "type": "landing",
+        "altitude_ft": 0.0,
+        "distance_ft": 2000.0,
+        "obstacle_height_ft": 50.0,
+        "surface": "calm_water",
+        "config": "landing_flaps_gear_down",
+        "beta": 1.0,
+        "max_continuous": false,
+        "oei": false,
+        "power_setting": 1.0,
+        "_src": "Tidal Flight RFP requires the landing condition at MTOW, so beta = 1.0."
+      },
+      {
+        "name": "Best ROC at sea level",
+        "type": "climb_gradient",
+        "altitude_ft": 0.0,
+        "roc_fpm": 2000.0,
+        "speed_ktas": 100.0,
+        "config": "clean",
+        "beta": 1.0,
+        "max_continuous": true,
+        "oei": false,
+        "power_setting": 1.0,
+        "_src": "ROC from the Tidal Flight RFP. The 100-KTAS conversion speed is preliminary and must be replaced by the calculated best-ROC speed."
+      },
+      {
+        "name": "Best ROC at 10,000 ft",
+        "type": "climb_gradient",
+        "altitude_ft": 10000.0,
+        "roc_fpm": 500.0,
+        "speed_ktas": 100.0,
+        "config": "clean",
+        "beta": 1.0,
+        "max_continuous": true,
+        "oei": false,
+        "power_setting": 1.0,
+        "_src": "ROC and altitude from the Tidal Flight RFP. The 100-KTAS conversion speed is preliminary."
+      },
+      {
+        "name": "OEI ROC at sea level",
+        "type": "climb_gradient",
+        "altitude_ft": 0.0,
+        "roc_fpm": 450.0,
+        "speed_ktas": 90.0,
+        "config": "clean",
+        "beta": 1.0,
+        "max_continuous": false,
+        "oei": true,
+        "propeller_stopped": true,
+        "power_setting": 1.0,
+        "_src": "ROC from the Tidal Flight RFP. The 90-KTAS conversion speed and stopped-propeller condition are preliminary analysis assumptions."
+      },
+      {
+        "name": "Balked landing",
+        "type": "climb_gradient",
+        "altitude_ft": 0.0,
+        "G": 0.03,
+        "config": "landing_flaps_gear_down",
+        "beta": 1.0,
+        "max_continuous": false,
+        "oei": false,
+        "power_setting": 1.0,
+        "_src": "The RFP requires a balked landing but does not specify a gradient. G = 0.03 is a preliminary reference-analysis assumption."
+      },
+      {
+        "name": "Required 180-KTAS cruise capability",
+        "type": "cruise_speed",
+        "altitude_ft": 10000.0,
+        "ktas": 180.0,
+        "config": "clean",
+        "beta": 0.95,
+        "max_continuous": true,
+        "oei": false,
+        "power_setting": 1.0,
+        "_src": "Tidal Flight RFP requires 180 KTAS at 10,000-ft density altitude. Beta = 0.95 is preliminary."
+      }
+    ]
+  }
+}
