@@ -1,0 +1,18 @@
+{
+  "geometry": {
+    "AR": 8,
+    "_src_AR": "Preliminary design assumption."
+  },
+  "weights": {
+    "K_seaplane": 1.10,
+    "W_payload_fixed_lb": 2430
+  },
+  "missions": {
+    "std_mission": {
+      "segments": [
+        {"type": "takeoff", "alt_ft": 0},
+        {"type": "cruise", "alt_ft": 10000, "ktas": 180, "distance_nm": 869}
+      ]
+    }
+  }
+}
