@@ -1,0 +1,99 @@
+%Requirements
+range_req_mi = 1000; % [mi] RFP requirement
+cruise_ktas = 180; % [KTAS] RFP requirement
+cruise_ms = cruise_ktas * 0.514444;
+
+P_takeoff = 1200; %Estimated to meet 2000 ft/min climb
+P_cruise = 600; %Estimated to hold 180 KTAS at 10,000 ft
+reserve_time_hrs = 45 / 60; % 45-min IFR reserve
+
+%Assumptions
+% Specific Power (kW/kg)
+sp_motor = 8.0; 
+sp_gen = 8.0;   
+sp_engine = 4.0;
+sp_inv = 15.0;
+
+% Specific Gearbox Mass (kg/kW)
+sp_gearbox = 0.2; 
+
+% Efficiencies
+n_prop = 0.85; 
+n_mot = 0.95; 
+n_gen = 0.95;
+n_inv = 0.98;
+n_gearbox = 0.97;
+
+% Specific Energy
+e_batt = 400; 
+e_fuel = 11900; 
+
+% Motor sized for 100% takeoff power (zero-emission requirement)
+m_motor = P_takeoff / sp_motor;
+m_inv_motor = P_takeoff / sp_inv;
+m_engine = P_cruise / sp_engine;
+% Series Specific Penalties (Generator + Gen Inverter)
+m_gen = P_cruise / sp_gen;
+m_inv_gen = P_cruise / sp_inv;
+m_fixed_series = m_motor + m_inv_motor + m_engine + m_gen + m_inv_gen;
+n_chain_series = n_gen * n_inv * n_mot * n_prop; % ~0.75
+
+% Parallel Specific Penalties (Mixing Gearbox)
+m_gearbox = P_takeoff * sp_gearbox;
+m_fixed_parallel = m_motor + m_inv_motor + m_engine + m_gearbox;
+n_chain_parallel = n_gearbox * n_prop; % ~0.82
+
+%Sweep battery mass
+m_budget_energy = 1800; %Available mass for Battery + Fuel
+batt_mass_kg = linspace(400, 1600, 100); 
+
+range_series_mi = zeros(size(batt_mass_kg));
+range_parallel_mi = zeros(size(batt_mass_kg));
+H_E_parallel = zeros(size(batt_mass_kg));
+
+for i = 1:length(batt_mass_kg)
+    E_batt_kWh = batt_mass_kg(i) * e_batt / 1000;
+    
+    % Series Calculation
+    m_fuel_series = max(0, m_budget_energy - batt_mass_kg(i) - m_fixed_series);
+    E_fuel_series_kWh = m_fuel_series * e_fuel / 1000;
+    
+    % Parallel Calculation
+    m_fuel_parallel = max(0, m_budget_energy - batt_mass_kg(i) - m_fixed_parallel);
+    E_fuel_parallel_kWh = m_fuel_parallel * e_fuel / 1000;
+    
+    % Hybridization (H_E = E_b / E_tot)
+    E_tot_parallel = E_batt_kWh + E_fuel_parallel_kWh;
+    H_E_parallel(i) = E_batt_kWh / E_tot_parallel;
+    
+    % Subtract zero-emission takeoff/climb energy (120 kWh) and reserves
+    E_batt_usable = max(0, E_batt_kWh - 120);
+    E_reserve_req = P_cruise * reserve_time_hrs;
+    
+    % Range-Series
+    E_total_usable_series = (E_batt_usable * n_mot * n_prop) + (E_fuel_series_kWh * n_chain_series) - E_reserve_req;
+    range_series_mi(i) = (max(0, E_total_usable_series) / P_cruise) * cruise_ktas;
+    
+    % Range-Parallel
+    E_total_usable_parallel = (E_batt_usable * n_mot * n_prop) + (E_fuel_parallel_kWh * n_chain_parallel) - E_reserve_req;
+    range_parallel_mi(i) = (max(0, E_total_usable_parallel) / P_cruise) * cruise_ktas;
+end
+
+% Plot
+figure('Position', [100, 100, 800, 500]);
+yyaxis left;
+plot(batt_mass_kg, range_series_mi, 'r-', 'LineWidth', 2); hold on;
+plot(batt_mass_kg, range_parallel_mi, 'b-', 'LineWidth', 2);
+yline(range_req_mi, 'k--', '1000 mi RFP Target', 'LineWidth', 1.5);
+ylabel('Achievable Range (mi)');
+ylim([0 1500]);
+
+yyaxis right;
+plot(batt_mass_kg, H_E_parallel, 'g-.', 'LineWidth', 1.5);
+ylabel('Energy Hybridization (H_E)');
+ylim([0 1]);
+
+title('Series vs. Parallel Hybrid-Electric Propulsion: Range & Energy Hybridization vs. Battery Mass');
+xlabel('Battery Mass (kg)');
+legend('Series Range', 'Parallel Range', '1000-mi Req', 'H_E (Parallel)', 'Location', 'southwest');
+grid on;
