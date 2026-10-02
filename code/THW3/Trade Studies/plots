@@ -1,0 +1,170 @@
+"""
+Passenger-count trade study (beginner-friendly version)
+
+Sizes the aircraft with the same loop as the W2L1 ASW example, then sweeps the
+number of passengers and plots TOGW and fuel per seat-mile.
+
+Everything marked  # TEAM  is a placeholder. Replace it with the value your
+team agrees on (ask your powertrain teammate for the empty-weight fit and
+fuel consumption numbers).
+
+Units: pounds, feet, seconds, inches, miles (same as the class slides).
+"""
+import math
+import matplotlib.pyplot as plt
+
+# =============================================================================
+# STEP 1: INPUTS  (change numbers here, nowhere else)
+# =============================================================================
+
+# --- From the RFP ------------------------------------------------------------
+PAX_WEIGHT = 230          # lb per passenger: 180 lb person + 50 lb baggage
+CREW_WEIGHT = 360         # lb: 2 pilots x 180 lb
+RANGE_MI = 1000           # mission range, miles
+V_CRUISE_KT = 180         # cruise speed, knots
+RESERVE_MIN = 45          # IFR reserve, minutes
+SEAT_PITCH = 35           # in (minimum)
+SEAT_WIDTH = 17.5         # in (minimum)
+ARMREST = 2               # in (minimum)
+AISLE = 20                # in (minimum)
+
+# --- Assumptions (placeholders) ------------------------------------------------
+V_LOITER_KT = 120         # reserve speed, knots
+K_LD = 9.0                # slide 30: non-retractable prop aircraft
+ASPECT_RATIO = 9.0        # TEAM
+SWET_RATIO = 4.5          # TEAM: wetted area / reference area
+C_CRUISE = 0.5            # lb/hr/bhp, TEAM (slide 31 turboprop values; hybrid differs)
+C_LOITER = 0.6            # lb/hr/bhp, TEAM
+ETA_PROP = 0.80           # propeller efficiency
+EMPTY_A = 1.00            # TEAM: empty weight fraction = A * W_TO^C
+EMPTY_C = -0.05           # TEAM
+SEATS_ABREAST = 2         # TEAM: 2 or 3
+CABIN_ALLOWANCE_IN = 90   # in, TEAM: cockpit bulkhead + door + baggage space
+
+# --- Fixed segment fractions (slide 9) ---------------------------------------
+TAKEOFF_FRAC = 0.97
+CLIMB_FRAC = 0.985
+LANDING_FRAC = 0.995
+TRAPPED_FUEL = 0.01       # slide 17 (1% trapped fuel)
+
+# --- Optional: let cabin length change the drag ------------------------------
+UPDATE_AERO = False       # False = aero held constant (safest)
+DSWET_PER_INCH = 0.002    # placeholder; only used if UPDATE_AERO = True
+
+
+# =============================================================================
+# STEP 2: SMALL HELPER FUNCTIONS
+# =============================================================================
+
+def cabin_size(n_pax):
+    """Cabin rows, length (in) and width (in) from the RFP seat dimensions."""
+    rows = math.ceil(n_pax / SEATS_ABREAST)          # round UP to whole rows
+    length_in = rows * SEAT_PITCH + CABIN_ALLOWANCE_IN
+    width_in = SEATS_ABREAST * SEAT_WIDTH + (SEATS_ABREAST + 1) * ARMREST + AISLE
+    return rows, length_in, width_in
+
+
+def fuel_fraction(n_pax):
+    """Fuel weight / takeoff weight, built from the mission segments."""
+    # Aerodynamics (slide 30)
+    swet = SWET_RATIO
+    if UPDATE_AERO:
+        _, length, _ = cabin_size(n_pax)
+        _, length_9, _ = cabin_size(9)
+        swet = SWET_RATIO + DSWET_PER_INCH * (length - length_9)
+    ld_max = K_LD * math.sqrt(ASPECT_RATIO / swet)
+    ld_cruise = ld_max                 # props: best range at (L/D)max
+    ld_loiter = 0.866 * ld_max         # props: best endurance at 0.866 (L/D)max
+
+    # Unit conversions (the Breguet equations need consistent units)
+    c_cruise = C_CRUISE / (550 * 3600)         # lb/hr/bhp -> 1/ft
+    c_loiter = C_LOITER / (550 * 3600)
+    range_ft = RANGE_MI * 5280
+    v_loiter = V_LOITER_KT * 1.6878            # knots -> ft/s
+    endurance_s = RESERVE_MIN * 60
+
+    # Breguet weight fractions for propeller aircraft
+    cruise_frac = math.exp(-range_ft * c_cruise / (ETA_PROP * ld_cruise))
+    loiter_frac = math.exp(-endurance_s * v_loiter * c_loiter / (ETA_PROP * ld_loiter))
+
+    # Multiply all the segments together (slide 16)
+    w_end_over_w_start = (TAKEOFF_FRAC * CLIMB_FRAC * cruise_frac
+                          * loiter_frac * LANDING_FRAC)
+    mission_fuel_frac = 1 - w_end_over_w_start                 # slide 17
+    return mission_fuel_frac * (1 + TRAPPED_FUEL)
+
+
+# =============================================================================
+# STEP 3: THE SIZING LOOP (same idea as slides 19-22)
+# =============================================================================
+
+def size_aircraft(n_pax):
+    w_fixed = n_pax * PAX_WEIGHT + CREW_WEIGHT       # payload + crew
+    ff = fuel_fraction(n_pax)
+
+    w_to = 10000.0                                   # initial guess, lb
+    for _ in range(200):
+        empty_frac = EMPTY_A * w_to ** EMPTY_C       # empty weight fraction
+        w_new = w_fixed / (1 - empty_frac - ff)      # new TOGW
+        if abs(w_new - w_to) < 0.5:                  # converged?
+            w_to = w_new
+            break
+        w_to = w_new
+
+    fuel_lb = ff * w_to
+    fuel_per_seat_mile = fuel_lb / (n_pax * RANGE_MI)
+    return w_to, fuel_lb, fuel_per_seat_mile
+
+
+# =============================================================================
+# STEP 4: SWEEP THE PASSENGER COUNT
+# =============================================================================
+
+passengers = list(range(6, 13))                      # 6, 7, ..., 12
+togw, fuel_per_seat = [], []
+
+print(f"{'Pax':>4} {'Rows':>5} {'Cabin L (ft)':>13} {'Cabin W (in)':>13} "
+      f"{'TOGW (lb)':>10} {'Fuel/seat-mi (lb)':>18}")
+for n in passengers:
+    w_to, fuel_lb, fps = size_aircraft(n)
+    rows, length_in, width_in = cabin_size(n)
+    togw.append(w_to)
+    fuel_per_seat.append(fps)
+    print(f"{n:>4} {rows:>5} {length_in / 12:>13.1f} {width_in:>13.1f} "
+          f"{w_to:>10.0f} {fps:>18.3f}")
+
+# Sanity check: pounds of TOGW per extra pound of payload (class example ~5)
+i = passengers.index(9)
+slope = (togw[i + 1] - togw[i - 1]) / (2 * PAX_WEIGHT)
+print(f"\nTOGW growth per lb of payload near 9 pax: {slope:.1f}")
+
+
+# =============================================================================
+# STEP 5: PLOTS
+# =============================================================================
+
+SHOW_PLACEHOLDER_NOTE = True       # set to False once inputs are agreed
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.5, 3.2))
+
+ax1.plot(passengers, [w / 1000 for w in togw], "o-")
+ax1.axvline(9, color="gray", linestyle=":")          # RFP minimum
+ax1.set_xlabel("Passengers")
+ax1.set_ylabel("TOGW (1000 lb)")
+ax1.set_title("(a) Passenger count vs. TOGW")
+ax1.grid(alpha=0.3)
+
+ax2.plot(passengers, fuel_per_seat, "o-", color="tab:green")
+ax2.axvline(9, color="gray", linestyle=":")
+ax2.set_xlabel("Passengers")
+ax2.set_ylabel("Fuel burn per seat-mile (lb)")
+ax2.set_title("(b) Passenger count vs. fuel per seat")
+ax2.grid(alpha=0.3)
+
+if SHOW_PLACEHOLDER_NOTE:
+    fig.text(0.5, 0.005, "Preliminary: placeholder inputs", ha="center",
+             fontsize=7, color="firebrick")
+
+fig.tight_layout(rect=(0, 0.03, 1, 1))
+fig.savefig("payload_sweep_simple.png", dpi=200)
+print("Saved payload_sweep_simple.png")
