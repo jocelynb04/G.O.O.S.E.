@@ -1,0 +1,27 @@
+clear;
+clc;
+close all;
+
+% Water takeoff distance range (ft)
+sTO = 1200:100:2000;
+
+% Relative propulsion requirement
+P_relative = (2000./sTO)*100;
+
+% Plot
+figure;
+plot(sTO,P_relative,'-o','LineWidth',1.5,'MarkerSize',5);
+
+xlabel('Required Water Takeoff Distance (ft)');
+ylabel('Relative Propulsion Requirement (%)');
+title('Water Takeoff Distance vs. Relative Propulsion Requirement');
+
+grid on;
+xlim([1200 2000]);
+
+% Save figure for LaTeX
+exportgraphics(gcf,'water_takeoff_trade_study.pdf',...
+    'ContentType','vector');
+
+table(sTO',P_relative',...
+    'VariableNames',{'TakeoffDistance_ft','RelativePower_percent'})
