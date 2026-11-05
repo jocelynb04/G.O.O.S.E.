@@ -1,0 +1,22 @@
+{
+  "type": "C208B_Grand_Caravan_EX_Amphibian",
+  "mtow": 9062,
+  "power": 867,
+  "AR": 9.722844484269217,
+  "n_conditions": 6,
+  "oei_any": false,
+  "sum_fuselage_ft": 41.583333333333336,
+  "mission_demo": 500,
+  "raw_component_buildup_at_reference_lb": 3812.302,
+  "unallocated_calibration_residual_lb": 2162.698,
+  "anchored_reference_BEW_lb": 5975.0,
+  "payload_full_fuel_MTOW_lb": 841,
+  "software_verification": "MATLAB R2025a Update 1: 8 tests passed, 0 failed; full sizing converged in 143 iterations",
+  "required_products": [
+    "MATLAB"
+  ],
+  "baseline_mission_fuel_lb_rounded": 1550.3,
+  "baseline_mass_margin_lb_rounded": 736.7,
+  "baseline_tank_margin_lb_rounded": 695.7,
+  "sizing_relaxation": 0.1
+}

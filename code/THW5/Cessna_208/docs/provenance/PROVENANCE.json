@@ -1,0 +1,78 @@
+{
+  "models": [
+    {
+      "file": "TtpaProp.m",
+      "original_sha256": "21d2dd18f556de09dfd874592269c593c92fec28a29c178d1e5c643dd06b093f",
+      "revised_sha256": "21d2dd18f556de09dfd874592269c593c92fec28a29c178d1e5c643dd06b093f",
+      "unchanged": true
+    },
+    {
+      "file": "TtpaGeom.m",
+      "original_sha256": "775f7c5890d86bbab877cecb5ccf1c29dba0f20ae2f6177d5cdb6981b93cb844",
+      "revised_sha256": "775f7c5890d86bbab877cecb5ccf1c29dba0f20ae2f6177d5cdb6981b93cb844",
+      "unchanged": true
+    },
+    {
+      "file": "TtpaAero.m",
+      "original_sha256": "f300761a0548957c851a4872efe0fa3303a05e5a4c044060a2e5b4b7719824a1",
+      "revised_sha256": "f300761a0548957c851a4872efe0fa3303a05e5a4c044060a2e5b4b7719824a1",
+      "unchanged": true
+    },
+    {
+      "file": "TtpaWeights.m",
+      "original_sha256": "21ddab90060be32e02683b7b603120c225484fc420ce610d24d63b3dcff94206",
+      "revised_sha256": "21ddab90060be32e02683b7b603120c225484fc420ce610d24d63b3dcff94206",
+      "unchanged": true
+    },
+    {
+      "file": "constraint_cruise_speed.m",
+      "original_sha256": "c39e28159abe754c480fc37d619cd1b8a36b69989b035bf7fdddede63135768b",
+      "revised_sha256": "c39e28159abe754c480fc37d619cd1b8a36b69989b035bf7fdddede63135768b",
+      "unchanged": true
+    },
+    {
+      "file": "segment_cruise_L2.m",
+      "original_sha256": "c22a14394ff8f21716d6c5393f6aa3e00d4232faff4d4726645717a01833fd69",
+      "revised_sha256": "c22a14394ff8f21716d6c5393f6aa3e00d4232faff4d4726645717a01833fd69",
+      "unchanged": true
+    },
+    {
+      "file": "segment_loiter_L2.m",
+      "original_sha256": "1e3cc7b45769fee4deb8992177752ef88e19851ef5ec291612293fecc8620954",
+      "revised_sha256": "1e3cc7b45769fee4deb8992177752ef88e19851ef5ec291612293fecc8620954",
+      "unchanged": true
+    },
+    {
+      "file": "segment_climb_L2.m",
+      "original_sha256": "13ed532f5afcf842f872d44e6065ef6c19d7e2610cf0738a8a0f1af2bbbf2c39",
+      "revised_sha256": "13ed532f5afcf842f872d44e6065ef6c19d7e2610cf0738a8a0f1af2bbbf2c39",
+      "unchanged": true
+    },
+    {
+      "file": "run_mission_L2.m",
+      "original_sha256": "b1d90d0577f5bcce129ab00f468eb0313f02e8e40dfc7ffd2a2bbff0471bd19c",
+      "revised_sha256": "b1d90d0577f5bcce129ab00f468eb0313f02e8e40dfc7ffd2a2bbff0471bd19c",
+      "unchanged": true
+    },
+    {
+      "file": "SizingSteps.m",
+      "original_sha256": "f1d1fabb58a8f306ae151fddcb0dc7cb5f34e587725c6a7e5e1b6e838cb95e64",
+      "revised_sha256": "f1d1fabb58a8f306ae151fddcb0dc7cb5f34e587725c6a7e5e1b6e838cb95e64",
+      "unchanged": true
+    },
+    {
+      "file": "sizing_pass.m",
+      "original_sha256": "828bad5723e9edda63bf9743a86af2468850143dc935e93fb11f5243ad842272",
+      "revised_sha256": "828bad5723e9edda63bf9743a86af2468850143dc935e93fb11f5243ad842272",
+      "unchanged": true
+    },
+    {
+      "file": "sizing_mainloop.m",
+      "original_sha256": "1b878860559fb1ace0c2b6fadb00400e12e1364c9277c26f50559a90c7d4cc0f",
+      "revised_sha256": "a791e2787bfd86c39b446f8d3c53d511392c30c2eced709e56b2f9efea7fb481",
+      "unchanged": false
+    }
+  ],
+  "framework_source": "User IHW3/student_starter; bundled with interface, atmosphere and path corrections",
+  "original_json": "Original_IHW3.json"
+}
