@@ -1,0 +1,22 @@
+{
+  "version": "Caravan-only",
+  "aircraft": "Conventional Caravan EX Amphibian",
+  "active_cruise_ktas": 164,
+  "removed_from_active_analysis": [
+    "180KTAS new-aircraft requirement",
+    "165KTAS comparison curve",
+    "orange speed comparison band"
+  ],
+  "tests_passed": 22,
+  "tests_failed": 0,
+  "reference_point": {
+    "WS": 32.48028673835125,
+    "WP": 10.452133794694348,
+    "unchanged": true
+  },
+  "limits": [
+    "Water landing remains calibrated proxy.",
+    "Positive OEI powered climb excluded from AEO feasibility.",
+    "Shaded sizing region permits engine resizing."
+  ]
+}

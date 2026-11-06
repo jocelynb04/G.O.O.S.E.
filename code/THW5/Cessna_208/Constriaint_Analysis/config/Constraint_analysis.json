@@ -1,0 +1,65 @@
+{
+  "wing_loading_range_psf": [
+    10,
+    60
+  ],
+  "wing_loading_points": 1001,
+  "climb_requirement_type": "angle",
+  "climb_angle_deg": 3,
+  "climb_altitudes_ft": [
+    0,
+    10000
+  ],
+  "climb_configuration": "clean",
+  "climb_beta": 1,
+  "climb_power_setting": 1,
+  "balked_landing_gradient": 0.03,
+  "balked_landing_altitude_ft": 0,
+  "balked_landing_beta": 0.975,
+  "balked_landing_configuration": "landing_flaps_gear_up",
+  "cruise_speeds_ktas": [
+    164
+  ],
+  "cruise_altitude_ft": 10000,
+  "cruise_beta": 0.975,
+  "cruise_power_setting": 1,
+  "max_installed_power_shp": 867,
+  "design_margin_fraction": 0.05,
+  "require_powered_oei": false,
+  "plot_power_loading_limits": [
+    0,
+    45
+  ],
+  "water_landing": {
+    "method": "reference_calibrated_surrogate",
+    "target_total_distance_ft": 2004,
+    "reference_total_distance_ft": 2004,
+    "obstacle_height_ft": 50,
+    "flare_entry_height_ft": 10,
+    "approach_angle_deg": 3,
+    "flare_horizontal_distance_ft_assumed": 150,
+    "touchdown_speed_over_stall_assumed": 1.15,
+    "landing_beta": 0.975,
+    "altitude_ft": 0,
+    "reference_altitude_ft": 0,
+    "reference_landing_beta": 1,
+    "effective_deceleration_g_assumed": 0.22,
+    "deceleration_sensitivity_fraction": 0.25
+  },
+  "sources": {
+    "manufacturer": "https://specialmissions.txtav.com/en/float-operations",
+    "float_manufacturer": "https://www.wipaire.com/wipline-floats/wipline-8750-floats/",
+    "cruise_altitude_context_user_selected": "https://jettly.com/post/cessna-caravan-cruise-speed"
+  },
+  "notes": [
+    "3-degree climb requested at both altitudes, not fixed ft/min.",
+    "Water2004ft datum is inherited landing distance; its over-50-ft WATER definition is not established by the cited webpage.",
+    "Water landing wall is a reference-calibrated sizing proxy, not an AFM water-landing prediction.",
+    "Positive OEI powered climb is impossible with a single conventional engine.",
+    "Fixed reference drag polar across W/S sweep; candidate designs require geometry/sizing iteration and validation.",
+    "Caravan-only chart:164KTAS cruise; no proposed-aircraft180KTAS requirement or comparison band.",
+    "User-selected10000ft cruise; landing CLmax2.2 restored from course IHW3. General article context is not amphibian AFM validation."
+  ],
+  "plot_required_cruise_ktas": 164,
+  "show_installed_power_boundary": false
+}

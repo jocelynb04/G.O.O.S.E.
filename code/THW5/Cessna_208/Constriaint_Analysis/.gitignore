@@ -1,0 +1,12 @@
+# Generated analysis results
+/outputs/*
+!/outputs/.gitkeep
+**/output/
+*.mat
+*.asv
+*.m~
+# Local machine / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

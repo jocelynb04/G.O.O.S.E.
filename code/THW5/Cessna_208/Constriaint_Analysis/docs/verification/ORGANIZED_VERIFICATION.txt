@@ -1,0 +1,52 @@
+MATLAB 25.1.0.2973910 (R2025a) Update 1
+Running test_caravan
+........
+Done test_caravan
+__________
+
+Running test_repository_layout
+     segment     fuel_lb    start_weight_lb    end_weight_lb    weight_fraction
+    _________    _______    _______________    _____________    _______________
+
+    "takeoff"    144.99           9062              8917              0.984    
+    "climb"      47.428           8917            8869.6            0.99468    
+    "cruise"       1010         8869.6            7859.6            0.88613    
+    "descent"    62.877         7859.6            7796.7              0.992    
+    "climb"      18.453         7796.7            7778.3            0.99763    
+    "loiter"     144.91         7778.3            7633.4            0.98137    
+    "descent"    61.067         7633.4            7572.3              0.992    
+    "landing"    60.578         7572.3            7511.7              0.992    
+
+Mission fuel 1550.3 lb; mass margin 736.7 lb; tank margin 695.7 lb
+Grand Caravan EX Amphibian: W/S=32.4803, W/P=10.4521, AR=9.7228
+MTOW basis payload with full fuel: 841 lb (ramp-based full-fuel payload differs)
+Baseline fuel 1550.3 lb; mass margin 736.7 lb; tank margin 695.7 lb
+..
+Done test_repository_layout
+__________
+
+  1×10 TestResult array with properties:
+
+    Name
+    Passed
+    Failed
+    Incomplete
+    Duration
+    Details
+
+Totals:
+   10 Passed, 0 Failed, 0 Incomplete.
+   3.4501 seconds testing time.
+
+    {'MATLAB'}
+
+Resolved dependency files: 41
+Grand Caravan EX Amphibian: W/S=32.4803, W/P=10.4521, AR=9.7228
+MTOW basis payload with full fuel: 841 lb (ramp-based full-fuel payload differs)
+Baseline fuel 1550.3 lb; mass margin 736.7 lb; tank margin 695.7 lb
+Sizing converged: 1 in 127 passes
+        W0: 7.1047e+03
+        P0: 519.5516
+        S0: 129.1772
+    n_iter: 127
+

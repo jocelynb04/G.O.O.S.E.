@@ -1,0 +1,363 @@
+{
+  "source": "User rev0 standalone folder, inspected 2026-11-05",
+  "files": [
+    {
+      "original": "run_caravan.m",
+      "organized": "run_caravan.m",
+      "original_sha256": "cd2b42a8b903db864db85a146b5e5ef626146e9be639a5f2fe124618fe8a0cb2",
+      "organized_sha256": "ab0e59d3c6c7cb462856211ea6e5c93d4d6ce2fc3d2f8897fe9e1e41f5a55219",
+      "byte_identical": false
+    },
+    {
+      "original": "verify_project.m",
+      "organized": "verify_project.m",
+      "original_sha256": "8a8d4adcc36653f8fb405726c287fcc2f15b569461511ec72387aa4914e6fa41",
+      "organized_sha256": "9f0839600c3c8de4ed5922852c4be0d3b96f32689767d6d2f010b2089d8659b5",
+      "byte_identical": false
+    },
+    {
+      "original": "TtpaProp.m",
+      "organized": "src/models/TtpaProp.m",
+      "original_sha256": "21d2dd18f556de09dfd874592269c593c92fec28a29c178d1e5c643dd06b093f",
+      "organized_sha256": "21d2dd18f556de09dfd874592269c593c92fec28a29c178d1e5c643dd06b093f",
+      "byte_identical": true
+    },
+    {
+      "original": "TtpaGeom.m",
+      "organized": "src/models/TtpaGeom.m",
+      "original_sha256": "775f7c5890d86bbab877cecb5ccf1c29dba0f20ae2f6177d5cdb6981b93cb844",
+      "organized_sha256": "775f7c5890d86bbab877cecb5ccf1c29dba0f20ae2f6177d5cdb6981b93cb844",
+      "byte_identical": true
+    },
+    {
+      "original": "TtpaAero.m",
+      "organized": "src/models/TtpaAero.m",
+      "original_sha256": "f300761a0548957c851a4872efe0fa3303a05e5a4c044060a2e5b4b7719824a1",
+      "organized_sha256": "f300761a0548957c851a4872efe0fa3303a05e5a4c044060a2e5b4b7719824a1",
+      "byte_identical": true
+    },
+    {
+      "original": "TtpaWeights.m",
+      "organized": "src/models/TtpaWeights.m",
+      "original_sha256": "21ddab90060be32e02683b7b603120c225484fc420ce610d24d63b3dcff94206",
+      "organized_sha256": "21ddab90060be32e02683b7b603120c225484fc420ce610d24d63b3dcff94206",
+      "byte_identical": true
+    },
+    {
+      "original": "PropulsionBase2.m",
+      "organized": "src/framework/PropulsionBase2.m",
+      "original_sha256": "b96c572f88d3f37ff58d70d0f59f69bb54f016688485f8d0c1b02a9195669c69",
+      "organized_sha256": "b96c572f88d3f37ff58d70d0f59f69bb54f016688485f8d0c1b02a9195669c69",
+      "byte_identical": true
+    },
+    {
+      "original": "GeometryBase.m",
+      "organized": "src/framework/GeometryBase.m",
+      "original_sha256": "9e658a0b38a90c7c40b8f15501c43320fca79c84be87252106f72e7945817bcd",
+      "organized_sha256": "9e658a0b38a90c7c40b8f15501c43320fca79c84be87252106f72e7945817bcd",
+      "byte_identical": true
+    },
+    {
+      "original": "AerodynamicsBase.m",
+      "organized": "src/framework/AerodynamicsBase.m",
+      "original_sha256": "7f6c0914f3ca07d900b601b71e6da463d42b1e74634ecc1c4007fbd349221270",
+      "organized_sha256": "7f6c0914f3ca07d900b601b71e6da463d42b1e74634ecc1c4007fbd349221270",
+      "byte_identical": true
+    },
+    {
+      "original": "WeightsBase.m",
+      "organized": "src/framework/WeightsBase.m",
+      "original_sha256": "880fea0fb43845d935043f7beb01db7d1d11d2d587bd09a552e4c66a26b10a19",
+      "organized_sha256": "880fea0fb43845d935043f7beb01db7d1d11d2d587bd09a552e4c66a26b10a19",
+      "byte_identical": true
+    },
+    {
+      "original": "AircraftState.m",
+      "organized": "src/framework/AircraftState.m",
+      "original_sha256": "defde42399ffb23f012e60fb67aee0812cd5db31714d6d43995d174b958f1847",
+      "organized_sha256": "defde42399ffb23f012e60fb67aee0812cd5db31714d6d43995d174b958f1847",
+      "byte_identical": true
+    },
+    {
+      "original": "get_state.m",
+      "organized": "src/framework/get_state.m",
+      "original_sha256": "8bf51e8aabbb0741451d7c1ee43296d29bb7ea5732b1f894a2e6ed80f6e21dc2",
+      "organized_sha256": "8bf51e8aabbb0741451d7c1ee43296d29bb7ea5732b1f894a2e6ed80f6e21dc2",
+      "byte_identical": true
+    },
+    {
+      "original": "ttpa_disciplines.m",
+      "organized": "src/framework/ttpa_disciplines.m",
+      "original_sha256": "95593aa7f4a076f1598a3429628dbd80672b10f6c5a80761f845f79bb0cfd0c1",
+      "organized_sha256": "95593aa7f4a076f1598a3429628dbd80672b10f6c5a80761f845f79bb0cfd0c1",
+      "byte_identical": true
+    },
+    {
+      "original": "ttpa_requirements_path.m",
+      "organized": "src/io/ttpa_requirements_path.m",
+      "original_sha256": "6cc0878c6cd0ae7b4ad234c9509c00479edefd02e75ed1ef5305684eeed48f1d",
+      "organized_sha256": "b48632210b3fd766242a5c1fa52b648ca29578e2ba7681c3ae2cf7c6fddf75fc",
+      "byte_identical": false
+    },
+    {
+      "original": "validate_caravan_json.m",
+      "organized": "src/io/validate_caravan_json.m",
+      "original_sha256": "964e163906e9e88f311dc456d0a4bcf01a6ecbf19cda74cb09d9d9ed7cfd9a27",
+      "organized_sha256": "964e163906e9e88f311dc456d0a4bcf01a6ecbf19cda74cb09d9d9ed7cfd9a27",
+      "byte_identical": true
+    },
+    {
+      "original": "MissionProfileReader.m",
+      "organized": "src/io/MissionProfileReader.m",
+      "original_sha256": "aa8b54ffe2d4b2169589e17fa93cfb6077e57a695de21624dfa37aff1811cfce",
+      "organized_sha256": "aa8b54ffe2d4b2169589e17fa93cfb6077e57a695de21624dfa37aff1811cfce",
+      "byte_identical": true
+    },
+    {
+      "original": "ConstraintSetImporter.m",
+      "organized": "src/io/ConstraintSetImporter.m",
+      "original_sha256": "96005134c5333afa75f4b6f62706d670d11a40a8bad757864765b43ff486a93c",
+      "organized_sha256": "96005134c5333afa75f4b6f62706d670d11a40a8bad757864765b43ff486a93c",
+      "byte_identical": true
+    },
+    {
+      "original": "json_as_struct_array.m",
+      "organized": "src/io/json_as_struct_array.m",
+      "original_sha256": "254064d053bf62df6bf9499a074e9adc7ffaadbaafae6d4182e5f18a3465ff93",
+      "organized_sha256": "254064d053bf62df6bf9499a074e9adc7ffaadbaafae6d4182e5f18a3465ff93",
+      "byte_identical": true
+    },
+    {
+      "original": "get_con.m",
+      "organized": "src/io/get_con.m",
+      "original_sha256": "79dc7cee2c23a9a0d40c3f22e235fda3b462bc0d12b4f521529264e5ef1145ff",
+      "organized_sha256": "79dc7cee2c23a9a0d40c3f22e235fda3b462bc0d12b4f521529264e5ef1145ff",
+      "byte_identical": true
+    },
+    {
+      "original": "get_miss_seg.m",
+      "organized": "src/io/get_miss_seg.m",
+      "original_sha256": "5dd6c4c844a2014ebf01b0198aed64bae01da309dbca785501249ca6e6c79484",
+      "organized_sha256": "5dd6c4c844a2014ebf01b0198aed64bae01da309dbca785501249ca6e6c79484",
+      "byte_identical": true
+    },
+    {
+      "original": "mission_fuel.m",
+      "organized": "src/mission/mission_fuel.m",
+      "original_sha256": "aeaee8ae5562faa7a2fa6969479cd2009e1cda91d42113cf5ad101e0a499140c",
+      "organized_sha256": "aeaee8ae5562faa7a2fa6969479cd2009e1cda91d42113cf5ad101e0a499140c",
+      "byte_identical": true
+    },
+    {
+      "original": "run_mission_L2.m",
+      "organized": "src/mission/run_mission_L2.m",
+      "original_sha256": "b1d90d0577f5bcce129ab00f468eb0313f02e8e40dfc7ffd2a2bbff0471bd19c",
+      "organized_sha256": "b1d90d0577f5bcce129ab00f468eb0313f02e8e40dfc7ffd2a2bbff0471bd19c",
+      "byte_identical": true
+    },
+    {
+      "original": "segment_climb_L2.m",
+      "organized": "src/mission/segment_climb_L2.m",
+      "original_sha256": "13ed532f5afcf842f872d44e6065ef6c19d7e2610cf0738a8a0f1af2bbbf2c39",
+      "organized_sha256": "13ed532f5afcf842f872d44e6065ef6c19d7e2610cf0738a8a0f1af2bbbf2c39",
+      "byte_identical": true
+    },
+    {
+      "original": "segment_cruise_L2.m",
+      "organized": "src/mission/segment_cruise_L2.m",
+      "original_sha256": "c22a14394ff8f21716d6c5393f6aa3e00d4232faff4d4726645717a01833fd69",
+      "organized_sha256": "c22a14394ff8f21716d6c5393f6aa3e00d4232faff4d4726645717a01833fd69",
+      "byte_identical": true
+    },
+    {
+      "original": "segment_loiter_L2.m",
+      "organized": "src/mission/segment_loiter_L2.m",
+      "original_sha256": "1e3cc7b45769fee4deb8992177752ef88e19851ef5ec291612293fecc8620954",
+      "organized_sha256": "1e3cc7b45769fee4deb8992177752ef88e19851ef5ec291612293fecc8620954",
+      "byte_identical": true
+    },
+    {
+      "original": "run_mission.m",
+      "organized": "src/mission/run_mission.m",
+      "original_sha256": "07310a430754bb0ed37dd688f01be78dd1b99dd4f99db158ce853244e5f27077",
+      "organized_sha256": "07310a430754bb0ed37dd688f01be78dd1b99dd4f99db158ce853244e5f27077",
+      "byte_identical": true
+    },
+    {
+      "original": "run_constraints.m",
+      "organized": "src/constraints/run_constraints.m",
+      "original_sha256": "a4166a1713e829d46e2f6d58a92a67d993a1829054c86e33ab5ae43fe03998da",
+      "organized_sha256": "a4166a1713e829d46e2f6d58a92a67d993a1829054c86e33ab5ae43fe03998da",
+      "byte_identical": true
+    },
+    {
+      "original": "matching_envelope.m",
+      "organized": "src/constraints/matching_envelope.m",
+      "original_sha256": "bc2818d4950d369986faff79dd3b03862b0035787ea9ea7027e4fef706a9870d",
+      "organized_sha256": "bc2818d4950d369986faff79dd3b03862b0035787ea9ea7027e4fef706a9870d",
+      "byte_identical": true
+    },
+    {
+      "original": "constraint_takeoff.m",
+      "organized": "src/constraints/constraint_takeoff.m",
+      "original_sha256": "a8fc8dc85571b7d1c372b30ab5f1844ed4448030d745f13bb05dfa94031dde1a",
+      "organized_sha256": "a8fc8dc85571b7d1c372b30ab5f1844ed4448030d745f13bb05dfa94031dde1a",
+      "byte_identical": true
+    },
+    {
+      "original": "constraint_landing.m",
+      "organized": "src/constraints/constraint_landing.m",
+      "original_sha256": "210a398cd6e73870fc99bcc9a6e15fe9129724b1fa39bac0e3445e69d5cff3d8",
+      "organized_sha256": "210a398cd6e73870fc99bcc9a6e15fe9129724b1fa39bac0e3445e69d5cff3d8",
+      "byte_identical": true
+    },
+    {
+      "original": "constraint_climb.m",
+      "organized": "src/constraints/constraint_climb.m",
+      "original_sha256": "a28be232decefc1392ff784f46454b5d8dd28931af11f6fa7b57b8a5469065cb",
+      "organized_sha256": "a28be232decefc1392ff784f46454b5d8dd28931af11f6fa7b57b8a5469065cb",
+      "byte_identical": true
+    },
+    {
+      "original": "constraint_cruise_speed.m",
+      "organized": "src/constraints/constraint_cruise_speed.m",
+      "original_sha256": "c39e28159abe754c480fc37d619cd1b8a36b69989b035bf7fdddede63135768b",
+      "organized_sha256": "c39e28159abe754c480fc37d619cd1b8a36b69989b035bf7fdddede63135768b",
+      "byte_identical": true
+    },
+    {
+      "original": "wing_loading_sweep.m",
+      "organized": "src/constraints/wing_loading_sweep.m",
+      "original_sha256": "9df3bc2b74583f9fa816b95de3c048175cc3a89029183883a457b5f60aa570b7",
+      "organized_sha256": "9df3bc2b74583f9fa816b95de3c048175cc3a89029183883a457b5f60aa570b7",
+      "byte_identical": true
+    },
+    {
+      "original": "SizingSteps.m",
+      "organized": "src/sizing/SizingSteps.m",
+      "original_sha256": "f1d1fabb58a8f306ae151fddcb0dc7cb5f34e587725c6a7e5e1b6e838cb95e64",
+      "organized_sha256": "f1d1fabb58a8f306ae151fddcb0dc7cb5f34e587725c6a7e5e1b6e838cb95e64",
+      "byte_identical": true
+    },
+    {
+      "original": "sizing_pass.m",
+      "organized": "src/sizing/sizing_pass.m",
+      "original_sha256": "828bad5723e9edda63bf9743a86af2468850143dc935e93fb11f5243ad842272",
+      "organized_sha256": "828bad5723e9edda63bf9743a86af2468850143dc935e93fb11f5243ad842272",
+      "byte_identical": true
+    },
+    {
+      "original": "sizing_mainloop.m",
+      "organized": "src/sizing/sizing_mainloop.m",
+      "original_sha256": "a791e2787bfd86c39b446f8d3c53d511392c30c2eced709e56b2f9efea7fb481",
+      "organized_sha256": "a791e2787bfd86c39b446f8d3c53d511392c30c2eced709e56b2f9efea7fb481",
+      "byte_identical": true
+    },
+    {
+      "original": "sizing_snapshot.m",
+      "organized": "src/sizing/sizing_snapshot.m",
+      "original_sha256": "dd02de13b2053892904620d1983822a6a3266819c4b0c8ebf3124fd3e0d0d3fb",
+      "organized_sha256": "dd02de13b2053892904620d1983822a6a3266819c4b0c8ebf3124fd3e0d0d3fb",
+      "byte_identical": true
+    },
+    {
+      "original": "grand_caravan_ex_initial_opts.m",
+      "organized": "src/sizing/grand_caravan_ex_initial_opts.m",
+      "original_sha256": "cd8d0e9d1105bc235acb5b522bdcecf96d6728bae3ccf88739abbdd58e074cfa",
+      "organized_sha256": "cd8d0e9d1105bc235acb5b522bdcecf96d6728bae3ccf88739abbdd58e074cfa",
+      "byte_identical": true
+    },
+    {
+      "original": "grand_caravan_ex_params.m",
+      "organized": "src/reference/grand_caravan_ex_params.m",
+      "original_sha256": "13254a894859aadbb566d015ed9586345412bccefcb8c89a2dee0973bc17ae98",
+      "organized_sha256": "13254a894859aadbb566d015ed9586345412bccefcb8c89a2dee0973bc17ae98",
+      "byte_identical": true
+    },
+    {
+      "original": "grand_caravan_ex_benchmark.m",
+      "organized": "src/reference/grand_caravan_ex_benchmark.m",
+      "original_sha256": "56d07fdfef0e27460af7d76564a87382f1b38928dfca60df77aa5933940ce5cb",
+      "organized_sha256": "56d07fdfef0e27460af7d76564a87382f1b38928dfca60df77aa5933940ce5cb",
+      "byte_identical": true
+    },
+    {
+      "original": "grand_caravan_ex_check_json.m",
+      "organized": "src/reference/grand_caravan_ex_check_json.m",
+      "original_sha256": "f779af2e6615c56af6a459c7a27820aad524e61b234fa50f2cd820d6ae3cca7e",
+      "organized_sha256": "f2c5c0397569aa6cb3888e420a9904600b7523621e8ec15d31083f0df99d9594",
+      "byte_identical": false
+    },
+    {
+      "original": "landing_gear_loads.m",
+      "organized": "src/analysis/landing_gear_loads.m",
+      "original_sha256": "54d7571cee06f360d6a27a3b8c61b82d58677d5f0a70f623a24883e7c3a09e40",
+      "organized_sha256": "54d7571cee06f360d6a27a3b8c61b82d58677d5f0a70f623a24883e7c3a09e40",
+      "byte_identical": true
+    },
+    {
+      "original": "wing_fuel_check.m",
+      "organized": "src/analysis/wing_fuel_check.m",
+      "original_sha256": "2bf0cd05ac8ce06d7366cb9e1bde40a2ba3aa312fc6c6d53f066e76100910082",
+      "organized_sha256": "2bf0cd05ac8ce06d7366cb9e1bde40a2ba3aa312fc6c6d53f066e76100910082",
+      "byte_identical": true
+    },
+    {
+      "original": "run_ttpa_sizing_mainloop.m",
+      "organized": "examples/legacy/run_ttpa_sizing_mainloop.m",
+      "original_sha256": "a513e8b33b10e426bf62381227a79ac4fd98cfa573e37fd21206ea0493e075f5",
+      "organized_sha256": "a513e8b33b10e426bf62381227a79ac4fd98cfa573e37fd21206ea0493e075f5",
+      "byte_identical": true
+    },
+    {
+      "original": "GrandCaravanEX_requirements_IHW3.json",
+      "organized": "config/GrandCaravanEX_requirements_IHW3.json",
+      "original_sha256": "85d31c3351c13006851637fc24de315dc7fdfd63928232fd5e102978c04d6c88",
+      "organized_sha256": "85d31c3351c13006851637fc24de315dc7fdfd63928232fd5e102978c04d6c88",
+      "byte_identical": true
+    },
+    {
+      "original": "Original_IHW3.json",
+      "organized": "docs/archive/Original_IHW3.json",
+      "original_sha256": "00828b1b4f0a782043437ffd923525b992978919d8c92f5b60d1d16460adc9d8",
+      "organized_sha256": "00828b1b4f0a782043437ffd923525b992978919d8c92f5b60d1d16460adc9d8",
+      "byte_identical": true
+    },
+    {
+      "original": "ORIGINAL_L2_NOTES.md",
+      "organized": "docs/archive/ORIGINAL_L2_NOTES.md",
+      "original_sha256": "49ddc1a1fbcbbe7434ed43c1acdd93ff2182178482f6d6ed065bd3acd6091e2f",
+      "organized_sha256": "49ddc1a1fbcbbe7434ed43c1acdd93ff2182178482f6d6ed065bd3acd6091e2f",
+      "byte_identical": true
+    },
+    {
+      "original": "PACKAGE_CHECKS.json",
+      "organized": "docs/provenance/PACKAGE_CHECKS.json",
+      "original_sha256": "4b448da9e61494f7ba67d343dcaac8cead61ac32ddcbb24064d945a614726095",
+      "organized_sha256": "4b448da9e61494f7ba67d343dcaac8cead61ac32ddcbb24064d945a614726095",
+      "byte_identical": true
+    },
+    {
+      "original": "PROVENANCE.json",
+      "organized": "docs/provenance/PROVENANCE.json",
+      "original_sha256": "c8538e13b1a6c78ed6d742448c5952ad2e33776150b37a9c845b7729686e0050",
+      "organized_sha256": "c8538e13b1a6c78ed6d742448c5952ad2e33776150b37a9c845b7729686e0050",
+      "byte_identical": true
+    },
+    {
+      "original": "tests/test_caravan.m",
+      "organized": "tests/test_caravan.m",
+      "original_sha256": "d835e22c88fad03c0e754bcddbb8076a27ae6c945b9cf6ff456b87b4e3329ff3",
+      "organized_sha256": "d835e22c88fad03c0e754bcddbb8076a27ae6c945b9cf6ff456b87b4e3329ff3",
+      "byte_identical": true
+    }
+  ],
+  "omitted_generated_files": [
+    "verification_results.mat"
+  ],
+  "notes": [
+    "No aircraft equations or active JSON values changed.",
+    "Path/setup/output handling changed; mission-only entrypoint added.",
+    "Source historical records are retained; fresh outputs belong in outputs/."
+  ]
+}

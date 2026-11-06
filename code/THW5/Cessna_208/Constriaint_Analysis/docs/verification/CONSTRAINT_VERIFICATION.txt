@@ -1,0 +1,56 @@
+MATLAB 25.1.0.2973910 (R2025a) Update 1
+Running test_caravan
+........
+Done test_caravan
+__________
+
+Running test_constraint_analysis
+.......... ...
+Done test_constraint_analysis
+__________
+
+Running test_repository_layout
+     segment     fuel_lb    start_weight_lb    end_weight_lb    weight_fraction
+    _________    _______    _______________    _____________    _______________
+
+    "takeoff"    144.99           9062              8917              0.984    
+    "climb"      60.474           8917            8856.5            0.99322    
+    "cruise"     977.23         8856.5            7879.3            0.88966    
+    "descent"    63.034         7879.3            7816.3              0.992    
+    "climb"      18.523         7816.3            7797.8            0.99763    
+    "loiter"      145.2         7797.8            7652.5            0.98138    
+    "descent"     61.22         7652.5            7591.3              0.992    
+    "landing"    60.731         7591.3            7530.6              0.992    
+
+Mission fuel 1531.4 lb; mass margin 755.6 lb; tank margin 714.6 lb
+Grand Caravan EX Amphibian: W/S=32.4803, W/P=10.4521, AR=9.7228
+MTOW basis payload with full fuel: 841 lb (ramp-based full-fuel payload differs)
+Baseline fuel 1531.4 lb; mass margin 755.6 lb; tank margin 714.6 lb
+..
+Done test_repository_layout
+__________
+
+  1×23 TestResult array with properties:
+
+    Name
+    Passed
+    Failed
+    Incomplete
+    Duration
+    Details
+
+Totals:
+   23 Passed, 0 Failed, 0 Incomplete.
+   8.8196 seconds testing time.
+
+    {'MATLAB'}
+
+Conventional Grand Caravan EX Amphibian / PT6A-140, no hybrid
+Climb: angle requirement at 0 and 10000 ft
+At reference W/S: climb speeds 82.7 / 96.3 KTAS; implied ROC 438.4 / 510.2 ft/min
+Water landing wall 33.31 lb/ft2, CALIBRATED PROXY; inferred deceleration 0.234 g
+164 KTAS at 10000 ft: reference cruise needs 559.3 shp, available 711.9 shp; passes AEO set: 1
+  Additional sizing candidate (not the plotted comparator): W/S 31.65, W/P 12.44, S 286.3 ft2, P 728.4 shp; margin applied 1
+OEI: positive powered climb impossible. Approximate stopped-prop glide L/D 11.66, speed 97.8 KTAS, sink 846 ft/min.
+Caravan comparator point against 164-KTAS target: numerical pass 1; W/P margin 21.43%; water-wall W/S margin 2.50%.
+Constraint verification complete.
