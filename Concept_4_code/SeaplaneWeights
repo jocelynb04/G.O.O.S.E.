@@ -1,0 +1,171 @@
+"""Seaplane (Concept 4) weight model: Python port of TtpaWeights.m (IHW3).
+
+Same architecture as the MATLAB class: geometry and propulsion are INJECTED,
+OEW is a METHOD that takes W_TO as an argument, and every W_TO-dependent term
+is evaluated at the PASSED W_TO, never at self.W_TO.
+
+Plain version: the constructor reads each JSON value into an attribute, exactly
+like the MATLAB constructor did. No dataclasses.
+"""
+from abc import ABC, abstractmethod
+
+
+# The contract (MATLAB: WeightsBase). Must come BEFORE the class that inherits.
+class WeightsBase(ABC):
+    @abstractmethod
+    def OEW(self, W_TO):
+        """Operating empty weight [lbf] at a candidate takeoff weight.
+
+        Must satisfy OEW < W_TO for all physical designs. A METHOD at every
+        level: recomputed on every call, never cached, every W_TO-dependent
+        term evaluated at the PASSED W_TO, not at self.W_TO.
+        """
+
+
+# Row names used to roll the breakdown up into the RFP categories.
+# (Propulsion rows are the ones whose names start with "prop_".)
+AIRFRAME_ROWS = ("wing", "horizontal_tail", "vertical_tail", "fuselage_hull",
+                 "floats", "float_attachment", "landing_gear")
+SYSTEM_ROWS = ("avionics_instruments", "fuel_oil_system", "hydraulic_pneumatic",
+               "electrical_system", "furnishings_seats", "ice_protection")
+
+
+class SeaplaneWeights(WeightsBase):
+    def __init__(self, J, geom, prop):
+        """J is the already-loaded (and underscore-stripped) JSON dict."""
+        self.geom = geom          # injected: S_exposed_wing, S_ht, S_vt, S_wet_fuselage
+        self.prop = prop          # injected: installed_mass_breakdown()
+
+        W = J["weights"]
+        P = J["payload"]
+
+        # --- unit weights, Raymer Table 15.2 GA column (lb/ft^2) ---
+        self.rho_wing = W["unit_weight_wing_psf"]
+        self.rho_ht = W["unit_weight_horizontal_tail_psf"]
+        self.rho_vt = W["unit_weight_vertical_tail_psf"]
+        self.rho_fuselage = W["unit_weight_fuselage_psf"]
+
+        # --- seaplane factors on the geometry rows ---
+        self.f_wing_motor = W["wing_motor_reinforcement_factor"]
+        self.f_cruciform = W["cruciform_fin_factor"]
+        self.f_hull = W["hull_factor"]
+
+        # --- fractions of the PASSED W_TO ---
+        self.float_model = W["float_weight_model"]
+        self.f_floats = W["float_weight_fraction"]
+        self.f_float_attach = W["float_attachment_fraction"]
+        self.gear_variant = W["landing_gear_variant"]
+        self.f_landing_gear = W["landing_gear_fraction"]
+
+        # --- propulsion mass the partner's class excludes (fractions of prop mass) ---
+        PI = W["propulsion_integration"]
+        self.f_wiring = PI["wiring_fraction_of_prop_mass"]
+        self.f_heat_sink = PI["heat_sink_thermal_fraction_of_prop_mass"]
+        self.f_cowl_nacelle = PI["cowl_nacelle_fraction_of_prop_mass"]
+        self.f_struts = PI["struts_mounting_fraction_of_prop_mass"]
+        self.f_spinner = PI["spinner_fraction_of_prop_mass"]
+
+        # --- control systems and furnishings (fractions of the PASSED W_TO) ---
+        CS = W["control_systems"]
+        self.f_avionics = CS["avionics_instruments_fraction"]
+        self.f_fuel_oil = CS["fuel_oil_system_fraction"]
+        self.f_hydraulic = CS["hydraulic_pneumatic_fraction"]
+        self.f_electrical = CS["electrical_system_fraction"]
+        self.f_furnishings = CS["furnishings_seats_fraction"]
+        self.f_ice = CS["ice_protection_fraction"]
+
+        self.rho_fuel = W["fuel_density_lb_per_ft3"]       # post-sizing fuel-volume check
+
+        # --- payload requirement ---
+        self.n_pax = P["n_passengers"]
+        self.n_pilots = P["n_pilots"]
+        self.W_pax = P["W_passenger_lbf"]
+        self.W_pilot = P["W_pilot_lbf"]
+        self.W_bag = P["W_baggage_per_passenger_lbf"]
+        self.bag_includes_pilots = P["baggage_includes_pilots"]
+        self.W_payload_expendable = P["W_expendable_lbf"]
+
+        # --- sizing states: the LOOP writes these; NaN until it does ---
+        self.W_TO = float("nan")        # lbf, candidate gross takeoff weight
+        self.W_energy = float("nan")    # lbf, turboshaft FUEL only (battery is OEW)
+
+    # ---- payload: computed from the requirement, so it cannot drift ---------
+    @property
+    def W_payload_fixed(self):
+        """lbf, fixed payload INCLUDING crew (pilots are counted here, not in OEW)."""
+        n_bags = self.n_pax + self.n_pilots if self.bag_includes_pilots else self.n_pax
+        return (self.n_pax * self.W_pax
+                + self.n_pilots * self.W_pilot
+                + n_bags * self.W_bag)
+
+    def payload(self):
+        return self.W_payload_fixed + self.W_payload_expendable
+
+    # ---- empty weight ------------------------------------------------------
+    def OEW(self, W_TO):
+        """Operating empty weight [lbf] at the PASSED W_TO."""
+        return self.OEW_breakdown(W_TO)["total"]
+
+    def OEW_breakdown(self, W_TO):
+        """Itemised empty weight [lbf]: one entry per row, plus 'total'."""
+        if not (W_TO > 0):              # also rejects NaN, as MATLAB's mustBePositive did
+            raise ValueError(f"W_TO must be positive, got {W_TO}")
+        g = self.geom
+        rows = {}
+
+        # --- 1. Airframe rows that follow the GEOMETRY: unit weight x area ---
+        rows["wing"] = self.rho_wing * self.f_wing_motor * g.S_exposed_wing
+        rows["horizontal_tail"] = self.rho_ht * g.S_ht
+        rows["vertical_tail"] = self.rho_vt * self.f_cruciform * g.S_vt
+        rows["fuselage_hull"] = self.rho_fuselage * self.f_hull * g.S_wet_fuselage
+
+        # --- 2. Airframe rows that follow the TAKEOFF WEIGHT (PASSED W_TO) ---
+        if self.float_model != "fraction_of_W_TO":
+            raise NotImplementedError(
+                f"float_weight_model '{self.float_model}' needs float geometry "
+                "from the geometry class; only 'fraction_of_W_TO' is implemented.")
+        rows["floats"] = self.f_floats * W_TO
+        rows["float_attachment"] = self.f_float_attach * W_TO
+        if self.gear_variant == "amphibious":
+            rows["landing_gear"] = self.f_landing_gear * W_TO
+        elif self.gear_variant == "none":           # the RFP's no-gear exchange variant
+            rows["landing_gear"] = 0.0
+        else:
+            raise ValueError("landing_gear_variant must be 'amphibious' or 'none', "
+                             f"got '{self.gear_variant}'")
+
+        # --- 3. Propulsion: the partner's six component masses, used as given ---
+        # Follows P_SL (and the fixed battery/generator inputs), NOT W_TO.
+        prop_lb = self.prop.installed_mass_breakdown()          # lb, keys end in '_lb'
+        for key, mass in prop_lb.items():
+            rows["prop_" + key.removesuffix("_lb")] = mass
+        prop_mass = sum(prop_lb.values())
+
+        # --- 4. Propulsion mass the partner's class excludes (fractions of it) ---
+        rows["prop_wiring"] = self.f_wiring * prop_mass
+        rows["prop_heat_sink"] = self.f_heat_sink * prop_mass
+        rows["prop_cowl_nacelle"] = self.f_cowl_nacelle * prop_mass
+        rows["prop_struts_mounting"] = self.f_struts * prop_mass
+        rows["prop_spinner"] = self.f_spinner * prop_mass
+
+        # --- 5. Control systems and furnishings: fractions of the PASSED W_TO ---
+        rows["avionics_instruments"] = self.f_avionics * W_TO
+        rows["fuel_oil_system"] = self.f_fuel_oil * W_TO
+        rows["hydraulic_pneumatic"] = self.f_hydraulic * W_TO
+        rows["electrical_system"] = self.f_electrical * W_TO
+        rows["furnishings_seats"] = self.f_furnishings * W_TO
+        rows["ice_protection"] = self.f_ice * W_TO
+
+        # --- 6. Total: sums ONLY the rows above. Anything added later for reporting
+        #        must go in the returned dict AFTER this line, or it double counts. ---
+        total = sum(rows.values())
+        return {**rows, "total": total}
+
+    @staticmethod
+    def group_totals(bd):
+        """Roll the rows up into the RFP categories (payload is separate)."""
+        prop = sum(v for k, v in bd.items() if k.startswith("prop_"))
+        airframe = sum(bd[k] for k in AIRFRAME_ROWS)
+        systems = sum(bd[k] for k in SYSTEM_ROWS)
+        return {"propulsion": prop, "airframe": airframe, "control_systems": systems,
+                "total": bd["total"]}
