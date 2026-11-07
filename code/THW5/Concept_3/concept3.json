@@ -88,6 +88,7 @@
     "unit_weight_wing_psf": 2.5,
     "unit_weight_v_tail_psf": 2.0,
     "unit_weight_fuselage_psf": 1.4,
+    "unit_weight_wingtip_float_psf": 1.4;
     "landing_gear_fraction": 0.0,
     "installed_engine_factor": 1.4,
     "all_else_empty_fraction": 0.1,
