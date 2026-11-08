@@ -64,22 +64,50 @@
 
 
   "propulsion": {
-    "n_engines": 8,
-    "BSFC_lb_per_hp_hr": 0.65,
+    "architecture": "series_hybrid",
+    "n_motors": 8,
+    "n_generators": 2,
+    "P_SL_hp": 850.0,
+    "BSFC_lb_per_hp_hr": 0.45,
+    
+    "generator_continuous_fraction": 1.0,
+    "motor_continuous_fraction": 0.85,
+    "generator_lapse_exponent": 0.7,
+    
+    "generator_efficiency": 0.95,
+    "rectifier_efficiency": 0.98,
+    "inverter_efficiency": 0.98,
+    "motor_efficiency": 0.95,
+    "battery_discharge_efficiency": 0.95,
+    "battery_charge_efficiency": 0.93,
+    
+    "battery_capacity_kwh": 150.0,
+    "battery_initial_soc": 0.9,
+    "battery_min_soc": 0.2,
+    "battery_max_soc": 1.0,
+    "battery_charge_power_limit_kw": 200.0,
+    "battery_discharge_power_limit_kw": 500.0,
+    
+    "battery_specific_energy_kwh_per_kg": 0.25,
+    "battery_specific_power_kw_per_kg": 1.5,
+    "motor_specific_power_kw_per_kg": 5.0,
+    "inverter_specific_power_kw_per_kg": 12.0,
+    "generator_specific_power_kw_per_kg": 4.0,
+    "turboshaft_specific_power_kw_per_kg": 3.5,
+    "propeller_mass_kg_each": 15.0,
+    
     "eta_p_cruise": 0.8,
     "eta_p_loiter": 0.72,
     "eta_p_climb": 0.75,
     "P_TO_over_P_max_continuous": 1.0,
-    "engine_scaling_class": "pt6a140_provisional",
+    
+    "engine_scaling_class": "turboshaft_provisional",
     "engine_weight_coefficient": 425,
     "engine_weight_exponent": 0.8,
     "engine_length_coefficient": 5.25,
     "engine_length_exponent": 0.4,
-    "bhp_range_of_validity": [
-      500,
-      1100
-    ]
-  },
+    "bhp_range_of_validity": [500, 1100]
+  }
 
 
   "weights": {
