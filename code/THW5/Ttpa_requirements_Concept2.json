@@ -1,0 +1,811 @@
+{
+  "_comment": "G.O.O.S.E. Concept 2, twin-float amphibious seaplane, conventional tail, two wing-mounted parallel-hybrid engines. Built from Ttpa_requirements_IHW3.json, using information from RFP, textbook relations, and estimates for the initial sizing of the aircraft.",
+  "_what_changed_from_IHW": "Concept 2 requirements and proposed model inputs for a twin-float amphibian with retractable wheels and independently sized motors and turbines. Float geometry, separate fuel/battery accounting, SOC, recharge power, and new constraints require MATLAB implementation; their presence here does not implement them.",
+  "geometry": {
+    "_comment": "Shape inputs for proposed geometry model. Wing area and weight-dependent float geometry must be updated by the sizing loop; current MATLAB geometry has no float implementation.",
+    "AR": 7.995457143,
+    "_src_AR": "Carried from the mission constraint analysis (SCR slide 15). A higher AR helps cruise L/D, but the wingspan is limited to 65 ft and the aircraft must still be able to dock wing-over-dock.",
+    "taper_ratio": 0.7,
+    "_src_taper_ratio": "Seaplanes typically have a more consistent chord across the length of the wing, so assuming a higher taper ratio for now.",
+    "sweep_quarter_chord_deg": 0,
+    "_src_sweep_quarter_chord_deg": "Mach number at 10,000 ft for 180 KTAS is about 0.282",
+    "thickness_ratio_root": 0.19,
+    "thickness_ratio_tip": 0.09,
+    "_src_thickness_ratio": "NACA 23019 root (19 percent thickness) and NACA 23009 tip (9 percent); root corrected from 0.18 to match named airfoil. Airfoil selection and CLmax remain preliminary.",
+    "twist_deg": -3,
+    "incidence_deg": 2,
+    "dihedral_deg": 3,
+    "_src_twist_incidence_dihedral": "Dihedral reduced from 5 to 3 degrees based on the dihedral observed for typical seaplanes. Leaving twist and incidence angles the same as listed in IHWs.",
+    "horizontal_tail": {
+      "volume_coefficient": 0.8,
+      "arm_ft": 21.5,
+      "AR": 5.5,
+      "taper_ratio": 0.75,
+      "thickness_ratio": 0.12,
+      "sweep_quarter_chord_deg": 10,
+      "_src": "V_h = 0.8 from the Raymer Table 6.4 general aviation twin engine, unchanged from IHWs. Arm re-derived for the longer fuselage, Raymer sec 6.4 puts the tail arm at 50-55 percent of the fuselage length for wing mounted engines, and 0.51 x 42.0 ft = 21.5 ft. Conventional tail utilized for concept 2, it will need to be checked that the horizontal stabilizer is clear of spray."
+    },
+    "vertical_tail": {
+      "volume_coefficient": 0.08,
+      "arm_ft": 21.5,
+      "AR": 1.3,
+      "taper_ratio": 0.55,
+      "thickness_ratio": 0.12,
+      "sweep_quarter_chord_deg": 30,
+      "_src": "Set volume coefficient to 0.08, to the top of the Nicolai and Carichner Table 11.1 range. The floats put a large side area ahead of the cg, which is directly destabilizing for the aircraft. The aircraft must be able to maintain stability with 40 kt gusts and 20 kt crosswinds on water."
+    },
+    "fuselage": {
+      "_comment": "This is driven by the cabin requirements. 2 pilots side by side, 9 passengers seated 1+1 with a center aisle between them in 5 rows. There are 4 rows of 2 and 1 single seat. Traditional fuselage since concept 2 is a floatplane.",
+      "width_ft": 5.5,
+      "height_ft": 6,
+      "_src_width_height": "Interior width at armrest height = 2 seats x (17.5 in seat + 2 x 2 in armrests) + 20 in aisle = 63 in. This is just using the RFP minimum requirements for now. Adding a 1.5 in structure per side, this will bring the total to 66 in, or 5.5 ft. Height was selected as a 5.0 ft cabin (between the Cessna Caravan and Twin Otter cabins, chosen to ease boarding from a dock) plus 1.0 ft floor and frame depth, which also carries the float strut attachements = 6 ft.",
+      "nose_length_ft": 9.5,
+      "constant_length_ft": 17.5,
+      "tailcone_length_ft": 15,
+      "_src_lengths": "Preliminary 42 ft total: 9.5 ft nose/cockpit, 17.5 ft constant section, 15 ft tailcone. Five rows at 35 in pitch suggest 14.6 ft before access and baggage allowances. Validate actual cockpit, seats, doors, baggage volume, structure and visibility; similar overall length to a comparator does not validate cabin fit.",
+      "tailcone_end_width_ft": 0.5,
+      "tailcone_end_height_ft": 0.5,
+      "_src_tailcone_end": "Unchanged from the IHW for now."
+    },
+    "nacelle": {
+      "_comment": "Wing-mounted tractor nacelles, one per propulsor. Each has a turboprop engine and a coaxial electric motor on a shared gearbox since concept 2 uses parallel hybrid architecture.",
+      "diameter_ft": 2.8,
+      "_src_diameter_ft": "Kept at 2.8 ft for now, a PT6A-class turboprop is about 1.6 ft in diameter, plus the motor, inlet, and cowl.",
+      "length_over_engine_length": 1.8,
+      "_src_length_over_engine_length": "The turboprop is longer than the opposed piston from IHWs, and the main gear lives in the floats rather than the nacelle, so the factor drops from 2 to 1.8. The motor length is not modeled yet.",
+      "prop_tip_min_height_above_water_ft": 7,
+      "_src_prop_tip": "The lowest point of the wing and propulsor must be 6 ft above the dock and the dock is 1 ft above the water, so the min height above the water must be 7 ft."
+    },
+    "floats": {
+      "_comment": "Two main floats. Minimum intact enclosed buoyant volume = 1.8 W_TO / freshwater weight density, split equally. Operating displacement is W_TO / density, not 1.8 W_TO / density. External aerodynamic wetted area and submerged hydrodynamic wetted area are different quantities. Geometry and weight coupling require implementation.",
+      "n_floats": 2,
+      "excess_buoyancy": 0.8,
+      "_src_excess_buoyancy": "RFP/23.2310 intact buoyancy minimum, counting eligible volume below cabin floor. At 12000 lbf: approximately 346.6 ft^3 total enclosed volume, 173.3 ft^3 per float. This does not establish flooded survivability, operating draft, exit clearance or stability.",
+      "water_density_fresh_lb_per_ft3": 62.316,
+      "length_to_beam": 9.0,
+      "_src_length_to_beam": "Provisional comparator-based ratio, rounded from Wipaire 8750 amphibian published length 31 ft 9 in / hull width 3 ft 6 in = 9.07. Overall length may include appendages; replace with actual hull dimensions.",
+      "swet_over_volume_two_thirds": 7,
+      "_src_swet_over_volume_two_thirds": "Provisional external aerodynamic surface-area approximation: S_wet_per_float = 7 V_enclosed_per_float^(2/3). Calibrate against defined float geometry. Do not use this external area as submerged wetted area or as a hydrodynamic resistance model.",
+      "strut_delta_CD0": 0,
+      "_src_strut_delta_CD0": "Zero additional increment is bookkeeping for the selected overall equivalent-Cfe approach, not evidence that struts have zero drag. Calibrate overall drag against complete amphibian installation including strut/interference effects before crediting this value.",
+      "depth_to_beam": 0.9285714285714286,
+      "_src_depth_to_beam": "Provisional bounding-envelope ratio from published 3 ft 3 in hull height / 3 ft 6 in width; not immersed draft.",
+      "section_volume_coefficient": null,
+      "_src_section_volume_coefficient": "Required shape input: V_enclosed = coefficient x length x beam x depth. Obtain from comparator hull geometry or a defined proposed hull; no box-filling coefficient is assumed."
+    },
+    "landing_gear": {
+      "_comment": "Amphibious: wheels retract into floats.",
+      "l_n_over_l_d": 0.9,
+      "l_m_over_l_d": 0.15,
+      "_src": "Retractable wheels in floats. Ratios 0.90 and 0.15 remain provisional maxima at potentially different CG limits; not simultaneous equilibrium reactions. Replace with actual float gear stations and CG envelope."
+    }
+  },
+  "aerodynamics": {
+    "_comment": "Proposed overall equivalent-Cfe model: CD0 = Cfe S_wet_external / S_ref, including float external area. Requires complete-installation calibration. Existing MATLAB omits floats.",
+    "CD0_clean": 0.04,
+    "_src_CD0_clean": "0.04 is a provisional reference cross-check, not an imposed CD0 or guaranteed conservative bound. Earlier landplane estimate 0.031 is not reproducible until weight, power, speed, propeller efficiency, induced drag and cargo-pod configuration are documented.",
+    "Cfe": 0.0065,
+    "_src_Cfe": "0.0065 retained as a preliminary textbook-based prop-seaplane equivalent coefficient. Calibrate with complete amphibian configuration, including floats, struts and interference. Do not also add overlapping component increments. Textbook edition/table attribution remains to be verified.",
+    "CLmax_clean": 1.5,
+    "CLmax_takeoff": 1.8,
+    "CLmax_landing": 2.2,
+    "_src_CLmax": "Roskam Part I Table 3.1, twin engine prop FAR 23 mid-range, unchanged from IHWs.",
+    "CL_stall_margin": 0.2,
+    "delta_CD0_flaps_takeoff": 0.015,
+    "delta_CD0_flaps_landing": 0.065,
+    "delta_CD0_gear_down": 0.01,
+    "_src_delta_CD0": "Flap increments unchanged, taken from Roskam Part I Table 3.6. Gear-down increment lowered to 0.010 for now, the amphibious wheels only extend slightly below floats.",
+    "delta_e_flaps_takeoff": -0.05,
+    "delta_e_flaps_landing": -0.1,
+    "_src_delta_e": "Roskam part I Table 3.6, unchanged for now.",
+    "delta_CD0_propeller_stopped": 0.005,
+    "_src_delta_CD0_propeller_stopped": "0.005 is a provisional feathered-failed-propulsor drag increment. Feathered, stopped and windmilling are distinct conditions; do not use this value for windmilling without separate data.",
+    "drag_model": "overall_equivalent_Cfe",
+    "drag_calibration_status": "unvalidated_complete_amphibian_installation"
+  },
+  "propulsion": {
+    "_comment": "Two wing-mounted parallel-hybrid propulsors. Independently size total motor peak/continuous shaft ratings and total turbine takeoff/continuous shaft ratings. P_SL, if retained for reporting, is the sum of compatible source ratings and is not universally available in each phase. Divide only turbine power by n_engines for turbine weight/length regressions.",
+    "n_engines": 2,
+    "_src_n_engines": "Concept 2 has two wing-mounted propulsors.",
+    "BSFC_lb_per_hp_hr": 0.6,
+    "_src_BSFC": "Constant preliminary estimate, not measured GE H75/H80 fuel data. Public rating/altitude charts do not establish fuel consumption. Use 0.6 for estimated shaft-power fuel flow until selected-engine fuel-flow maps are obtained.",
+    "eta_p_cruise": 0.82,
+    "eta_p_loiter": 0.82,
+    "_src_eta_p_mission": "Cruise is unchanged, loiter set equal to cruise because the only loiter segment for our mission would be the 45-minute IFR reserve, flown at typical cruise speed.",
+    "eta_p_climb": 0.8,
+    "P_TO_over_P_max_continuous": 1,
+    "_src_P_TO_over_P_max_continuous": "Small turboprops are typically flat-rated, with takeoff and maximum continuous power equal. (PT6A-114A: 675 shp for both). The 1.1 pistion ratio from IHWs doesn't apply. Motor peak-versus-continuous is handled separately in the parallel hybrid block.",
+    "engine_scaling_class": "turboprop",
+    "_src_engine_scaling_class": "Turboprop selected as a Concept 2 architecture assumption, not because 1350 total hp categorically excludes piston engines. Select actual engines and operating maps later.",
+    "engine_weight_coefficient": 1.67,
+    "engine_weight_exponent": 0.803,
+    "engine_length_coefficient": 0.46,
+    "engine_length_exponent": 0.373,
+    "_src_engine_regression": "Provisional turboprop regressions applied to one turbine rated power only, not motor-plus-turbine power. At 675 shp they give approximately 312 lb bare weight and 5.23 ft length. Validate coefficient/table attribution and replace with selected-engine data.",
+    "bhp_range_of_validity": [
+      200,
+      3000
+    ],
+    "_src_bhp_range_of_validity": "Set from the turboprop column of Raymer Table 10.4.",
+    "turbine_power_model": "catalog_engine",
+    "engine_catalog_file": "turbine_engine_catalog.json",
+    "selected_engine": "GE_H75_100",
+    "_src_selected_engine": "Working hardware reference: two GE H75-100 turbines. Constructor loads nominal ratings, EASA dry mass/length, and GE brochure power-vs-OAT curves at sea level and 10000 ft. GE_H80_100 is the executable alternative. Actual catalog engines are not continuously scaled with sizing power. See engine_sources/ENGINE_MODEL.md for sources and remaining approximations.",
+    "assumed_turbine_map": {
+      "_comment": "PROVISIONAL sensitivity model, not published PT6A performance. The constructor generates a lookup table using f(h) = min(1, (sigma(h)/sigma(h_c))^n), where sigma is ISA density ratio, h_c is the assumed flat-rating altitude, and n is the decline exponent. Takeoff and continuous ratings share the same fractional curve as an explicit initial assumption; their shaft-hp ratings remain separate.",
+      "active_scenario": "intermediate",
+      "altitude_ft": [0, 2500, 5000, 7500, 10000, 12500],
+      "decline_exponent": 1,
+      "scenarios": {
+        "earlier_decline": {"flat_rating_altitude_ft": 0},
+        "intermediate": {"flat_rating_altitude_ft": 5000},
+        "later_decline": {"flat_rating_altitude_ft": 10000}
+      },
+      "_src_scenarios": "Hypothetical cases selected for sizing sensitivity, not engine capabilities. Change active_scenario and rebuild TtpaProp to compare cases. No hot-day, ram-rise, installation-loss, deterioration, restart, or fuel-flow map is established by this approximation. Any additional installation/accessory loads require explicit accounting without double counting. Replace with documented engine data when available."
+    },
+    "turbine_map": {
+      "_comment": "Future documented-engine lookup template; unused while turbine_power_model is assumed_ISA_flat_rating. To use engine data, select documented_ISA_lookup and populate all three arrays with matching lengths and strictly increasing pressure altitudes. Each power fraction is available shaft hp divided by that rating's own reference sea-level shaft hp. Empty arrays mean missing data, not zero power. Scaling fractions to changing design ratings is a preliminary engine-scaling assumption.",
+      "engine_model": null,
+      "reference_installation": null,
+      "source": null,
+      "installation_and_accessory_assumptions": null,
+      "reference_SL_takeoff_hp_per_engine": null,
+      "reference_SL_continuous_hp_per_engine": null,
+      "altitude_ft": [],
+      "takeoff_fraction": [],
+      "continuous_fraction": []
+    },
+    "_src_turbine_power_model": "Default uses selected reference-engine data from the catalog. Power curves are rounded public-brochure readings with assumed interpolation and a provisional continuous thermal ceiling. The earlier assumed_ISA_flat_rating model remains available as a sensitivity option. Neither mode establishes installation-specific certified performance or a fuel-flow map."
+  },
+  "hybrid": {
+    "_comment": "Parallel hybrid: turbine and motor share a propeller gearbox. Turbines are shut down for zero-tailpipe-emission phases; declutching a running turbine alone is insufficient. Turbines mechanically drive the propellers and motor-generators during airborne recharge. Independent source ratings, scheduling, losses and restart logic require implementation.",
+    "architecture": "parallel",
+    "electric_ceiling_ft_AGL": 1500,
+    "_src_electric_ceiling_ft_AGL": "1500 ft AGL is a provisional team-selected operating transition altitude, not an RFP-specified or automatically certification-defined boundary. Use separate arrival/departure schedules and sensitivity cases. Lower candidates need operational justification; 50 ft is not assumed compliant.",
+    "battery_specific_energy_WH_per_kg": 200,
+    "_src_battery_specific_energy": "200 Wh/kg retained as a provisional beginning-of-life pack-level energy/mass assumption, not a demonstrated certified pack selection. Verify concurrent energy, discharge, charge, cooling, containment, temperature and end-of-life capabilities of one pack.",
+    "battery_max_discharge_C": 5,
+    "_src_battery_max_discharge_C": "5C is a provisional peak discharge rating, referenced to beginning-of-life nominal pack energy. Confirm duration and temperature/SOC/aging derating with selected pack; energy versus power sizing is an output, not predetermined.",
+    "battery_efficiency": 0.95,
+    "motor_specific_power_kW_per_kg": 5,
+    "inverter_specific_power_kW_per_kg": 15,
+    "_src_motor_inverter": "Provisional separate motor/inverter mass model: motor 5 kW/kg at peak shaft rating, continuous specific power 5/1.3 kW/kg, inverter 15 kW/kg at electrical throughput. Size mass to satisfy both ratings, using conversion losses consistently. Five-minute peak duration is a study assumption. If selected motor includes inverter, use its integrated mass and omit separate inverter mass; family marketing ratings are not installation data.",
+    "motor_efficiency": 0.95,
+    "inverter_efficiency": 0.98,
+    "motor_peak_over_continuous": 1.3,
+    "_src_motor_peak_over_continuous": "1.3 is a provisional ratio of peak to continuous motor shaft power. Verify duration, cooling and repeated duty cycle with selected motor; do not apply peak rating throughout sustained climb.",
+    "electrical_installation_fraction": 0.15,
+    "_src_electrical_installation_fraction": "Provisional 15 percent of battery+motor+separate-inverter mass for external aircraft wiring, cooling, mounts and aircraft-level protection only. Pack enclosure/BMS/pack containment already in pack specific energy; do not count them twice. Replace with component buildup.",
+    "taxi_out_min": 5,
+    "taxi_in_min": 5,
+    "taxi_power_fraction": 0.1,
+    "_src_taxi": "Water taxi on the motors at about 10 percent of total motor power available. Harbour Air typically takes 1-3 minutes for taxi, but leaving as a higher number for now especially considering our potential on-land operations at airports.",
+    "recharge_in_flight": true,
+    "recharge_chain_efficiency": 0.9,
+    "_src_recharge": "recharge_chain_efficiency = stored battery energy / incremental turbine shaft energy, including generation, conversion and battery charging losses. Recharge fuel_lb = E_stored_kWh / (0.7457 x recharge_chain_efficiency) x BSFC_lb_per_hp_hr. BSFC already converts shaft energy to fuel; do not divide again by turbine thermal efficiency. Add incremental charging fuel and check turbine propulsion+charging+accessory power simultaneously.",
+    "battery_sized_for": "maximum_SOC_excursion_across_normal_repeated_leg_and_go_around_cases",
+    "_src_battery_sized_for": "Track SOC continuously, including approach, taxi, takeoff, electric climb, go-around, final landing and any scheduled boost. Size for maximum energy excursion and power/duration limits at end of life. Repeated short legs must return to target SOC without ground charging; 30-minute turnaround alone does not establish charge feasibility. Battery mass is retained after discharge.",
+    "power_sizing_method": "independent_motor_and_turbine",
+    "motor_power_fraction_role": "Derived reporting output only: total rated motor power / (total rated motor power + compatible total rated turbine power). Do not impose a fixed 0.4 split.",
+    "power_sizing_cases": {
+      "motor": [
+        "electric water takeoff",
+        "electric departure climb",
+        "electric initial balked landing/go-around",
+        "electric approach, landing and taxi",
+        "applicable motor-only OEI cases"
+      ],
+      "turbine": [
+        "180 KTAS capability at 10000 ft MTOW",
+        "500 fpm climb at 10000 ft MTOW",
+        "normal cruise plus recharge and accessory loads",
+        "applicable turbine/combined OEI cases"
+      ]
+    },
+    "arrival_turbine_shutdown_altitude_ft_AGL": 1500,
+    "transition_altitude_sensitivity_ft_AGL": [
+      1000,
+      1500,
+      2000
+    ],
+    "go_around_initial_power_source": "electric",
+    "go_around_turbine_credit_below_transition": false,
+    "turbine_restart_time_s": null,
+    "_src_turbine_restart": "No immediate turbine power credit following shutdown on approach. Initial go-around is electric to 1500 ft AGL. Above that, turbine power may be credited only after validated restart time, altitude and procedure; null restart time means transition remains unvalidated.",
+    "battery_specific_energy_mass_boundary": "Includes cells, modules, BMS, pack enclosure and pack-level containment/protection. External cooling, aircraft wiring, mounts and aircraft-level protection are counted separately.",
+    "battery_peak_discharge_duration_min": 5,
+    "battery_max_continuous_discharge_C": null,
+    "battery_max_charge_C": null,
+    "_src_battery_rate_limits": "Five-minute peak duration is an explicit provisional study assumption, not manufacturer data. Continuous discharge and charge limits remain unresolved; null must not be interpreted as unlimited.",
+    "battery_soc_min": 0.1,
+    "battery_soc_max": 0.9,
+    "battery_end_of_life_capacity_fraction": 0.8,
+    "_src_battery_capacity_margins": "Separate provisional 10-90 percent SOC window and 80 percent end-of-life retained capacity. Usable stored energy at end of life = nominal beginning-of-life kWh x 0.8 x (0.9 - 0.1) = 0.64 nominal kWh, before discharge losses. Apply temperature/rate derating separately when data are available.",
+    "_src_battery_efficiency": "0.95 is provisional one-way discharge efficiency from stored pack energy to DC terminal energy; not round-trip efficiency. Recharge-chain efficiency below already includes charging losses.",
+    "motor_specific_power_rating_basis": "peak_shaft_power",
+    "motor_continuous_specific_power_kW_per_kg": 3.846153846153846,
+    "motor_peak_duration_min": 5,
+    "inverter_integrated_with_motor": false,
+    "inverter_specific_power_rating_basis": "peak_electrical_throughput",
+    "charging_power_sizing_method": "restore_target_SOC_within_available_airborne_time_subject_to_source_and_pack_limits",
+    "accessory_power_kW": null,
+    "recharge_target_soc": 0.9,
+    "short_leg_recharge_check_required": true,
+    "battery_sizing_cases": [
+      "normal_departure_and_arrival",
+      "arrival_then_next_departure_without_ground_charge",
+      "arrival_go_around_reserve_and_final_landing",
+      "scheduled_hybrid_boost_if_enabled"
+    ],
+    "normal_climb_motor_boost_enabled": false,
+    "_src_normal_climb_motor_boost": "Baseline above-transition climb uses turbines only to avoid an undefined battery power split. A future hybrid-boost variant must specify boost power/duration and include its battery/recharge burden."
+  },
+  "weights": {
+    "_comment": "Raymer table 15.2 build-up, extended. OEW = wing + HT + VT + fuselage + floats + amphibious gear + installed turbines + motors/inverters + battery + electrical installation + all else empty.",
+    "W_payload_fixed": 2430,
+    "W_payload_expendable": 0,
+    "_src_W_payload": "9 passengers x (180 lb + 50 lb baggage) + 2 pilots x 180 lb = 2430 lb.",
+    "unit_weight_wing_psf": 2.5,
+    "unit_weight_horizontal_tail_psf": 2,
+    "unit_weight_vertical_tail_psf": 2,
+    "unit_weight_fuselage_psf": 1.4,
+    "_src_unit_weights": "Raymer table 15.2 GA column, unchanged. Wing and tails multiply exposed planform area, the fuselage multiplies wetted area. The marine environment material choice can later scale these.",
+    "float_structure_fraction": 0.14279408519090708,
+    "_src_float_structure_fraction": "1294/9062 = provisional straight-float-system weight fraction, including comparator struts/rigging within published installation boundary. Linear scaling to target gross weight is an explicit initial assumption; validate against matched installations and structural loads.",
+    "landing_gear_fraction": 0.042374751710439196,
+    "_src_landing_gear_fraction": "(1678-1294)/9062 = provisional amphibious-minus-straight system fraction, including differential installation hardware rather than claiming isolated wheel mass. Use this as amphibian-to-no-gear-variant weight difference. Wipaire landplane-to-float exchange weight is a different quantity. Avoid overlap with straight-float system mass.",
+    "installed_engine_factor": 1.4,
+    "_src_installed_engine_factor": "Raymer table 15.2 GA column, times the bare turbine weight of both engines. Motors and battery are booked separately in hybrid terms.",
+    "all_else_empty_fraction": 0.12,
+    "_src_all_else_empty_fraction": "Raised from the GA 0.1 on IHWs toward the transport 0.17 - dual controls, IFR avionics, FIKI, 9-seat cabin furnishings, and marine equipment.",
+    "statistical_OEW_coefficient": 1.09,
+    "statistical_OEW_exponent": 0.95,
+    "_src_statistical_OEW": "Flying-boat statistical regression retained only as a weak conventional seaplane cross-check. It is not calibrated to twin-float hybrid aircraft and does not establish battery or electrical-installation weight; compare boundaries before interpreting.",
+    "fuel_density_lb_per_ft3": 50.1,
+    "_src_fuel_density_lb_per_ft3": "Jet A at about 6.7 lb/US gal x 7.48 gal/ft^3 = 50.1 lb/ft^3.",
+    "float_weight_method": "reference_system_weight_linear_gross_weight_scaling",
+    "float_weight_reference": {
+      "aircraft": "Grand Caravan EX / Wipline 8750 published comparator",
+      "gross_weight_lbf": 9062,
+      "straight_float_system_weight_lbf": 1294,
+      "amphibious_float_system_weight_lbf": 1678,
+      "amphibious_minus_straight_system_weight_lbf": 384,
+      "scaling_exponent": 1.0,
+      "calibration_status": "provisional_comparator_scaling_not_target_installation_validation",
+      "source_reference": "wipaire_8750"
+    }
+  },
+  "design_range_nmi": 869,
+  "_src_design_range_nmi": "RFP requires 1000 statute miles, so this is approximately 869 nautical miles.",
+  "sizing": {
+    "_comment": "Same framework as IHWs",
+    "W_TO_guess_lbf": 12000,
+    "_src_W_TO_guess_lbf": "12000 lbf numerical initial guess. The 12500 lbf cap is a team/SCR target, not an explicit requirement in the supplied RFP; do not force closure to this guess or cap.",
+    "S_ref_guess_ft2": 415,
+    "_src_S_ref_guess_ft2": "Numerical starting guess only: current provisional landing approximation gives W/S about 29 psf, so 12000/29 is about 414 ft^2. Final wing area is a sizing output and changes when water-landing calibration changes.",
+    "tol_rel": 1e-06,
+    "max_iter": 200,
+    "relaxation": 0.45,
+    "_src_relaxation": "This airplane has stronger couplings due to the float volume and hybrid electric powertrain, so it may need re-tuning.",
+    "team_MTOW_cap_lbf": 12500,
+    "_src_team_MTOW_cap_lbf": "SCR team design cap, evaluated as a separate feasibility check. Report an exceedance rather than clipping computed weight; certification basis is a separate issue.",
+    "motor_peak_power_guess_total_hp": 1300,
+    "turbine_continuous_power_guess_total_hp": 1000,
+    "_src_source_power_guesses": "Independent numerical seeds only. Motor seed comes from the current unvalidated takeoff correlation near 29 psf and 12000 lb; turbine seed is approximately 12000/(12 lb/hp) before recharge/accessories and is not a demonstrated sufficient rating. Resize both independently.",
+    "convergence_quantities": [
+      "W_TO",
+      "S_ref",
+      "motor_peak_power_total",
+      "motor_continuous_power_total",
+      "turbine_rated_power_total",
+      "battery_nominal_energy",
+      "repeat_cycle_SOC_balance"
+    ]
+  },
+  "constraints": {
+    "_comment": "First six names/order retained for reference; added climb_rate and water_hump need implementation. Electric/turbine limits refer to independently sized source ratings, including duration, altitude, losses, SOC and failure availability. Convert to a common reporting power basis only after source-specific constraints are evaluated.",
+    "_rule_for_power_source": "Normal low-altitude phases and initial balked landing are electric with turbines shut down. At-altitude combined OEI cases may credit already-running turbines and only available battery/motor power. Sea-level combined ROC checks are separate declared performance-capability cases, not permission to emit during normal zero-emission takeoff. Also check motor-only OEI during electric departure.",
+    "wing_loading_range_psf": [
+      15,
+      50
+    ],
+    "wing_loading_points": 500,
+    "design_point": {
+      "_comment": "Historical SCR reference only; not a fixed hybrid sizing point or source-power seed.",
+      "wing_loading_psf": 32.1,
+      "power_loading_lb_per_hp": 8.32,
+      "_src": "SCR slide 15. S=350 ft^2 and W/S=32.1 imply 11235 lb; 1350 hp and W/P=8.32 imply 11232 lb. Do not combine these as a self-consistent 12000 lb design or impose them on independently sized hybrid sources."
+    },
+    "conditions": [
+      {
+        "name": "Takeoff",
+        "type": "takeoff",
+        "altitude_ft": 0,
+        "distance_ft": 926,
+        "distance_total_ft": 2000,
+        "surface": "water",
+        "water_run_factor": 1.5,
+        "config": "takeoff_flaps_gear_up",
+        "beta": 1,
+        "power_source": "electric",
+        "_src": "RFP total distance over 50 ft obstacle is 2000 ft in calm water at MTOW, sea-level ISA. distance_ft is only a provisional land-equivalent correlation input, not a water run requirement or validated water-performance prediction. Calibrate run and airborne distances separately with matching amphibian AFM data. No reverse-thrust credit in baseline. Retained factor 1.5 gives 2000/(1.5+0.66) approximately 926 ft.",
+        "distance_model_status": "unvalidated_land_equivalent_correlation",
+        "obstacle_height_ft": 50,
+        "reverse_thrust_credited": false
+      },
+      {
+        "name": "Landing",
+        "type": "landing",
+        "altitude_ft": 0,
+        "distance_ft": 1032,
+        "distance_total_ft": 2000,
+        "surface": "water",
+        "water_run_factor": 1,
+        "config": "landing_flaps_gear_up",
+        "beta": 1,
+        "power_source": "electric",
+        "_src": "RFP total distance over 50 ft obstacle is 2000 ft in calm water at MTOW, sea-level ISA. distance_ft is only a provisional land-equivalent correlation input, not a water run requirement or validated water-performance prediction. Calibrate run and airborne distances separately with matching amphibian AFM data. No reverse-thrust credit in baseline. Retained factor 1.0 gives 2000/(1.0+0.938) approximately 1032 ft and provisional W/S about 29 psf for CLmax 2.2.",
+        "distance_model_status": "unvalidated_land_equivalent_correlation",
+        "obstacle_height_ft": 50,
+        "reverse_thrust_credited": false
+      },
+      {
+        "name": "Climb AEO",
+        "type": "climb_gradient",
+        "altitude_ft": 0,
+        "G": 0.083,
+        "config": "takeoff_flaps_gear_up",
+        "oei": false,
+        "max_continuous": true,
+        "power_setting": 1,
+        "beta": 1,
+        "power_source": "electric",
+        "_src": "Inherited homework gradient retained provisionally; not a verified Level 3 certification value. Establish selected accepted means of compliance and update gradient, configuration, speed, power rating and weight conditions before claiming compliance.",
+        "requirement_status": "inherited_gradient_pending_Level_3_means_of_compliance"
+      },
+      {
+        "name": "Climb OEI",
+        "type": "climb_gradient",
+        "altitude_ft": 5000,
+        "G": 0.015,
+        "config": "clean",
+        "oei": true,
+        "propeller_stopped": true,
+        "max_continuous": false,
+        "power_setting": 1,
+        "beta": 0.975,
+        "power_source": "both",
+        "_src": "Inherited homework gradient retained provisionally; not a verified Level 3 certification value. Establish selected accepted means of compliance and update gradient, configuration, speed, power rating and weight conditions before claiming compliance. En-route at 5000 ft: already-running turbine and available motor power on surviving propulsor; do not assume immediate restart or unlimited boost.",
+        "requirement_status": "inherited_gradient_pending_Level_3_means_of_compliance"
+      },
+      {
+        "name": "Climb BL",
+        "type": "climb_gradient",
+        "altitude_ft": 0,
+        "G": 0.03,
+        "config": "landing_flaps_gear_up",
+        "oei": false,
+        "max_continuous": false,
+        "power_setting": 1,
+        "beta": 1,
+        "power_source": "electric",
+        "_src": "Inherited homework gradient retained provisionally; not a verified Level 3 certification value. Establish selected accepted means of compliance and update gradient, configuration, speed, power rating and weight conditions before claiming compliance. Initial balked landing is electric, turbines shut down; beta=1 retains the MTOW capability case.",
+        "requirement_status": "inherited_gradient_pending_Level_3_means_of_compliance"
+      },
+      {
+        "name": "Cruise Speed",
+        "type": "cruise_speed",
+        "altitude_ft": 10000,
+        "ktas": 180,
+        "beta": 1,
+        "power_index": 1.4,
+        "power_setting": 1,
+        "max_continuous": true,
+        "method": "drag_based",
+        "power_source": "turbine",
+        "_src": "RFP capability: 180 KTAS at 10000 ft density altitude, MTOW, turbine-only baseline. Normal mission cruise is separately 150 KTAS. Evaluate recharge/accessory demands separately and check combined turbine loading; legacy power-index input is not the preferred model."
+      },
+      {
+        "name": "ROC AEO SL",
+        "type": "climb_rate",
+        "altitude_ft": 0,
+        "roc_fpm": 2000,
+        "config": "clean",
+        "oei": false,
+        "max_continuous": true,
+        "power_setting": 1,
+        "beta": 1,
+        "power_source": "both",
+        "_src": "RFP 2000 fpm at MTOW sea-level ISA. Declared combined-source capability case with sources already available; separately satisfy electric departure. Binding constraint is calculated, not assumed."
+      },
+      {
+        "name": "ROC OEI SL",
+        "type": "climb_rate",
+        "altitude_ft": 0,
+        "roc_fpm": 450,
+        "config": "clean",
+        "oei": true,
+        "propeller_stopped": true,
+        "max_continuous": false,
+        "power_setting": 1,
+        "beta": 1,
+        "power_source": "both",
+        "_src": "RFP 450 fpm at MTOW sea-level ISA. Declared combined-source case with surviving turbine already available; clean/feathered configuration is provisional. Separately evaluate electric-only departure OEI with battery and failed-propulsor effects.",
+        "failed_propeller_state": "feathered"
+      },
+      {
+        "name": "ROC AEO 10k",
+        "type": "climb_rate",
+        "altitude_ft": 10000,
+        "roc_fpm": 500,
+        "config": "clean",
+        "oei": false,
+        "max_continuous": true,
+        "power_setting": 1,
+        "beta": 1,
+        "power_source": "turbine",
+        "_src": "RFP best ROC >=500 fpm at 10000 ft density altitude, MTOW. Turbine-only baseline; evaluate selected engine altitude map. A boost variant requires reserved battery energy and duration."
+      },
+      {
+        "name": "Water Hump",
+        "type": "water_hump",
+        "altitude_ft": 0,
+        "resistance_over_displacement": 0.18,
+        "thrust_per_hp_at_hump": 3,
+        "margin": 1.2,
+        "beta": 1,
+        "power_source": "electric",
+        "_src": "Provisional hump resistance and thrust correlation: W/P_motor <= (T/P)_hump / (margin x R/displacement), about 13.9 lb per motor hp for current inputs. Not total-installed-power loading. Actual propeller thrust, hull resistance, trim and acceleration need calibration; no claim about proximity to takeoff constraint."
+      }
+    ],
+    "additional_failure_checks": [
+      {
+        "name": "Electric departure OEI",
+        "power_source": "electric",
+        "oei": true,
+        "gradient_or_roc_requirement": null,
+        "_comment": "Required failure-analysis case; establish applicable Level 3 target and electric common-cause failures. Do not invent a new RFP gradient."
+      }
+    ]
+  },
+  "missions": {
+    "_comment": "Normal 869 nmi mission at 150 KTAS with explicit electric low-altitude phases, initial electric balked landing and 45-minute reserve at normal cruise speed. Additional 180 KTAS, repeated-leg and hybrid-boost cases are defined separately. Mission scheduling, SOC and recharge require implementation.",
+    "std_mission": {
+      "_description": "Electric departure to 1500 ft AGL; turbine climb/cruise at 10000 ft and 150 KTAS for 869 nmi; turbine descent to 1500 ft; electric approach; electric balked landing to 1500 ft then turbine climb to 5000 ft after validated restart; 45-minute reserve at 150 KTAS; split turbine/electric descent and electric landing. Taxi is included once in battery/mission accounting.",
+      "reserve_fuel_fraction": 0.01,
+      "_cite_reserve_fuel_fraction": "Legacy field name retained: 0.01 now means provisional mission-burn contingency multiplier only, not the explicit 45-minute reserve and not tank unusable fuel. Apply once; reserve mission is already explicit. See fuel_accounting.",
+      "segments": [
+        {
+          "type": "takeoff",
+          "name": "Takeoff (electric)",
+          "alt_ft": 0,
+          "power_source": "electric"
+        },
+        {
+          "type": "climb",
+          "name": "Departure climb (electric)",
+          "alt_ft": 1500,
+          "power_source": "electric"
+        },
+        {
+          "type": "climb",
+          "name": "Departure climb (turbine)",
+          "alt_ft": 10000,
+          "power_source": "turbine"
+        },
+        {
+          "type": "cruise",
+          "name": "Cruise",
+          "alt_ft": 10000,
+          "power_source": "turbine",
+          "ktas": 150,
+          "distance_nm": 869
+        },
+        {
+          "type": "descent",
+          "name": "Descent to turbine shutdown altitude",
+          "alt_ft": 1500,
+          "power_source": "turbine"
+        },
+        {
+          "type": "descent",
+          "name": "Approach (electric)",
+          "alt_ft": 0,
+          "power_source": "electric"
+        },
+        {
+          "type": "climb",
+          "name": "Initial balked landing / go-around (electric)",
+          "alt_ft": 1500,
+          "power_source": "electric"
+        },
+        {
+          "type": "climb",
+          "name": "Reserve climb after validated turbine restart",
+          "alt_ft": 5000,
+          "power_source": "turbine",
+          "requires_validated_turbine_restart": true
+        },
+        {
+          "type": "loiter",
+          "name": "IFR reserve at normal cruise speed",
+          "alt_ft": 5000,
+          "power_source": "turbine",
+          "ktas": 150,
+          "time_min": 45
+        },
+        {
+          "type": "descent",
+          "name": "Reserve descent to turbine shutdown altitude",
+          "alt_ft": 1500,
+          "power_source": "turbine"
+        },
+        {
+          "type": "descent",
+          "name": "Final approach (electric)",
+          "alt_ft": 0,
+          "power_source": "electric"
+        },
+        {
+          "type": "landing",
+          "name": "Landing (electric)",
+          "alt_ft": 0,
+          "power_source": "electric"
+        }
+      ],
+      "_src_cruise": "869 nmi rounds the 1000 statute mi RFP range. 150 KTAS is the provisional normal operating speed from SCR, not relaxation of the separate 180 KTAS capability constraint. With climb-distance credit false, full 869 nmi cruise plus climb/descent is conservative for total route distance.",
+      "_src_reserve": "Explicit balked landing followed by 45 minutes at selected normal cruise speed, baseline 150 KTAS at provisional 5000 ft. No automatic immediate turbine restart credit; transition must be validated. This RFP reserve case does not itself establish alternate-airport fuel requirements for every operation.",
+      "_src_electric_segments": "Both descents are split at the selected 1500 ft AGL shutdown altitude; approach below it, initial go-around, landing and surface operations draw battery energy with zero turbine fuel. AGL interpretation assumes sea-level departure/destination in this baseline.",
+      "method": "L2",
+      "cruise_segments": 12,
+      "climb_segments": 4,
+      "ground_segment_method": "roskam_fraction",
+      "_src_ground_segment_method": "Legacy homework selector only. Intended electric takeoff/landing use zero turbine fuel and time/power-based battery energy, not fixed fuel-weight fractions. Taxi budget must not be counted twice.",
+      "credit_climb_distance": false,
+      "fuel_accounting": {
+        "explicit_reserve_in_segments": true,
+        "contingency_fraction_field": "reserve_fuel_fraction",
+        "contingency_basis": "total_modeled_fuel_burn_including_explicit_reserve_and_recharge",
+        "unusable_fuel_fraction_of_total_capacity": 0.01,
+        "unusable_fuel_model_status": "provisional_tank_allowance_pending_installation_data",
+        "loaded_fuel_formula": "usable_required = modeled_burn x (1 + reserve_fuel_fraction); loaded_total = usable_required / (1 - unusable_fuel_fraction_of_total_capacity)",
+        "_comment": "Total loaded fuel includes unusable fuel, which remains aboard and must not be burned. Keep OEW and fuel boundaries consistent to avoid counting unusable fuel twice. Compare usable requirement to usable tank volume."
+      }
+    },
+    "high_speed_mission": {
+      "_description": "Additional 180 KTAS mission/reserve sensitivity case; same range, payload and phase sequence as std_mission.",
+      "reserve_fuel_fraction": 0.01,
+      "_cite_reserve_fuel_fraction": "Legacy field name retained: 0.01 now means provisional mission-burn contingency multiplier only, not the explicit 45-minute reserve and not tank unusable fuel. Apply once; reserve mission is already explicit. See fuel_accounting.",
+      "segments": [
+        {
+          "type": "takeoff",
+          "name": "Takeoff (electric)",
+          "alt_ft": 0,
+          "power_source": "electric"
+        },
+        {
+          "type": "climb",
+          "name": "Departure climb (electric)",
+          "alt_ft": 1500,
+          "power_source": "electric"
+        },
+        {
+          "type": "climb",
+          "name": "Departure climb (turbine)",
+          "alt_ft": 10000,
+          "power_source": "turbine"
+        },
+        {
+          "type": "cruise",
+          "name": "Cruise",
+          "alt_ft": 10000,
+          "power_source": "turbine",
+          "ktas": 180,
+          "distance_nm": 869
+        },
+        {
+          "type": "descent",
+          "name": "Descent to turbine shutdown altitude",
+          "alt_ft": 1500,
+          "power_source": "turbine"
+        },
+        {
+          "type": "descent",
+          "name": "Approach (electric)",
+          "alt_ft": 0,
+          "power_source": "electric"
+        },
+        {
+          "type": "climb",
+          "name": "Initial balked landing / go-around (electric)",
+          "alt_ft": 1500,
+          "power_source": "electric"
+        },
+        {
+          "type": "climb",
+          "name": "Reserve climb after validated turbine restart",
+          "alt_ft": 5000,
+          "power_source": "turbine",
+          "requires_validated_turbine_restart": true
+        },
+        {
+          "type": "loiter",
+          "name": "IFR reserve at normal cruise speed",
+          "alt_ft": 5000,
+          "power_source": "turbine",
+          "ktas": 180,
+          "time_min": 45
+        },
+        {
+          "type": "descent",
+          "name": "Reserve descent to turbine shutdown altitude",
+          "alt_ft": 1500,
+          "power_source": "turbine"
+        },
+        {
+          "type": "descent",
+          "name": "Final approach (electric)",
+          "alt_ft": 0,
+          "power_source": "electric"
+        },
+        {
+          "type": "landing",
+          "name": "Landing (electric)",
+          "alt_ft": 0,
+          "power_source": "electric"
+        }
+      ],
+      "_src_cruise": "Additional 869 nmi mission flown at 180 KTAS; separate from baseline 150 KTAS and from the MTOW cruise capability constraint.",
+      "_src_reserve": "45 minutes at 180 KTAS for this higher-speed operating case; same balked landing and restart restrictions as baseline.",
+      "_src_electric_segments": "Both descents are split at the selected 1500 ft AGL shutdown altitude; approach below it, initial go-around, landing and surface operations draw battery energy with zero turbine fuel. AGL interpretation assumes sea-level departure/destination in this baseline.",
+      "method": "L2",
+      "cruise_segments": 12,
+      "climb_segments": 4,
+      "ground_segment_method": "roskam_fraction",
+      "_src_ground_segment_method": "Legacy homework selector only. Intended electric takeoff/landing use zero turbine fuel and time/power-based battery energy, not fixed fuel-weight fractions. Taxi budget must not be counted twice.",
+      "credit_climb_distance": false,
+      "fuel_accounting": {
+        "explicit_reserve_in_segments": true,
+        "contingency_fraction_field": "reserve_fuel_fraction",
+        "contingency_basis": "total_modeled_fuel_burn_including_explicit_reserve_and_recharge",
+        "unusable_fuel_fraction_of_total_capacity": 0.01,
+        "unusable_fuel_model_status": "provisional_tank_allowance_pending_installation_data",
+        "loaded_fuel_formula": "usable_required = modeled_burn x (1 + reserve_fuel_fraction); loaded_total = usable_required / (1 - unusable_fuel_fraction_of_total_capacity)",
+        "_comment": "Total loaded fuel includes unusable fuel, which remains aboard and must not be burned. Keep OEW and fuel boundaries consistent to avoid counting unusable fuel twice. Compare usable requirement to usable tank volume."
+      }
+    }
+  },
+  "seaplane_checks": {
+    "_comment": "RFP thresholds plus explicitly labeled derived/environmental assumptions for future checks; current MATLAB does not implement these checks.",
+    "span_max_ft": 65,
+    "dock_height_above_water_ft": 1,
+    "wing_and_prop_clearance_above_dock_ft": 6,
+    "heel_angle_no_wing_submersion_deg": 20,
+    "crosswind_gust_on_water_kt": 40,
+    "crosswind_landing_land_kt": 20,
+    "crosswind_landing_water_kt": 20,
+    "_src_crosswind": "[RFP] Both crosswind landing cases are at OEW, sea level ISA.",
+    "flooded_adjacent_compartments": 2,
+    "_src_flooding": "Must float, keep the exits above the waterline, and stay hydrostatically stable with any two adjacent watertight compartments flooded. This drives the float bulkhead count.",
+    "sea_state": 3,
+    "significant_wave_height_max_ft": 4.1,
+    "_src_sea_state": "WMO sea state 3 = 0.5-1.25 m significant wave height. Dispatch reliability over 98 percent per the RFP.",
+    "water_density_sea_lb_per_ft3": 64,
+    "turnaround_max_min": 30,
+    "_src_turnaround": "Including refuelling. Relevant to the battery: see hybrid.battery_sized_for.",
+    "span_limit_inclusive": false,
+    "dispatch_reliability_min_fraction": 0.98,
+    "dispatch_reliability_limit_inclusive": false,
+    "separate_checks_required": [
+      "intact enclosed buoyancy",
+      "two adjacent compartments flooded with exits above water and stable flotation",
+      "operating draft and dock/propeller clearance at relevant loading",
+      "righting moments through 20 degrees heel without wing submersion",
+      "40 KTAS gust stability",
+      "directional control throughout water operation",
+      "sea-state dispatch reliability",
+      "team MTOW cap",
+      "usable fuel volume and battery installation volume"
+    ]
+  },
+  "model_status": {
+    "schema_version": 2,
+    "status": "requirements_and_provisional_model_inputs",
+    "matlab_support": "Existing MATLAB files have not been adapted to this schema and still default to the IHW3 JSON. Do not interpret a homework run as a Concept 2 result.",
+    "null_policy": "null denotes an unresolved input, never zero. Validate required inputs before using the affected model.",
+    "power_basis": "All motor and turbine powers are totals across both propulsors unless explicitly labeled per propulsor. Rated power is at the shared propeller shaft after mechanical transmission losses; source component maps must use a consistent boundary.",
+    "required_implementation": [
+      "Independent motor/turbine sizing and source-specific availability for every constraint, including takeoff",
+      "Turboprop power/BSFC maps and transmission losses",
+      "Water takeoff/landing calibration and hump-thrust model",
+      "Float geometry, drag, hydrostatics and flooded survivability",
+      "Battery mass, SOC, aging, peak duration, thermal and charge constraints",
+      "Cruise propulsion plus recharge and accessory power, including short legs",
+      "Explicit mission contingency and unusable fuel accounting",
+      "Separate nominal, reserve/go-around and repeated-leg scenarios",
+      "Convergence of weight, wing area, source powers, battery capacity and repeat-cycle SOC"
+    ],
+    "unresolved_inputs": [
+      "Matched amphibian AFM calibration for water distances and drag",
+      "Float section volume coefficient and hydrodynamic shape",
+      "Selected battery continuous discharge, charge limits and thermal data",
+      "Selected motor/inverter continuous and peak limits",
+      "Turbine restart time, transition procedure and operating maps",
+      "Level 3 accepted means of compliance for inherited climb gradients"
+    ]
+  },
+  "references": {
+    "rfp": {
+      "file": "Tidal Flight - Seaplane RFP 2026 (2).docx",
+      "role": "Customer requirements"
+    },
+    "scr": {
+      "file": "Team 4_ Systems Concept Review.pptx",
+      "role": "Concept 2 architecture and team targets; conflicts resolved in favor of current user direction and RFP"
+    },
+    "landplane_poh": {
+      "file": "208BG1000POH.pdf",
+      "configuration": "208B G1000 landplane, PT6A-114A, 675 shp; distinguish cargo-pod configurations",
+      "role": "Landplane calibration only; not a water-performance or float-drag source"
+    },
+    "wipaire_8750": {
+      "url": "https://www.wipaire.com/wp-content/uploads/2018/06/C208B-5030-EX-N904LS-v1.pdf",
+      "configuration": "Published Grand Caravan EX/Wipline 8750 comparator; different engine/installation from supplied landplane POH",
+      "role": "Provisional float geometry/weight and water-performance comparison; replace with matching AFM supplement"
+    },
+    "motor_reference": {
+      "url": "https://www.safran-group.com/products-services/engineustm",
+      "role": "Illustrates peak/continuous and integrated-controller distinctions; not selection of a certified propulsion installation"
+    }
+  },
+  "mission_validation_cases": {
+    "_comment": "Scenario definitions for future mission runner; references are not additional flights automatically appended to std_mission.",
+    "normal_departure_and_arrival": {
+      "profile": "std_mission",
+      "include_reserve_branch_in_normal_operation": false,
+      "_comment": "Normal arrival lands instead of executing go-around/reserve. Carry required reserve energy; do not consume it during nominal arrival."
+    },
+    "arrival_then_next_departure_without_ground_charge": {
+      "initial_soc": "from_preceding_leg_schedule",
+      "phases": [
+        "electric approach",
+        "electric landing",
+        "taxi in",
+        "turnaround without charging",
+        "taxi out",
+        "electric takeoff",
+        "electric departure climb"
+      ],
+      "ground_charge_energy_kWh": 0
+    },
+    "arrival_go_around_reserve_and_final_landing": {
+      "profile": "std_mission",
+      "include_explicit_reserve_branch": true,
+      "preserve_final_landing_and_taxi_SOC": true
+    },
+    "repeated_short_legs": {
+      "profile_template": "std_mission",
+      "route_distance_nm_cases": [
+        78,
+        86,
+        101,
+        188,
+        200,
+        203,
+        316,
+        590,
+        869
+      ],
+      "distance_basis": "SCR example legs plus 869 nmi design case; replace cruise distance with route distance less modeled climb/descent distance when implemented",
+      "ground_charge_energy_kWh": 0,
+      "require_periodic_soc_balance": true,
+      "_comment": "Set recharge power from actual available flight time, pack charge limit and turbine margin; do not assume target SOC can be recovered on every short leg."
+    },
+    "scheduled_hybrid_boost_if_enabled": {
+      "enabled": false,
+      "motor_boost_power_total_kW": null,
+      "boost_duration_min": null,
+      "_comment": "Optional variant only; define power/duration before enabling and include boost energy, losses and recharge."
+    }
+  }
+}
