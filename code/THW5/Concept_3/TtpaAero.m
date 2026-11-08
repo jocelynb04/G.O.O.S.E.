@@ -1,64 +1,20 @@
 classdef TtpaAero < AerodynamicsBase
-%TTPAAERO  Test Twin Propeller Aircraft Level-2 aerodynamic model.
-%
-%   IHW3 UPDATE
-%   One property changed, and nothing else. In IHW1 and IHW2 the clean
-%   zero-lift drag coefficient was a stored number:
-%
-%       obj.CD0 = A.CD0_clean;          % 0.028, fixed for ever
-%
-%   That is correct when the airplane has no geometry, which was the case
-%   in both earlier homeworks. It is wrong inside a sizing loop: the loop
-%   changes the wing area, the tails follow it, the nacelles follow the
-%   engine, and a frozen 0.028 would report the same drag for every one of
-%   those airplanes. So CD0 is now DEPENDENT and is computed from the
-%   geometry on every read:
-%
-%       [Raymer Eq. 12.23]   CD0 = Cfe * S_wet / S_ref
-%
-%   with Cfe = 0.0045 for a light twin-engine airplane, Raymer Table 12.3.
-%   That single line is what couples GEOMETRY to DRAG, drag to L/D, L/D to
-%   the mission fuel and the mission fuel to the takeoff weight. Without it
-%   the sizing loop would still close on weight, but the mission would
-%   never notice that the wing had changed.
-%
-%   AR is now Dependent too, read straight off the injected geometry, so
-%   the aspect ratio has exactly one home. Every expression below that used
-%   obj.AR is unchanged.
-%
-%   The IHW2 value, CD0_clean = 0.028, is still read from the JSON and kept
-%   as CD0_reference. The run script prints the two side by side: they
-%   agree to about one percent, and that agreement is the check that the
-%   geometry and the wetted-area build-up are right.
-%
-%   EVERYTHING ELSE IS IHW2 UNCHANGED - the Oswald efficiency, the induced
-%   drag factor, the clean drag polar, get_CLmax and get_config_polar with
-%   its five configurations and its flap, gear and stopped-propeller
-%   increments.
-%
-%   INJECTED GEOMETRY
-%   TtpaAero(json_path, geom). Build prop, then geom, then aero - see
-%   ttpa_disciplines.
+% TTPAAERO Concept 3 Level-2 aerodynamic model.
 
     properties
-        % Declared with the JSON key each one is read from. The property
-        % name is NOT always the key.
-        CD0_reference            % <- J.aerodynamics.CD0_clean, CHECK ONLY
-        Cfe                      % <- J.aerodynamics.Cfe
-
-        CLmax_clean              % <- J.aerodynamics.CLmax_clean
-        CLmax_takeoff            % <- J.aerodynamics.CLmax_takeoff
-        CLmax_landing            % <- J.aerodynamics.CLmax_landing
-
-        CL_stall_margin          % <- J.aerodynamics.CL_stall_margin
-
-        dCD0_flaps_takeoff       % <- J.aerodynamics.delta_CD0_flaps_takeoff
-        dCD0_flaps_landing       % <- J.aerodynamics.delta_CD0_flaps_landing
-        dCD0_gear_down           % <- J.aerodynamics.delta_CD0_gear_down
-        dCD0_propeller_stopped   % <- J.aerodynamics.delta_CD0_propeller_stopped
-
-        de_flaps_takeoff         % <- J.aerodynamics.delta_e_flaps_takeoff
-        de_flaps_landing         % <- J.aerodynamics.delta_e_flaps_landing
+        % Declare variables
+        CD0_reference            
+        Cfe                     
+        CLmax_clean             
+        CLmax_takeoff          
+        CLmax_landing          
+        CL_stall_margin         
+        dCD0_flaps_takeoff       
+        dCD0_flaps_landing       
+        dCD0_gear_down           
+        dCD0_propeller_stopped  
+        de_flaps_takeoff         
+        de_flaps_landing         
     end
 
     properties (SetAccess = immutable)
@@ -82,16 +38,16 @@ classdef TtpaAero < AerodynamicsBase
                 geom (1,1) GeometryBase
             end
 
-            % TODO (IHW3): keep the injected geometry in obj.geom
+            obj.geom = geom;
 
-            % Read requirements JSON
+            % Find json file and aerodynamics section
             J = jsondecode(fileread(json_path));
-
-            % Read aerodynamics-owned data
             A = J.aerodynamics;
 
             % TODO (IHW3): read CD0_clean into CD0_reference (a CHECK value
             %   only - nothing computes with it now), and read Cfe.
+            obj.CD0_reference   = A.CD0_clean;
+            obj.Cfe = A.Cfe;
 
             obj.CLmax_clean     = A.CLmax_clean;
             obj.CLmax_takeoff   = A.CLmax_takeoff;
@@ -110,31 +66,14 @@ classdef TtpaAero < AerodynamicsBase
 
         %% Aspect Ratio
         function AR = get.AR(obj)
-        %GET.AR  Wing aspect ratio, from the geometry model.
-        %   In IHW2 this class read J.geometry.AR itself. Now that a real
-        %   geometry object exists, the aspect ratio has one home and this
-        %   is a view onto it. Every expression below is unchanged.
-            AR = J.geometry.AR;
+            AR = obj.geom.AR;
         end
 
 
         %% Clean Zero-Lift Drag Coefficient
         function CD0 = get.CD0(obj)
         %GET.CD0  Clean zero-lift drag coefficient [-].
-        %
-        %   [Raymer Eq. 12.23]   CD0 = Cfe * ( S_wet / S_ref )
-        %
-        %   The equivalent-skin-friction method. Cfe = 0.0045 for a light
-        %   TWIN-engine airplane [Raymer Table 12.3]; a single-engine light
-        %   airplane is 0.0055.
-        %
-        %   THIS IS THE COUPLING. S_wet and S_ref are both Dependent
-        %   properties of the geometry, so the moment the sizing loop writes
-        %   a new S_ref the wing, the tails and the nacelles resize, the
-        %   wetted-area ratio moves, and the next read of CD0 - and of
-        %   LD_max, and therefore of the mission fuel - reflects it. Nothing
-        %   is cached and nothing has to be told to refresh.
-            CD0 = Cfe *S_wet/S_ref;
+            CD0 = obj.Cfe * obj.geom.S_wet/obj.geom.S_ref;
         end
 
 
