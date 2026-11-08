@@ -1,0 +1,32 @@
+{
+  "ground_phases": {
+    "taxi": {
+      "duration_min": 8.0,
+      "shaft_hp": 60.0
+    },
+    "takeoff": {
+      "duration_min": 2.0,
+      "shaft_hp": 900.0
+    },
+    "landing": {
+      "duration_min": 3.0,
+      "shaft_hp": 80.0
+    },
+    "water_maneuver": {
+      "duration_min": 8.0,
+      "shaft_hp": 60.0
+    }
+  },
+  "nominal_climb_fpm": 1000.0,
+  "balked_landing_climb_fpm": 500.0,
+  "descent_duration_min": 10.0,
+  "loiter_subsegments": 3,
+  "battery_energy_margin_fraction": 0.1,
+  "generator_power_margin_fraction": 0.05,
+  "design_constraint_speed_samples": 35,
+  "design_constraint_wing_loading_points": 55,
+  "max_gross_weight_search_lb": 80000.0,
+  "span_design_margin_ft": 1.0,
+  "minimum_battery_capacity_kwh": 80.0,
+  "motor_power_margin_fraction": 0.01
+}
