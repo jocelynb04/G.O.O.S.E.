@@ -65,33 +65,25 @@ classdef TtpaGeom < GeometryBase
     properties (SetAccess = immutable)
         prop                        % injected TtpaProp, for the nacelle
 
-        % --- wing shape, read from J.geometry ---
-        AR                          % <- J.geometry.AR
-        taper                       % <- J.geometry.taper_ratio
-        sweep_qc_deg                % <- J.geometry.sweep_quarter_chord_deg
-        tc_root                     % <- J.geometry.thickness_ratio_root
-        tc_tip                      % <- J.geometry.thickness_ratio_tip
-        twist_deg                   % <- J.geometry.twist_deg
-        incidence_deg               % <- J.geometry.incidence_deg
-        dihedral_deg                % <- J.geometry.dihedral_deg
+        % Declare variables - general geometry
+        AR                   
+        taper                   
+        sweep_qc_deg              
+        tc_root                    
+        tc_tip                      
+        twist_deg                
+        incidence_deg              
+        dihedral_deg            
 
-        % --- horizontal tail, read from J.geometry.horizontal_tail ---
-        V_ht                        % volume coefficient [-]
-        L_ht                        % moment arm [ft]
-        AR_ht
-        taper_ht
-        tc_ht
-        sweep_qc_ht_deg
+        % Declare variables - v_tail
+        V_v_tail                        % volume coefficient [-]
+        L_v_tail                        % moment arm [ft]
+        AR_v_tail
+        taper_v_tail
+        tc_v_tail
+        sweep_qc_v_tail_deg
 
-        % --- vertical tail, read from J.geometry.vertical_tail ---
-        V_vt
-        L_vt
-        AR_vt
-        taper_vt
-        tc_vt
-        sweep_qc_vt_deg
-
-        % --- fuselage, read from J.geometry.fuselage, all fixed ---
+        % Declare variables - fuselage
         w_fus                       % width [ft]
         h_fus                       % height [ft]
         l_nose                      % [ft]
@@ -100,11 +92,17 @@ classdef TtpaGeom < GeometryBase
         w_cone_end                  % [ft]
         h_cone_end                  % [ft]
 
-        % --- nacelle, read from J.geometry.nacelle ---
+        % Declare variables - wingtip float
+        w_wingtip_float
+        h_wingtip_float
+        l_wingtip_float
+        offset_wingtip_float
+
+        % Declare variables - nacelle
         d_nacelle                   % diameter [ft]
         k_nacelle_length            % nacelle length / bare engine length
 
-        % --- landing gear geometry, read from J.geometry.landing_gear ---
+        % Declare variables - landing gear
         l_n_over_l_d
         l_m_over_l_d
     end
@@ -119,21 +117,13 @@ classdef TtpaGeom < GeometryBase
         tc_mean                     % mean thickness ratio [-]
         S_exposed_wing              % planform outside the fuselage [ft^2]
 
-        % --- horizontal tail ---
-        S_ht                        % area [ft^2]
-        b_ht
-        c_root_ht
-        c_tip_ht
-        MAC_ht
-        y_MAC_ht
-
-        % --- vertical tail ---
-        S_vt                        % area [ft^2]
-        b_vt
-        c_root_vt
-        c_tip_vt
-        MAC_vt
-        y_MAC_vt
+        % --- v tail ---
+        S_v_tail                        % area [ft^2]
+        b_v_tail
+        c_root_v_tail
+        c_tip_v_tail
+        MAC_v_tail
+        y_MAC_v_tail
 
         % --- fuselage: constant, but Dependent so it stays derived ---
         l_fus                       % total length [ft]
@@ -147,8 +137,8 @@ classdef TtpaGeom < GeometryBase
 
         % --- wetted areas ---
         S_wet_wing
-        S_wet_ht
-        S_wet_vt
+        S_wet_v_tail
+        S_wet_wingtip_float
         S_wet                       % total [ft^2]
         S_wet_over_S_ref            % [-], drives CD0 through Raymer 12.23
     end
@@ -157,13 +147,6 @@ classdef TtpaGeom < GeometryBase
 
         %% Constructor
         function obj = TtpaGeom(json_path, prop)
-        %TTPAGEOM  Build the geometry from the requirements JSON.
-        %
-        %   obj = TtpaGeom(json_path, prop)
-        %
-        %   prop is the TtpaProp object. It is injected, not built here,
-        %   because the nacelle length follows the engine and the engine is
-        %   propulsion data. Build prop FIRST - see ttpa_disciplines.
             arguments
                 json_path {mustBeTextScalar, mustBeNonzeroLengthText}
                 prop (1,1) PropulsionBase2
@@ -171,10 +154,11 @@ classdef TtpaGeom < GeometryBase
 
             obj.prop = prop;
 
+            % Find json file and geometry section
             J = jsondecode(fileread(json_path));
             G = J.geometry;
 
-            % Wing shape
+            % Pull values from json file - general
             obj.AR            = G.AR;
             obj.taper         = G.taper_ratio;
             obj.sweep_qc_deg  = G.sweep_quarter_chord_deg;
@@ -184,29 +168,16 @@ classdef TtpaGeom < GeometryBase
             obj.incidence_deg = G.incidence_deg;
             obj.dihedral_deg  = G.dihedral_deg;
 
-            % TODO (IHW3): read the horizontal_tail, vertical_tail, fuselage,
-            %   nacelle and landing_gear sub-blocks of J.geometry, the same
-            %   way the wing shape is read above. Every property is declared
-            %   in the immutable block above with the key it comes from.
-            % Horizontal tail parameters
-            HT = G.horizontal_tail;
-            obj.V_ht             = HT.volume_coefficient;
-            obj.L_ht             = HT.arm_ft;
-            obj.AR_ht            = HT.AR;
-            obj.taper_ht         = HT.taper_ratio;
-            obj.tc_ht            = HT.thickness_ratio;
-            obj.sweep_qc_ht_deg  = HT.sweep_quarter_chord_deg;
+            % Pull values from json file - v tail
+            VT = G.v_tail;
+            obj.V_v_tail         = VT.volume_coefficient;
+            obj.L_v_tail             = VT.arm_ft;
+            obj.AR_v_tail            = VT.AR;
+            obj.taper_v_tail         = VT.taper_ratio;
+            obj.tc_v_tail            = VT.thickness_ratio;
+            obj.sweep_qc_v_tail_deg  = VT.sweep_quarter_chord_deg;
 
-            % Vertical tail parameters
-            VT = G.vertical_tail;
-            obj.V_vt             = VT.volume_coefficient;
-            obj.L_vt             = VT.arm_ft;
-            obj.AR_vt            = VT.AR;
-            obj.taper_vt         = VT.taper_ratio;
-            obj.tc_vt            = VT.thickness_ratio;
-            obj.sweep_qc_vt_deg  = VT.sweep_quarter_chord_deg;
-
-            % Fuselage layout
+            % Pull values from json file - fuselage
             F = G.fuselage;
             obj.w_fus      = F.width_ft;
             obj.h_fus      = F.height_ft;
@@ -216,12 +187,19 @@ classdef TtpaGeom < GeometryBase
             obj.w_cone_end = F.tailcone_end_width_ft;
             obj.h_cone_end = F.tailcone_end_height_ft;
 
-            % Nacelle dimensions
+            % Pull values from json file - wingtip float
+            WTF = G.wingtip_float;
+            obj.w_wingtip_float = WTF.width_ft;
+            obj.h_wingtip_float = WTF.height_ft;
+            obj.l_wingtip_float = WTF.length_ft;
+            obj.offset_wingtip_float = WTF.fuselage_offset;
+
+            % Pull values from json file - nacelle
             N = G.nacelle;
             obj.d_nacelle        = N.diameter_ft;
             obj.k_nacelle_length = N.length_over_engine_length;
 
-            % Landing-gear geometry
+            % Pull values from json file - landing gear
             LG = G.landing_gear;
             obj.l_n_over_l_d = LG.l_n_over_l_d;
             obj.l_m_over_l_d = LG.l_m_over_l_d;
@@ -285,63 +263,13 @@ classdef TtpaGeom < GeometryBase
         %       S_covered = c_root * w_fus * ( 1 - (1-lambda) w_fus/(2b) )
         %
         %   which is exact for a straight-tapered wing.
-            % --- Milestone 1: the planform buried inside the fuselage -----------
             S_covered = obj.c_root * obj.w_fus * ...
                 (1 - (1 - obj.taper) * obj.w_fus / (2 * obj.b));
 
-            % --- Milestone 2: the exposed wing -----------------------------------
             val = obj.S_ref - S_covered;
         end
 
-
-        %% ---------------- Horizontal tail ----------------
-
-        function val = get.S_ht(obj)
-        %GET.S_HT  Horizontal tail area by the volume-coefficient method.
-        %
-        %       V_h  = S_ht * L_ht / ( S_ref * MAC )     so
-        %       S_ht = V_h * S_ref * MAC / L_ht
-        %
-        %   [Raymer Eq. 6.29, p. 159; coefficient from Raymer Table 6.4,
-        %   which prints 0.80 for a general-aviation twin - an exact match
-        %   to the Roskam Part II Table 8.3 value the course uses. Nicolai
-        %   and Carichner Table 11.1 reports 0.64 to 1.07 for the same
-        %   class.]
-        %
-        %   THIS IS THE THEORETICAL AREA, carried through to the aircraft
-        %   centreline. That is the convention the volume-coefficient method
-        %   is defined in - Raymer states it explicitly alongside Eq. 6.27 -
-        %   so it is the right area here. It is NOT the exposed area that
-        %   the Raymer Table 15.2 weight row asks for; see the note in
-        %   TtpaWeights.OEW_breakdown.
-        %
-        %   Both S_ref and MAC follow the wing, so the tail grows with the
-        %   wing on every iteration of the sizing loop.
-            val = obj.V_ht * obj.S_ref * obj.MAC / obj.L_ht;
-        end
-
-        function val = get.b_ht(obj)
-            val = GeometryBase.compute_span(obj.AR_ht, obj.S_ht);
-        end
-
-        function val = get.c_root_ht(obj)
-            val = GeometryBase.compute_root_chord(obj.S_ht, obj.b_ht, obj.taper_ht);
-        end
-
-        function val = get.c_tip_ht(obj)
-            val = GeometryBase.compute_tip_chord(obj.c_root_ht, obj.taper_ht);
-        end
-
-        function val = get.MAC_ht(obj)
-            val = GeometryBase.compute_mac(obj.c_root_ht, obj.taper_ht);
-        end
-
-        function val = get.y_MAC_ht(obj)
-            val = TtpaGeom.compute_y_mac(obj.b_ht, obj.taper_ht);
-        end
-
-
-        %% ---------------- Vertical tail ----------------
+        %% ---------------- v tail ----------------
 
         function val = get.S_vt(obj)
         %GET.S_VT  Vertical tail area by the volume-coefficient method.
