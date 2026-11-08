@@ -57,11 +57,9 @@
     "delta_CD0_flaps_takeoff": 0.015,
     "delta_CD0_flaps_landing": 0.065,
     "delta_CD0_gear_down": 0.02,
-    "delta_e_flaps_takeoff": -0.05,
-    "delta_e_flaps_landing": -0.1,
     "delta_CD0_propeller_stopped": 0.005,
-    "de_flaps_takeoff": 1,
-    "de_flaps_landing": 1
+    "delta_e_flaps_takeoff": -0.05,
+    "delta_e_flaps_landing": -0.1
   },
 
 
