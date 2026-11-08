@@ -1,0 +1,142 @@
+{
+  "hybrid": {
+    "architecture": "parallel",
+    "battery_capacity_kWh": 40,
+    "battery_specific_energy_Wh_per_kg": 250,
+    "battery_max_discharge_C": 6,
+    "initial_soc": 1,
+    "minimum_soc": 0.2,
+    "motor_max_shaft_kW": 164.799671712,
+    "motor_specific_power_kW_per_kg": 5,
+    "motor_efficiency": 0.95,
+    "inverter_efficiency": 0.97,
+    "gearbox_efficiency": 0.98,
+    "installation_mass_kg": 30,
+    "hotel_load_kW": 2,
+    "propeller_max_shaft_hp": 764,
+    "turbine_idle_fuel_lb_per_hr": 0,
+    "fuel_loaded_lb": 1450,
+    "payload_lb": 800,
+    "time_step_s": 5,
+    "powertrain_model": "AMP-H570",
+    "combined_peak_hp": 764,
+    "combined_continuous_hp": 543,
+    "combustion_max_hp": 543,
+    "peak_duration_limit_s_assumed": 120,
+    "combustion_bsfc_lb_per_hp_hr": 0.34,
+    "powerplant_dry_mass_lb_assumed": 950,
+    "removed_PT6_installed_mass_lb_assumed": 595,
+    "flat_rating_alt_ft_assumed": 10000,
+    "lapse_exponent_above_flat_alt_assumed": 0.65,
+    "generator_efficiency": 0.95,
+    "battery_charge_efficiency": 0.95,
+    "battery_max_charge_C": 1,
+    "charge_power_kW_assumed": 30,
+    "charge_target_soc": 0.9,
+    "include_floats": true
+  },
+  "segments": [
+    {
+      "name": "Electric taxi",
+      "type": "ground",
+      "mode": "electric",
+      "duration_min": 5,
+      "shaft_power_hp": 20,
+      "alt_ft": 0
+    },
+    {
+      "name": "AMP takeoff assist",
+      "type": "ground",
+      "mode": "hybrid",
+      "electric_fraction": 0.2892670157068063,
+      "duration_min": 2,
+      "shaft_power_hp": 867,
+      "alt_ft": 0
+    },
+    {
+      "name": "Climb",
+      "type": "climb",
+      "mode": "fuel",
+      "start_alt_ft": 0,
+      "end_alt_ft": 10000,
+      "ktas": 100,
+      "vertical_speed_fpm": 600,
+      "config": "clean"
+    },
+    {
+      "name": "Cruise",
+      "type": "cruise",
+      "mode": "charge",
+      "alt_ft": 10000,
+      "ktas": 150,
+      "distance_nm": 500,
+      "config": "clean"
+    },
+    {
+      "name": "Descent",
+      "type": "descent",
+      "mode": "fuel",
+      "start_alt_ft": 10000,
+      "end_alt_ft": 0,
+      "ktas": 140,
+      "vertical_speed_fpm": -500,
+      "config": "clean"
+    },
+    {
+      "name": "Reserve climb",
+      "type": "climb",
+      "mode": "fuel",
+      "start_alt_ft": 0,
+      "end_alt_ft": 4000,
+      "ktas": 100,
+      "vertical_speed_fpm": 600,
+      "config": "clean"
+    },
+    {
+      "name": "Reserve loiter",
+      "type": "loiter",
+      "mode": "fuel",
+      "alt_ft": 4000,
+      "ktas": 110,
+      "duration_min": 45,
+      "config": "clean"
+    },
+    {
+      "name": "Reserve descent",
+      "type": "descent",
+      "mode": "fuel",
+      "start_alt_ft": 4000,
+      "end_alt_ft": 500,
+      "ktas": 130,
+      "vertical_speed_fpm": -500,
+      "config": "clean"
+    },
+    {
+      "name": "Electric approach",
+      "type": "descent",
+      "mode": "electric",
+      "start_alt_ft": 500,
+      "end_alt_ft": 0,
+      "ktas": 75,
+      "flight_path_angle_deg": -3,
+      "config": "landing_flaps_gear_up"
+    },
+    {
+      "name": "Landing run",
+      "type": "ground",
+      "mode": "electric",
+      "duration_min": 1,
+      "shaft_power_hp": 0,
+      "alt_ft": 0
+    }
+  ],
+  "assumptions": [
+    "Conceptual AMP-H570 replacement on the retained EX amphibian, not the actual landplane Eco Caravan installation.",
+    "Powerplant dry mass 950 lb is a selected value below the published <1000-lb bound; battery inclusion is unspecified, and external pack mass is conservatively added separately.",
+    "Combustion maximum 543 hp and electric maximum 221 hp are a modeling allocation of the published continuous/peak system ratings, not a certified component map.",
+    "40-kWh external pack, 250 Wh/kg, 120-s peak duration, charging limits and flat power to 10000 ft are assumptions.",
+    "0.34 BSFC applied to combustion shaft power, including generation; 0.32 net boost BSFC is not multiplied again.",
+    "Takeoff request reduced explicitly from 867 to764 hp; water performance is not established.",
+    "Electric 3-degree final approach at75 KTAS is a modified schedule to fit electric rating;85-KTAS case is supplied for checking."
+  ]
+}

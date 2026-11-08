@@ -1,0 +1,25 @@
+{
+  "architecture": "parallel",
+  "modes": [
+    "fuel",
+    "electric",
+    "hybrid"
+  ],
+  "source_schedule": "electric taxi; 25% electric takeoff share; turbine cruise and loiter; electric approach",
+  "verification": "MATLAB R2025a Update 1",
+  "tests_passed": 23,
+  "tests_failed": 0,
+  "required_products": [
+    "MATLAB"
+  ],
+  "baseline_12_models_unchanged_from_standalone": true,
+  "example": {
+    "added_mass_lb": 529.1,
+    "takeoff_weight_lb": 8754.1,
+    "fuel_used_lb": 1330.6,
+    "battery_used_kWh": 21.01,
+    "final_SOC_percent": 47.5,
+    "same_hardware_fuel_displaced_lb": 8.3
+  },
+  "limits": "Illustrative conceptual model; no hardware qualification or hybrid water-performance validation; original sizing loop is conventional only"
+}

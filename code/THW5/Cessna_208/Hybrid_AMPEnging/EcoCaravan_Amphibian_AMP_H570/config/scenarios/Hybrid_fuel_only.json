@@ -1,0 +1,124 @@
+{
+  "hybrid": {
+    "architecture": "parallel",
+    "battery_capacity_kWh": 40,
+    "battery_specific_energy_Wh_per_kg": 250,
+    "battery_max_discharge_C": 6,
+    "initial_soc": 1,
+    "minimum_soc": 0.2,
+    "motor_max_shaft_kW": 250,
+    "motor_specific_power_kW_per_kg": 5,
+    "motor_efficiency": 0.95,
+    "inverter_efficiency": 0.97,
+    "gearbox_efficiency": 0.98,
+    "installation_mass_kg": 30,
+    "hotel_load_kW": 2,
+    "propeller_max_shaft_hp": 867,
+    "turbine_idle_fuel_lb_per_hr": 0,
+    "fuel_loaded_lb": 1450,
+    "payload_lb": 800,
+    "time_step_s": 5
+  },
+  "segments": [
+    {
+      "name": "Electric taxi",
+      "type": "ground",
+      "mode": "fuel",
+      "duration_min": 5,
+      "shaft_power_hp": 20,
+      "alt_ft": 0
+    },
+    {
+      "name": "Takeoff assist",
+      "type": "ground",
+      "mode": "fuel",
+      "electric_fraction": 0.25,
+      "duration_min": 2,
+      "shaft_power_hp": 867,
+      "alt_ft": 0
+    },
+    {
+      "name": "Climb",
+      "type": "climb",
+      "mode": "fuel",
+      "start_alt_ft": 0,
+      "end_alt_ft": 10000,
+      "ktas": 100,
+      "vertical_speed_fpm": 600,
+      "config": "clean"
+    },
+    {
+      "name": "Cruise",
+      "type": "cruise",
+      "mode": "fuel",
+      "alt_ft": 10000,
+      "ktas": 150,
+      "distance_nm": 500,
+      "config": "clean"
+    },
+    {
+      "name": "Descent",
+      "type": "descent",
+      "mode": "fuel",
+      "start_alt_ft": 10000,
+      "end_alt_ft": 0,
+      "ktas": 140,
+      "vertical_speed_fpm": -500,
+      "config": "clean"
+    },
+    {
+      "name": "Reserve climb",
+      "type": "climb",
+      "mode": "fuel",
+      "start_alt_ft": 0,
+      "end_alt_ft": 4000,
+      "ktas": 100,
+      "vertical_speed_fpm": 600,
+      "config": "clean"
+    },
+    {
+      "name": "Reserve loiter",
+      "type": "loiter",
+      "mode": "fuel",
+      "alt_ft": 4000,
+      "ktas": 110,
+      "duration_min": 45,
+      "config": "clean"
+    },
+    {
+      "name": "Reserve descent",
+      "type": "descent",
+      "mode": "fuel",
+      "start_alt_ft": 4000,
+      "end_alt_ft": 500,
+      "ktas": 130,
+      "vertical_speed_fpm": -500,
+      "config": "clean"
+    },
+    {
+      "name": "Electric approach",
+      "type": "descent",
+      "mode": "fuel",
+      "start_alt_ft": 500,
+      "end_alt_ft": 0,
+      "ktas": 85,
+      "flight_path_angle_deg": -3,
+      "config": "landing_flaps_gear_up"
+    },
+    {
+      "name": "Landing run",
+      "type": "ground",
+      "mode": "fuel",
+      "duration_min": 1,
+      "shaft_power_hp": 0,
+      "alt_ft": 0
+    }
+  ],
+  "assumptions": [
+    "Illustrative parameters, not selected or qualified hardware.",
+    "Parallel drivetrain retains the complete 867-shp turbine.",
+    "Takeoff power/time are assumed loads, not water-run predictions.",
+    "Motor is shut off during fuel cruise; turbine is ideally declutched/off during electric-only segments.",
+    "No in-flight recharge, regeneration, restart transient, thermal, CG or structural model."
+  ]
+}

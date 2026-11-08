@@ -1,0 +1,46 @@
+MATLAB 25.1.0.2973910 (R2025a) Update 1
+Running test_caravan
+........
+Done test_caravan
+__________
+
+Running test_hybrid
+.......... .Same-aircraft comparison: fuel-only 1338.93 lb; hybrid 1330.63 lb; fuel displaced 8.30 lb
+....
+Done test_hybrid
+__________
+
+  1×23 TestResult array with properties:
+
+    Name
+    Passed
+    Failed
+    Incomplete
+    Duration
+    Details
+
+Totals:
+   23 Passed, 0 Failed, 0 Incomplete.
+   2.843 seconds testing time.
+
+    {'MATLAB'}
+
+Hybrid empty weight 6504.1 lb; added equipment 529.1 lb; takeoff weight 8754.1 lb
+Feasible schedule: 1; fuel used 1330.6 lb; battery used 21.01 kWh; final SOC 47.5%
+           name               mode       duration_min    fuel_lb    battery_kWh    end_soc    start_weight_lb    end_weight_lb    weight_fraction    peak_shaft_hp    peak_CL    descent_energy_dissipated
+    ___________________    __________    ____________    _______    ___________    _______    _______________    _____________    _______________    _____________    _______    _________________________
+
+    "Electric taxi"        "electric"            5            0        1.5429      0.96143        8754.1            8754.1                  1               20              0              false          
+    "Takeoff assist"       "hybrid"              2       14.089        6.0326      0.81061        8754.1              8740            0.99839              867              0              false          
+    "Climb"                "fuel"           13.333       72.155       0.44444       0.7995          8740            8667.9            0.99174           502.04         1.1646              false          
+    "Cruise"               "fuel"              200       1002.4        6.6667      0.63283        8667.9            7665.5            0.88436           475.06        0.51888              false          
+    "Descent"              "fuel"               16       50.348       0.53333       0.6195        7665.5            7615.1            0.99343           324.55         0.5261              false          
+    "Reserve climb"        "fuel"           6.6667        31.47       0.22222      0.61395        7615.1            7583.7            0.99587           438.29        0.90183              false          
+    "Reserve loiter"       "fuel"               45       142.36           1.5      0.57645        7583.7            7441.3            0.98123           294.14        0.74715              false          
+    "Reserve descent"      "fuel"                7       17.838       0.23333      0.57061        7441.3            7423.5             0.9976           246.64        0.52419              false          
+    "Electric approach"    "electric"       1.1099            0        3.8011      0.47558        7423.5            7423.5                  1           247.14         1.1017              false          
+    "Landing run"          "electric"            1            0      0.033333      0.47475        7423.5            7423.5                  1                0              0              false          
+
+Same-aircraft comparison: fuel-only 1338.93 lb; hybrid 1330.63 lb; fuel displaced 8.30 lb
+[Warning: Exported image displays axes toolbar. To remove axes toolbar from image, export again.] 
+Hybrid verification complete.

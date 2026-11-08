@@ -1,0 +1,57 @@
+MATLAB 25.1.0.2973910 (R2025a) Update 1
+Running test_amp_h570
+.......... ......
+Done test_amp_h570
+__________
+
+Running test_caravan
+........
+Done test_caravan
+__________
+
+Running test_hybrid
+.......... .Same-aircraft comparison: fuel-only 1334.09 lb; hybrid 1325.82 lb; fuel displaced 8.27 lb
+....
+Done test_hybrid
+__________
+
+  1×39 TestResult array with properties:
+
+    Name
+    Passed
+    Failed
+    Incomplete
+    Duration
+    Details
+
+Totals:
+   39 Passed, 0 Failed, 0 Incomplete.
+   8.9729 seconds testing time.
+
+    {'MATLAB'}
+
+Cruise screen at 97.5% of loaded takeoff weight, without boost or charging load:
+    Speed_KTAS    Altitude_ft    Required_shp    Continuous_shp    Margin_shp    Passes
+    __________    ___________    ____________    ______________    __________    ______
+
+       150           10000          463.09            543            79.913      true  
+       164           10000          557.78            543           -14.777      false 
+
+Hybrid empty weight 6748.9 lb; added equipment 773.9 lb; takeoff weight 8998.9 lb
+Feasible schedule: 1; fuel used 723.5 lb; battery used 8.75 kWh; final SOC 78.1%
+                  name                     mode       duration_min    fuel_lb    battery_kWh    end_soc    start_weight_lb    end_weight_lb    weight_fraction    peak_shaft_hp    peak_CL    descent_energy_dissipated
+    ________________________________    __________    ____________    _______    ___________    _______    _______________    _____________    _______________    _____________    _______    _________________________
+
+    "Electric taxi"                     "electric"            5            0        1.5429      0.96143        8998.9            8998.9                  1               20              0              false          
+    "AMP takeoff assist"                "hybrid"              2        6.154        6.1496      0.80769        8998.9            8992.7            0.99932              764              0              false          
+    "Climb"                             "fuel"           16.667       48.867       0.55556       0.7938        8992.7            8943.9            0.99457           525.29          1.279              false          
+    "Cruise"                            "charge"            200       527.51       -4.2481          0.9        8943.9            8416.3            0.94102           467.82        0.56987              false          
+    "Descent"                           "fuel"               20       32.472       0.66667      0.88333        8416.3            8383.9            0.99614           325.32        0.61481              false          
+    "Reserve climb"                     "fuel"           6.6667        18.09       0.22222      0.87778        8383.9            8365.8            0.99784           479.69        0.99481              false          
+    "Reserve loiter"                    "fuel"               45       80.963           1.5      0.84028        8365.8            8284.8            0.99032           318.84        0.82421              false          
+    "Reserve descent"                   "fuel"                7       9.4567       0.23333      0.83444        8284.8            8275.4            0.99886            248.8        0.58361              false          
+    "Electric partial-flap approach"    "electric"       1.1099            0        2.0955      0.78206        8275.4            8275.4                  1           135.02         1.2282              false          
+    "Landing run"                       "electric"            1            0      0.033333      0.78122        8275.4            8275.4                  1                0              0              false          
+
+Battery discharged 13.00 kWh; recharged 4.25 kWh; net used 8.75 kWh
+AMP-H570 verification complete.

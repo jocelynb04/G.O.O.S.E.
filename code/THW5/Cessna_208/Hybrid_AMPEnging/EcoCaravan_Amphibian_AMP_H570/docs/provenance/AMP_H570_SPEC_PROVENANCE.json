@@ -1,0 +1,31 @@
+{
+  "source_pdf": "sources/AMP_H570_datasheet.pdf",
+  "source_url": "https://fd46bca4-8fdb-4a60-bb5a-984ecb406747.filesusr.com/ugd/1fdb50_1426d830e26d49dbb6397c657b0c0d62.pdf",
+  "manufacturer_page": "https://www.ampaire.com/amp-h570",
+  "published": {
+    "combined_peak_shp": 764,
+    "combined_peak_kW_rounded": 570,
+    "combined_max_continuous_shp": 543,
+    "combined_max_continuous_kW_rounded": 405,
+    "cruise_bsfc_without_boost_lb_per_hp_hr": 0.34,
+    "net_bsfc_boost_lb_per_hp_hr_not_applied": 0.32,
+    "dry_mass_lb_upper_bound_exclusive": 1000,
+    "height_in": 29.5,
+    "width_in": 33.5,
+    "length_in": 51
+  },
+  "assumed_not_manufacturer_specs": {
+    "combustion_max_hp": 543,
+    "motor_max_hp": 221,
+    "peak_duration_s": 120,
+    "assembly_dry_mass_lb": 950,
+    "external_battery_kWh": 40,
+    "battery_pack_specific_energy_Wh_kg": 250,
+    "flat_rating_alt_ft": 10000,
+    "charge_power_kW": 30,
+    "charge_target_soc": 0.9,
+    "removed_PT6_installed_mass_lb": 595,
+    "installation_mass_kg": 30
+  },
+  "note": "Manufacturer website supplies max-continuous system rating; component split, battery scope and exact installation are not fully specified. SHP values govern; kW values in the source are rounded."
+}

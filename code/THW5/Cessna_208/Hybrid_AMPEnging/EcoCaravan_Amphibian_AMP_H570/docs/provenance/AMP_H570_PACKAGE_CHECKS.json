@@ -1,0 +1,12 @@
+{
+  "tests_passed": 39,
+  "tests_failed": 0,
+  "main_cruise_altitude_ft": 10000,
+  "landing_CLmax": 2.2,
+  "mission_fuel_lb": 723.5,
+  "final_soc_percent": 78.1,
+  "recharged_kWh": 4.25,
+  "cruise_164_required_shp": 557.78,
+  "cruise_continuous_shp": 543,
+  "cruise_164_passes": false
+}

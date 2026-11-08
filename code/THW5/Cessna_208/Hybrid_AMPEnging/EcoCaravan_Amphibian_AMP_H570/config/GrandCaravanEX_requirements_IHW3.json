@@ -1,0 +1,284 @@
+{
+  "geometry": {
+    "AR": 9.722844484269217,
+    "taper_ratio": 0.615,
+    "sweep_quarter_chord_deg": 0,
+    "thickness_ratio_root": 0.18,
+    "thickness_ratio_tip": 0.09,
+    "twist_deg": -3,
+    "incidence_deg": 2,
+    "dihedral_deg": 5,
+    "horizontal_tail": {
+      "volume_coefficient": 0.8,
+      "arm_ft": 17,
+      "AR": 4.0,
+      "taper_ratio": 0.75,
+      "thickness_ratio": 0.12,
+      "sweep_quarter_chord_deg": 0
+    },
+    "vertical_tail": {
+      "volume_coefficient": 0.065,
+      "arm_ft": 19,
+      "AR": 1.5,
+      "taper_ratio": 0.55,
+      "thickness_ratio": 0.12,
+      "sweep_quarter_chord_deg": 15
+    },
+    "fuselage": {
+      "width_ft": 5.75,
+      "height_ft": 5.5,
+      "nose_length_ft": 9.5,
+      "constant_length_ft": 16.75,
+      "tailcone_length_ft": 15.333333333333336,
+      "tailcone_end_width_ft": 0.5,
+      "tailcone_end_height_ft": 0.5
+    },
+    "nacelle": {
+      "diameter_ft": 0.0,
+      "length_over_engine_length": 1.0
+    },
+    "landing_gear": {
+      "l_n_over_l_d": 0.9,
+      "l_m_over_l_d": 0.15
+    }
+  },
+  "aerodynamics": {
+    "CD0_clean": 0.038,
+    "Cfe": 0.0055,
+    "CLmax_clean": 1.6,
+    "CLmax_takeoff": 2.0,
+    "CLmax_landing": 2.2,
+    "CL_stall_margin": 0.2,
+    "delta_CD0_flaps_takeoff": 0.015,
+    "delta_CD0_flaps_landing": 0.065,
+    "delta_CD0_gear_down": 0.02,
+    "delta_e_flaps_takeoff": -0.05,
+    "delta_e_flaps_landing": -0.1,
+    "delta_CD0_propeller_stopped": 0.005
+  },
+  "propulsion": {
+    "n_engines": 1,
+    "BSFC_lb_per_hp_hr": 0.65,
+    "eta_p_cruise": 0.8,
+    "eta_p_loiter": 0.72,
+    "eta_p_climb": 0.75,
+    "P_TO_over_P_max_continuous": 1.0,
+    "engine_scaling_class": "pt6a140_provisional",
+    "engine_weight_coefficient": 425,
+    "engine_weight_exponent": 0.8,
+    "engine_length_coefficient": 5.25,
+    "engine_length_exponent": 0.4,
+    "bhp_range_of_validity": [
+      500,
+      1100
+    ]
+  },
+  "weights": {
+    "W_payload_fixed": 800,
+    "W_payload_expendable": 0,
+    "unit_weight_wing_psf": 2.5,
+    "unit_weight_horizontal_tail_psf": 2.0,
+    "unit_weight_vertical_tail_psf": 2.0,
+    "unit_weight_fuselage_psf": 1.4,
+    "landing_gear_fraction": 0.0,
+    "installed_engine_factor": 1.4,
+    "all_else_empty_fraction": 0.1,
+    "statistical_OEW_coefficient": 0.911,
+    "statistical_OEW_exponent": 0.947,
+    "fuel_density_lb_per_ft3": 50.15297537934329,
+    "amphibian_calibration_residual_lb": 2162.697980821449
+  },
+  "design_range_nmi": 500,
+  "sizing": {
+    "W_TO_guess_lbf": 9062,
+    "S_ref_guess_ft2": 279,
+    "tol_rel": 1e-05,
+    "max_iter": 150,
+    "relaxation": 0.3
+  },
+  "constraints": {
+    "wing_loading_range_psf": [
+      20,
+      55
+    ],
+    "wing_loading_points": 500,
+    "design_point": {
+      "wing_loading_psf": 32.48028673835125,
+      "power_loading_lb_per_hp": 10.452133794694348
+    },
+    "conditions": [
+      {
+        "name": "Amphibian water takeoff surrogate",
+        "type": "takeoff",
+        "altitude_ft": 0,
+        "distance_ft": 3271,
+        "config": "takeoff_flaps_gear_down",
+        "beta": 1.0
+      },
+      {
+        "name": "Amphibian landing surrogate",
+        "type": "landing",
+        "altitude_ft": 0,
+        "distance_ft": 2004,
+        "config": "landing_flaps_gear_down",
+        "beta": 0.975
+      },
+      {
+        "name": "Initial climb AEO demonstration",
+        "type": "climb_gradient",
+        "altitude_ft": 0,
+        "G": 0.0524078,
+        "config": "takeoff_flaps_gear_up",
+        "oei": false,
+        "max_continuous": true,
+        "power_setting": 1.0,
+        "beta": 1.0
+      },
+      {
+        "name": "5000-ft climb AEO demo (REPLACES OEI)",
+        "type": "climb_gradient",
+        "altitude_ft": 5000,
+        "G": 0.015,
+        "config": "clean",
+        "oei": false,
+        "propeller_stopped": false,
+        "max_continuous": true,
+        "power_setting": 1.0,
+        "beta": 0.975
+      },
+      {
+        "name": "Balked landing AEO demonstration",
+        "type": "climb_gradient",
+        "altitude_ft": 0,
+        "G": 0.03,
+        "config": "landing_flaps_gear_down",
+        "oei": false,
+        "max_continuous": false,
+        "power_setting": 1.0,
+        "beta": 0.975
+      },
+      {
+        "name": "150-KTAS demonstration cruise constraint",
+        "type": "cruise_speed",
+        "altitude_ft": 10000,
+        "ktas": 150,
+        "power_index": 1.4,
+        "power_setting": 0.85,
+        "method": "drag_based"
+      }
+    ]
+  },
+  "missions": {
+    "std_mission": {
+      "reserve_fuel_fraction": 0.0,
+      "segments": [
+        {
+          "type": "takeoff",
+          "name": "Takeoff",
+          "alt_ft": 0
+        },
+        {
+          "type": "climb",
+          "name": "Climb",
+          "alt_ft": 10000
+        },
+        {
+          "type": "cruise",
+          "name": "Cruise",
+          "alt_ft": 10000,
+          "ktas": 150,
+          "distance_nm": 500
+        },
+        {
+          "type": "descent",
+          "name": "Descent",
+          "alt_ft": 0
+        },
+        {
+          "type": "climb",
+          "name": "Climb",
+          "alt_ft": 4000
+        },
+        {
+          "type": "loiter",
+          "name": "Loiter",
+          "alt_ft": 4000,
+          "ktas": 110,
+          "time_min": 45
+        },
+        {
+          "type": "descent",
+          "name": "Descent",
+          "alt_ft": 0
+        },
+        {
+          "type": "landing",
+          "name": "Landing",
+          "alt_ft": 0
+        }
+      ],
+      "method": "L2",
+      "cruise_segments": 12,
+      "climb_segments": 4,
+      "ground_segment_method": "roskam_fraction",
+      "credit_climb_distance": false
+    }
+  },
+  "caravan": {
+    "enabled": true,
+    "aircraft_variant": "C208B_Grand_Caravan_EX_Amphibian",
+    "reference_power_shp": 867,
+    "reference_MTO_weight_lb": 9062,
+    "reference_basic_empty_weight_lb": 5975,
+    "reference_wing_area_ft2": 279,
+    "reference_span_ft": 52.083333333333336,
+    "reference_engine": "PT6A-140",
+    "float_drag_increment_assumed": 0.012,
+    "weight_increase_vs_EX_landplane_lb": 665,
+    "notes": "Preliminary engineering adaptation; not certified or validated. Water constraints use surrogate formulas only."
+  },
+  "reference_aircraft": {
+    "name": "Cessna Grand Caravan EX Amphibian",
+    "type": "C208B EX",
+    "engine": "PT6A-140",
+    "published": {
+      "MTOW_lbf": 9062,
+      "ramp_weight_lbf": 9097,
+      "max_landing_weight_lbf": 9062,
+      "basic_empty_weight_lbf": 5975,
+      "landplane_basic_empty_weight_lbf": 5310,
+      "usable_fuel_lbf": 2246,
+      "usable_fuel_gal": 335,
+      "wing_span_ft": 52.083333333333336,
+      "wing_area_ft2": 279,
+      "length_ft": 41.583333333333336,
+      "overall_height_ft": 17.416666666666668,
+      "cabin_width_in": 64,
+      "cabin_height_in": 54,
+      "cabin_length_ft": 16.75,
+      "max_cruise_KTAS": 164,
+      "max_range_nmi": 813,
+      "max_climb_fpm": 1212,
+      "water_run_ft": 2000,
+      "water_takeoff_distance_ft": 3271,
+      "water_landing_distance_ft": 2004,
+      "stall_KCAS": 59,
+      "engine_shp": 867,
+      "max_operating_altitude_ft": 20000
+    },
+    "source": "https://cessna.txtav.com/en/turboprop/grand-caravan-ex",
+    "source_water": "https://specialmissions.txtav.com/en/float-operations",
+    "note": "Manufacturer maxima and ranges are different operating conditions; do not combine as one mission point."
+  },
+  "model_assumptions": {
+    "status": "NOT VALIDATED. Assumptions retained for a runnable instructional model; not a certified flight/weight prediction.",
+    "aero": "Taper .615, airfoils .18/.09, tail shapes and arms, Cfe .0055, float CD0 increment .012 are unmeasured provisional values. CD0_clean .038 is only a rough comparison.",
+    "propulsion": "Dry engine weight 425 lb; length 63 in (within PT6A small family range, not engine-specific); BSFC .65; power lapse sigma^0.65; efficiencies 0.80/0.72/0.75; installed factor 1.4 uncalibrated.",
+    "geometry": "5.75-ft exterior width, 5.5-ft exterior height, nose 9.5 ft and tail cone length estimated to match 41ft7in overall; cabin length 16ft9in. Fuselage projected-area model omits float geometry and detailed cowling.",
+    "weights": "The +665 lb figure is the published net difference in basic empty weights between EX landplane and EX amphibian; it is not the bare float mass, and simply adding it does not calibrate total OEW to 5975 lb. An explicit 2162.70-lb constant residual is added to anchor the 9062-lb reference configuration to 5975-lb published BEW; it is NOT a derived physical component. OEW and BEW definitions differ.",
+    "mission": "Demo 500-nmi flight at 150 KTAS / 10000 ft, 800-lb payload and 45-min loiter. Zero additional fractional reserve to avoid silently doubling a 45-min reserve; not an AFM mission.",
+    "constraints": "Takeoff and landing distance use the original generic runway formulas as surrogates only; true water hydrodynamics and configuration-specific criteria are NOT modeled. Fourth constraint is AEO instead of meaningless single-engine OEI.",
+    "use": "Full sizing loop may execute with the course framework but numerical convergence does not establish validity. Do not use for flight planning or aircraft certification.",
+    "landing_lift": "Course landing CLmax 2.2; not a measured Caravan coefficient."
+  }
+}

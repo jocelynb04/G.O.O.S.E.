@@ -1,0 +1,31 @@
+MATLAB 25.1.0.2973910 (R2025a) Update 1
+Running test_caravan
+........
+Done test_caravan
+__________
+
+  1Ã—8 TestResult array with properties:
+
+    Name
+    Passed
+    Failed
+    Incomplete
+    Duration
+    Details
+
+Totals:
+   8 Passed, 0 Failed, 0 Incomplete.
+   1.9201 seconds testing time.
+
+    {'MATLAB'}
+
+Resolved dependency files: 41
+Grand Caravan EX Amphibian: W/S=32.4803, W/P=10.4521, AR=9.7228
+MTOW basis payload with full fuel: 841 lb (ramp-based full-fuel payload differs)
+Baseline fuel 1550.3 lb; mass margin 736.7 lb; tank margin 695.7 lb
+Sizing converged: 1 in 143 passes
+        W0: 7.1731e+03
+        P0: 519.4880
+        S0: 149.2656
+    n_iter: 143
+
