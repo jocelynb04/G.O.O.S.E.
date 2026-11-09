@@ -107,7 +107,7 @@
     "engine_length_coefficient": 5.25,
     "engine_length_exponent": 0.4,
     "bhp_range_of_validity": [500, 1100]
-  }
+  },
 
 
   "weights": {
@@ -122,7 +122,7 @@
     "all_else_empty_fraction": 0.1,
     "statistical_OEW_coefficient": 0.911,
     "statistical_OEW_exponent": 0.947,
-    "fuel_density_lb_per_ft3": 50.15297537934329,
+    "fuel_density_lb_per_ft3": 50.15297537934329
   },
 
 
