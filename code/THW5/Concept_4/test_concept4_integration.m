@@ -1,0 +1,37 @@
+function test_concept4_integration()
+here = fileparts(mfilename('fullpath'));
+J = jsondecode(fileread(fullfile(here,'concept4_aero_hydro_requirements.json')));
+A = jsondecode(fileread(fullfile(here,'concept4_integration_assumptions.json')));
+p = SeaplaneProp_Concept4(J);
+g = SeaplaneGeom(J,p);
+g.S_ref = 350;
+a = SeaplaneAero_Concept4(J,g);
+h = SeaplaneHydro_Concept4(J,g,a);
+w = SeaplaneWeights(J,g,p);
+assert(abs(g.b-sqrt(2800))<1e-8);
+assert(abs(w.payload()-2430)<1e-8);
+assert(g.S_wet_pontoons>0 && g.S_wet_motor_nacelles>0);
+assert(g.S_wet_float_struts>0);
+assert(g.S_wet>g.S_wet_fuselage);
+d = a.drag_breakdown(struct('alt_ft',10000,'ktas',180));
+assert(d.CD0_total>0.01 && d.CD0_total<0.06);
+assert(abs(d.CD0_total-0.02372685)<0.003);
+b = h.buoyancy_screen(12500);
+assert(strcmp(b.rfp_below_cabin_floor_screen,'NOT_ASSESSED'));
+assert(p.motor_bus_kw(500)>0);
+pow = p.power_balance(60,0.1,0,'taxi');
+assert(pow.fuel_burn_lb==0 && pow.soc_end<p.battery_initial_soc);
+assert(w.OEW(12500)>0);
+climb = segment_climb_C4(12500,0,500,a,p.eta_p_climb,'clean');
+assert(climb.shaft_hp>0);
+cruise = segment_cruise_C4(12500,130,10000,a,p.eta_p_cruise);
+assert(cruise.shaft_hp>0);
+mission = Concept4Mission(J,g,a,p,A);
+probe = mission.run(12500,'std_mission',true);
+assert(probe.total_fuel_lb>0);
+assert(probe.peak_cumulative_pack_deficit_kwh>0);
+assert(p.battery_capacity_kwh==J.propulsion.battery_capacity_kwh);
+env = matching_envelope_C4(J,g,a,p,12500,A);
+assert(~isempty(env.selected));
+fprintf('Concept 4 MATLAB component/integration tests completed.\n');
+end
