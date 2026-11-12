@@ -1,0 +1,87 @@
+{
+  "summary_status": "PRELIMINARY_SCREENS_ONLY_NOT_RFP_COMPLIANT",
+  "checks": {
+    "payload": {
+      "status": "MODELED_REQUIREMENT_INPUT_ONLY",
+      "target_lb": 2430,
+      "modeled_lb": 2430
+    },
+    "range_and_reserve": {
+      "status": "MISSION_MODELED_UNVERIFIED_ASSUMPTIONS",
+      "nominal_cruise_distance_nmi": 868.976,
+      "reserve_min": 45,
+      "mission_fuel_lb": 1778.2346623655014,
+      "soc_end": 0.20546640869807087,
+      "balked_landing_explicit": true
+    },
+    "wingspan": {
+      "status": "PRELIMINARY_GEOMETRY_PASS",
+      "modeled_ft": 64,
+      "limit_ft": 65
+    },
+    "cruise_180_10k": {
+      "status": "PRELIMINARY_POWER_SCREEN_PASS",
+      "required_motor_shaft_hp": 757.52765947885814,
+      "generator_bus_kw": 650.50555663564182,
+      "required_bus_kw": 619.53090413841
+    },
+    "roc_2000_msl": {
+      "status": "PRELIMINARY_POWER_SCREEN_PASS",
+      "required_shaft_hp": 1581.1782729459644
+    },
+    "roc_500_10k": {
+      "status": "PRELIMINARY_POWER_SCREEN_PASS",
+      "required_shaft_hp": 765.5609174604798
+    },
+    "oei_450_msl": {
+      "status": "NOT_VERIFIED_FAILED_PROP_DRAG_AND_YAW"
+    },
+    "water_takeoff_2000ft": {
+      "status": "NOT_VERIFIED_HUMP_AND_ACCELERATION_MISSING"
+    },
+    "water_landing_2000ft": {
+      "status": "NOT_VERIFIED_WATER_LANDING_MODEL_MISSING"
+    },
+    "buoyancy": {
+      "status": "NOT_ASSESSED"
+    },
+    "adjacent_compartment_flooding": {
+      "status": "NOT_VERIFIED"
+    },
+    "heel_and_gust": {
+      "status": "NOT_VERIFIED"
+    },
+    "generator_failure": {
+      "status": "NOT_VERIFIED"
+    },
+    "no_shore_charge": {
+      "status": "NOT_VERIFIED_OPERATIONAL_RECHARGE"
+    },
+    "dock_clearance": {
+      "status": "NOT_VERIFIED"
+    },
+    "crosswind": {
+      "status": "NOT_VERIFIED"
+    },
+    "turnaround": {
+      "status": "NOT_VERIFIED"
+    },
+    "sea_state_3": {
+      "status": "NOT_VERIFIED"
+    },
+    "ifr_fiki": {
+      "status": "NOT_VERIFIED"
+    },
+    "seating_egress": {
+      "status": "NOT_VERIFIED"
+    },
+    "noise_desirable": {
+      "status": "NOT_EVALUATED_DESIRABLE"
+    },
+    "weight_energy_convergence": {
+      "status": "NUMERICALLY_CONVERGED_PRELIMINARY_ONLY",
+      "mass_closure_residual_lb": -0.033083690112334807
+    }
+  },
+  "note": "Numerical convergence does not establish RFP performance or certification compliance."
+}
