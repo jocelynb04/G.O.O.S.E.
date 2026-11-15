@@ -1,0 +1,6 @@
+/outputs/
+*.mat
+*.asv
+*.m~
+Thumbs.db
+.DS_Store
