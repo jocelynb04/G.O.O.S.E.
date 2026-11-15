@@ -130,8 +130,8 @@
     }
   ],
   "installation": {
-    "engine_station_ft": 9,
-    "propeller_diameter_ft_assumed": 8,
+    "engine_station_ft": 9.0,
+    "propeller_diameter_ft_assumed": 7.5,
     "nosecone_length_ft": 4,
     "nosecone_max_diameter_ft": 4.5,
     "usable_volume_fraction": 0.5,
@@ -139,6 +139,23 @@
     "wing_reinforcement_lb": 120,
     "nose_equipment_lb": 0,
     "net_drag_CD0_increment": 0.01,
-    "feathered_prop_and_trim_CD0_increment": 0.012
+    "feathered_prop_and_trim_CD0_increment": 0.012,
+    "openvsp_reference": {
+      "source": "Cessna208(Orig) - FinalHybird) - Copy.vsp3",
+      "nacelle_length_ft": 7.0,
+      "nacelle_diameter_ft": 1.4,
+      "right_nacelle_location_ft": [
+        8.1,
+        9,
+        3.1
+      ],
+      "right_propeller_location_ft": [
+        7.9,
+        9,
+        3.1
+      ],
+      "left_side": "Mirrored in XZ plane",
+      "nose": "Same outer fuselage as conventional VSP. Usable nose volume is a separate packaging assumption."
+    }
   }
 }
