@@ -20,9 +20,10 @@ classdef TtpaGeom < GeometryBase
         dihedral_deg
 
         % Declare variables - v_tail
-        V_v_tail                        % volume coefficient [-]
-        L_v_tail                        % moment arm [ft]
-        AR_v_tail
+        V_v_tail_horizontal             % horizontal-equivalent volume coefficient [-]
+        V_v_tail_vertical               % vertical-equivalent volume coefficient [-]
+        L_v_tail                        % common pitch and yaw moment arm [ft]
+        AR_v_tail                       % aspect ratio with both panels laid flat
         taper_v_tail
         tc_v_tail
         sweep_qc_v_tail_deg
@@ -62,8 +63,11 @@ classdef TtpaGeom < GeometryBase
         S_exposed_wing              % planform outside the fuselage [ft^2]
 
         % --- v tail ---
-        S_v_tail                % area [ft^2]
-        b_v_tail
+        S_v_tail_horizontal     % equivalent horizontal area [ft^2]
+        S_v_tail_vertical       % equivalent vertical area [ft^2]
+        S_v_tail                % combined in-plane panel area [ft^2]
+        dihedral_v_tail_deg     % panel angle above horizontal [deg]
+        b_v_tail                % tip-to-tip span with both panels laid flat [ft]
         c_root_v_tail
         c_tip_v_tail
         MAC_v_tail
@@ -114,7 +118,19 @@ classdef TtpaGeom < GeometryBase
 
             % Pull values from json file - v tail
             VT = G.v_tail;
-            obj.V_v_tail             = VT.volume_coefficient;
+            if isfield(VT, 'volume_coefficient') && ...
+                    ~isfield(VT, 'horizontal_volume_coefficient') && ...
+                    ~isfield(VT, 'vertical_volume_coefficient')
+                % The original Concept 3 JSON carried only the IHW3 pitch coefficient.
+                obj.V_v_tail_horizontal = VT.volume_coefficient;
+                obj.V_v_tail_vertical   = 0.065; % IHW3 yaw coefficient
+            else
+                obj.V_v_tail_horizontal = VT.horizontal_volume_coefficient;
+                obj.V_v_tail_vertical   = VT.vertical_volume_coefficient;
+            end
+            validateattributes(obj.V_v_tail_horizontal, {'numeric'}, {'real','scalar','finite','positive'});
+            validateattributes(obj.V_v_tail_vertical, {'numeric'}, {'real','scalar','finite','positive'});
+            validateattributes(VT.arm_ft, {'numeric'}, {'real','scalar','finite','positive'});
             obj.L_v_tail             = VT.arm_ft;
             obj.AR_v_tail            = VT.AR;
             obj.taper_v_tail         = VT.taper_ratio;
@@ -196,9 +212,21 @@ classdef TtpaGeom < GeometryBase
 
         %% ---------------- v tail ----------------
 
+        function val = get.S_v_tail_horizontal(obj)
+            val = obj.V_v_tail_horizontal * obj.S_ref * obj.MAC / obj.L_v_tail;
+        end
+
+        function val = get.S_v_tail_vertical(obj)
+            val = obj.V_v_tail_vertical * obj.S_ref * obj.b / obj.L_v_tail;
+        end
+
         function val = get.S_v_tail(obj)
-        % v tail area - volume coefficient method
-            val = obj.V_v_tail * obj.S_ref * obj.b / obj.L_v_tail;
+            % The two equivalent areas are S*cos(dihedral)^2 and S*sin(dihedral)^2.
+            val = obj.S_v_tail_horizontal + obj.S_v_tail_vertical;
+        end
+
+        function val = get.dihedral_v_tail_deg(obj)
+            val = atand(sqrt(obj.S_v_tail_vertical / obj.S_v_tail_horizontal));
         end
 
         function val = get.b_v_tail(obj)
@@ -218,8 +246,9 @@ classdef TtpaGeom < GeometryBase
         end
 
         function val = get.y_MAC_v_tail(obj)
-            % V-tail spanwise station accounting for dihedral Vee angle projection
-            val = TtpaGeom.compute_y_mac(obj.b_v_tail, obj.taper_v_tail);
+            % Lateral station of the right panel MAC measured from the centerline.
+            val = TtpaGeom.compute_y_mac(obj.b_v_tail, obj.taper_v_tail) ...
+                * cosd(obj.dihedral_v_tail_deg);
         end
 
 

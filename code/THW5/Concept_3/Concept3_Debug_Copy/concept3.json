@@ -10,7 +10,9 @@
     "dihedral_deg": 5,
 
     "v_tail": {
-      "volume_coefficient": 0.8,
+      "_comment": "Provisional IHW3 pitch and yaw coefficients. The common arm is the existing Concept 3 assumption.",
+      "horizontal_volume_coefficient": 0.8,
+      "vertical_volume_coefficient": 0.065,
       "arm_ft": 17,
       "AR": 4.0,
       "taper_ratio": 0.75,
