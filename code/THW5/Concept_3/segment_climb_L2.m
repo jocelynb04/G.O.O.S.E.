@@ -64,7 +64,11 @@ function [W_out, fuel_used, WF, info] = segment_climb_L2(W_in, obj, seg_no)
         V       = sqrt(2*(W/S)/(state.rho*CL));
         q       = 0.5*state.rho*V^2;
         D       = q*S*(polar.CD0 + polar.K1*CL^2);
-        P_shaft = obj.prop.P_SL*obj.prop.power_lapse(state,"max_continuous");     % P_SL, lapsed to h, at MAXIMUM CONTINUOUS power
+
+        kw_to_hp = 1.341022;
+bus_kw   = obj.prop.generator_available_bus_kw(h, 0); % 0 failed generators (AEO climb)
+P_shaft  = (bus_kw * obj.prop.eta_inverter * obj.prop.eta_motor) * kw_to_hp;
+       
         ROC     = (550*eta_p*P_shaft - D*V)/W;     % ft/s
 
         if ~(isfinite(ROC) && ROC > 0)
