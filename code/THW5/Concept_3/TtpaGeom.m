@@ -138,7 +138,7 @@ classdef TtpaGeom < GeometryBase
             obj.w_wingtip_float = WTF.width_ft;
             obj.h_wingtip_float = WTF.height_ft;
             obj.l_wingtip_float = WTF.length_ft;
-            obj.offset_wingtip_float = WTF.fuselage_offset;
+            obj.offset_wingtip_float = WTF.fuselage_offset_ft;
 
             % Pull values from json file - nacelle
             N = G.nacelle;

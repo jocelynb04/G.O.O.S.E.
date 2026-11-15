@@ -1,4 +1,4 @@
-function [WP_max, extra] = constraint_cruise_speed(WS, obj, C)
+function [WP_max, extra] = constraint_cruise_speed(WS, obj, con_no)
 %CONSTRAINT_CRUISE_SPEED  Cruise-speed constraint on the power loading.
 %
 %   [WP_max, extra] = constraint_cruise_speed(WS, obj, con_no)
@@ -85,8 +85,8 @@ function [WP_max, extra] = constraint_cruise_speed(WS, obj, C)
         case "drag_based"
             % --- Milestone 1: the required speed and the airplane ----------
             % error 'constraint_cruise_speed:MissingSpeed' if con.ktas is empty
-            V     = con.ktas;          % ft/s
-            if isnan(V)
+            V     = con.ktas6076.115 / 3600;          % convert KTAS to ft/s
+            if isnan(V)|| V <= 0
                 error('constraint_cruise_speed:MissingSpeed','constraint_cruise_speed:MissingSpeed');
             end
             q     = 0.5*state.rho*V^2;          % lbf/ft^2
