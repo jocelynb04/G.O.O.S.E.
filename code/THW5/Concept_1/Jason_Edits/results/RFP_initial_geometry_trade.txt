@@ -1,0 +1,44 @@
+Loaded payload 2650.00; RFP payload 2430.00
+Case 1 W 9000 span 75.89 AR 8.00 CLmax 2.20 S 720.00 WS 12.500 wall 15.832 power 956.17 driving ROC 2000 ft/min at MSL
+  OEW 7531.56 fuel 2338.91 battery 314.70 gross 12615.17 deficit 3615.17
+     engine_bare_each: 717.13
+    engine_bare_total: 1434.3
+                 wing: 1633.9
+      horizontal_tail: 850.52
+        vertical_tail: 459.65
+             fuselage: 616.99
+               floats: 43.982
+         landing_gear: 641.25
+     installed_engine: 2008
+       electric_drive: 377.27
+       all_else_empty: 900
+                total: 7531.6
+
+Case 2 W 9000 span 64.90 AR 8.00 CLmax 2.20 S 526.50 WS 17.094 wall 15.832 power 984.83 driving ROC 2000 ft/min at MSL
+Case 3 W 9000 span 64.90 AR 8.00 CLmax 2.40 S 526.50 WS 17.094 wall 17.272 power 984.83 driving ROC 2000 ft/min at MSL
+  OEW 6652.93 fuel 1853.25 battery 316.45 gross 11252.64 deficit 2252.64
+Case 4 W 9000 span 64.90 AR 7.20 CLmax 2.20 S 585.00 WS 15.385 wall 15.832 power 985.78 driving ROC 2000 ft/min at MSL
+  OEW 6942.52 fuel 2008.65 battery 319.39 gross 11700.56 deficit 2700.56
+Case 5 W 9000 span 64.90 AR 7.00 CLmax 2.20 S 601.72 WS 14.957 wall 15.832 power 986.14 driving ROC 2000 ft/min at MSL
+  OEW 7027.91 fuel 2054.60 battery 320.29 gross 11832.80 deficit 2832.80
+Case 6 W 9000 span 64.90 AR 6.80 CLmax 2.20 S 619.41 WS 14.530 wall 15.832 power 986.57 driving ROC 2000 ft/min at MSL
+  OEW 7119.58 fuel 2103.99 battery 321.28 gross 11974.84 deficit 2974.84
+     engine_bare_each: 739.93
+    engine_bare_total: 1479.9
+                 wing: 1382
+      horizontal_tail: 736.11
+        vertical_tail: 338.15
+             fuselage: 616.99
+               floats: 43.982
+         landing_gear: 641.25
+     installed_engine: 2071.8
+       electric_drive: 389.26
+       all_else_empty: 900
+                total: 7119.6
+
+Case 7 W 10000 span 64.90 AR 6.40 CLmax 2.20 S 658.13 WS 15.195 wall 15.832 power 1109.25 driving ROC 2000 ft/min at MSL
+  OEW 7799.27 fuel 2273.38 battery 360.64 gross 12863.28 deficit 2863.28
+Case 8 W 11000 span 64.90 AR 5.90 CLmax 2.20 S 713.90 WS 15.408 wall 15.832 power 1234.95 driving ROC 2000 ft/min at MSL
+  OEW 8585.79 fuel 2500.16 battery 402.04 gross 13917.99 deficit 2917.99
+Case 9 W 12000 span 64.90 AR 5.40 CLmax 2.20 S 780.00 WS 15.385 wall 15.832 power 1363.81 driving ROC 2000 ft/min at MSL
+  OEW 9451.53 fuel 2769.13 battery 445.21 gross 15095.86 deficit 3095.86

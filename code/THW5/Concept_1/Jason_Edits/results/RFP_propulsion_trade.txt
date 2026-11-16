@@ -1,0 +1,36 @@
+Concept 1 propulsion trade
+All cases use 9,000 lbf takeoff weight, 2,430 lbf payload, a 64.9-ft span,
+aspect ratio 7.2, the 1,000-statute-mile mission, and 45-min reserve loiter.
+
+Case 1: Original propulsion assumptions at the shorter-span geometry.
+Case 2: Twin PT6A-21 reference with the original electric rating.
+Case 3: Same engine pair. Electric rating from the current water-takeoff
+correlation with the design power margin, about 351 shp total.
+
+Engine references
+FAA E4EA pp. 3-4: 550 shp per engine at sea level for takeoff and max
+continuous, 337 lb dry per engine, 61.89-in length.
+https://www.faa.gov/sites/faa.gov/files/training_testing/testing/supplements/FAA-CT-8080-8D.pdf
+Pratt and Whitney Canada maintenance manual 3013242 section 72-00-00,
+Table 1: 0.630 lb/(eshp hr) at 580 eshp and 550 shp, converted to
+0.664 lb/(shp hr). The study uses this sea-level static JP-4 point as a
+constant sensitivity input. Cruise and altitude fuel performance require a map.
+https://pusi.vilsystem.com/MM_PT6/72-00.pdf
+The 1.4 installation factor remains a screening approximation. The model
+uses flat altitude power, a preliminary water correlation, and a pack-level
+energy density of 250 Wh/kg. The 6C example borrows the Cessna hybrid study
+limit. It illustrates the effect of a discharge constraint on battery mass.
+Balked landing, recharge, and pack thermal performance require analysis.
+
+Case 1, 985.8 shp combustion, 985.8 shp electric, 0.550 lb/shp/hr BSFC
+  dry engines 1478.67; installed engines 2070.14; OEW 6942.53; fuel 2008.65; battery 319.39 lbf
+  battery draw 28.97 kWh; nominal capacity 36.22 kWh; takeoff 814.00 kW; energy-sized pack 22.48 C
+  gross 11700.56 lbf; gap 2700.56 lbf; with Cessna 6C assumption battery 1196.37 and gap 3577.55 lbf
+Case 2, 1100.0 shp combustion, 985.8 shp electric, 0.664 lb/shp/hr BSFC
+  dry engines 674.00; installed engines 943.60; OEW 5815.99; fuel 2412.39; battery 319.63 lbf
+  battery draw 29.00 kWh; nominal capacity 36.25 kWh; takeoff 814.00 kW; energy-sized pack 22.46 C
+  gross 10978.01 lbf; gap 1978.01 lbf; with Cessna 6C assumption battery 1196.37 and gap 2854.75 lbf
+Case 3, 1100.0 shp combustion, 351.1 shp electric, 0.664 lb/shp/hr BSFC
+  dry engines 674.00; installed engines 943.60; OEW 5565.59; fuel 2412.39; battery 127.08 lbf
+  battery draw 11.53 kWh; nominal capacity 14.41 kWh; takeoff 289.95 kW; energy-sized pack 20.12 C
+  gross 10535.05 lbf; gap 1535.05 lbf; with Cessna 6C assumption battery 426.15 and gap 1834.13 lbf

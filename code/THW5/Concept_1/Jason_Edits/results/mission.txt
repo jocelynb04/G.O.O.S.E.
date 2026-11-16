@@ -1,0 +1,17 @@
+    Segment              Type               Propulsion     Fuel_lbf    Battery_kWh    StartWeight_lbf    EndWeight_lbf    WeightFraction    Duration_min
+    _______    _________________________    ___________    ________    ___________    _______________    _____________    ______________    ____________
+
+       1       "water_takeoff"              "electric"           0       26.346             9000              9000                 1                2   
+       2       "climb"                      "turboprop"     37.961            0             9000              8962           0.99578           4.7591   
+       3       "cruise"                     "turboprop"     2062.2            0             8962            6899.9            0.7699           289.66   
+       4       "descent"                    "turboprop"     55.199            0           6899.9            6844.7             0.992              NaN   
+       5       "loiter"                     "turboprop"     129.86            0           6844.7            6714.8           0.98103               45   
+       6       "descent"                    "turboprop"     53.719            0           6714.8            6661.1             0.992              NaN   
+       7       "electric_final_approach"    "electric"           0       2.2307           6661.1            6661.1                 1           1.1099   
+       8       "water_landing"              "electric"           0            0           6661.1            6661.1                 1                1   
+
+Total fuel: 2338.90 lbf
+Total battery energy: 28.58 kWh
+End weight: 6661.10 lbf
+Takeoff rated power: 957.20 hp
+Approach: 1.110 min, peak 147.25 hp
