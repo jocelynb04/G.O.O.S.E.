@@ -1,0 +1,66 @@
+field,value,classification,source_or_rationale,validation_needed
+schema_version,1,metadata,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,
+status,PRELIMINARY STUDY ASSUMPTIONS; not supplier-approved installation data,metadata,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,
+shaft_efficiency,0.98,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+gearbox_hp_each,1500,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+gearbox_rpm,2080,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+battery_continuous_C,3,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+battery_peak_C,5,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+battery_charge_C,1,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+battery_power_derating,0.85,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+battery_energy_derating,0.9,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+battery_specific_energy_Wh_kg,200,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+charge_storage_efficiency,0.97,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+charge_taper_start_soc,0.8,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+periodic_soc_tolerance,0.002,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+repeated_legs,4,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+integration_step_min,1,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+capacity_tolerance_kWh,0.25,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+capacity_max_kWh,3000,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+takeoff_min,0.75,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+landing_min,0.5,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+electric_climb_ktas,90,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+electric_climb_fpm,750,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+turbine_climb_ktas,110,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+turbine_climb_fpm,700,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+descent_ktas,110,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+descent_fpm,800,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+approach_ktas,90,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+approach_fpm,500,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+restart_delay_s,60,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+restart_stored_energy_kWh_each,0.3,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+restart_fuel_lb_each,0.2,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+turbine_idle_fuel_lb_hr_each,20,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+landing_motor_fraction,0.1,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+taxi_motor_fraction,0.1,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+turbine_takeoff_duration_min,5,existing project requirement or reference limit,Original requirements / GE E.070 as documented,Confirm applicability and final certification/project basis.
+continuous_case_duration_min,5,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+oei_checkpoint_duration_min,2,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+feathered_drag_area_ft2_each,0.35,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+span_limit_ft,65,existing project requirement or reference limit,Original requirements / GE E.070 as documented,Confirm applicability and final certification/project basis.
+team_mass_cap_lbf,12500,existing project requirement or reference limit,Original requirements / GE E.070 as documented,Confirm applicability and final certification/project basis.
+battery_bus,two isolated strings with normally open cross-tie; surviving propulsor can access both healthy strings after isolated propulsor failure,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+additional_gearbox_mass_kg_per_kW,0.2,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+generator_continuous_fraction,1.0,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+periodic_energy_tolerance_kWh,0.1,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+oei_turbine_climb_fpm,250,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+cell_series_count,190,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+battery_string_count,2,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+cell_nominal_energy_Wh,18,published cell-level reference,https://www.molicel.com/wp-content/uploads/Product-Data-Sheet-of-INR-21700-P50B-80122.pdf,Verify pack-level applicability and data revision; not complete aircraft pack evidence.
+cell_nominal_voltage,3.6,published cell-level reference,https://www.molicel.com/wp-content/uploads/Product-Data-Sheet-of-INR-21700-P50B-80122.pdf,Verify pack-level applicability and data revision; not complete aircraft pack evidence.
+cell_max_voltage,4.2,published cell-level reference,https://www.molicel.com/wp-content/uploads/Product-Data-Sheet-of-INR-21700-P50B-80122.pdf,Verify pack-level applicability and data revision; not complete aircraft pack evidence.
+cell_operating_min_voltage,2.9,independent study assumption,concept2_study_inputs.json assumptions; see CONCEPT2_STUDY.md,Replace or validate with selected installation data; evaluate sensitivity.
+cell_capacity_Ah,5,published cell-level reference,https://www.molicel.com/wp-content/uploads/Product-Data-Sheet-of-INR-21700-P50B-80122.pdf,Verify pack-level applicability and data revision; not complete aircraft pack evidence.
+cell_mass_kg,0.071,published cell-level reference,https://www.molicel.com/wp-content/uploads/Product-Data-Sheet-of-INR-21700-P50B-80122.pdf,Verify pack-level applicability and data revision; not complete aircraft pack evidence.
+accessory:avionics and flight instruments,0.5 kW x 1,engineering allowance,Preliminary equipment budget,Replace with selected equipment BOM and duty schedule.
+accessory:communications navigation surveillance,0.3 kW x 1,engineering allowance,Preliminary equipment budget,Replace with selected equipment BOM and duty schedule.
+accessory:exterior and cabin lights,0.2 kW x 1,engineering allowance,Preliminary equipment budget,Replace with selected equipment BOM and duty schedule.
+accessory:fuel and lubrication auxiliaries,0.4 kW x 1,engineering allowance,Preliminary equipment budget,Replace with selected equipment BOM and duty schedule.
+accessory:battery cooling pumps and fans,2 kW x 1,engineering allowance,Preliminary equipment budget,Replace with selected equipment BOM and duty schedule.
+accessory:motor inverter cooling pumps and fans,1 kW x 1,engineering allowance,Preliminary equipment budget,Replace with selected equipment BOM and duty schedule.
+accessory:controls actuators and miscellaneous allowance,0.6 kW x 1,engineering allowance,Preliminary equipment budget,Replace with selected equipment BOM and duty schedule.
+turnaround_min,30,existing project maximum used as worst-case waiting exposure,Ttpa_requirements_Concept2.json seaplane_checks.turnaround_max_min,Confirm equipment duty during turnaround; no ground charging assumed.
+include_high_speed_mission,false,optional analysis,RFP separates speed capability from full range; default false.,See AUDIT_REPORT.md.
+failure_battery_fraction,1,failure assumption,Battery fraction after 400-ft failure; default 1; string loss 0.5.,See AUDIT_REPORT.md.
+wing_loading_sweep_psf,"[15, 17, 19, 21, 23, 25, 27, 29]",search setting,Broader grid; exact landing wall appended; span screened.,See AUDIT_REPORT.md.
+battery_voltage_power_factor,0.8055555555555555,derived,Recomputed from minimum/nominal cell voltage; not independent.,See AUDIT_REPORT.md.
