@@ -12,9 +12,8 @@ Conceptual sizing of a twin-float amphibian with two parallel-hybrid propulsors.
 | `Analysis/` | Code used by the full mission, constraints, sizing and reporting workflow |
 | `Documentation/` | Model explanations, design notes, current tail validation and file map |
 | `Results/Current/` | Latest saved fixed-tail study; default destination for new main runs |
-| `Supplemental/` | Tests, optional studies, legacy code, backups, references and historical results |
 
-See [the detailed organization guide](Documentation/ORGANIZATION.md) and [old-to-new file map](Documentation/FILE_MAP.csv).
+See [the detailed organization guide](Documentation/ORGANIZATION.md).
 
 ## Run the full analysis
 
@@ -57,6 +56,6 @@ Test outputs go to `Supplemental/Results/Tests`. Read [Supplemental/README.md](S
 
 Edit `Inputs/Ttpa_requirements_Concept2.json` for requirements and airframe assumptions, `Inputs/concept2_study_inputs.json` for operating/electrical/search assumptions, and `Inputs/turbine_engine_catalog.json` for fixed catalog engine data. Input changes require a new run; saved results do not update automatically.
 
-The current saved study is an unclosed 12,000-lb trial, with an approximately 18,856-lb calculated mass budget. A mission/static-constraint pass at an assumed weight does not establish a feasible aircraft. `r.mass_closed` must be true before describing a design as mass-closed. The 12,500-lb cap is a separate team target.
+The current saved study is an unclosed 12,000-lb trial, with an approximately 18,856-lb calculated mass budget. A mission/static-constraint pass at an assumed weight does not establish a feasible aircraft. `r.mass_closed` must be true before describing a design as mass-closed. The 12,500-lb cap is an RFP target.
 
-Model empty mass excludes crew; the 2,430-lb payload includes two pilots plus nine passengers and baggage. RFP targets remain active. Directional control, water performance, flooded stability, docking clearance and other system requirements remain unverified. See [the study guide](Documentation/CONCEPT2_STUDY.md), [tail review](Documentation/VERTICAL_TAIL_REVIEW.md) and [validation](Documentation/Vertical_Tail/VALIDATION.md).
+Model empty mass excludes crew; the 2,430-lb payload includes two pilots plus nine passengers and baggage. RFP targets remain active. Directional control, water performance, flooded stability, docking clearance and other system requirements remain unverified. 
