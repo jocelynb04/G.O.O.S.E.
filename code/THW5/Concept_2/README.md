@@ -13,8 +13,6 @@ Conceptual sizing of a twin-float amphibian with two parallel-hybrid propulsors.
 | `Documentation/` | Model explanations, design notes, current tail validation and file map |
 | `Results/Current/` | Latest saved fixed-tail study; default destination for new main runs |
 
-See [the detailed organization guide](Documentation/ORGANIZATION.md).
-
 ## Run the full analysis
 
 Set this project folder as MATLAB's current folder:
@@ -40,7 +38,7 @@ setup_concept2;
 [obj,opts,cfg,J] = build_concept2_study();
 ```
 
-Paths to code and inputs are based on the project location, not the working directory. Keep the full folder structure together when copying the project. Add `setup_concept2(true)` to enable tests and optional studies; the main analysis does not require `Supplemental`.
+Paths to code and inputs are based on the project location, not the working directory. Keep the full folder structure together when copying the project. .
 
 ## Tests and extra tools
 
@@ -49,8 +47,6 @@ setup_concept2(true);
 run_audit_tests;
 vertical_tail_sensitivity(ttpa_requirements_path(),415)
 ```
-
-Test outputs go to `Supplemental/Results/Tests`. Read [Supplemental/README.md](Supplemental/README.md) for optional tools and the distinction between active and legacy code.
 
 ## Inputs and interpretation
 
