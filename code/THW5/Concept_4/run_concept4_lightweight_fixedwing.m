@@ -4,7 +4,7 @@ if nargin < 1 || isempty(Sref_ft2)
 end
 here = fileparts(mfilename('fullpath'));
 J = jsondecode(fileread(fullfile(here,'concept4_aero_hydro_requirements.json')));
-A = jsondecode(fileread(fullfile(here,'concept4_integration_assumptions.json')));
+A = jsondecode(fileread(fullfile(here,'Concept4_integration_assumptions.json')));
 
 p = SeaplaneProp_Concept4(J);
 g = SeaplaneGeom(J,p);
@@ -105,6 +105,8 @@ fprintf('OEW: %.2f lb | Payload: %.2f lb | Fuel: %.2f lb\n', ...
 fprintf('Results: %s\n',output_dir);
 
     function rr = calculate_pass(Wguess)
+        % A new sizing trial has no selected installed pack until mass closure.
+        p.battery_installed_mass_kg = [];
        
     W_power = max(Wguess,W_limit);
 
@@ -141,7 +143,11 @@ fprintf('Results: %s\n',output_dir);
         batt_mass_lb = max(energy_mass_kg,power_mass_kg)*2.20462262185;
         batt_available_kw = batt_mass_lb/2.20462262185 ...
             *J.propulsion.battery_specific_power_kw_per_kg*p.eta_battery_discharge;
-        if flight.peak_battery_discharge_bus_kw > batt_available_kw+1e-6
+        % Bind the mass selected above; recheck the full mission with its
+        % installed power limit. Do not inherit a previous iteration's pack.
+        p.battery_installed_mass_kg = batt_mass_lb/2.20462262185;
+        flight = m.run(Wguess,'std_mission',false);
+        if flight.peak_battery_discharge_bus_kw > p.battery_discharge_limit_bus_kw()+1e-6
             error('C4:Battery','Required mission battery power exceeds mass-based capability.');
         end
         adjusted_OEW = bd.total - (bd.prop_battery-batt_mass_lb)*installation_factor;

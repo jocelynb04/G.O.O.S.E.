@@ -1,7 +1,7 @@
 function test_concept4_integration()
 here = fileparts(mfilename('fullpath'));
 J = jsondecode(fileread(fullfile(here,'concept4_aero_hydro_requirements.json')));
-A = jsondecode(fileread(fullfile(here,'concept4_integration_assumptions.json')));
+A = jsondecode(fileread(fullfile(here,'Concept4_integration_assumptions.json')));
 p = SeaplaneProp_Concept4(J);
 g = SeaplaneGeom(J,p);
 g.S_ref = 350;

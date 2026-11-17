@@ -4,7 +4,7 @@ if nargin < 1 || isempty(requirements_filename)
     requirements_filename = fullfile(here,'concept4_aero_hydro_requirements.json');
 end
 if nargin < 2 || isempty(assumptions_filename)
-    assumptions_filename = fullfile(here,'concept4_integration_assumptions.json');
+    assumptions_filename = fullfile(here,'Concept4_integration_assumptions.json');
 end
 if nargin < 3 || isempty(output_dir)
     output_dir = fullfile(here,'results');

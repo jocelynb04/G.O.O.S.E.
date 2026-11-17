@@ -24,6 +24,7 @@ classdef SeaplaneProp_Concept4 < handle
         BSFC
         generator_lapse_exponent
         battery_max_charge_bus_kw
+        battery_installed_mass_kg = [] % Explicit pack mass for power checks
         battery_max_discharge_bus_kw
         electric_only_phases
     end
@@ -94,6 +95,24 @@ classdef SeaplaneProp_Concept4 < handle
             end
             kw = shaft_hp*0.7456998715822702/(obj.eta_motor*obj.eta_inverter);
         end
+        function kw = battery_discharge_limit_bus_kw(obj)
+            %battery_discharge_limit_bus_kw - Limit discharge by installed mass.
+            %   The configured bus ceiling and modeled pack-specific power
+            %   both apply. Without an explicit candidate mass, use the
+            %   legacy installed battery mass model, not an unlimited pack.
+            mass = obj.battery_installed_mass_kg;
+            if isempty(mass)
+                battery = obj.battery_mass_breakdown();
+                mass = battery.battery_mass_kg;
+            end
+            validateattributes(mass,{'numeric'}, ...
+                {'scalar','real','finite','nonnegative'});
+            specific_power = obj.J.propulsion.battery_specific_power_kw_per_kg;
+            validateattributes(specific_power,{'numeric'}, ...
+                {'scalar','real','finite','positive'});
+            kw = min(obj.battery_max_discharge_bus_kw, ...
+                mass*specific_power*obj.eta_battery_discharge);
+        end
         function p = prop_eff(obj, phase)
             if strcmp(phase, 'climb') || strcmp(phase, 'balked_landing')
                 p = obj.eta_p_climb;
@@ -161,8 +180,8 @@ classdef SeaplaneProp_Concept4 < handle
             if bat_to_motor_kw > 1e-9, charge_kw = 0; end
             battery_bus_kw = bat_to_motor_kw-charge_kw;
             generator_bus_kw = gen_to_motor_kw+charge_kw;
-            if battery_bus_kw > obj.battery_max_discharge_bus_kw+1e-9
-                error('C4:PowerUnavailable', 'Battery discharge limit exceeded.');
+            if battery_bus_kw > obj.battery_discharge_limit_bus_kw()+1e-9
+                error('C4:PowerUnavailable', 'Installed battery discharge limit exceeded.');
             end
             if battery_bus_kw >= 0
                 delta_energy_kwh = battery_bus_kw*duration_hr/obj.eta_battery_discharge;
