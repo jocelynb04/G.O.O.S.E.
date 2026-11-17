@@ -1,0 +1,31 @@
+{
+  "status": "PRELIMINARY_WEIGHT_CLOSED_UNVERIFIED_WATER_TAKEOFF",
+  "converged": true,
+  "wing_area_ft2": 300,
+  "wing_span_ft": 48.989794855663561,
+  "weight_lb": 12397.036103759781,
+  "team_weight_limit_lb": 12500,
+  "weight_margin_lb": 102.96389624021867,
+  "mass_closure_residual_lb": 0.020470723400649149,
+  "motor_shaft_rating_hp": 1606.2284277808567,
+  "generator_engine_rating_hp": 1024.794514636236,
+  "battery_capacity_kwh": 123.4139411004533,
+  "battery_mass_lb": 939.46441275262589,
+  "battery_bus_power_capability_kw": 809.65439007068176,
+  "peak_mission_battery_bus_kw": 736.04944551880158,
+  "mission_fuel_lb": 1612.6077360939105,
+  "estimated_OEW_lb": 8354.42836766587,
+  "payload_lb": 2430,
+  "mission_final_SOC": 0.23561436761492607,
+  "required_climb2000_hp": 1351.7763996175527,
+  "required_climb500_hp": 710.16674961557635,
+  "required_cruise180_hp": 633.04432641804817,
+  "iterations": 24,
+  "limitations": [
+    "Unverified water takeoff power and distance",
+    "Unverified motor-out drag and yaw",
+    "Unverified pack-specific energy and power",
+    "Unverified float mass and aerodynamic component inputs",
+    "Single fixed wing area, not a global minimum-weight design"
+  ]
+}

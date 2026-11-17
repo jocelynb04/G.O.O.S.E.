@@ -1,9 +1,10 @@
 function result = run_caravan(do_sizing)
 % Baseline mission by default; true also runs exploratory resized-aircraft sizing.
-setup_project();
+root=setup_project();
 if nargin == 0, do_sizing = false; end
-obj = ttpa_disciplines();
-result.benchmark = grand_caravan_ex_check_json(ttpa_requirements_path());
+jsonPath=fullfile(root,'config','GrandCaravanEX_requirements_IHW3.json');
+obj = ttpa_disciplines(jsonPath);
+result.benchmark = grand_caravan_ex_check_json(jsonPath);
 [result.fuel_lb,result.fuel_fraction,result.burn,result.weight,result.wf,result.detail] = mission_fuel(obj.wts.W_TO,obj);
 result.empty_lb = obj.wts.OEW(obj.wts.W_TO);
 result.mass_margin_lb = obj.wts.W_TO-result.empty_lb-obj.wts.payload()-result.fuel_lb;

@@ -12,6 +12,9 @@ for i = 1:speed_samples
     q = 0.5*a.rho_slug_ft3*v^2;
     cl = weight_lb/(q*area_ft2);
     if cl > clmax, continue; end
+    % Reynolds-dependent parasite drag must use the trial airspeed.
+    p = aero.get_config_polar(struct('alt_ft',alt_ft,'ktas',v/1.687809857), ...
+        struct('config','clean'));
     cd = p.CD0+p.K1*cl^2;
     drag = q*area_ft2*cd;
     hp = (drag*v+weight_lb*roc_fpm/60)/(550*eta_p);

@@ -27,7 +27,7 @@ The frozen reference drag polar, approximate turbine lapse, component/float assu
 
 ## Outputs
 
-The runner writes PNG, vector PDF, editable FIG, numerical CSV and saved MAT results to `outputs/`. The verifier adds `CONSTRAINT_VERIFICATION.txt`. Reviewed plot copies and the text report are intentionally included under `docs/`; generated `outputs/` contents are ignored for GitHub.
+The runner writes PNG, vector PDF, editable FIG, numerical CSV and saved MAT results to `outputs/`. Generated results are ignored by Git. Historical copies and verification reports are in the local archive.
 
 
 Current-folder update2026-11-06: landing CLmax2.2, cruise10000ft in the analysis and main mission climb/cruise. Caravan-only164KTAS chart and reference point retained. Water-landing calibration and landing beta0.975 remain assumptions. Earlier verification records are historical until regenerated.

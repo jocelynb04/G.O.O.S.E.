@@ -1,0 +1,5 @@
+Aircraft,TakeoffWeight_lbf,Span_ft,WingLoading_lbf_ft2,TurbinePowerLoading_lbf_shp,Cruise_kt,Range_nmi,WaterTakeoffOver50ft_ft,Basis,Source
+Concept 1 trade,12490,64.9,18.3,8.32666666666667,180,868.976,2000,"Modeled amphibian, water takeoff is a correlation",Concept 1 MATLAB model
+Cessna Grand Caravan EX Amphibian,9062,52.0833333333333,32.4802867383513,10.4521337946943,164,813,3270,"Published amphibian data, 813 nmi is a ferry range",https://cessna.txtav.com/turboprop/grand-caravan-ex ; https://wipaire.com/wipline-floats/wipline-8750-floats/
+Jekta PHA-ZE 100,NaN,NaN,NaN,NaN,110,NaN,NaN,"Development amphibian, blown lift and distributed electric propulsion",https://jekta.swiss/ ; https://jekta.swiss/phaze100-features/
+REGENT Viceroy Electric,15000,65,54,NaN,160,160,NaN,"Wing-in-ground effect, hydrofoils, range and speed approximate",https://www.regentcraft.com/seagliders/viceroy

@@ -1,7 +1,7 @@
 function result = run_profile()
 %RUN_PROFILE Fly the active L2 mission on the reference aircraft, without resizing.
-setup_project();
-obj=ttpa_disciplines();
+root=setup_project();
+obj=ttpa_disciplines(fullfile(root,'config','GrandCaravanEX_requirements_IHW3.json'));
 [result.fuel_lb,result.fuel_fraction,result.burn,result.weight,result.wf,result.detail] = ...
     mission_fuel(obj.wts.W_TO,obj);
 result.empty_lb=obj.wts.OEW(obj.wts.W_TO);

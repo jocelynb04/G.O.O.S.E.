@@ -1,0 +1,3218 @@
+{
+  "status": "NUMERICALLY_CONVERGED_PRELIMINARY_ONLY",
+  "converged": true,
+  "failure_reason": "",
+  "final_mission_error": "",
+  "iterations_completed": 56,
+  "state": {
+    "W_TO_lb": 15604.036927108204,
+    "S_ref_ft2": 512,
+    "motor_shaft_hp": 1878.7998179536223,
+    "generator_engine_hp_each": 1219.8525683296482,
+    "battery_capacity_kwh": 133.99420391752338
+  },
+  "history": [
+    {
+      "current": {
+        "W_TO_lb": 12500,
+        "S_ref_ft2": 350,
+        "motor_shaft_hp": 1350,
+        "generator_engine_hp_each": 1150,
+        "battery_capacity_kwh": 300
+      },
+      "proposed": {
+        "W_TO_lb": 13634.920684793124,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1465.1954569852737,
+        "generator_engine_hp_each": 1107.8599710522117,
+        "battery_capacity_kwh": 113.97205578485827
+      },
+      "residuals": {
+        "W_TO_lb": 0.083236324657090827,
+        "S_ref_ft2": 0.31640625,
+        "motor_shaft_hp": 0.078621221787225026,
+        "generator_engine_hp_each": 0.038037324254765706,
+        "battery_capacity_kwh": 1.6322241705133516
+      },
+      "max_residual": 1.6322241705133516,
+      "OEW_lb": 9756.0019270901212,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1448.918757703002,
+      "mission_soc_end": 0.29211748494586087,
+      "energy_probe_peak_deficit_kwh": 77.708219853312443,
+      "minimum_capacity_kwh_before_margin": 103.61095980441659,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 24.4140625,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1465.1954569852737,
+        "required_turboshaft_hp_each": 1107.8599710522117,
+        "cruise_180_hp": 687.97832694036981,
+        "roc_2000_sl_hp": 1233.0852855816659,
+        "roc_500_10k_hp": 573.74643139916259,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 499.18377043015056,
+        "score": 1733.7744526431056
+      },
+      "iteration": 1
+    },
+    {
+      "current": {
+        "W_TO_lb": 13010.714308156905,
+        "S_ref_ft2": 422.9,
+        "motor_shaft_hp": 1401.8379556433731,
+        "generator_engine_hp_each": 1131.0369869734952,
+        "battery_capacity_kwh": 216.28742510318622
+      },
+      "proposed": {
+        "W_TO_lb": 13950.992616608961,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1532.2157073771052,
+        "generator_engine_hp_each": 1124.5865890246707,
+        "battery_capacity_kwh": 117.19203975444233
+      },
+      "residuals": {
+        "W_TO_lb": 0.067398667198248982,
+        "S_ref_ft2": 0.17402343750000004,
+        "motor_shaft_hp": 0.085090990195445013,
+        "generator_engine_hp_each": 0.00573579483498802,
+        "battery_capacity_kwh": 0.8455811978047556
+      },
+      "max_residual": 0.8455811978047556,
+      "OEW_lb": 10022.445677463284,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1498.5469391456766,
+      "mission_soc_end": 0.27631246666161108,
+      "energy_probe_peak_deficit_kwh": 79.90366346893795,
+      "minimum_capacity_kwh_before_margin": 106.53821795858393,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 25.411551383118955,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1532.2157073771052,
+        "required_turboshaft_hp_each": 1124.5865890246707,
+        "cruise_180_hp": 698.36551570857989,
+        "roc_2000_sl_hp": 1289.4884666044943,
+        "roc_500_10k_hp": 604.28212918948645,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 525.60183108770616,
+        "score": 1803.3036957308059
+      },
+      "iteration": 2
+    },
+    {
+      "current": {
+        "W_TO_lb": 13433.839546960329,
+        "S_ref_ft2": 462.995,
+        "motor_shaft_hp": 1460.5079439235526,
+        "generator_engine_hp_each": 1128.1343078965242,
+        "battery_capacity_kwh": 171.69450169625148
+      },
+      "proposed": {
+        "W_TO_lb": 14215.246315184098,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1588.0581702562372,
+        "generator_engine_hp_each": 1138.9518218477604,
+        "battery_capacity_kwh": 119.88260052642504
+      },
+      "residuals": {
+        "W_TO_lb": 0.054969625632804192,
+        "S_ref_ft2": 0.095712890624999991,
+        "motor_shaft_hp": 0.080318359063701078,
+        "generator_engine_hp_each": 0.0094977801024862755,
+        "battery_capacity_kwh": 0.43218866576393494
+      },
+      "max_residual": 0.43218866576393494,
+      "OEW_lb": 10244.212407948296,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1541.0339072358022,
+      "mission_soc_end": 0.263711104588668,
+      "energy_probe_peak_deficit_kwh": 81.738136722562516,
+      "minimum_capacity_kwh_before_margin": 108.98418229675002,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 26.237967865156893,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1588.0581702562372,
+        "required_turboshaft_hp_each": 1138.9518218477604,
+        "cruise_180_hp": 707.28629008618611,
+        "roc_2000_sl_hp": 1336.4845987304966,
+        "roc_500_10k_hp": 629.89448935730138,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 547.75538290517432,
+        "score": 1861.3009435334013
+      },
+      "iteration": 3
+    },
+    {
+      "current": {
+        "W_TO_lb": 13785.472592661026,
+        "S_ref_ft2": 485.04725,
+        "motor_shaft_hp": 1517.9055457732607,
+        "generator_engine_hp_each": 1133.0021891745805,
+        "battery_capacity_kwh": 148.37914616982957
+      },
+      "proposed": {
+        "W_TO_lb": 14436.487340106944,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1634.6799869150627,
+        "generator_engine_hp_each": 1151.2396271623627,
+        "battery_capacity_kwh": 122.13402291633115
+      },
+      "residuals": {
+        "W_TO_lb": 0.045095093571501349,
+        "S_ref_ft2": 0.052642089843749962,
+        "motor_shaft_hp": 0.071435658401970525,
+        "generator_engine_hp_each": 0.015841565524229568,
+        "battery_capacity_kwh": 0.21488789631925778
+      },
+      "max_residual": 0.21488789631925778,
+      "OEW_lb": 10429.205113339936,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1577.2822267670078,
+      "mission_soc_end": 0.25356562629001816,
+      "energy_probe_peak_deficit_kwh": 83.273197442953048,
+      "minimum_capacity_kwh_before_margin": 111.03092992393739,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 26.924751157541067,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1634.6799869150627,
+        "required_turboshaft_hp_each": 1151.2396271623627,
+        "cruise_180_hp": 714.91698707226828,
+        "roc_2000_sl_hp": 1375.7207810671318,
+        "roc_500_10k_hp": 651.39207545339025,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 566.34644324044268,
+        "score": 1909.7659309894173
+      },
+      "iteration": 4
+    },
+    {
+      "current": {
+        "W_TO_lb": 14078.429229011688,
+        "S_ref_ft2": 497.1759875,
+        "motor_shaft_hp": 1570.4540442870716,
+        "generator_engine_hp_each": 1141.2090362690824,
+        "battery_capacity_kwh": 136.56884070575529
+      },
+      "proposed": {
+        "W_TO_lb": 14621.938277331845,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1673.6689283268111,
+        "generator_engine_hp_each": 1161.7194216322375,
+        "battery_capacity_kwh": 124.02032812841524
+      },
+      "residuals": {
+        "W_TO_lb": 0.037170793502989262,
+        "S_ref_ft2": 0.028953149414062462,
+        "motor_shaft_hp": 0.061669833437682758,
+        "generator_engine_hp_each": 0.01765519709943186,
+        "battery_capacity_kwh": 0.1011810947988047
+      },
+      "max_residual": 0.1011810947988047,
+      "OEW_lb": 10583.807481925282,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1608.1307954065635,
+      "mission_soc_end": 0.24533224678641902,
+      "energy_probe_peak_deficit_kwh": 84.559314633010388,
+      "minimum_capacity_kwh_before_margin": 112.74575284401385,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 27.496932087913454,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1673.6689283268111,
+        "required_turboshaft_hp_each": 1161.7194216322375,
+        "cruise_180_hp": 721.42491375474935,
+        "roc_2000_sl_hp": 1408.5332565126628,
+        "roc_500_10k_hp": 669.44794190160712,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 581.95881314265853,
+        "score": 1950.3268415716468
+      },
+      "iteration": 5
+    },
+    {
+      "current": {
+        "W_TO_lb": 14323.008300755759,
+        "S_ref_ft2": 503.84679312500003,
+        "motor_shaft_hp": 1616.9007421049544,
+        "generator_engine_hp_each": 1150.4387096825021,
+        "battery_capacity_kwh": 130.92201004595228
+      },
+      "proposed": {
+        "W_TO_lb": 14777.546534394418,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1706.3205471864871,
+        "generator_engine_hp_each": 1170.6374142444456,
+        "battery_capacity_kwh": 125.60241740473418
+      },
+      "residuals": {
+        "W_TO_lb": 0.030758707650199672,
+        "S_ref_ft2": 0.01592423217773431,
+        "motor_shaft_hp": 0.052405045012776208,
+        "generator_engine_hp_each": 0.017254449854552243,
+        "battery_capacity_kwh": 0.042352629440853329
+      },
+      "max_residual": 0.052405045012776208,
+      "OEW_lb": 10713.211093303504,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1634.3354410909146,
+      "mission_soc_end": 0.23860693669726887,
+      "energy_probe_peak_deficit_kwh": 85.6380118668642,
+      "minimum_capacity_kwh_before_margin": 114.18401582248561,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 27.974625587413591,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1706.3205471864871,
+        "required_turboshaft_hp_each": 1170.6374142444456,
+        "cruise_180_hp": 726.96296531119845,
+        "roc_2000_sl_hp": 1436.0123416915981,
+        "roc_500_10k_hp": 684.62239816894919,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 595.07814221540787,
+        "score": 1984.3161593231541
+      },
+      "iteration": 6
+    },
+    {
+      "current": {
+        "W_TO_lb": 14527.550505893156,
+        "S_ref_ft2": 507.51573621875,
+        "motor_shaft_hp": 1657.1396543916442,
+        "generator_engine_hp_each": 1159.5281267353766,
+        "battery_capacity_kwh": 128.52819335740412
+      },
+      "proposed": {
+        "W_TO_lb": 14908.226522119876,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1733.6972497094573,
+        "generator_engine_hp_each": 1178.2134960714061,
+        "battery_capacity_kwh": 126.93056426372996
+      },
+      "residuals": {
+        "W_TO_lb": 0.025534627855425814,
+        "S_ref_ft2": 0.0087583276977538649,
+        "motor_shaft_hp": 0.044158572282815292,
+        "generator_engine_hp_each": 0.015859069174078633,
+        "battery_capacity_kwh": 0.012586638237538156
+      },
+      "max_residual": 0.044158572282815292,
+      "OEW_lb": 10821.66231697948,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1656.5642051403966,
+      "mission_soc_end": 0.2330839247633284,
+      "energy_probe_peak_deficit_kwh": 86.543566543452243,
+      "minimum_capacity_kwh_before_margin": 115.39142205793632,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 28.37412208182257,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1733.6972497094573,
+        "required_turboshaft_hp_each": 1178.2134960714061,
+        "cruise_180_hp": 731.6676935586911,
+        "roc_2000_sl_hp": 1459.0521408445927,
+        "roc_500_10k_hp": 697.38228590233143,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 606.10883462738093,
+        "score": 2012.8292741201683
+      },
+      "iteration": 7
+    },
+    {
+      "current": {
+        "W_TO_lb": 14698.85471319518,
+        "S_ref_ft2": 509.53365492031253,
+        "motor_shaft_hp": 1691.59057228466,
+        "generator_engine_hp_each": 1167.9365429365898,
+        "battery_capacity_kwh": 127.80926026525074
+      },
+      "proposed": {
+        "W_TO_lb": 15018.051441181486,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1756.6740015229695,
+        "generator_engine_hp_each": 1184.641126892127,
+        "battery_capacity_kwh": 128.04639457149014
+      },
+      "residuals": {
+        "W_TO_lb": 0.021254203931611655,
+        "S_ref_ft2": 0.0048170802337645924,
+        "motor_shaft_hp": 0.037049235761378953,
+        "generator_engine_hp_each": 0.01410096574931613,
+        "battery_capacity_kwh": 0.0018519405175988933
+      },
+      "max_residual": 0.037049235761378953,
+      "OEW_lb": 10912.651262355123,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1675.4001788263638,
+      "mission_soc_end": 0.22852811465820941,
+      "energy_probe_peak_deficit_kwh": 87.304359935106916,
+      "minimum_capacity_kwh_before_margin": 116.40581324680922,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 28.708700611709336,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1756.6740015229695,
+        "required_turboshaft_hp_each": 1184.641126892127,
+        "cruise_180_hp": 735.65923654587039,
+        "roc_2000_sl_hp": 1478.3890111826972,
+        "roc_500_10k_hp": 708.11702176094218,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 615.38807158222255,
+        "score": 2036.7701705567888
+      },
+      "iteration": 8
+    },
+    {
+      "current": {
+        "W_TO_lb": 14842.493240789017,
+        "S_ref_ft2": 510.64351020617187,
+        "motor_shaft_hp": 1720.8781154418994,
+        "generator_engine_hp_each": 1175.4536057165815,
+        "battery_capacity_kwh": 127.91597070305848
+      },
+      "proposed": {
+        "W_TO_lb": 15110.406186744496,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1775.9740506559988,
+        "generator_engine_hp_each": 1190.0887712340259,
+        "battery_capacity_kwh": 128.98446657699543
+      },
+      "residuals": {
+        "W_TO_lb": 0.017730360299017221,
+        "S_ref_ft2": 0.0026493941285705702,
+        "motor_shaft_hp": 0.0310229393237747,
+        "generator_engine_hp_each": 0.012297541050041954,
+        "battery_capacity_kwh": 0.0082839112514306538
+      },
+      "max_residual": 0.0310229393237747,
+      "OEW_lb": 10989.058216244715,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1691.3479704997812,
+      "mission_soc_end": 0.22475627869910986,
+      "energy_probe_peak_deficit_kwh": 87.943954484315057,
+      "minimum_capacity_kwh_before_margin": 117.25860597908674,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 28.98924461091605,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1775.9740506559988,
+        "required_turboshaft_hp_each": 1190.0887712340259,
+        "cruise_180_hp": 739.04221033139845,
+        "roc_2000_sl_hp": 1494.6316267897021,
+        "roc_500_10k_hp": 717.15184678608227,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 623.19736454640758,
+        "score": 2056.8873663411027
+      },
+      "iteration": 9
+    },
+    {
+      "current": {
+        "W_TO_lb": 14963.054066468983,
+        "S_ref_ft2": 511.25393061339452,
+        "motor_shaft_hp": 1745.6712862882441,
+        "generator_engine_hp_each": 1182.0394301994315,
+        "battery_capacity_kwh": 128.3967938463301
+      },
+      "proposed": {
+        "W_TO_lb": 15188.110057745462,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1792.1971116441002,
+        "generator_engine_hp_each": 1194.7020617887106,
+        "battery_capacity_kwh": 129.77353837669312
+      },
+      "residuals": {
+        "W_TO_lb": 0.014817906271472326,
+        "S_ref_ft2": 0.0014571667707138358,
+        "motor_shaft_hp": 0.025960216682402146,
+        "generator_engine_hp_each": 0.010598986972802678,
+        "battery_capacity_kwh": 0.010608823243816902
+      },
+      "max_residual": 0.025960216682402146,
+      "OEW_lb": 11053.268413550779,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1704.8416441946822,
+      "mission_soc_end": 0.22162393977397954,
+      "energy_probe_peak_deficit_kwh": 88.481957984108931,
+      "minimum_capacity_kwh_before_margin": 117.97594397881191,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 29.224714973572233,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1792.1971116441002,
+        "required_turboshaft_hp_each": 1194.7020617887106,
+        "cruise_180_hp": 741.90705245985589,
+        "roc_2000_sl_hp": 1508.2846979183023,
+        "roc_500_10k_hp": 724.7587388595116,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 629.772053864252,
+        "score": 2073.8024209124069
+      },
+      "iteration": 10
+    },
+    {
+      "current": {
+        "W_TO_lb": 15064.329262543399,
+        "S_ref_ft2": 511.589661837367,
+        "motor_shaft_hp": 1766.6079076983794,
+        "generator_engine_hp_each": 1187.7376144146072,
+        "battery_capacity_kwh": 129.01632888499347
+      },
+      "proposed": {
+        "W_TO_lb": 15253.515843262001,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1805.8417932244317,
+        "generator_engine_hp_each": 1198.6062259857169,
+        "battery_capacity_kwh": 130.43759021607951
+      },
+      "residuals": {
+        "W_TO_lb": 0.012402817990461685,
+        "S_ref_ft2": 0.00080144172389262636,
+        "motor_shaft_hp": 0.021726092326171047,
+        "generator_engine_hp_each": 0.0090677082560384689,
+        "battery_capacity_kwh": 0.010896102333166527
+      },
+      "max_residual": 0.021726092326171047,
+      "OEW_lb": 11107.262886886,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1716.2529563760017,
+      "mission_soc_end": 0.21901603074725212,
+      "energy_probe_peak_deficit_kwh": 88.934720601872385,
+      "minimum_capacity_kwh_before_margin": 118.57962746916319,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 29.422518090905076,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1805.8417932244317,
+        "required_turboshaft_hp_each": 1198.6062259857169,
+        "cruise_180_hp": 744.33152885808317,
+        "roc_2000_sl_hp": 1519.7678457829375,
+        "roc_500_10k_hp": 731.16539902314014,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 635.30912014118485,
+        "score": 2088.0327271222891
+      },
+      "iteration": 11
+    },
+    {
+      "current": {
+        "W_TO_lb": 15149.463223866769,
+        "S_ref_ft2": 511.77431401055185,
+        "motor_shaft_hp": 1784.2631561851031,
+        "generator_engine_hp_each": 1192.6284896216066,
+        "battery_capacity_kwh": 129.65589648398219
+      },
+      "proposed": {
+        "W_TO_lb": 15308.590287405734,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1817.3235836005763,
+        "generator_engine_hp_each": 1201.908518784182,
+        "battery_capacity_kwh": 130.99665344242825
+      },
+      "residuals": {
+        "W_TO_lb": 0.010394625537132399,
+        "S_ref_ft2": 0.00044079294814092229,
+        "motor_shaft_hp": 0.018191822146484321,
+        "generator_engine_hp_each": 0.0077210777838256778,
+        "battery_capacity_kwh": 0.010235047409324195
+      },
+      "max_residual": 0.018191822146484321,
+      "OEW_lb": 11152.691012941768,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1725.899274463965,
+      "mission_soc_end": 0.21684011850145404,
+      "energy_probe_peak_deficit_kwh": 89.3159000743829,
+      "minimum_capacity_kwh_before_margin": 119.08786676584386,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 29.588795359114783,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1817.3235836005763,
+        "required_turboshaft_hp_each": 1201.908518784182,
+        "cruise_180_hp": 746.38224459284993,
+        "roc_2000_sl_hp": 1529.4307386737523,
+        "roc_500_10k_hp": 736.562660393126,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 639.973617575514,
+        "score": 2100.0098614182034
+      },
+      "iteration": 12
+    },
+    {
+      "current": {
+        "W_TO_lb": 15221.070402459303,
+        "S_ref_ft2": 511.87587270580354,
+        "motor_shaft_hp": 1799.140348522066,
+        "generator_engine_hp_each": 1196.8045027447656,
+        "battery_capacity_kwh": 130.25923711528293
+      },
+      "proposed": {
+        "W_TO_lb": 15354.979766237037,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1826.9893727251647,
+        "generator_engine_hp_each": 1204.70052562924,
+        "battery_capacity_kwh": 131.46748602703781
+      },
+      "residuals": {
+        "W_TO_lb": 0.0087209078628795681,
+        "S_ref_ft2": 0.00024243612147745175,
+        "motor_shaft_hp": 0.015243123259966563,
+        "generator_engine_hp_each": 0.0065543450147912477,
+        "battery_capacity_kwh": 0.0091904770393676539
+      },
+      "max_residual": 0.015243123259966563,
+      "OEW_lb": 11190.928889455336,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1734.0508767817012,
+      "mission_soc_end": 0.21502140462977584,
+      "energy_probe_peak_deficit_kwh": 89.636922291162136,
+      "minimum_capacity_kwh_before_margin": 119.51589638821618,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 29.728653129803327,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1826.9893727251647,
+        "required_turboshaft_hp_each": 1204.70052562924,
+        "cruise_180_hp": 748.11607400113235,
+        "roc_2000_sl_hp": 1537.5653136795941,
+        "roc_500_10k_hp": 741.11060778554781,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 643.90398323217255,
+        "score": 2110.0944515695505
+      },
+      "iteration": 13
+    },
+    {
+      "current": {
+        "W_TO_lb": 15281.329616159283,
+        "S_ref_ft2": 511.93172998819193,
+        "motor_shaft_hp": 1811.6724094134604,
+        "generator_engine_hp_each": 1200.3577130427791,
+        "battery_capacity_kwh": 130.80294912557264
+      },
+      "proposed": {
+        "W_TO_lb": 15394.064138329835,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1835.1292498299074,
+        "generator_engine_hp_each": 1207.0602700408901,
+        "battery_capacity_kwh": 131.86412556087154
+      },
+      "residuals": {
+        "W_TO_lb": 0.0073232462303345815,
+        "S_ref_ft2": 0.00013333986681263177,
+        "motor_shaft_hp": 0.012782118980786307,
+        "generator_engine_hp_each": 0.005552793977623002,
+        "battery_capacity_kwh": 0.00804749912673588
+      },
+      "max_residual": 0.012782118980786307,
+      "OEW_lb": 11223.12662622953,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1740.937512100305,
+      "mission_soc_end": 0.21349897987149924,
+      "energy_probe_peak_deficit_kwh": 89.90735833695787,
+      "minimum_capacity_kwh_before_margin": 119.87647778261049,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 29.8463469065611,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1835.1292498299074,
+        "required_turboshaft_hp_each": 1207.0602700408901,
+        "cruise_180_hp": 749.58146949763375,
+        "roc_2000_sl_hp": 1544.4157053023973,
+        "roc_500_10k_hp": 744.94364304937062,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 647.21642859607584,
+        "score": 2118.5882903360407
+      },
+      "iteration": 14
+    },
+    {
+      "current": {
+        "W_TO_lb": 15332.060151136031,
+        "S_ref_ft2": 511.96245149350557,
+        "motor_shaft_hp": 1822.2279876008615,
+        "generator_engine_hp_each": 1203.373863691929,
+        "battery_capacity_kwh": 131.28047852145716
+      },
+      "proposed": {
+        "W_TO_lb": 15427.001075676613,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1841.9861386667008,
+        "generator_engine_hp_each": 1209.054101098641,
+        "battery_capacity_kwh": 132.19834379800946
+      },
+      "residuals": {
+        "W_TO_lb": 0.0061542048305340026,
+        "S_ref_ft2": 7.3336926746936371E-5,
+        "motor_shaft_hp": 0.010726547095593741,
+        "generator_engine_hp_each": 0.0046980837346736262,
+        "battery_capacity_kwh": 0.0069430921007205991
+      },
+      "max_residual": 0.010726547095593741,
+      "OEW_lb": 11250.246879522525,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1746.7541961540887,
+      "mission_soc_end": 0.21222297849955107,
+      "energy_probe_peak_deficit_kwh": 90.135234407733719,
+      "minimum_capacity_kwh_before_margin": 120.18031254364496,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 29.945429982687561,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1841.9861386667008,
+        "required_turboshaft_hp_each": 1209.054101098641,
+        "cruise_180_hp": 750.81963369812411,
+        "roc_2000_sl_hp": 1550.186354323461,
+        "roc_500_10k_hp": 748.17468674472843,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 650.0085802984288,
+        "score": 2125.7442538314967
+      },
+      "iteration": 15
+    },
+    {
+      "current": {
+        "W_TO_lb": 15374.783567179293,
+        "S_ref_ft2": 511.97934832142806,
+        "motor_shaft_hp": 1831.1191555804892,
+        "generator_engine_hp_each": 1205.9299705249493,
+        "battery_capacity_kwh": 131.6935178959057
+      },
+      "proposed": {
+        "W_TO_lb": 15454.762685967948,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1847.7637034656357,
+        "generator_engine_hp_each": 1210.7383591907039,
+        "battery_capacity_kwh": 132.48002162987706
+      },
+      "residuals": {
+        "W_TO_lb": 0.0051750467097933127,
+        "S_ref_ft2": 4.0335309710815004E-5,
+        "motor_shaft_hp": 0.0090079417914359118,
+        "generator_engine_hp_each": 0.0039714514942507245,
+        "battery_capacity_kwh": 0.0059367723849615131
+      },
+      "max_residual": 0.0090079417914359118,
+      "OEW_lb": 11273.096410337661,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1751.6662756302865,
+      "mission_soc_end": 0.21115238898028155,
+      "energy_probe_peak_deficit_kwh": 90.327287474916162,
+      "minimum_capacity_kwh_before_margin": 120.43638329988822,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.028874154647056,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1847.7637034656357,
+        "required_turboshaft_hp_each": 1210.7383591907039,
+        "cruise_180_hp": 751.86555384560677,
+        "roc_2000_sl_hp": 1555.0486613324656,
+        "roc_500_10k_hp": 750.89867062430449,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 652.36250492610543,
+        "score": 2131.7744573442415
+      },
+      "iteration": 16
+    },
+    {
+      "current": {
+        "W_TO_lb": 15410.774170634188,
+        "S_ref_ft2": 511.98864157678543,
+        "motor_shaft_hp": 1838.609202128805,
+        "generator_engine_hp_each": 1208.0937454245388,
+        "battery_capacity_kwh": 132.04744457619282
+      },
+      "proposed": {
+        "W_TO_lb": 15478.165859128245,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1852.632862233942,
+        "generator_engine_hp_each": 1212.1608309342027,
+        "battery_capacity_kwh": 132.71745940542976
+      },
+      "residuals": {
+        "W_TO_lb": 0.0043539841288309363,
+        "S_ref_ft2": 2.2184420340964905E-5,
+        "motor_shaft_hp": 0.0075695840179726475,
+        "generator_engine_hp_each": 0.0033552358778409304,
+        "battery_capacity_kwh": 0.0050484301932736961
+      },
+      "max_residual": 0.0075695840179726475,
+      "OEW_lb": 11292.352042629578,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1755.8138164986672,
+      "mission_soc_end": 0.21025335026371736,
+      "energy_probe_peak_deficit_kwh": 90.489176867338458,
+      "minimum_capacity_kwh_before_margin": 120.65223582311795,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.099168302019898,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1852.632862233942,
+        "required_turboshaft_hp_each": 1212.1608309342027,
+        "cruise_180_hp": 752.74890531220331,
+        "roc_2000_sl_hp": 1559.1464682166838,
+        "roc_500_10k_hp": 753.19544619467536,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 654.34722713778262,
+        "score": 2136.8569868740724
+      },
+      "iteration": 17
+    },
+    {
+      "current": {
+        "W_TO_lb": 15441.100430456514,
+        "S_ref_ft2": 511.993752867232,
+        "motor_shaft_hp": 1844.9198491761167,
+        "generator_engine_hp_each": 1209.9239339038877,
+        "battery_capacity_kwh": 132.34895124934945
+      },
+      "proposed": {
+        "W_TO_lb": 15497.897480069514,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1856.7371714983731,
+        "generator_engine_hp_each": 1213.3620104089957,
+        "battery_capacity_kwh": 132.91763445984267
+      },
+      "residuals": {
+        "W_TO_lb": 0.0036648229016898472,
+        "S_ref_ft2": 1.2201431187519596E-5,
+        "motor_shaft_hp": 0.0063645638723976578,
+        "generator_engine_hp_each": 0.0028335125672421,
+        "battery_capacity_kwh": 0.0042784632212592606
+      },
+      "max_residual": 0.0063645638723976578,
+      "OEW_lb": 11308.582095611328,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1759.3153844581866,
+      "mission_soc_end": 0.20949781234671247,
+      "energy_probe_peak_deficit_kwh": 90.625659858983639,
+      "minimum_capacity_kwh_before_margin": 120.83421314531152,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.158399278235379,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1856.7371714983731,
+        "required_turboshaft_hp_each": 1213.3620104089957,
+        "cruise_180_hp": 753.49483482226424,
+        "roc_2000_sl_hp": 1562.6005898748683,
+        "roc_500_10k_hp": 755.13221120541311,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 656.02082975336839,
+        "score": 2141.1414730597226
+      },
+      "iteration": 18
+    },
+    {
+      "current": {
+        "W_TO_lb": 15466.659102782363,
+        "S_ref_ft2": 511.99656407697762,
+        "motor_shaft_hp": 1850.2376442211321,
+        "generator_engine_hp_each": 1211.4710683311864,
+        "battery_capacity_kwh": 132.6048586940714
+      },
+      "proposed": {
+        "W_TO_lb": 15514.535423939418,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1860.1972914593225,
+        "generator_engine_hp_each": 1214.3761863610978,
+        "battery_capacity_kwh": 133.0864153487237
+      },
+      "residuals": {
+        "W_TO_lb": 0.0030859010501326544,
+        "S_ref_ft2": 6.7107871530858176E-6,
+        "motor_shaft_hp": 0.0053540811417788362,
+        "generator_engine_hp_each": 0.0023922719026767212,
+        "battery_capacity_kwh": 0.0036183757252045245
+      },
+      "max_residual": 0.0053540811417788362,
+      "OEW_lb": 11322.264136506115,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1762.2712874333029,
+      "mission_soc_end": 0.20886247353929668,
+      "energy_probe_peak_deficit_kwh": 90.740737737766153,
+      "minimum_capacity_kwh_before_margin": 120.98765031702153,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.208318560121803,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1860.1972914593225,
+        "required_turboshaft_hp_each": 1214.3761863610978,
+        "cruise_180_hp": 754.12463560303206,
+        "roc_2000_sl_hp": 1565.5125720202218,
+        "roc_500_10k_hp": 756.765537115759,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 657.4322080311058,
+        "score": 2144.753719413487
+      },
+      "iteration": 19
+    },
+    {
+      "current": {
+        "W_TO_lb": 15488.203447303038,
+        "S_ref_ft2": 511.9981102423377,
+        "motor_shaft_hp": 1854.7194854783179,
+        "generator_engine_hp_each": 1212.7783714446466,
+        "battery_capacity_kwh": 132.82155918866493
+      },
+      "proposed": {
+        "W_TO_lb": 15528.566073625851,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1863.1146981903687,
+        "generator_engine_hp_each": 1215.2323753906796,
+        "battery_capacity_kwh": 133.22874043808227
+      },
+      "residuals": {
+        "W_TO_lb": 0.0025992500615601277,
+        "S_ref_ft2": 3.6909329341749952E-6,
+        "motor_shaft_hp": 0.0045060095979088258,
+        "generator_engine_hp_each": 0.0020193701186113477,
+        "battery_capacity_kwh": 0.0030562568412674505
+      },
+      "max_residual": 0.0045060095979088258,
+      "OEW_lb": 11333.799726201301,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1764.7663474245487,
+      "mission_soc_end": 0.20832793037445735,
+      "energy_probe_peak_deficit_kwh": 90.837777571419721,
+      "minimum_capacity_kwh_before_margin": 121.11703676189296,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.250397358013746,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1863.1146981903687,
+        "required_turboshaft_hp_each": 1215.2323753906796,
+        "cruise_180_hp": 754.65632689210088,
+        "roc_2000_sl_hp": 1567.9678153087261,
+        "roc_500_10k_hp": 758.143065482673,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 658.6225371526765,
+        "score": 2147.7995544989708
+      },
+      "iteration": 20
+    },
+    {
+      "current": {
+        "W_TO_lb": 15506.366629148304,
+        "S_ref_ft2": 511.99896063328572,
+        "motor_shaft_hp": 1858.4973311987408,
+        "generator_engine_hp_each": 1213.8826732203615,
+        "battery_capacity_kwh": 133.00479075090274
+      },
+      "proposed": {
+        "W_TO_lb": 15540.39896013669,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1865.5747767004495,
+        "generator_engine_hp_each": 1215.9551202997807,
+        "battery_capacity_kwh": 133.34876704775715
+      },
+      "residuals": {
+        "W_TO_lb": 0.0021899264668612311,
+        "S_ref_ft2": 2.0300131138295541E-6,
+        "motor_shaft_hp": 0.0037937077570411358,
+        "generator_engine_hp_each": 0.0017043779369983615,
+        "battery_capacity_kwh": 0.0025795236391740815
+      },
+      "max_residual": 0.0037937077570411358,
+      "OEW_lb": 11343.52669617541,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1766.8722639612806,
+      "mission_soc_end": 0.20787799268987961,
+      "energy_probe_peak_deficit_kwh": 90.919613896198044,
+      "minimum_capacity_kwh_before_margin": 121.22615186159739,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.285872322555281,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1865.5747767004495,
+        "required_turboshaft_hp_each": 1215.9551202997807,
+        "cruise_180_hp": 755.10514970938868,
+        "roc_2000_sl_hp": 1570.0381784112692,
+        "roc_500_10k_hp": 759.30492903997708,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 659.62650132112253,
+        "score": 2150.3680447454167
+      },
+      "iteration": 21
+    },
+    {
+      "current": {
+        "W_TO_lb": 15521.681178093078,
+        "S_ref_ft2": 511.99942834830716,
+        "motor_shaft_hp": 1861.6821816745098,
+        "generator_engine_hp_each": 1214.8152744061001,
+        "battery_capacity_kwh": 133.15958008448723
+      },
+      "proposed": {
+        "W_TO_lb": 15550.379015970311,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1867.6494030083502,
+        "generator_engine_hp_each": 1216.5651713170821,
+        "battery_capacity_kwh": 133.44999619530492
+      },
+      "residuals": {
+        "W_TO_lb": 0.0018454751390792471,
+        "S_ref_ft2": 1.116507212572948E-6,
+        "motor_shaft_hp": 0.003195043633044061,
+        "generator_engine_hp_each": 0.0014383914254979934,
+        "battery_capacity_kwh": 0.0021762167036158031
+      },
+      "max_residual": 0.003195043633044061,
+      "OEW_lb": 11351.729390666213,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1768.6496253040989,
+      "mission_soc_end": 0.20749912827030151,
+      "energy_probe_peak_deficit_kwh": 90.988633769526075,
+      "minimum_capacity_kwh_before_margin": 121.3181783593681,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.315783550963044,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1867.6494030083502,
+        "required_turboshaft_hp_each": 1216.5651713170821,
+        "cruise_180_hp": 755.483989896053,
+        "roc_2000_sl_hp": 1571.7841510466312,
+        "roc_500_10k_hp": 760.28494339192844,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 660.47332430253027,
+        "score": 2152.5341787059124
+      },
+      "iteration": 22
+    },
+    {
+      "current": {
+        "W_TO_lb": 15534.595205137834,
+        "S_ref_ft2": 511.99968559156895,
+        "motor_shaft_hp": 1864.367431274738,
+        "generator_engine_hp_each": 1215.602728016042,
+        "battery_capacity_kwh": 133.29026733435518
+      },
+      "proposed": {
+        "W_TO_lb": 15558.79684322323,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1869.3991031338549,
+        "generator_engine_hp_each": 1217.0800661910012,
+        "battery_capacity_kwh": 133.53537706946963
+      },
+      "residuals": {
+        "W_TO_lb": 0.0015554954749562005,
+        "S_ref_ft2": 6.1407896689846808E-7,
+        "motor_shaft_hp": 0.0026915985199103616,
+        "generator_engine_hp_each": 0.0012138381163226955,
+        "battery_capacity_kwh": 0.0018355415657900123
+      },
+      "max_residual": 0.0026915985199103616,
+      "OEW_lb": 11358.647226023324,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1770.1496171999052,
+      "mission_soc_end": 0.20718001002627937,
+      "energy_probe_peak_deficit_kwh": 91.0468480019111,
+      "minimum_capacity_kwh_before_margin": 121.39579733588147,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.341006260034831,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1869.3991031338549,
+        "required_turboshaft_hp_each": 1217.0800661910012,
+        "cruise_180_hp": 755.80373835088039,
+        "roc_2000_sl_hp": 1573.2566709542341,
+        "roc_500_10k_hp": 761.11160724978811,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 661.18763428894454,
+        "score": 2154.361113062505
+      },
+      "iteration": 23
+    },
+    {
+      "current": {
+        "W_TO_lb": 15545.485942276262,
+        "S_ref_ft2": 511.99982707536293,
+        "motor_shaft_hp": 1866.6316836113406,
+        "generator_engine_hp_each": 1216.2675301947736,
+        "battery_capacity_kwh": 133.40056671515669
+      },
+      "proposed": {
+        "W_TO_lb": 15565.897327057879,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1870.8748608165413,
+        "generator_engine_hp_each": 1217.5146233545568,
+        "battery_capacity_kwh": 133.60739462546249
+      },
+      "residuals": {
+        "W_TO_lb": 0.0013112886686035329,
+        "S_ref_ft2": 3.377434317775041E-7,
+        "motor_shaft_hp": 0.0022680176499612482,
+        "generator_engine_hp_each": 0.0010242941939761752,
+        "battery_capacity_kwh": 0.0015480274193325821
+      },
+      "max_residual": 0.0022680176499612482,
+      "OEW_lb": 11364.481854207772,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1771.4154728501069,
+      "mission_soc_end": 0.20691114497800753,
+      "energy_probe_peak_deficit_kwh": 91.095950880997151,
+      "minimum_capacity_kwh_before_margin": 121.46126784132953,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.362277231008324,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1870.8748608165413,
+        "required_turboshaft_hp_each": 1217.5146233545568,
+        "cruise_180_hp": 756.0735972844592,
+        "roc_2000_sl_hp": 1574.4986452416435,
+        "roc_500_10k_hp": 761.80894262292566,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 661.79019029739322,
+        "score": 2155.9020543197248
+      },
+      "iteration": 24
+    },
+    {
+      "current": {
+        "W_TO_lb": 15554.67106542799,
+        "S_ref_ft2": 511.9999048914496,
+        "motor_shaft_hp": 1868.5411133536809,
+        "generator_engine_hp_each": 1216.8287221166761,
+        "battery_capacity_kwh": 133.4936392747943
+      },
+      "proposed": {
+        "W_TO_lb": 15571.886867574476,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1872.1196328884025,
+        "generator_engine_hp_each": 1217.8813606338031,
+        "battery_capacity_kwh": 133.66814309914648
+      },
+      "residuals": {
+        "W_TO_lb": 0.0011055694337424404,
+        "S_ref_ft2": 1.857588874942806E-7,
+        "motor_shaft_hp": 0.0019114801596308842,
+        "generator_engine_hp_each": 0.00086431942482408227,
+        "battery_capacity_kwh": 0.0013055004753281876
+      },
+      "max_residual": 0.0019114801596308842,
+      "OEW_lb": 11369.403165529964,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1772.4837020445118,
+      "mission_soc_end": 0.20668456897806931,
+      "energy_probe_peak_deficit_kwh": 91.137370294872582,
+      "minimum_capacity_kwh_before_margin": 121.51649372649678,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.380216924664044,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1872.1196328884025,
+        "required_turboshaft_hp_each": 1217.8813606338031,
+        "cruise_180_hp": 756.30134023609162,
+        "roc_2000_sl_hp": 1575.5462256981605,
+        "roc_500_10k_hp": 762.39720104314677,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 662.29849269007764,
+        "score": 2157.2018369834732
+      },
+      "iteration": 25
+    },
+    {
+      "current": {
+        "W_TO_lb": 15562.418176393909,
+        "S_ref_ft2": 511.99994769029729,
+        "motor_shaft_hp": 1870.1514471443056,
+        "generator_engine_hp_each": 1217.3024094493833,
+        "battery_capacity_kwh": 133.57216599575278
+      },
+      "proposed": {
+        "W_TO_lb": 15576.9394562686,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1873.1696208430803,
+        "generator_engine_hp_each": 1218.1908503591681,
+        "battery_capacity_kwh": 133.71938775395674
+      },
+      "residuals": {
+        "W_TO_lb": 0.0009322293326913388,
+        "S_ref_ft2": 1.0216738810520098E-7,
+        "motor_shaft_hp": 0.0016112655603587522,
+        "generator_engine_hp_each": 0.00072931175728567575,
+        "battery_capacity_kwh": 0.0011009754133397796
+      },
+      "max_residual": 0.0016112655603587522,
+      "OEW_lb": 11373.554324023382,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1773.3851322452165,
+      "mission_soc_end": 0.20649359460428887,
+      "energy_probe_peak_deficit_kwh": 91.172309832243215,
+      "minimum_capacity_kwh_before_margin": 121.56307977632429,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.395348000769353,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1873.1696208430803,
+        "required_turboshaft_hp_each": 1218.1908503591681,
+        "cruise_180_hp": 756.49353259706231,
+        "roc_2000_sl_hp": 1576.4298789273448,
+        "roc_500_10k_hp": 762.89345752123961,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 662.72729660118716,
+        "score": 2158.2982483969558
+      },
+      "iteration": 26
+    },
+    {
+      "current": {
+        "W_TO_lb": 15568.95275233752,
+        "S_ref_ft2": 511.99997122966352,
+        "motor_shaft_hp": 1871.5096253087543,
+        "generator_engine_hp_each": 1217.7022078587863,
+        "battery_capacity_kwh": 133.63841578694456
+      },
+      "proposed": {
+        "W_TO_lb": 15581.201784935285,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1874.0553387275449,
+        "generator_engine_hp_each": 1218.4520202751105,
+        "battery_capacity_kwh": 133.762616780019
+      },
+      "residuals": {
+        "W_TO_lb": 0.00078614170888975383,
+        "S_ref_ft2": 5.6192063446758311E-8,
+        "motor_shaft_hp": 0.0013583982106521912,
+        "generator_engine_hp_each": 0.00061538115891906662,
+        "battery_capacity_kwh": 0.00092851796760735385
+      },
+      "max_residual": 0.0013583982106521912,
+      "OEW_lb": 11377.055995129371,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1774.1457898059139,
+      "mission_soc_end": 0.20633260230374334,
+      "energy_probe_peak_deficit_kwh": 91.201784168194763,
+      "minimum_capacity_kwh_before_margin": 121.60237889092635,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.408110844409219,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1874.0553387275449,
+        "required_turboshaft_hp_each": 1218.4520202751105,
+        "cruise_180_hp": 756.65571847480169,
+        "roc_2000_sl_hp": 1577.1752850677358,
+        "roc_500_10k_hp": 763.31211032574413,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 663.08904392670718,
+        "score": 2159.2231417688117
+      },
+      "iteration": 27
+    },
+    {
+      "current": {
+        "W_TO_lb": 15574.464817006514,
+        "S_ref_ft2": 511.99998417631491,
+        "motor_shaft_hp": 1872.65519634721,
+        "generator_engine_hp_each": 1218.0396234461323,
+        "battery_capacity_kwh": 133.69430623382806
+      },
+      "proposed": {
+        "W_TO_lb": 15584.797543410663,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1874.8025106230341,
+        "generator_engine_hp_each": 1218.6724083374409,
+        "battery_capacity_kwh": 133.79908494168387
+      },
+      "residuals": {
+        "W_TO_lb": 0.00066300036143349215,
+        "S_ref_ft2": 3.0905634940125992E-8,
+        "motor_shaft_hp": 0.0011453549180017398,
+        "generator_engine_hp_each": 0.00051924117341086242,
+        "battery_capacity_kwh": 0.00078310481646030753
+      },
+      "max_residual": 0.0011453549180017398,
+      "OEW_lb": 11380.009897940767,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1774.7876454698965,
+      "mission_soc_end": 0.20619686689731284,
+      "energy_probe_peak_deficit_kwh": 91.226648823875365,
+      "minimum_capacity_kwh_before_margin": 121.63553176516716,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.418876595715847,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1874.8025106230341,
+        "required_turboshaft_hp_each": 1218.6724083374409,
+        "cruise_180_hp": 756.79257892139367,
+        "roc_2000_sl_hp": 1577.8040930985928,
+        "roc_500_10k_hp": 763.66530169094506,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 663.39422694858911,
+        "score": 2160.0033718736504
+      },
+      "iteration": 28
+    },
+    {
+      "current": {
+        "W_TO_lb": 15579.114543888381,
+        "S_ref_ft2": 511.99999129697318,
+        "motor_shaft_hp": 1873.6214877713307,
+        "generator_engine_hp_each": 1218.3243766472212,
+        "battery_capacity_kwh": 133.74145665236318
+      },
+      "proposed": {
+        "W_TO_lb": 15587.831036602311,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1875.4328253663748,
+        "generator_engine_hp_each": 1218.8583783366018,
+        "battery_capacity_kwh": 133.82985030370492
+      },
+      "residuals": {
+        "W_TO_lb": 0.00055918573234863564,
+        "S_ref_ft2": 1.6998099261478217E-8,
+        "motor_shaft_hp": 0.00096582376640986741,
+        "generator_engine_hp_each": 0.00043811627246584969,
+        "battery_capacity_kwh": 0.00066049279096657126
+      },
+      "max_residual": 0.00096582376640986741,
+      "OEW_lb": 11382.501791833793,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1775.3292447685187,
+      "mission_soc_end": 0.20608241312190836,
+      "energy_probe_peak_deficit_kwh": 91.247625207071536,
+      "minimum_capacity_kwh_before_margin": 121.66350027609538,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.427958093531995,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1875.4328253663748,
+        "required_turboshaft_hp_each": 1218.8583783366018,
+        "cruise_180_hp": 756.90806583510744,
+        "roc_2000_sl_hp": 1578.3345560014045,
+        "roc_500_10k_hp": 763.96327208874413,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 663.6516945231092,
+        "score": 2160.6615821168652
+      },
+      "iteration": 29
+    },
+    {
+      "current": {
+        "W_TO_lb": 15583.03696560965,
+        "S_ref_ft2": 511.99999521333524,
+        "motor_shaft_hp": 1874.4365896891006,
+        "generator_engine_hp_each": 1218.5646774074426,
+        "battery_capacity_kwh": 133.78123379546696
+      },
+      "proposed": {
+        "W_TO_lb": 15590.39022980801,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1875.9645715459762,
+        "generator_engine_hp_each": 1219.0153022801637,
+        "battery_capacity_kwh": 133.85580514664545
+      },
+      "residuals": {
+        "W_TO_lb": 0.00047165363342228196,
+        "S_ref_ft2": 9.3489546104663646E-9,
+        "motor_shaft_hp": 0.00081450464473132765,
+        "generator_engine_hp_each": 0.0003696630156145472,
+        "battery_capacity_kwh": 0.0005571021077255099
+      },
+      "max_residual": 0.00081450464473132765,
+      "OEW_lb": 11384.603988913568,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1775.7862408944422,
+      "mission_soc_end": 0.20598589511034482,
+      "energy_probe_peak_deficit_kwh": 91.265321690894623,
+      "minimum_capacity_kwh_before_margin": 121.6870955878595,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.435619073456348,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1875.9645715459762,
+        "required_turboshaft_hp_each": 1219.0153022801637,
+        "cruise_180_hp": 757.00551521947887,
+        "roc_2000_sl_hp": 1578.7820651624552,
+        "roc_500_10k_hp": 764.2146586449154,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 663.86890998461593,
+        "score": 2161.2168668880008
+      },
+      "iteration": 30
+    },
+    {
+      "current": {
+        "W_TO_lb": 15586.345934498911,
+        "S_ref_ft2": 511.9999973673344,
+        "motor_shaft_hp": 1875.1241815246947,
+        "generator_engine_hp_each": 1218.7674586001672,
+        "battery_capacity_kwh": 133.81479090349728
+      },
+      "proposed": {
+        "W_TO_lb": 15592.5493135312,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1876.4131719973129,
+        "generator_engine_hp_each": 1219.147714596113,
+        "battery_capacity_kwh": 133.87770200018795
+      },
+      "residuals": {
+        "W_TO_lb": 0.00039784251488023765,
+        "S_ref_ft2": 5.1419249968986946E-9,
+        "motor_shaft_hp": 0.00068694384150278073,
+        "generator_engine_hp_each": 0.00031190313642331566,
+        "battery_capacity_kwh": 0.00046991467399538342
+      },
+      "max_residual": 0.00068694384150278073,
+      "OEW_lb": 11386.377468531267,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1776.1718449999328,
+      "mission_soc_end": 0.20590449567087274,
+      "energy_probe_peak_deficit_kwh": 91.2802513637645,
+      "minimum_capacity_kwh_before_margin": 121.70700181835268,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.442081903318186,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1876.4131719973129,
+        "required_turboshaft_hp_each": 1219.147714596113,
+        "cruise_180_hp": 757.08774294317425,
+        "roc_2000_sl_hp": 1579.1596001957585,
+        "roc_500_10k_hp": 764.426746569916,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.052168435406,
+        "score": 2161.68532918673
+      },
+      "iteration": 31
+    },
+    {
+      "current": {
+        "W_TO_lb": 15589.137455063441,
+        "S_ref_ft2": 511.9999985520339,
+        "motor_shaft_hp": 1875.7042272373728,
+        "generator_engine_hp_each": 1218.9385737983428,
+        "battery_capacity_kwh": 133.84310089700807
+      },
+      "proposed": {
+        "W_TO_lb": 15594.370864209735,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1876.791633869442,
+        "generator_engine_hp_each": 1219.2594424665976,
+        "battery_capacity_kwh": 133.89617557194367
+      },
+      "residuals": {
+        "W_TO_lb": 0.00033559604243512672,
+        "S_ref_ft2": 2.8280587871520879E-9,
+        "motor_shaft_hp": 0.00057939656829521951,
+        "generator_engine_hp_each": 0.0002631668511877685,
+        "battery_capacity_kwh": 0.00039638678781444159
+      },
+      "max_residual": 0.00057939656829521951,
+      "OEW_lb": 11387.873657589862,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1776.4972066198741,
+      "mission_soc_end": 0.20583584199130556,
+      "energy_probe_peak_deficit_kwh": 91.292846980870678,
+      "minimum_capacity_kwh_before_margin": 121.72379597449424,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.447534091920783,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1876.791633869442,
+        "required_turboshaft_hp_each": 1219.2594424665976,
+        "cruise_180_hp": 757.15712567692856,
+        "roc_2000_sl_hp": 1579.4781077119064,
+        "roc_500_10k_hp": 764.60568104765764,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.20677985780264,
+        "score": 2162.0805502394319
+      },
+      "iteration": 32
+    },
+    {
+      "current": {
+        "W_TO_lb": 15591.492489179273,
+        "S_ref_ft2": 511.99999920361864,
+        "motor_shaft_hp": 1876.1935602218039,
+        "generator_engine_hp_each": 1219.0829646990574,
+        "battery_capacity_kwh": 133.8669845007291
+      },
+      "proposed": {
+        "W_TO_lb": 15595.907664949751,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1877.1109277167263,
+        "generator_engine_hp_each": 1219.3537159558393,
+        "battery_capacity_kwh": 133.91176122361642
+      },
+      "residuals": {
+        "W_TO_lb": 0.00028309835280707611,
+        "S_ref_ft2": 1.5554323384847635E-9,
+        "motor_shaft_hp": 0.0004887124577332984,
+        "generator_engine_hp_each": 0.00022204488594167968,
+        "battery_capacity_kwh": 0.000334374833682821
+      },
+      "max_residual": 0.0004887124577332984,
+      "OEW_lb": 11389.13592995498,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1776.7717349947698,
+      "mission_soc_end": 0.20577793500213018,
+      "energy_probe_peak_deficit_kwh": 91.303473561556643,
+      "minimum_capacity_kwh_before_margin": 121.73796474874219,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.452133767928267,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1877.1109277167263,
+        "required_turboshaft_hp_each": 1219.3537159558393,
+        "cruise_180_hp": 757.21566928270749,
+        "roc_2000_sl_hp": 1579.7468203556607,
+        "roc_500_10k_hp": 764.75664583347918,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.33722345308979,
+        "score": 2162.4139851101022
+      },
+      "iteration": 33
+    },
+    {
+      "current": {
+        "W_TO_lb": 15593.479318275988,
+        "S_ref_ft2": 511.99999956199025,
+        "motor_shaft_hp": 1876.606375594519,
+        "generator_engine_hp_each": 1219.2048027646092,
+        "battery_capacity_kwh": 133.88713402602841
+      },
+      "proposed": {
+        "W_TO_lb": 15597.204240068371,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1877.380306892275,
+        "generator_engine_hp_each": 1219.4332610427848,
+        "battery_capacity_kwh": 133.92491054149872
+      },
+      "residuals": {
+        "W_TO_lb": 0.00023881983816141162,
+        "S_ref_ft2": 8.55487791717735E-10,
+        "motor_shaft_hp": 0.00041224002132904874,
+        "generator_engine_hp_each": 0.00018734791437477344,
+        "battery_capacity_kwh": 0.00028207235918673284
+      },
+      "max_residual": 0.00041224002132904874,
+      "OEW_lb": 11390.200869640927,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1777.003370427444,
+      "mission_soc_end": 0.20572909012314419,
+      "energy_probe_peak_deficit_kwh": 91.3124390055673,
+      "minimum_capacity_kwh_before_margin": 121.74991867408973,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.456014293507788,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1877.380306892275,
+        "required_turboshaft_hp_each": 1219.4332610427848,
+        "cruise_180_hp": 757.26506658675578,
+        "roc_2000_sl_hp": 1579.9735256024096,
+        "roc_500_10k_hp": 764.88401381501092,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.44727774908472,
+        "score": 2162.6952960486929
+      },
+      "iteration": 34
+    },
+    {
+      "current": {
+        "W_TO_lb": 15595.155533082559,
+        "S_ref_ft2": 511.99999975909464,
+        "motor_shaft_hp": 1876.9546446785093,
+        "generator_engine_hp_each": 1219.3076089897882,
+        "battery_capacity_kwh": 133.90413345799004
+      },
+      "proposed": {
+        "W_TO_lb": 15598.298148647222,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1877.6075767039201,
+        "generator_engine_hp_each": 1219.5003781966861,
+        "battery_capacity_kwh": 133.93600446065989
+      },
+      "residuals": {
+        "W_TO_lb": 0.00020147169484222298,
+        "S_ref_ft2": 4.7051829099586939E-10,
+        "motor_shaft_hp": 0.00034774679944410576,
+        "generator_engine_hp_each": 0.00015807228135758858,
+        "battery_capacity_kwh": 0.00023795694666408159
+      },
+      "max_residual": 0.00034774679944410576,
+      "OEW_lb": 11391.099335237559,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1777.1988134096623,
+      "mission_soc_end": 0.20568788751473818,
+      "energy_probe_peak_deficit_kwh": 91.320003041359,
+      "minimum_capacity_kwh_before_margin": 121.76000405514533,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.459288150551874,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1877.6075767039201,
+        "required_turboshaft_hp_each": 1219.5003781966861,
+        "cruise_180_hp": 757.30674617484158,
+        "roc_2000_sl_hp": 1580.1647922755762,
+        "roc_500_10k_hp": 764.99147395388491,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.5401302953502,
+        "score": 2162.9326334334232
+      },
+      "iteration": 35
+    },
+    {
+      "current": {
+        "W_TO_lb": 15596.569710086658,
+        "S_ref_ft2": 511.999999867502,
+        "motor_shaft_hp": 1877.2484640899443,
+        "generator_engine_hp_each": 1219.3943551328923,
+        "battery_capacity_kwh": 133.91847540919147
+      },
+      "proposed": {
+        "W_TO_lb": 15599.221075097086,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1877.7993212771373,
+        "generator_engine_hp_each": 1219.5570087312465,
+        "battery_capacity_kwh": 133.94536432887872
+      },
+      "residuals": {
+        "W_TO_lb": 0.00016996778221578469,
+        "S_ref_ft2": 2.5878510445664915E-10,
+        "motor_shaft_hp": 0.00029335253290985771,
+        "generator_engine_hp_each": 0.00013337104964315639,
+        "battery_capacity_kwh": 0.00020074542946653425
+      },
+      "max_residual": 0.00029335253290985771,
+      "OEW_lb": 11391.85735703007,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1777.3637180670155,
+      "mission_soc_end": 0.20565313027759763,
+      "energy_probe_peak_deficit_kwh": 91.326384769690037,
+      "minimum_capacity_kwh_before_margin": 121.76851302625339,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.462050215013004,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1877.7993212771373,
+        "required_turboshaft_hp_each": 1219.5570087312465,
+        "cruise_180_hp": 757.3419135980165,
+        "roc_2000_sl_hp": 1580.3261614708581,
+        "roc_500_10k_hp": 765.08213832534966,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.618470158952,
+        "score": 2163.1328725868243
+      },
+      "iteration": 36
+    },
+    {
+      "current": {
+        "W_TO_lb": 15597.762824341351,
+        "S_ref_ft2": 511.99999992712611,
+        "motor_shaft_hp": 1877.4963498241812,
+        "generator_engine_hp_each": 1219.4675492521517,
+        "battery_capacity_kwh": 133.93057542305073
+      },
+      "proposed": {
+        "W_TO_lb": 15599.999748697486,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1877.9610948007883,
+        "generator_engine_hp_each": 1219.6047908304363,
+        "battery_capacity_kwh": 133.9532612349596
+      },
+      "residuals": {
+        "W_TO_lb": 0.00014339258924167455,
+        "S_ref_ft2": 1.4233181300227216E-10,
+        "motor_shaft_hp": 0.0002474731653886617,
+        "generator_engine_hp_each": 0.00011252954999557956,
+        "battery_capacity_kwh": 0.00016935617468155477
+      },
+      "max_residual": 0.0002474731653886617,
+      "OEW_lb": 11392.496893235537,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1777.5028554619487,
+      "mission_soc_end": 0.2056238093083628,
+      "energy_probe_peak_deficit_kwh": 91.331769023836074,
+      "minimum_capacity_kwh_before_margin": 121.77569203178143,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.4643805162917,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1877.9610948007883,
+        "required_turboshaft_hp_each": 1219.6047908304363,
+        "cruise_180_hp": 757.37158616451143,
+        "roc_2000_sl_hp": 1580.4623075056138,
+        "roc_500_10k_hp": 765.15863238448617,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.68456592496636,
+        "score": 2163.3018134253539
+      },
+      "iteration": 37
+    },
+    {
+      "current": {
+        "W_TO_lb": 15598.769440301612,
+        "S_ref_ft2": 511.99999995991936,
+        "motor_shaft_hp": 1877.7054850636544,
+        "generator_engine_hp_each": 1219.5293079623798,
+        "battery_capacity_kwh": 133.94078403840973
+      },
+      "proposed": {
+        "W_TO_lb": 15600.656719010271,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.0975827690932,
+        "generator_engine_hp_each": 1219.6451068481276,
+        "battery_capacity_kwh": 133.959923874567
+      },
+      "residuals": {
+        "W_TO_lb": 0.00012097431170052345,
+        "S_ref_ft2": 7.8282491600134563E-11,
+        "motor_shaft_hp": 0.000208773872580511,
+        "generator_engine_hp_each": 9.4944738512573961E-5,
+        "battery_capacity_kwh": 0.0001428773293063451
+      },
+      "max_residual": 0.000208773872580511,
+      "OEW_lb": 11393.036467570631,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1777.6202514396389,
+      "mission_soc_end": 0.20559907373533723,
+      "energy_probe_peak_deficit_kwh": 91.336311732659325,
+      "minimum_capacity_kwh_before_margin": 121.7817489768791,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.466346563089086,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.0975827690932,
+        "required_turboshaft_hp_each": 1219.6451068481276,
+        "cruise_180_hp": 757.39662231269358,
+        "roc_2000_sl_hp": 1580.5771736175536,
+        "roc_500_10k_hp": 765.22317109346784,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.74033147863327,
+        "score": 2163.4443487963122
+      },
+      "iteration": 38
+    },
+    {
+      "current": {
+        "W_TO_lb": 15599.618715720508,
+        "S_ref_ft2": 511.99999997795567,
+        "motor_shaft_hp": 1877.8819290311019,
+        "generator_engine_hp_each": 1219.5814174609663,
+        "battery_capacity_kwh": 133.94939696468052
+      },
+      "proposed": {
+        "W_TO_lb": 15601.211009812945,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.2127379423591,
+        "generator_engine_hp_each": 1219.6791232367787,
+        "battery_capacity_kwh": 133.96554518348273
+      },
+      "residuals": {
+        "W_TO_lb": 0.00010206221116014075,
+        "S_ref_ft2": 4.3055337073383271E-11,
+        "motor_shaft_hp": 0.00017612962822286448,
+        "generator_engine_hp_each": 8.010777092995564E-5,
+        "battery_capacity_kwh": 0.00012054008946925731
+      },
+      "max_residual": 0.00017612962822286448,
+      "OEW_lb": 11393.491706836166,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1777.7193029767791,
+      "mission_soc_end": 0.20557820603683705,
+      "energy_probe_peak_deficit_kwh": 91.340144443283663,
+      "minimum_capacity_kwh_before_margin": 121.78685925771155,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.468005304141617,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.2127379423591,
+        "required_turboshaft_hp_each": 1219.6791232367787,
+        "cruise_180_hp": 757.41774640668007,
+        "roc_2000_sl_hp": 1580.6740863871337,
+        "roc_500_10k_hp": 765.27762312881157,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.78738148687648,
+        "score": 2163.5646064278758
+      },
+      "iteration": 39
+    },
+    {
+      "current": {
+        "W_TO_lb": 15600.335248062105,
+        "S_ref_ft2": 511.99999998787564,
+        "motor_shaft_hp": 1878.0307930411677,
+        "generator_engine_hp_each": 1219.625385060082,
+        "battery_capacity_kwh": 133.95666366314151
+      },
+      "proposed": {
+        "W_TO_lb": 15601.678670623147,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.3098950012575,
+        "generator_engine_hp_each": 1219.7078242510338,
+        "battery_capacity_kwh": 133.97028793186934
+      },
+      "residuals": {
+        "W_TO_lb": 8.6107565051400751E-5,
+        "S_ref_ft2": 2.3680390981439814E-11,
+        "motor_shaft_hp": 0.00014859207249694024,
+        "generator_engine_hp_each": 6.7589294184012863E-5,
+        "battery_capacity_kwh": 0.00010169619650853257
+      },
+      "max_residual": 0.00014859207249694024,
+      "OEW_lb": 11393.875794243366,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1777.802876379782,
+      "mission_soc_end": 0.20556060109235286,
+      "energy_probe_peak_deficit_kwh": 91.343378135365441,
+      "minimum_capacity_kwh_before_margin": 121.79117084715392,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.4694047813713,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.3098950012575,
+        "required_turboshaft_hp_each": 1219.7078242510338,
+        "cruise_180_hp": 757.43556966619383,
+        "roc_2000_sl_hp": 1580.7558522287809,
+        "roc_500_10k_hp": 765.32356503810536,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.82707819483153,
+        "score": 2163.6660686389127
+      },
+      "iteration": 40
+    },
+    {
+      "current": {
+        "W_TO_lb": 15600.939788214573,
+        "S_ref_ft2": 511.99999999333158,
+        "motor_shaft_hp": 1878.1563889232082,
+        "generator_engine_hp_each": 1219.6624826960103,
+        "battery_capacity_kwh": 133.96279458406903
+      },
+      "proposed": {
+        "W_TO_lb": 15602.073241880378,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.3918672413738,
+        "generator_engine_hp_each": 1219.7320403948163,
+        "battery_capacity_kwh": 133.97428944259485
+      },
+      "residuals": {
+        "W_TO_lb": 7.2647631390586825E-5,
+        "S_ref_ft2": 1.3024248346482636E-11,
+        "motor_shaft_hp": 0.00012536165763508069,
+        "generator_engine_hp_each": 5.7027032579590536E-5,
+        "battery_capacity_kwh": 8.5798988549569332E-5
+      },
+      "max_residual": 0.00012536165763508069,
+      "OEW_lb": 11394.199851720721,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1777.8733901596574,
+      "mission_soc_end": 0.205545748539096,
+      "energy_probe_peak_deficit_kwh": 91.346106438132836,
+      "minimum_capacity_kwh_before_margin": 121.79480858417712,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.470585523856588,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.3918672413738,
+        "required_turboshaft_hp_each": 1219.7320403948163,
+        "cruise_180_hp": 757.45060783213512,
+        "roc_2000_sl_hp": 1580.8248387674928,
+        "roc_500_10k_hp": 765.36232692161548,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.86057089883423,
+        "score": 2163.7516733005964
+      },
+      "iteration": 41
+    },
+    {
+      "current": {
+        "W_TO_lb": 15601.449842364185,
+        "S_ref_ft2": 511.99999999633235,
+        "motor_shaft_hp": 1878.2623541663827,
+        "generator_engine_hp_each": 1219.6937836604729,
+        "battery_capacity_kwh": 133.96796727040564
+      },
+      "proposed": {
+        "W_TO_lb": 15602.406147322277,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.4610281268256,
+        "generator_engine_hp_each": 1219.7524724303134,
+        "battery_capacity_kwh": 133.97766557099487
+      },
+      "residuals": {
+        "W_TO_lb": 6.1292146164015118E-5,
+        "S_ref_ft2": 7.163380999486435E-12,
+        "motor_shaft_hp": 0.00010576421733965368,
+        "generator_engine_hp_each": 4.8115311234881504E-5,
+        "battery_capacity_kwh": 7.2387442697278151E-5
+      },
+      "max_residual": 0.00010576421733965368,
+      "OEW_lb": 11394.473262350568,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1777.9328849717087,
+      "mission_soc_end": 0.20553321790825388,
+      "energy_probe_peak_deficit_kwh": 91.348408343860143,
+      "minimum_capacity_kwh_before_margin": 121.79787779181352,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.471581723367549,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.4610281268256,
+        "required_turboshaft_hp_each": 1219.7524724303134,
+        "cruise_180_hp": 757.463296076105,
+        "roc_2000_sl_hp": 1580.883043473071,
+        "roc_500_10k_hp": 765.39503096661565,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.88882924335564,
+        "score": 2163.8238989913725
+      },
+      "iteration": 42
+    },
+    {
+      "current": {
+        "W_TO_lb": 15601.880179595326,
+        "S_ref_ft2": 511.9999999979828,
+        "motor_shaft_hp": 1878.351757448582,
+        "generator_engine_hp_each": 1219.7201936069011,
+        "battery_capacity_kwh": 133.97233150567078
+      },
+      "proposed": {
+        "W_TO_lb": 15602.687024964569,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.5193800777367,
+        "generator_engine_hp_each": 1219.7697116402803,
+        "battery_capacity_kwh": 133.98051406183765
+      },
+      "residuals": {
+        "W_TO_lb": 5.1711949868130122E-5,
+        "S_ref_ft2": 3.939848447487293E-12,
+        "motor_shaft_hp": 8.92312482545612E-5,
+        "generator_engine_hp_each": 4.0596214930261789E-5,
+        "battery_capacity_kwh": 6.1072733032623317E-5
+      },
+      "max_residual": 8.92312482545612E-5,
+      "OEW_lb": 11394.703942327749,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1777.9830826368193,
+      "mission_soc_end": 0.20552264610008031,
+      "energy_probe_peak_deficit_kwh": 91.350350496707478,
+      "minimum_capacity_kwh_before_margin": 121.8004673289433,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.472422225772121,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.5193800777367,
+        "required_turboshaft_hp_each": 1219.7697116402803,
+        "cruise_180_hp": 757.47400158324547,
+        "roc_2000_sl_hp": 1580.9321515505706,
+        "roc_500_10k_hp": 765.422623953789,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.91267130917822,
+        "score": 2163.8848368237791
+      },
+      "iteration": 43
+    },
+    {
+      "current": {
+        "W_TO_lb": 15602.243260011484,
+        "S_ref_ft2": 511.99999999889053,
+        "motor_shaft_hp": 1878.4271876317016,
+        "generator_engine_hp_each": 1219.7424767219218,
+        "battery_capacity_kwh": 133.97601365594588
+      },
+      "proposed": {
+        "W_TO_lb": 15602.92400630179,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.5686124927511,
+        "generator_engine_hp_each": 1219.7842569276297,
+        "battery_capacity_kwh": 133.98291738106781
+      },
+      "residuals": {
+        "W_TO_lb": 4.3629404977573928E-5,
+        "S_ref_ft2": 2.1669332994633805E-12,
+        "motor_shaft_hp": 7.5283308849608558E-5,
+        "generator_engine_hp_each": 3.4252127350103922E-5,
+        "battery_capacity_kwh": 5.1526905495681163E-5
+      },
+      "max_residual": 7.5283308849608558E-5,
+      "OEW_lb": 11394.898570354468,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1778.0254359473224,
+      "mission_soc_end": 0.20551372682768898,
+      "energy_probe_peak_deficit_kwh": 91.351989123455326,
+      "minimum_capacity_kwh_before_margin": 121.8026521646071,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.47313136720993,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.5686124927511,
+        "required_turboshaft_hp_each": 1219.7842569276297,
+        "cruise_180_hp": 757.483034171043,
+        "roc_2000_sl_hp": 1580.973584771127,
+        "roc_500_10k_hp": 765.44590467943658,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.93278730833129,
+        "score": 2163.9362510318956
+      },
+      "iteration": 44
+    },
+    {
+      "current": {
+        "W_TO_lb": 15602.549595842122,
+        "S_ref_ft2": 511.99999999938979,
+        "motor_shaft_hp": 1878.4908288191739,
+        "generator_engine_hp_each": 1219.7612778144903,
+        "battery_capacity_kwh": 133.97912033225074
+      },
+      "proposed": {
+        "W_TO_lb": 15603.123951836504,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.6101506932516,
+        "generator_engine_hp_each": 1219.7965292454751,
+        "battery_capacity_kwh": 133.98494510458355
+      },
+      "residuals": {
+        "W_TO_lb": 3.6810320558565371E-5,
+        "S_ref_ft2": 1.1918244169351055E-12,
+        "motor_shaft_hp": 6.3516038191164078E-5,
+        "generator_engine_hp_each": 2.8899435389095063E-5,
+        "battery_capacity_kwh": 4.34733344724236E-5
+      },
+      "max_residual": 6.3516038191164078E-5,
+      "OEW_lb": 11395.062781141278,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1778.0611706952268,
+      "mission_soc_end": 0.20550620171862621,
+      "energy_probe_peak_deficit_kwh": 91.353371662216048,
+      "minimum_capacity_kwh_before_margin": 121.80449554962139,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.473729679379144,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.6101506932516,
+        "required_turboshaft_hp_each": 1219.7965292454751,
+        "cruise_180_hp": 757.49065525034837,
+        "roc_2000_sl_hp": 1581.0085426626374,
+        "roc_500_10k_hp": 765.46554708925487,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.949759573422,
+        "score": 2163.9796300800731
+      },
+      "iteration": 45
+    },
+    {
+      "current": {
+        "W_TO_lb": 15602.808056039594,
+        "S_ref_ft2": 511.9999999996644,
+        "motor_shaft_hp": 1878.5445236625089,
+        "generator_engine_hp_each": 1219.7771409584334,
+        "battery_capacity_kwh": 133.98174147980052
+      },
+      "proposed": {
+        "W_TO_lb": 15603.292649773146,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.6451972111217,
+        "generator_engine_hp_each": 1219.8068837740243,
+        "battery_capacity_kwh": 133.98665593339749
+      },
+      "residuals": {
+        "W_TO_lb": 3.1057145721048778E-5,
+        "S_ref_ft2": 6.5547567373869242E-13,
+        "motor_shaft_hp": 5.3588377817298927E-5,
+        "generator_engine_hp_each": 2.4383216709586487E-5,
+        "battery_capacity_kwh": 3.6678679400807623E-5
+      },
+      "max_residual": 5.3588377817298927E-5,
+      "OEW_lb": 11395.201328636544,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1778.0913211366023,
+      "mission_soc_end": 0.2054998528127997,
+      "energy_probe_peak_deficit_kwh": 91.354538136407371,
+      "minimum_capacity_kwh_before_margin": 121.80605084854317,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.474234484452332,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.6451972111217,
+        "required_turboshaft_hp_each": 1219.8068837740243,
+        "cruise_180_hp": 757.4970853872012,
+        "roc_2000_sl_hp": 1581.0380372568845,
+        "roc_500_10k_hp": 765.48211979471728,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.96407942122653,
+        "score": 2164.0162297772254
+      },
+      "iteration": 46
+    },
+    {
+      "current": {
+        "W_TO_lb": 15603.026123219692,
+        "S_ref_ft2": 511.99999999981543,
+        "motor_shaft_hp": 1878.5898267593848,
+        "generator_engine_hp_each": 1219.7905252254493,
+        "battery_capacity_kwh": 133.98395298391915
+      },
+      "proposed": {
+        "W_TO_lb": 15603.434983640976,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.6747666187655,
+        "generator_engine_hp_each": 1219.8156201958993,
+        "battery_capacity_kwh": 133.98809939365734
+      },
+      "residuals": {
+        "W_TO_lb": 2.6203231641842362E-5,
+        "S_ref_ft2": 3.6048941609578833E-13,
+        "motor_shaft_hp": 4.5212647175532931E-5,
+        "generator_engine_hp_each": 2.0572757090942143E-5,
+        "battery_capacity_kwh": 3.0946104593969978E-5
+      },
+      "max_residual": 4.5212647175532931E-5,
+      "OEW_lb": 11395.318223724298,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1778.1167599166788,
+      "mission_soc_end": 0.2054944962369038,
+      "energy_probe_peak_deficit_kwh": 91.355522313857264,
+      "minimum_capacity_kwh_before_margin": 121.80736308514302,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.47466039691346,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.6747666187655,
+        "required_turboshaft_hp_each": 1219.8156201958993,
+        "cruise_180_hp": 757.50251068377474,
+        "roc_2000_sl_hp": 1581.0629224019312,
+        "roc_500_10k_hp": 765.4961025380004,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.97616137956322,
+        "score": 2164.0471096481506
+      },
+      "iteration": 47
+    },
+    {
+      "current": {
+        "W_TO_lb": 15603.210110409269,
+        "S_ref_ft2": 511.99999999989848,
+        "motor_shaft_hp": 1878.628049696106,
+        "generator_engine_hp_each": 1219.8018179621517,
+        "battery_capacity_kwh": 133.98581886830132
+      },
+      "proposed": {
+        "W_TO_lb": 15603.555073707532,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.6997149121682,
+        "generator_engine_hp_each": 1219.8229913666391,
+        "battery_capacity_kwh": 133.9893172708382
+      },
+      "residuals": {
+        "W_TO_lb": 2.2107993763815816E-5,
+        "S_ref_ft2": 1.9828583219805296E-13,
+        "motor_shaft_hp": 3.8146179239495605E-5,
+        "generator_engine_hp_each": 1.7357768001796256E-5,
+        "battery_capacity_kwh": 2.61095631214069E-5
+      },
+      "max_residual": 3.8146179239495605E-5,
+      "OEW_lb": 11395.41685038705,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1778.138223320482,
+      "mission_soc_end": 0.20548997687029047,
+      "energy_probe_peak_deficit_kwh": 91.3563526846624,
+      "minimum_capacity_kwh_before_margin": 121.80847024621653,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.475019746893103,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.6997149121682,
+        "required_turboshaft_hp_each": 1219.8229913666391,
+        "cruise_180_hp": 757.50708816273936,
+        "roc_2000_sl_hp": 1581.0839184904385,
+        "roc_500_10k_hp": 765.50790008275658,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.9863551898942,
+        "score": 2164.073163617164
+      },
+      "iteration": 48
+    },
+    {
+      "current": {
+        "W_TO_lb": 15603.365343893487,
+        "S_ref_ft2": 511.99999999994418,
+        "motor_shaft_hp": 1878.6602990433339,
+        "generator_engine_hp_each": 1219.811345994171,
+        "battery_capacity_kwh": 133.98739314944291
+      },
+      "proposed": {
+        "W_TO_lb": 15603.656396282537,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.7207642993267,
+        "generator_engine_hp_each": 1219.8292106309134,
+        "battery_capacity_kwh": 133.99034481969485
+      },
+      "residuals": {
+        "W_TO_lb": 1.8652832493730358E-5,
+        "S_ref_ft2": 1.0902390101819037E-13,
+        "motor_shaft_hp": 3.2184269818999875E-5,
+        "generator_engine_hp_each": 1.46451950705035E-5,
+        "battery_capacity_kwh": 2.2028977206662228E-5
+      },
+      "max_residual": 3.2184269818999875E-5,
+      "OEW_lb": 11395.50006370363,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1778.1563325789059,
+      "mission_soc_end": 0.20548616384650839,
+      "energy_probe_peak_deficit_kwh": 91.357053286155576,
+      "minimum_capacity_kwh_before_margin": 121.80940438154077,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.475322937291967,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.7207642993267,
+        "required_turboshaft_hp_each": 1219.8292106309134,
+        "cruise_180_hp": 757.51095031061175,
+        "roc_2000_sl_hp": 1581.1016333212156,
+        "roc_500_10k_hp": 765.51785393332432,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 664.99495593352981,
+        "score": 2164.0951458939639
+      },
+      "iteration": 49
+    },
+    {
+      "current": {
+        "W_TO_lb": 15603.49631746856,
+        "S_ref_ft2": 511.9999999999693,
+        "motor_shaft_hp": 1878.6875084085307,
+        "generator_engine_hp_each": 1219.8193850807052,
+        "battery_capacity_kwh": 133.9887214010563
+      },
+      "proposed": {
+        "W_TO_lb": 15603.741884370394,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.7385241128929,
+        "generator_engine_hp_each": 1219.8344579958809,
+        "battery_capacity_kwh": 133.99121178504842
+      },
+      "residuals": {
+        "W_TO_lb": 1.573769315426257E-5,
+        "S_ref_ft2": 5.9952043329758453E-14,
+        "motor_shaft_hp": 2.7154233389853929E-5,
+        "generator_engine_hp_each": 1.2356525163703472E-5,
+        "battery_capacity_kwh": 1.8586174115062237E-5
+      },
+      "max_residual": 2.7154233389853929E-5,
+      "OEW_lb": 11395.570272524172,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1778.1716118462225,
+      "mission_soc_end": 0.20548294675932216,
+      "energy_probe_peak_deficit_kwh": 91.357644398896639,
+      "minimum_capacity_kwh_before_margin": 121.81019253186219,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.475578745055781,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.7385241128929,
+        "required_turboshaft_hp_each": 1219.8344579958809,
+        "cruise_180_hp": 757.51420891139685,
+        "roc_2000_sl_hp": 1581.1165796989692,
+        "roc_500_10k_hp": 765.52625222196457,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 665.002212574868,
+        "score": 2164.1136928122751
+      },
+      "iteration": 50
+    },
+    {
+      "current": {
+        "W_TO_lb": 15603.606822574386,
+        "S_ref_ft2": 511.99999999998312,
+        "motor_shaft_hp": 1878.7104654754937,
+        "generator_engine_hp_each": 1219.8261678925342,
+        "battery_capacity_kwh": 133.98984207385274
+      },
+      "proposed": {
+        "W_TO_lb": 15603.814012588042,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.7535084532749,
+        "generator_engine_hp_each": 1219.838885340158,
+        "battery_capacity_kwh": 133.99194326299266
+      },
+      "residuals": {
+        "W_TO_lb": 1.3278164780033857E-5,
+        "S_ref_ft2": 3.2973623831367149E-14,
+        "motor_shaft_hp": 2.2910391164940892E-5,
+        "generator_engine_hp_each": 1.0425514202437766E-5,
+        "battery_capacity_kwh": 1.5681458815751933E-5
+      },
+      "max_residual": 2.2910391164940892E-5,
+      "OEW_lb": 11395.629509219132,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1778.1845033689094,
+      "mission_soc_end": 0.2054802324626851,
+      "energy_probe_peak_deficit_kwh": 91.358143133858633,
+      "minimum_capacity_kwh_before_margin": 121.81085751181151,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.475794575340597,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.7535084532749,
+        "required_turboshaft_hp_each": 1219.838885340158,
+        "cruise_180_hp": 757.51695828134257,
+        "roc_2000_sl_hp": 1581.1291902824589,
+        "roc_500_10k_hp": 765.533338050572,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 665.00833516918988,
+        "score": 2164.1293412542987
+      },
+      "iteration": 51
+    },
+    {
+      "current": {
+        "W_TO_lb": 15603.700058080531,
+        "S_ref_ft2": 511.99999999999073,
+        "motor_shaft_hp": 1878.7298348154952,
+        "generator_engine_hp_each": 1219.8318907439648,
+        "battery_capacity_kwh": 133.99078760896572
+      },
+      "proposed": {
+        "W_TO_lb": 15603.874868808593,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.7661510735618,
+        "generator_engine_hp_each": 1219.8426208089984,
+        "battery_capacity_kwh": 133.9925604274753
+      },
+      "residuals": {
+        "W_TO_lb": 1.1203033190896404E-5,
+        "S_ref_ft2": 1.8096635301390052E-14,
+        "motor_shaft_hp": 1.9329844773822032E-5,
+        "generator_engine_hp_each": 8.79626998644848E-6,
+        "battery_capacity_kwh": 1.3230723436609489E-5
+      },
+      "max_residual": 1.9329844773822032E-5,
+      "OEW_lb": 11395.679488524102,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1778.1953802844905,
+      "mission_soc_end": 0.20547794237154951,
+      "energy_probe_peak_deficit_kwh": 91.358563927824065,
+      "minimum_capacity_kwh_before_margin": 121.81141857043208,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.475976675938536,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.7661510735618,
+        "required_turboshaft_hp_each": 1219.8426208089984,
+        "cruise_180_hp": 757.51927799833777,
+        "roc_2000_sl_hp": 1581.1398301114132,
+        "roc_500_10k_hp": 765.53931652850133,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 665.01350094380643,
+        "score": 2164.1425441949118
+      },
+      "iteration": 52
+    },
+    {
+      "current": {
+        "W_TO_lb": 15603.778722908159,
+        "S_ref_ft2": 511.99999999999488,
+        "motor_shaft_hp": 1878.7461771316252,
+        "generator_engine_hp_each": 1219.8367192732298,
+        "battery_capacity_kwh": 133.99158537729502
+      },
+      "proposed": {
+        "W_TO_lb": 15603.926214606259,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.7768179375871,
+        "generator_engine_hp_each": 1219.845772522795,
+        "battery_capacity_kwh": 133.99308114330321
+      },
+      "residuals": {
+        "W_TO_lb": 9.4522170940865349E-6,
+        "S_ref_ft2": 9.9920072216264089E-15,
+        "motor_shaft_hp": 1.6308912090740958E-5,
+        "generator_engine_hp_each": 7.4216345779433717E-6,
+        "battery_capacity_kwh": 1.1163009279492295E-5
+      },
+      "max_residual": 1.6308912090740958E-5,
+      "OEW_lb": 11395.721657185633,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1778.2045574206263,
+      "mission_soc_end": 0.20547601018502337,
+      "energy_probe_peak_deficit_kwh": 91.3589189613431,
+      "minimum_capacity_kwh_before_margin": 121.81189194845746,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.476130318179997,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.7768179375871,
+        "required_turboshaft_hp_each": 1219.845772522795,
+        "cruise_180_hp": 757.52123520488135,
+        "roc_2000_sl_hp": 1581.1488071751971,
+        "roc_500_10k_hp": 765.544360710358,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 665.01785942869526,
+        "score": 2164.1536838160064
+      },
+      "iteration": 53
+    },
+    {
+      "current": {
+        "W_TO_lb": 15603.845094172304,
+        "S_ref_ft2": 511.99999999999716,
+        "motor_shaft_hp": 1878.7599654943081,
+        "generator_engine_hp_each": 1219.8407932355342,
+        "battery_capacity_kwh": 133.9922584719987
+      },
+      "proposed": {
+        "W_TO_lb": 15603.969536253417,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.7858178149684,
+        "generator_engine_hp_each": 1219.8484317061605,
+        "battery_capacity_kwh": 133.99352048332995
+      },
+      "residuals": {
+        "W_TO_lb": 7.9750271764838712E-6,
+        "S_ref_ft2": 5.5511151231257827E-15,
+        "motor_shaft_hp": 1.37601212523374E-5,
+        "generator_engine_hp_each": 6.2618194422547087E-6,
+        "battery_capacity_kwh": 9.41845043474602E-6
+      },
+      "max_residual": 1.37601212523374E-5,
+      "OEW_lb": 11395.757235846586,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1778.2123004068303,
+      "mission_soc_end": 0.20547437996572521,
+      "energy_probe_peak_deficit_kwh": 91.35921851136132,
+      "minimum_capacity_kwh_before_margin": 121.81229134848176,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.476259949555281,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.7858178149684,
+        "required_turboshaft_hp_each": 1219.8484317061605,
+        "cruise_180_hp": 757.52288655123436,
+        "roc_2000_sl_hp": 1581.1563813294288,
+        "roc_500_10k_hp": 765.54861660571385,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 665.02153678522131,
+        "score": 2164.1630825708926
+      },
+      "iteration": 54
+    },
+    {
+      "current": {
+        "W_TO_lb": 15603.901093108805,
+        "S_ref_ft2": 511.99999999999841,
+        "motor_shaft_hp": 1878.7715990386052,
+        "generator_engine_hp_each": 1219.8442305473161,
+        "battery_capacity_kwh": 133.99282637709777
+      },
+      "proposed": {
+        "W_TO_lb": 15604.006087746671,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.7934112200448,
+        "generator_engine_hp_each": 1219.8506753280994,
+        "battery_capacity_kwh": 133.99389116480532
+      },
+      "residuals": {
+        "W_TO_lb": 6.728697571364913E-6,
+        "S_ref_ft2": 3.1086244689504383E-15,
+        "motor_shaft_hp": 1.1609675289118472E-5,
+        "generator_engine_hp_each": 5.2832538553187155E-6,
+        "battery_capacity_kwh": 7.9465391913937615E-6
+      },
+      "max_residual": 1.1609675289118472E-5,
+      "OEW_lb": 11395.787254384215,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1778.2188333624565,
+      "mission_soc_end": 0.20547300451955294,
+      "energy_probe_peak_deficit_kwh": 91.3594712487309,
+      "minimum_capacity_kwh_before_margin": 121.81262833164119,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.476369322478135,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.7934112200448,
+        "required_turboshaft_hp_each": 1219.8506753280994,
+        "cruise_180_hp": 757.52427983495988,
+        "roc_2000_sl_hp": 1581.1627718188495,
+        "roc_500_10k_hp": 765.55220740583059,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 665.0246394582947,
+        "score": 2164.17101251926
+      },
+      "iteration": 55
+    },
+    {
+      "current": {
+        "W_TO_lb": 15603.948340695844,
+        "S_ref_ft2": 511.99999999999915,
+        "motor_shaft_hp": 1878.7814145202531,
+        "generator_engine_hp_each": 1219.8471306986687,
+        "battery_capacity_kwh": 133.99330553156616
+      },
+      "proposed": {
+        "W_TO_lb": 15604.036927108204,
+        "S_ref_ft2": 512,
+        "motor_shaft_hp": 1878.7998179536223,
+        "generator_engine_hp_each": 1219.8525683296482,
+        "battery_capacity_kwh": 133.99420391752338
+      },
+      "residuals": {
+        "W_TO_lb": 5.6771470596428624E-6,
+        "S_ref_ft2": 1.6653345369377348E-15,
+        "motor_shaft_hp": 9.79531357912462E-6,
+        "generator_engine_hp_each": 4.4576132564379585E-6,
+        "battery_capacity_kwh": 6.704662820841189E-6
+      },
+      "max_residual": 9.79531357912462E-6,
+      "OEW_lb": 11395.812581724838,
+      "payload_lb": 2430,
+      "mission_fuel_lb": 1778.2243453833657,
+      "mission_soc_end": 0.20547184402885391,
+      "energy_probe_peak_deficit_kwh": 91.35968448922047,
+      "minimum_capacity_kwh_before_margin": 121.81291265229396,
+      "span_ft": 64,
+      "span_screen": "PRELIMINARY_PASS",
+      "chosen_aero_constraints": {
+        "wing_loading_psf": 30.476461602921571,
+        "wing_area_ft2": 512,
+        "span_ft": 64,
+        "required_motor_hp": 1878.7998179536223,
+        "required_turboshaft_hp_each": 1219.8525683296482,
+        "cruise_180_hp": 757.5254553842824,
+        "roc_2000_sl_hp": 1581.1681636243354,
+        "roc_500_10k_hp": 765.55523704977418,
+        "roc_450_oei_hp_NO_FAILURE_DRAG": 665.02725725772348,
+        "score": 2164.1777032030695
+      },
+      "iteration": 56
+    }
+  ],
+  "final": {
+    "mission": {
+      "status": "INTEGRATED_MISSION_RUN_UNVERIFIED_ASSUMPTIONS",
+      "mission_name": "std_mission",
+      "gross_weight_start_lb": 15604.036927108204,
+      "total_fuel_lb": 1778.2346623655014,
+      "weight_end_lb": 13825.8022647427,
+      "soc_end": 0.20546640869807087,
+      "peak_cumulative_pack_deficit_kwh": 93.0634756604805,
+      "minimum_battery_capacity_kwh_for_soc_window": 124.08463421397401,
+      "peak_battery_discharge_bus_kw": 736.04944551880158,
+      "peak_battery_charge_bus_kw": 32.136266078268534,
+      "segments": [
+        {
+          "name": "Electric taxi and water maneuver",
+          "phase": "taxi",
+          "altitude_ft": 0,
+          "speed_ktas": null,
+          "duration_min": 8,
+          "shaft_power_hp": 60,
+          "fuel_burn_lb": 0,
+          "weight_end_lb": 15604.036927108204,
+          "soc_start": 0.9,
+          "soc_end": 0.848602162225087,
+          "battery_bus_kw": 49.06996303458677,
+          "generator_bus_kw": 0,
+          "pack_energy_change_kwh": 6.8870123557314766,
+          "battery_deficit_from_initial_kwh": 6.8870123557314766,
+          "electric_only": true
+        },
+        {
+          "name": "Electric-only water takeoff",
+          "phase": "takeoff",
+          "altitude_ft": 0,
+          "speed_ktas": null,
+          "duration_min": 2,
+          "shaft_power_hp": 900,
+          "fuel_burn_lb": 0,
+          "weight_end_lb": 15604.036927108204,
+          "soc_start": 0.848602162225087,
+          "soc_end": 0.6558602705691633,
+          "battery_bus_kw": 736.04944551880158,
+          "generator_bus_kw": 0,
+          "pack_energy_change_kwh": 25.826296333993039,
+          "battery_deficit_from_initial_kwh": 32.713308689724514,
+          "electric_only": true
+        },
+        {
+          "name": "Climb to 10000-ft density altitude [1/8]",
+          "phase": "climb",
+          "altitude_ft": 625,
+          "speed_ktas": 93.8178980652743,
+          "duration_min": 1.25,
+          "shaft_power_hp": 994.92211504836473,
+          "fuel_burn_lb": 5.9861897181313077,
+          "weight_end_lb": 15598.050737390073,
+          "soc_start": 0.6558602705691633,
+          "soc_end": 0.60259272320673707,
+          "battery_bus_kw": 325.47194271810764,
+          "generator_bus_kw": 488.20791407716143,
+          "pack_energy_change_kwh": 7.1375426034672724,
+          "battery_deficit_from_initial_kwh": 39.850851293191788,
+          "electric_only": false
+        },
+        {
+          "name": "Climb to 10000-ft density altitude [2/8]",
+          "phase": "climb",
+          "altitude_ft": 1875,
+          "speed_ktas": 95.546304705630348,
+          "duration_min": 1.25,
+          "shaft_power_hp": 1002.1917689864413,
+          "fuel_burn_lb": 6.0299293506113543,
+          "weight_end_lb": 15592.020808039462,
+          "soc_start": 0.60259272320673707,
+          "soc_end": 0.54893596282994728,
+          "battery_bus_kw": 327.85008705154536,
+          "generator_bus_kw": 491.77513057731795,
+          "pack_energy_change_kwh": 7.189694891481258,
+          "battery_deficit_from_initial_kwh": 47.040546184673047,
+          "electric_only": false
+        },
+        {
+          "name": "Climb to 10000-ft density altitude [3/8]",
+          "phase": "climb",
+          "altitude_ft": 3125,
+          "speed_ktas": 97.322108765046778,
+          "duration_min": 1.25,
+          "shaft_power_hp": 1009.6662202945042,
+          "fuel_burn_lb": 6.0749011960374908,
+          "weight_end_lb": 15585.945906843424,
+          "soc_start": 0.54893596282994728,
+          "soc_end": 0.49487902470754469,
+          "battery_bus_kw": 330.29522738081511,
+          "generator_bus_kw": 495.44284107122263,
+          "pack_energy_change_kwh": 7.2433163899301558,
+          "battery_deficit_from_initial_kwh": 54.283862574603205,
+          "electric_only": false
+        },
+        {
+          "name": "Climb to 10000-ft density altitude [4/8]",
+          "phase": "climb",
+          "altitude_ft": 4375,
+          "speed_ktas": 99.147042302988368,
+          "duration_min": 1.25,
+          "shaft_power_hp": 1017.3529464994962,
+          "fuel_burn_lb": 6.1211502447604405,
+          "weight_end_lb": 15579.824756598664,
+          "soc_start": 0.49487902470754469,
+          "soc_end": 0.44041054376586675,
+          "battery_bus_kw": 332.80980985238807,
+          "generator_bus_kw": 499.214714778582,
+          "pack_energy_change_kwh": 7.298460742376931,
+          "battery_deficit_from_initial_kwh": 61.582323316980137,
+          "electric_only": false
+        },
+        {
+          "name": "Climb to 10000-ft density altitude [5/8]",
+          "phase": "climb",
+          "altitude_ft": 5625,
+          "speed_ktas": 101.02291673472689,
+          "duration_min": 1.25,
+          "shaft_power_hp": 1025.259764029624,
+          "fuel_burn_lb": 6.1687235262124176,
+          "weight_end_lb": 15573.656033072451,
+          "soc_start": 0.44041054376586675,
+          "soc_end": 0.38551873644426238,
+          "battery_bus_kw": 335.396391478552,
+          "generator_bus_kw": 503.094587217828,
+          "pack_energy_change_kwh": 7.3551840236524564,
+          "battery_deficit_from_initial_kwh": 68.937507340632592,
+          "electric_only": false
+        },
+        {
+          "name": "Climb to 10000-ft density altitude [6/8]",
+          "phase": "climb",
+          "altitude_ft": 6875,
+          "speed_ktas": 102.95162721582261,
+          "duration_min": 1.25,
+          "shaft_power_hp": 1033.3948464877415,
+          "fuel_burn_lb": 6.2176702188533461,
+          "weight_end_lb": 15567.438362853598,
+          "soc_start": 0.38551873644426238,
+          "soc_end": 0.33019138157217065,
+          "battery_bus_kw": 338.05764611523966,
+          "generator_bus_kw": 507.08646917285944,
+          "pack_energy_change_kwh": 7.4135448709482379,
+          "battery_deficit_from_initial_kwh": 76.351052211580836,
+          "electric_only": false
+        },
+        {
+          "name": "Climb to 10000-ft density altitude [7/8]",
+          "phase": "climb",
+          "altitude_ft": 8125,
+          "speed_ktas": 104.93515731096626,
+          "duration_min": 1.25,
+          "shaft_power_hp": 1041.7667440588866,
+          "fuel_burn_lb": 6.2680417669410078,
+          "weight_end_lb": 15561.170321086656,
+          "soc_start": 0.33019138157217065,
+          "soc_end": 0.27441580020713113,
+          "battery_bus_kw": 340.79637081087594,
+          "generator_bus_kw": 511.1945562163138,
+          "pack_energy_change_kwh": 7.4736046230455244,
+          "battery_deficit_from_initial_kwh": 83.824656834626353,
+          "electric_only": false
+        },
+        {
+          "name": "Climb to 10000-ft density altitude [8/8]",
+          "phase": "climb",
+          "altitude_ft": 9375,
+          "speed_ktas": 106.97558396840603,
+          "duration_min": 1.25,
+          "shaft_power_hp": 1050.384404130622,
+          "fuel_burn_lb": 6.3198920045983193,
+          "weight_end_lb": 15554.850429082058,
+          "soc_start": 0.27441580020713113,
+          "soc_end": 0.21817883436879326,
+          "battery_bus_kw": 343.61549255197383,
+          "generator_bus_kw": 515.42323882796074,
+          "pack_energy_change_kwh": 7.5354274682450395,
+          "battery_deficit_from_initial_kwh": 91.3600843028714,
+          "electric_only": false
+        },
+        {
+          "name": "Cruise at team preliminary speed [1/12]",
+          "phase": "cruise",
+          "altitude_ft": 10000,
+          "speed_ktas": 130,
+          "duration_min": 33.422153846153847,
+          "shaft_power_hp": 491.18030803718034,
+          "fuel_burn_lb": 142.23263814237941,
+          "weight_end_lb": 15412.617790939679,
+          "soc_start": 0.21817883436879326,
+          "soc_end": 0.34108690821407972,
+          "battery_bus_kw": -32.136266078268534,
+          "generator_bus_kw": 433.83959205662489,
+          "pack_energy_change_kwh": -16.468969509935334,
+          "battery_deficit_from_initial_kwh": 74.891114792936065,
+          "electric_only": false
+        },
+        {
+          "name": "Cruise at team preliminary speed [2/12]",
+          "phase": "cruise",
+          "altitude_ft": 10000,
+          "speed_ktas": 130,
+          "duration_min": 33.422153846153847,
+          "shaft_power_hp": 486.31812281921805,
+          "fuel_burn_lb": 140.82467976259173,
+          "weight_end_lb": 15271.793111177087,
+          "soc_start": 0.34108690821407972,
+          "soc_end": 0.46277831720118634,
+          "battery_bus_kw": -31.818149746384904,
+          "generator_bus_kw": 429.54502157619589,
+          "pack_energy_change_kwh": -16.305943470829103,
+          "battery_deficit_from_initial_kwh": 58.585171322106959,
+          "electric_only": false
+        },
+        {
+          "name": "Cruise at team preliminary speed [3/12]",
+          "phase": "cruise",
+          "altitude_ft": 10000,
+          "speed_ktas": 130,
+          "duration_min": 33.422153846153847,
+          "shaft_power_hp": 481.54807102423365,
+          "fuel_burn_lb": 139.44340075002782,
+          "weight_end_lb": 15132.349710427059,
+          "soc_start": 0.46277831720118634,
+          "soc_end": 0.58327611588130268,
+          "battery_bus_kw": -31.506061392714287,
+          "generator_bus_kw": 425.33182880164281,
+          "pack_energy_change_kwh": -16.146006607956195,
+          "battery_deficit_from_initial_kwh": 42.439164714150763,
+          "electric_only": false
+        },
+        {
+          "name": "Cruise at team preliminary speed [4/12]",
+          "phase": "cruise",
+          "altitude_ft": 10000,
+          "speed_ktas": 130,
+          "duration_min": 33.422153846153847,
+          "shaft_power_hp": 476.8679480747864,
+          "fuel_burn_lb": 138.08816271821289,
+          "weight_end_lb": 14994.261547708846,
+          "soc_start": 0.58327611588130268,
+          "soc_end": 0.70260280715409174,
+          "battery_bus_kw": -31.199856779212041,
+          "generator_bus_kw": 421.19806651936227,
+          "pack_energy_change_kwh": -15.98908500320946,
+          "battery_deficit_from_initial_kwh": 26.450079710941303,
+          "electric_only": false
+        },
+        {
+          "name": "Cruise at team preliminary speed [5/12]",
+          "phase": "cruise",
+          "altitude_ft": 10000,
+          "speed_ktas": 130,
+          "duration_min": 33.422153846153847,
+          "shaft_power_hp": 472.275616181963,
+          "fuel_burn_lb": 136.75834662083747,
+          "weight_end_lb": 14857.503201088008,
+          "soc_start": 0.70260280715409174,
+          "soc_end": 0.82078035898018609,
+          "battery_bus_kw": -30.899396037580857,
+          "generator_bus_kw": 417.14184650734109,
+          "pack_energy_change_kwh": -15.835106977859381,
+          "battery_deficit_from_initial_kwh": 10.614972733081922,
+          "electric_only": false
+        },
+        {
+          "name": "Cruise at team preliminary speed [6/12]",
+          "phase": "cruise",
+          "altitude_ft": 10000,
+          "speed_ktas": 130,
+          "duration_min": 33.422153846153847,
+          "shaft_power_hp": 467.769001941474,
+          "fuel_burn_lb": 135.45335205565175,
+          "weight_end_lb": 14722.049849032355,
+          "soc_start": 0.82078035898018609,
+          "soc_end": 0.93783022049215592,
+          "battery_bus_kw": -30.604543511991608,
+          "generator_bus_kw": 413.16133741188622,
+          "pack_energy_change_kwh": -15.684003011952759,
+          "battery_deficit_from_initial_kwh": -5.0690302788708372,
+          "electric_only": false
+        },
+        {
+          "name": "Cruise at team preliminary speed [7/12]",
+          "phase": "cruise",
+          "altitude_ft": 10000,
+          "speed_ktas": 130,
+          "duration_min": 33.422153846153847,
+          "shaft_power_hp": 463.34609403034142,
+          "fuel_burn_lb": 125.27708625637719,
+          "weight_end_lb": 14596.772762775978,
+          "soc_start": 0.93783022049215592,
+          "soc_end": 0.95,
+          "battery_bus_kw": -3.1819819491291645,
+          "generator_bus_kw": 382.12157705394617,
+          "pack_energy_change_kwh": -1.6306799170053512,
+          "battery_deficit_from_initial_kwh": -6.6997101958761887,
+          "electric_only": false
+        },
+        {
+          "name": "Cruise at team preliminary speed [8/12]",
+          "phase": "cruise",
+          "altitude_ft": 10000,
+          "speed_ktas": 130,
+          "duration_min": 33.422153846153847,
+          "shaft_power_hp": 459.29152496709,
+          "fuel_burn_lb": 123.14676128390388,
+          "weight_end_lb": 14473.626001492074,
+          "soc_start": 0.95,
+          "soc_end": 0.95,
+          "battery_bus_kw": 0,
+          "generator_bus_kw": 375.62363587056825,
+          "pack_energy_change_kwh": 0,
+          "battery_deficit_from_initial_kwh": -6.6997101958761887,
+          "electric_only": false
+        },
+        {
+          "name": "Cruise at team preliminary speed [9/12]",
+          "phase": "cruise",
+          "altitude_ft": 10000,
+          "speed_ktas": 130,
+          "duration_min": 33.422153846153847,
+          "shaft_power_hp": 455.33967437998285,
+          "fuel_burn_lb": 122.08717804662334,
+          "weight_end_lb": 14351.538823445449,
+          "soc_start": 0.95,
+          "soc_end": 0.95,
+          "battery_bus_kw": 0,
+          "generator_bus_kw": 372.39168316677558,
+          "pack_energy_change_kwh": 0,
+          "battery_deficit_from_initial_kwh": -6.6997101958761887,
+          "electric_only": false
+        },
+        {
+          "name": "Cruise at team preliminary speed [10/12]",
+          "phase": "cruise",
+          "altitude_ft": 10000,
+          "speed_ktas": 130,
+          "duration_min": 33.422153846153847,
+          "shaft_power_hp": 451.45487686369296,
+          "fuel_burn_lb": 121.04557330024981,
+          "weight_end_lb": 14230.4932501452,
+          "soc_start": 0.95,
+          "soc_end": 0.95,
+          "battery_bus_kw": 0,
+          "generator_bus_kw": 369.21456865808892,
+          "pack_energy_change_kwh": 0,
+          "battery_deficit_from_initial_kwh": -6.6997101958761887,
+          "electric_only": false
+        },
+        {
+          "name": "Cruise at team preliminary speed [11/12]",
+          "phase": "cruise",
+          "altitude_ft": 10000,
+          "speed_ktas": 130,
+          "duration_min": 33.422153846153847,
+          "shaft_power_hp": 447.63571076548158,
+          "fuel_burn_lb": 120.0215658665535,
+          "weight_end_lb": 14110.471684278647,
+          "soc_start": 0.95,
+          "soc_end": 0.95,
+          "battery_bus_kw": 0,
+          "generator_bus_kw": 366.09112967038595,
+          "pack_energy_change_kwh": 0,
+          "battery_deficit_from_initial_kwh": -6.6997101958761887,
+          "electric_only": false
+        },
+        {
+          "name": "Cruise at team preliminary speed [12/12]",
+          "phase": "cruise",
+          "altitude_ft": 10000,
+          "speed_ktas": 130,
+          "duration_min": 33.422153846153847,
+          "shaft_power_hp": 443.88079279521213,
+          "fuel_burn_lb": 119.01478485321225,
+          "weight_end_lb": 13991.456899425435,
+          "soc_start": 0.95,
+          "soc_end": 0.95,
+          "battery_bus_kw": 0,
+          "generator_bus_kw": 363.02023490373546,
+          "pack_energy_change_kwh": 0,
+          "battery_deficit_from_initial_kwh": -6.6997101958761887,
+          "electric_only": false
+        },
+        {
+          "name": "Descent and approach",
+          "phase": "descent",
+          "altitude_ft": 0,
+          "speed_ktas": null,
+          "duration_min": 10,
+          "shaft_power_hp": 0,
+          "fuel_burn_lb": 0,
+          "weight_end_lb": 13991.456899425435,
+          "soc_start": 0.95,
+          "soc_end": 0.95,
+          "battery_bus_kw": 0,
+          "generator_bus_kw": 0,
+          "pack_energy_change_kwh": 0,
+          "battery_deficit_from_initial_kwh": -6.6997101958761887,
+          "electric_only": false
+        },
+        {
+          "name": "Balked landing at start of reserve [1/8]",
+          "phase": "balked_landing",
+          "altitude_ft": 250,
+          "speed_ktas": 72.952973534847018,
+          "duration_min": 1,
+          "shaft_power_hp": 824.24729002222227,
+          "fuel_burn_lb": 0,
+          "weight_end_lb": 13991.456899425435,
+          "soc_start": 0.95,
+          "soc_end": 0.86174056562713774,
+          "battery_bus_kw": 674.09640087914613,
+          "generator_bus_kw": 0,
+          "pack_energy_change_kwh": 11.826252647002564,
+          "battery_deficit_from_initial_kwh": 5.1265424511263751,
+          "electric_only": true
+        },
+        {
+          "name": "Balked landing at start of reserve [2/8]",
+          "phase": "balked_landing",
+          "altitude_ft": 750,
+          "speed_ktas": 73.49046681877654,
+          "duration_min": 1,
+          "shaft_power_hp": 828.4101220134437,
+          "fuel_burn_lb": 0,
+          "weight_end_lb": 13991.456899425435,
+          "soc_start": 0.86174056562713774,
+          "soc_end": 0.77303538008059014,
+          "battery_bus_kw": 677.50090107795324,
+          "generator_bus_kw": 0,
+          "pack_energy_change_kwh": 11.885980720665847,
+          "battery_deficit_from_initial_kwh": 17.012523171792221,
+          "electric_only": true
+        },
+        {
+          "name": "Balked landing at start of reserve [3/8]",
+          "phase": "balked_landing",
+          "altitude_ft": 1250,
+          "speed_ktas": 74.033801381382318,
+          "duration_min": 1,
+          "shaft_power_hp": 832.618507387951,
+          "fuel_burn_lb": 0,
+          "weight_end_lb": 13991.456899425435,
+          "soc_start": 0.77303538008059014,
+          "soc_end": 0.68387956555743157,
+          "battery_bus_kw": 680.94265632399288,
+          "generator_bus_kw": 0,
+          "pack_energy_change_kwh": 11.946362391648998,
+          "battery_deficit_from_initial_kwh": 28.958885563441221,
+          "electric_only": true
+        },
+        {
+          "name": "Balked landing at start of reserve [4/8]",
+          "phase": "balked_landing",
+          "altitude_ft": 1750,
+          "speed_ktas": 74.583061290295532,
+          "duration_min": 1,
+          "shaft_power_hp": 836.87310465301266,
+          "fuel_burn_lb": 0,
+          "weight_end_lb": 13991.456899425435,
+          "soc_start": 0.68387956555743157,
+          "soc_end": 0.59426817374254959,
+          "battery_bus_kw": 684.42220516605335,
+          "generator_bus_kw": 0,
+          "pack_energy_change_kwh": 12.007407108176375,
+          "battery_deficit_from_initial_kwh": 40.966292671617595,
+          "electric_only": true
+        },
+        {
+          "name": "Balked landing at start of reserve [5/8]",
+          "phase": "balked_landing",
+          "altitude_ft": 2250,
+          "speed_ktas": 75.138332121404986,
+          "duration_min": 1,
+          "shaft_power_hp": 841.17458415348858,
+          "fuel_burn_lb": 0,
+          "weight_end_lb": 13991.456899425435,
+          "soc_start": 0.59426817374254959,
+          "soc_end": 0.50419618454108939,
+          "battery_bus_kw": 687.940095834093,
+          "generator_bus_kw": 0,
+          "pack_energy_change_kwh": 12.069124488317421,
+          "battery_deficit_from_initial_kwh": 53.035417159935015,
+          "electric_only": true
+        },
+        {
+          "name": "Balked landing at start of reserve [6/8]",
+          "phase": "balked_landing",
+          "altitude_ft": 2750,
+          "speed_ktas": 75.699700991307338,
+          "duration_min": 1,
+          "shaft_power_hp": 845.52362832628137,
+          "fuel_burn_lb": 0,
+          "weight_end_lb": 13991.456899425435,
+          "soc_start": 0.50419618454108939,
+          "soc_end": 0.41365850478365185,
+          "battery_bus_kw": 691.49688644733851,
+          "generator_bus_kw": 0,
+          "pack_energy_change_kwh": 12.131524323637517,
+          "battery_deficit_from_initial_kwh": 65.166941483572529,
+          "electric_only": true
+        },
+        {
+          "name": "Balked landing at start of reserve [7/8]",
+          "phase": "balked_landing",
+          "altitude_ft": 3250,
+          "speed_ktas": 76.267256590571961,
+          "duration_min": 1,
+          "shaft_power_hp": 849.920931961143,
+          "fuel_burn_lb": 0,
+          "weight_end_lb": 13991.456899425435,
+          "soc_start": 0.41365850478365185,
+          "soc_end": 0.322649966903565,
+          "battery_bus_kw": 695.09314522758041,
+          "generator_bus_kw": 0,
+          "pack_energy_change_kwh": 12.194616582940007,
+          "battery_deficit_from_initial_kwh": 77.361558066512544,
+          "electric_only": true
+        },
+        {
+          "name": "Balked landing at start of reserve [8/8]",
+          "phase": "balked_landing",
+          "altitude_ft": 3750,
+          "speed_ktas": 76.841089217844569,
+          "duration_min": 1,
+          "shaft_power_hp": 854.36720246803054,
+          "fuel_burn_lb": 0,
+          "weight_end_lb": 13991.456899425435,
+          "soc_start": 0.322649966903565,
+          "soc_end": 0.23116532758552735,
+          "battery_bus_kw": 698.72945071782624,
+          "generator_bus_kw": 0,
+          "pack_energy_change_kwh": 12.258411416102215,
+          "battery_deficit_from_initial_kwh": 89.619969482614763,
+          "electric_only": true
+        },
+        {
+          "name": "45-min IFR energy reserve [1/3]",
+          "phase": "loiter",
+          "altitude_ft": 4000,
+          "speed_ktas": 120,
+          "duration_min": 15,
+          "shaft_power_hp": 460.61997480381143,
+          "fuel_burn_lb": 55.428631355780823,
+          "weight_end_lb": 13936.028268069655,
+          "soc_start": 0.23116532758552735,
+          "soc_end": 0.23116532758552735,
+          "battery_bus_kw": 0,
+          "generator_bus_kw": 376.71008561025525,
+          "pack_energy_change_kwh": 0,
+          "battery_deficit_from_initial_kwh": 89.619969482614763,
+          "electric_only": false
+        },
+        {
+          "name": "45-min IFR energy reserve [2/3]",
+          "phase": "loiter",
+          "altitude_ft": 4000,
+          "speed_ktas": 120,
+          "duration_min": 15,
+          "shaft_power_hp": 458.86682509061092,
+          "fuel_burn_lb": 55.217666364073992,
+          "weight_end_lb": 13880.81060170558,
+          "soc_start": 0.23116532758552735,
+          "soc_end": 0.23116532758552735,
+          "battery_bus_kw": 0,
+          "generator_bus_kw": 375.27630241657448,
+          "pack_energy_change_kwh": 0,
+          "battery_deficit_from_initial_kwh": 89.619969482614763,
+          "electric_only": false
+        },
+        {
+          "name": "45-min IFR energy reserve [3/3]",
+          "phase": "loiter",
+          "altitude_ft": 4000,
+          "speed_ktas": 120,
+          "duration_min": 15,
+          "shaft_power_hp": 457.12726737205935,
+          "fuel_burn_lb": 55.008336962879959,
+          "weight_end_lb": 13825.8022647427,
+          "soc_start": 0.23116532758552735,
+          "soc_end": 0.23116532758552735,
+          "battery_bus_kw": 0,
+          "generator_bus_kw": 373.85363520081029,
+          "pack_energy_change_kwh": 0,
+          "battery_deficit_from_initial_kwh": 89.619969482614763,
+          "electric_only": false
+        },
+        {
+          "name": "Reserve descent",
+          "phase": "descent",
+          "altitude_ft": 0,
+          "speed_ktas": null,
+          "duration_min": 10,
+          "shaft_power_hp": 0,
+          "fuel_burn_lb": 0,
+          "weight_end_lb": 13825.8022647427,
+          "soc_start": 0.23116532758552735,
+          "soc_end": 0.23116532758552735,
+          "battery_bus_kw": 0,
+          "generator_bus_kw": 0,
+          "pack_energy_change_kwh": 0,
+          "battery_deficit_from_initial_kwh": 89.619969482614763,
+          "electric_only": false
+        },
+        {
+          "name": "Electric-only landing on water",
+          "phase": "landing",
+          "altitude_ft": 0,
+          "speed_ktas": null,
+          "duration_min": 3,
+          "shaft_power_hp": 80,
+          "fuel_burn_lb": 0,
+          "weight_end_lb": 13825.8022647427,
+          "soc_start": 0.23116532758552735,
+          "soc_end": 0.20546640869807087,
+          "battery_bus_kw": 65.426617379449027,
+          "generator_bus_kw": 0,
+          "pack_energy_change_kwh": 3.4435061778657388,
+          "battery_deficit_from_initial_kwh": 93.0634756604805,
+          "electric_only": true
+        }
+      ],
+      "notes": [
+        "Ground phase power and time unverified",
+        "Water hump drag not modeled",
+        "Constant BSFC not a validated turboshaft map"
+      ]
+    },
+    "OEW_breakdown_lb": {
+      "wing": 1195.21875,
+      "horizontal_tail": 331.18289601554909,
+      "vertical_tail": 209.11941818181819,
+      "fuselage_hull": 946.76399999999978,
+      "floats": 1248.3229541686562,
+      "float_attachment": 312.08073854216406,
+      "landing_gear": 889.43010484516765,
+      "prop_battery": 1782.8945127813536,
+      "prop_motors": 617.74442236653442,
+      "prop_motor_inverters": 319.57543153628035,
+      "prop_generators": 373.00840413365,
+      "prop_turboshafts": 501.35538190006719,
+      "prop_propellers": 198.4160359665,
+      "prop_wiring": 151.71976754737543,
+      "prop_heat_sink": 379.29941886843858,
+      "prop_cowl_nacelle": 189.64970943421929,
+      "prop_struts_mounting": 151.71976754737543,
+      "prop_spinner": 37.929941886843856,
+      "avionics_instruments": 234.06055390662306,
+      "fuel_oil_system": 124.83229541686563,
+      "hydraulic_pneumatic": 156.04036927108203,
+      "electrical_system": 312.08073854216406,
+      "furnishings_seats": 624.16147708432811,
+      "ice_protection": 109.22825848975742,
+      "total": 11395.835348432814
+    },
+    "payload_lb": 2430,
+    "mass_closure_residual_lb": -0.033083690112334807,
+    "wingspan_ft": 64,
+    "CD0_reference_180kt": 0.020166157522393945,
+    "buoyancy": {
+      "weight_lb": 15604.036927108204,
+      "required_180pct_displacement_ft3": 450.11644982042895,
+      "external_float_volume_ft3": 466.56,
+      "external_float_only_screen_pass": true,
+      "verified_eligible_volume_ft3": [],
+      "rfp_below_cabin_floor_screen": "NOT_ASSESSED",
+      "adjacent_compartments_flooding": "NOT_ASSESSED",
+      "heel_20deg": "NOT_ASSESSED"
+    }
+  },
+  "limitations": [
+    "Water takeoff and landing distances not verified",
+    "OEI drag and yaw control not verified",
+    "Battery and turboshaft performance maps not validated",
+    "Float flooding and 20 degree heel not verified",
+    "Dock clearance sea state 3 FIKI and noise not verified",
+    "Aircraft and component dimensions provisional"
+  ]
+}

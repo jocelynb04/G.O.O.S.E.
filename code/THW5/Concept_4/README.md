@@ -1,73 +1,158 @@
-# Concept 4 — MATLAB THW5 Integration
+# Concept 4 — THW5 preliminary design package
 
-This folder provides MATLAB equivalents of the integrated Python Concept 4 aerodynamic, hydrodynamic, propulsion, weights, mission, constraint, and coupled sizing code, using the IHW3 MATLAB files as methodology references.
+Updated 16 November 2026, MATLAB R2026b Update 1. This validation copy contains the corrected coupled-sizing results and mission-route architecture. Concept 4 remains one of four concepts before team downselect; no candidate is selected here. Numerical convergence and passing tests do not establish aircraft compliance.
 
-## Where to put files
+## Architecture and scope
 
-Copy all files from **`matlab/`** into a *new integration branch or folder* of your team's existing repository. Do not replace teammates' original MATLAB classes without review. The `reference_IHW3/` folder contains the original Concept 3/IHW3 MATLAB examples for comparison and should **not** be placed on the working MATLAB path, because it contains files with the same names as the Concept 4 sizing wrappers.
+Amphibious twin-pontoon aircraft, cruciform tail, six electric propulsors and one series-hybrid turbogenerator. The intended sequence is:
 
-## Run in MATLAB
+**Electric ground operations → Electric takeoff → Hybrid climb → Hybrid cruise → Electric landing**
 
-Open MATLAB, change Current Folder to the `matlab/` directory, and run:
+`Concept4Mission.m` dispatches phases; `c4_mission_route.m` selects surfaces and configurations; `SeaplaneProp_Concept4.m` accounts for generator, battery and motor power. Ground operations, takeoff, landing and modeled balked landing are electric-only. Climb uses the existing battery share (phi = 0.4); cruise requests charging (phi = -0.08), subject to generator and battery limits. Generator intended operating state is tracked separately from zero electrical output. Physical spool, startup/shutdown transients, idle fuel and transition penalties are not modeled.
 
-```matlab
-test_concept4_integration
-run_concept4_smoke
-result = run_concept4_sizing;
-plot_concept4_results
-```
+Descent and approach are distinct from landing. Each existing descent retains its ten-minute zero-power approximation. Approach is an explicit zero-time, zero-power unverified marker. Neither approximation proves realistic approach energy or noise. Landing retains the existing three-minute, 80-shaft-hp water allowance.
 
-Or specify the complete inputs:
+Four directional routes are represented:
 
-```matlab
-result = run_concept4_sizing('concept4_aero_hydro_requirements.json', ...
-    'concept4_integration_assumptions.json', 'results');
-```
+| Departure → arrival | Surface selection | Additional inputs before energy calculation |
+|---|---|---|
+| Water → water | water / water (default) | Existing provisional water phase allowances |
+| Water → land | water / land | runway_landing |
+| Land → water | land / water | land_taxi, runway_takeoff |
+| Land → land | land / land | land_taxi, runway_takeoff, runway_landing |
 
-MATLAB writes `results/sizing_results.json`, `sizing_history.csv`, `mission_segments.csv`, `matching_diagram_data.csv`, and `RFP_status.json`. The plotting function generates three `.png` files from the CSV outputs.
+Options use `departure_surface`, `arrival_surface`, and `surface_inputs`. Each additional phase input is a structure with `shaft_hp` and `duration_min`; there are no invented land-performance defaults. Inspect `mission.plan('std_mission',options)` before `mission.run(W,'std_mission',false,options)`. Missing land inputs raise `C4:MissingSurfaceInputs`. These methods do not write outputs. Route support is phase/energy bookkeeping, not verified runway or water performance.
 
-The code is written for modern MATLAB releases supporting `classdef`, `jsondecode`, `jsonencode`, `string`, `table`, and `writetable` (recommend R2021b or later).
+Water surface operations use gear up; runway operations use gear down. Clean climb uses gear up without a retraction penalty. Land balked landing retains gear down; timing remains unverified. No arrival taxi energy is added.
 
-## What was translated
+## Current coupled-sizing results
 
-| Python source / IHW3 step | MATLAB file |
+Source of truth: `results/fixedwing_{300,325,350}/summary.json`. These are updated coupled-sizing outputs, not the historical baseline. The mission is the default Water-to-Water route.
+
+| Quantity | 300 ft² | 325 ft² | 350 ft² |
+|---|---:|---:|---:|
+| Converged / iterations | yes / 24 | yes / 22 | yes / 25 |
+| Gross weight, lb | 12,397.036 | 12,442.802 | 12,528.176 |
+| OEW including battery, lb | 8,354.428 | 8,438.776 | 8,548.862 |
+| Payload, lb | 2,430 | 2,430 | 2,430 |
+| Mission fuel, lb | 1,612.608 | 1,574.026 | 1,549.314 |
+| Battery mass, lb | 939.464 | 939.464 | 939.464 |
+| Battery capacity, kWh | 123.414 | 121.931 | 120.955 |
+| Installed battery bus discharge limit, kW | 809.654 | 809.654 | 809.654 |
+| Peak modeled battery bus discharge, kW | 736.049 | 736.049 | 736.049 |
+| Total motor nameplate rating, shaft hp | 1,606.228 | 1,581.533 | 1,564.162 |
+| Generator engine nameplate rating, shaft hp | 1,024.795 | 1,019.254 | 1,024.476 |
+| Required 2,000-fpm SL climb shaft hp | 1,351.776 | 1,330.993 | 1,316.374 |
+| Required 500-fpm / 10,000-ft climb shaft hp | 710.167 | 685.832 | 666.749 |
+| Required 180-KTAS / 10,000-ft cruise shaft hp | 633.044 | 632.954 | 636.197 |
+| Final mission SOC, % | 23.561 | 24.186 | 24.679 |
+| Final closure residual, lb | +0.02047 | +0.01842 | -0.02063 |
+| Margin below 12,500-lb team target, lb | +102.964 | +57.198 | -28.176 |
+| Span, ft | 48.990 | 50.990 | 52.915 |
+
+The 12,500-lb value is a **team target**, not an RFP maximum. The 350-ft² candidate exceeds it. Smaller candidates' margins are much smaller than likely model uncertainty. Increasing wing area reduces modeled mission fuel and motor rating but increases OEW and gross weight in this three-point trade; generator rating is not monotonic. This is not a global optimum or a hardware selection.
+
+Capability power is evaluated at no less than 12,500 lb (actual gross weight for the heavier candidate). Installed motor nameplate is distinct from continuous output (85% of nameplate), and generator engine shaft rating is distinct from electrical bus power. The battery limit is the lesser of the configured 1,200-kW ceiling and installed mass × assumed specific power × discharge efficiency; 809.654 kW is a result for these packs, not a universal constant.
+
+## Reproduction and output protection
+
+Work from this validation folder or a new isolated copy. Use a fresh MATLAB session when switching source copies; do not put duplicate original/archived classes on the active path. Check `pwd` and `which -all` for the runner, mission, geometry, aero, propulsion, weights and climb helper before calculations. Clear stale classes/functions before constructing model objects if necessary; do not reset the MCP server's MATLAB path.
+
+The active inputs are case-sensitive names:
+- `concept4_aero_hydro_requirements.json`
+- `Concept4_integration_assumptions.json`
+
+Main entrypoint (each call writes candidate outputs):
+
+~~~matlab
+candidate300 = run_concept4_lightweight_fixedwing(300);
+candidate325 = run_concept4_lightweight_fixedwing(325);
+candidate350 = run_concept4_lightweight_fixedwing(350);
+~~~
+
+No-argument execution selects 325 ft² only. Each call constructs its models, iterates mass/power/mission coupling, returns a structure/history, and overwrites `summary.json` and `iteration_history.csv` in its corresponding candidate directory. It does not produce water distances, trial liftoff speed, or a combined figure.
+
+Existing results in the original project are tracked by Git. Running there can overwrite tracked historical results. Preserve current outputs in a **new, nonexisting** backup location and verify hashes before rerunning. The full `baseline_backup` and `figure_backup_20261116` directories remain protected in the validation copy only and are not transferred. Portable regression fixtures contain only byte-for-byte historical summary copies in `regression_fixtures/historical_summary_300ft2.json`, `historical_summary_325ft2.json` and `historical_summary_350ft2.json`. Tests use these fixtures, not backup directories. These historical component sizes and reference values are separate from the current corrected outputs in `results/fixedwing_*`; do not replace one with the other.
+
+The legacy `run_concept4_sizing.m` / `Concept4Sizing.m` method and `plot_concept4_results.m` belong to a different, approximately 15,604-lb baseline. They are not the final candidate workflow. Legacy result/status files do not describe the updated candidates. There is no combined predownselect runner in this package.
+
+## Final THW5 figures
+
+| Figure | Use and interpretation |
 |---|---|
-| `SeaplaneGeom.py` + geometry adapter | `SeaplaneGeom.m`, `Concept4GeometryAdapter.m` |
-| `SeaplaneAero_Concept4.py` | `SeaplaneAero_Concept4.m` |
-| `SeaplaneHydro_Concept4.py` | `SeaplaneHydro_Concept4.m` |
-| `SeaplaneProp_Concept4.py` | `SeaplaneProp_Concept4.m` |
-| `SeaplaneWeights.py` | `SeaplaneWeights.m` |
-| `segment_climb_L2.py` / `.m` | `segment_climb_C4.m` |
-| `segment_cruise_L2.py` / `.m` | `segment_cruise_C4.m` |
-| `segment_loiter_L2.py` / `.m` | `segment_loiter_C4.m` |
-| `constraint_cruise_speed.py` / `.m` | `constraint_cruise_speed_C4.m` |
-| `Concept4Constraints.py` | `matching_envelope_C4.m`, `Concept4Constraints.m` |
-| `Concept4Mission.py` | `Concept4Mission.m` |
-| `Concept4Sizing.py` | `Concept4Sizing.m` |
-| `sizing_pass.py` / `.m` | `sizing_pass.m` |
-| `sizing_mainloop.py` / `.m` | `sizing_mainloop.m` |
-| `Concept4Verification.py` | `Concept4Verification.m` |
-| `run_concept4_sizing.py` | `run_concept4_sizing.m` |
-| `plot_concept4_results.py` | `plot_concept4_results.m` |
-| `test_concept4_integration.py` | `test_concept4_integration.m` |
-| atmospheric and utility logic | `isa_atmosphere_C4.m`, `c4_get.m`, `c4_segments.m`, `c4_required_climb_hp.m`, `write_json_C4.m` |
+| [Actual candidate comparison](results/thw5_final/candidate_comparison.png) | Final weights, fuel, battery energy, installed ratings and SOC; explicit team-target line |
+| [Coupled-sizing convergence](results/thw5_final/sizing_convergence.png) | Finite, monotonic residual magnitudes for all three; convergence alone is not compliance |
+| [Constraint screen](results/constraints_12500/concept4_mission_constraint_diagram.png) | Corrected climb equations, **fixed 12,500-lb** AEO motor/span screen; not actual-candidate mass closure |
+| [Motor matching](results/constraints_12500/motor_matching_12500.png), [power loading](results/constraints_12500/motor_power_loading_12500.png), [generator rating](results/constraints_12500/generator_rating_12500.png) | Supplemental fixed-weight parameter sweeps |
 
-The two original JSON input datasets are reused unchanged. **Do not use the original classroom piston-twin requirements JSON.**
+PNG/FIG/PDF versions of actual-candidate and convergence plots are under `results/thw5_final`; the constraint-screen PDF is there too. The screen's editable FIG remains under `results/constraints_12500`. [Verified comparison CSV](results/thw5_final/verified_candidate_comparison.csv) contains every scalar numeric/logical summary field.
 
-## Scope and limitations
+Both existing constraint scripts were inspected and regenerated without source changes. Their fixed-weight convention is consistent with their titles. The initial-guess reference (350 ft², 1,350 hp) is not a converged candidate. The minimum motor-power point near 512 ft² is not the minimum-weight design. Green shading covers only AEO motor power and span. Dashed motor-out curves omit failed-propeller drag/yaw and are optimistic screens, not verified failure performance. Do not present these as complete feasibility diagrams or use fixed-weight curves as exact 350-ft² actual-weight results.
 
-- This is preliminary analysis, not a compliant/certified aircraft design.
-- Float water-run hump resistance, actual water takeoff/landing distances, flooding, finite-heel stability, and crosswind dynamics are unverified.
-- Stopped-propeller drag and yaw effects during a failed motor are unverified; the OEI power screen is optimistic.
-- Electric-only ground and balked-landing mission phases use provisional time/power assumptions.
-- Installed propulsion specific power/energy, generator lapse, and BSFC are placeholders, not engine vendor data.
-- The team's earlier 12,500-lb gross weight is a preliminary design objective, **not** an RFP or certification limit.
-- MATLAB source execution **has not been verified in this environment**, which does not contain a MATLAB runtime. The existing Python reference model was rerun successfully and gave numerical convergence in 56 iterations. The MATLAB translation has undergone static checks and needs an actual MATLAB test run by the team.
+Regeneration commands below overwrite the seven generated constraint artifacts; first create a new verified backup:
 
-## Debug order
+~~~matlab
+constraints = run_concept4_constraint_diagram_style;
+sweep = run_concept4_constraints_12500;
+~~~
 
-1. Run `test_concept4_integration` to validate basic interfaces.
-2. Run `run_concept4_smoke` for one sample aircraft.
-3. Run `run_concept4_sizing` for the coupled sizing loop.
-4. Run `plot_concept4_results` only after CSV results exist.
-5. If MATLAB reports a specific line error, compare that `.m` file against the matching Python source or reference MATLAB file.
+The older `concept4_constraint_final_candidates.png/.fig` was left unchanged and is **excluded from final delivery figures**: it contains historical annotations, omits 350 ft², and has no supplied reproducible producer. All nine previous constraint artifacts are preserved in `figure_backup_20261116/constraints_12500` in the validation copy only; this backup is not part of the repository transfer. See [figure provenance](results/thw5_final/FIGURE_PROVENANCE.md).
+
+## Tests and numerical validation
+
+MATLAB R2026b Update 1 has executed the updated three candidate runs. All converged; all 35 unit tests passed (22 route tests, 13 battery tests), and the separate integration test passed in Stage 7. Final iteration residuals have no sign reversals or growing magnitudes; no nonfinite values were found. The final summary closure check differs from the last iteration-history residual by design.
+
+Safe tests (no candidate output-writing runner):
+
+~~~matlab
+testResults = runtests({'Concept4MissionRouteTest.m','SeaplanePropBatteryTest.m'});
+assert(all([testResults.Passed]));
+test_concept4_integration
+~~~
+
+Route tests cover surface selection, electric/hybrid routing, generator intent, SOC continuity, missing-input handling and historical Water-to-Water replay at fixed historical component sizes. Synthetic land fixtures are tests, not aircraft performance data. Battery tests cover candidate-specific mass limits, configured ceilings and over-limit rejection. Historical fixed-component mission reproduction is distinct from updated coupled sizing: corrected climb sizing legitimately changed component ratings and coupled results.
+
+Stage 7 static analysis of 32 MATLAB files found no blocking errors and two legacy array-growth suggestions (`Concept4Sizing.m:108`, `matching_envelope_C4.m:44`). The smoke/legacy sizing workflows are not substitutes for these tests and are not required for reproducing final candidates.
+
+## Methods and file inventory
+
+| Files | Role |
+|---|---|
+| `run_concept4_lightweight_fixedwing.m` | Current fixed-area coupled candidate sizing; energy/power battery sizing; installed-pack enforcement |
+| `Concept4Mission.m`, `c4_mission_route.m` | Route plan and time-segment fuel/SOC accounting |
+| `SeaplaneGeom.m`, `SeaplaneAero_Concept4.m` | Planform/tail/wetted geometry; component parasite drag and induced polar |
+| `SeaplaneProp_Concept4.m` | Series-hybrid power balance, ratings/lapse, efficiencies, pack limits/mass |
+| `SeaplaneWeights.m` | Preliminary component/system OEW including battery |
+| `c4_required_climb_hp.m`, `constraint_cruise_speed_C4.m` | Capability screens; climb polar evaluated at each trial speed |
+| `segment_climb_C4.m`, other `segment_*.m` helpers | Mission/legacy segment calculations; capability and mission speed searches need not be identical |
+| `SeaplaneHydro_Concept4.m` | Hydrostatics and bounded steady-planing screening, not full water takeoff |
+| `run_concept4_constraint_diagram_style.m`, `run_concept4_constraints_12500.m` | Fixed-weight figure/table producers |
+| `Concept4MissionRouteTest.m`, `SeaplanePropBatteryTest.m`, `test_concept4_integration.m` | Current validation tests |
+| `Concept4Sizing.m`, adapters/verification, `sizing_pass.m`, legacy runner/plotter | Retained older integration workflow; not final candidate evidence |
+| `Concept_4_requirements.txt` | Older classroom reference; not active input |
+| `c4_*.m`, JSON/table writers and remaining helpers | Shared implementation utilities; inspect dependency resolution before switching copies |
+
+The lightweight method fixes wing area and sizes the battery by the greater of mission energy and modeled battery power, unlike the older full-installed-motor battery mass method. Its 10% battery **power** mass margin is hardcoded at `run_concept4_lightweight_fixedwing.m:27`; it is separate from the JSON 10% battery energy margin, 1% motor margin and 5% generator margin. Corrected climb capability evaluates the speed-dependent polar at each trial speed. Mission climb remains a separate operational climb calculation.
+
+## Requirements, assumptions and limitations
+
+See [ten principal assumptions and evidence](THW5_ASSUMPTIONS.md) for values, units, source locations and justification. Requirements are transcribed in `concept4_aero_hydro_requirements.json:285–330`; the original RFP should remain the final authority. The mission assigns all 868.976 nmi (1,000 statute miles) to 130-KTAS cruise at 10,000 ft, without climb-distance credit. The 180-KTAS / 10,000-ft capability screen is separate. Payload is nine passengers plus two pilots with stated baggage, totaling 2,430 lb. The explicit electric balked landing and 45-minute reserve are retained.
+
+**Unresolved delivery limitations:** water takeoff and landing within 2,000 ft over 50 ft, representative float displacement/hump resistance, propeller static/forward-speed data, hardware power/thermal capability, generator-out endurance, motor-out drag/yaw, mission/recharge without shore power, missing land-phase performance/energy data, buoyancy below cabin floor/flooding/heel, sea-state/crosswind dispatch, cabin/egress, IFR/FIKI, noise and detailed mass/drag substantiation.
+
+The existing **900-shaft-hp / two-minute water takeoff** remains a provisional energy allowance. Its approximately 736-kW battery bus peak is imposed, not derived from water acceleration or obstacle clearance. A planing correlation cannot represent the initial displacement/hump regimes. No verified takeoff distance or full-aircraft compliance is claimed.
+
+Several JSON prose notes/status flags predate the implemented solver (for example “no coupled driver” and “future mission model”). Inputs were deliberately not edited; use current code and candidate outputs for numerical status, and retain unverified engineering flags until evidence exists.
+
+## References retained from active inputs
+
+These references support methods and research direction, not validation of selected hardware or geometry:
+- D. P. Raymer, *Aircraft Design: A Conceptual Approach*; course planform, wetted-area and GA statistical weight methods. Applicability to this DEP floatplane remains unvalidated.
+- [NASA OpenVSP Parasite Drag Tool](https://www.nasa.gov/reference/openvsp-parasite-drag-tool/).
+- [NASA Electrified Aircraft Propulsion — Aircraft Configurations](https://www.nasa.gov/eap-aircraft-concepts/aircraft-configurations/).
+- D. Savitsky (1964), [Hydrodynamic Design of Planing Hulls](https://doi.org/10.5957/mt1.1964.1.4.71), and the ITTC-1957 friction correlation within its valid regime.
+- [14 CFR 23.2310 buoyancy](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-23/subpart-D/section-23.2310), as cited by the active JSON; this package does not establish regulatory compliance.
+
+## Transfer status
+
+Ready for team review as a preliminary numerical trade package, with limitations attached. Not ready to claim complete RFP compliance or select a winner. Transfer only reviewed validation changes into the existing team Concept 4 folder after approval; preserve original/historical outputs and teammates' Concepts 1–3. The approved transfer includes validated source, tests, portable regression fixtures, documentation and final outputs only. Full backups remain validation-only. No commit or push has been performed; review the transfer before committing.

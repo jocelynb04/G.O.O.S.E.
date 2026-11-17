@@ -45,12 +45,11 @@
       "alt_ft": 0
     },
     {
-      "name": "AMP takeoff assist",
+      "name": "Electric takeoff power screen",
       "type": "ground",
-      "mode": "hybrid",
-      "electric_fraction": 0.2892670157068063,
+      "mode": "electric",
       "duration_min": 2,
-      "shaft_power_hp": 764,
+      "shaft_power_hp": 220,
       "alt_ft": 0
     },
     {
@@ -136,7 +135,7 @@
     "Combustion maximum 543 hp and electric maximum 221 hp are a modeling allocation of the published continuous/peak system ratings, not a certified component map.",
     "40-kWh external pack, 250 Wh/kg, 120-s peak duration, charging limits and flat power to 10000 ft are assumptions.",
     "0.34 BSFC applied to combustion shaft power, including generation; 0.32 net boost BSFC is not multiplied again.",
-    "Takeoff request reduced explicitly from 867 to764 hp; water performance is not established.",
+    "The electric-only takeoff power screen requests 220 shp for 120 seconds. Water takeoff performance remains unverified.",
     "Electric 3-degree final approach at85 KTAS uses takeoff-flap/gear-up coefficients as a partial-flap proxy; full landing-flap85-KTAS case is supplied and fails the modeled motor rating."
   ]
 }
