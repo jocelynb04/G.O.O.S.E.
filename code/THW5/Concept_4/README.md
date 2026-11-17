@@ -82,19 +82,27 @@ The legacy `run_concept4_sizing.m` / `Concept4Sizing.m` method and `plot_concept
 |---|---|
 | [Actual candidate comparison](results/thw5_final/candidate_comparison.png) | Final weights, fuel, battery energy, installed ratings and SOC; explicit team-target line |
 | [Coupled-sizing convergence](results/thw5_final/sizing_convergence.png) | Finite, monotonic residual magnitudes for all three; convergence alone is not compliance |
-| [Constraint screen](results/constraints_12500/concept4_mission_constraint_diagram.png) | Corrected climb equations, **fixed 12,500-lb** AEO motor/span screen; not actual-candidate mass closure |
+| [Constraint screen](results/constraints_12500/concept4_mission_constraint_diagram.png) | **Fixed 12,500-lb** AEO motor/span curves and an assumed landing-stall boundary, with actual-weight 300/325/350-ft² candidate markers on one axis; not full-aircraft feasibility |
 | [Motor matching](results/constraints_12500/motor_matching_12500.png), [power loading](results/constraints_12500/motor_power_loading_12500.png), [generator rating](results/constraints_12500/generator_rating_12500.png) | Supplemental fixed-weight parameter sweeps |
 
 PNG/FIG/PDF versions of actual-candidate and convergence plots are under `results/thw5_final`; the constraint-screen PDF is there too. The screen's editable FIG remains under `results/constraints_12500`. [Verified comparison CSV](results/thw5_final/verified_candidate_comparison.csv) contains every scalar numeric/logical summary field.
 
-Both existing constraint scripts were inspected and regenerated without source changes. Their fixed-weight convention is consistent with their titles. The initial-guess reference (350 ft², 1,350 hp) is not a converged candidate. The minimum motor-power point near 512 ft² is not the minimum-weight design. Green shading covers only AEO motor power and span. Dashed motor-out curves omit failed-propeller drag/yaw and are optimistic screens, not verified failure performance. Do not present these as complete feasibility diagrams or use fixed-weight curves as exact 350-ft² actual-weight results.
+The constraint calculations retain their validated cruise/climb equations. The final single-axis diagram reads each current `results/fixedwing_*/summary.json` and plots W/S = actual gross weight / wing area and W/P = actual gross weight / total installed motor nameplate. The obsolete 350-ft² / 1,350-hp initial marker is removed. [Candidate marker data](results/constraints_12500/concept4_candidate_markers.csv) records the plotted values, summary paths and team-weight margins. The 350-ft² candidate is explicitly labeled 28.2 lb above the 12,500-lb team target.
 
-Regeneration commands below overwrite the seven generated constraint artifacts; first create a new verified backup:
+The background curves and span lines remain at 12,500 lb. Required installed power is the maximum cruise/climb demand after the continuous-rating fraction and margin; therefore allowable W/P lies **below the minimum** of the individual curves. Actual-weight overlays are context, not direct pass/fail tests against that fixed-weight background. The minimum motor-power point near 512 ft² is a fixed-weight screening minimum, not a coupled candidate or minimum-weight design. Green shading is the intersection of the AEO motor-power screen, the 64-ft design-span bound and the provisional landing-stall limit. The left and right limits are 24.414063 and 41.897820 lbf/ft²; neither the plot edge nor the stall assumption establishes water-field performance. Dashed motor-out curves omit failed-propeller drag/yaw and remain unverified. Water takeoff/landing, battery-only operation, hardware, and sustained power/energy remain unverified by this diagram.
+
+The maximum wing-loading boundary uses an assumed landing stall speed of 75 KIAS, landing CLmax of 2.2, standard sea-level density, and landing-to-takeoff weight ratio of 1.0. This is a preliminary conceptual screening assumption rather than a specified RFP requirement. Water takeoff and landing distance compliance remains unverified.
+
+The diagram uses rho = 0.002377 slug/ft³ and 75 knots = 126.585739 ft/s, giving maximum W/S = 0.5 rho V² CLmax / (W_L/W_TO) = 41.897820 lbf/ft², with the screened side to the left. KIAS is approximated as equivalent airspeed at standard sea level without calibration corrections. This assumption is local to the diagram; active JSON inputs and coupled sizing are unchanged. The curve CSV records separate span/stall masks and both wing-loading limits.
+
+The main diagram command overwrites its PNG/FIG, fixed-weight curve CSV, candidate-marker CSV and final constraint-screen PDF. The separate sweep command overwrites its CSV and three supplemental PNGs. Back up existing outputs to a new location before regeneration:
 
 ~~~matlab
 constraints = run_concept4_constraint_diagram_style;
 sweep = run_concept4_constraints_12500;
 ~~~
+
+For the candidate-overlay correction, only the main diagram was regenerated. The pre-edit source, documentation and constraint outputs are preserved with SHA-256 checks in `review_backups/constraint_diagram_before_candidates_20261116/`. This isolated local review backup is not a delivery artifact and must not be staged or added to the MATLAB path.
 
 The older `concept4_constraint_final_candidates.png/.fig` was left unchanged and is **excluded from final delivery figures**: it contains historical annotations, omits 350 ft², and has no supplied reproducible producer. All nine previous constraint artifacts are preserved in `figure_backup_20261116/constraints_12500` in the validation copy only; this backup is not part of the repository transfer. See [figure provenance](results/thw5_final/FIGURE_PROVENANCE.md).
 
@@ -156,3 +164,5 @@ These references support methods and research direction, not validation of selec
 ## Transfer status
 
 Ready for team review as a preliminary numerical trade package, with limitations attached. Not ready to claim complete RFP compliance or select a winner. Transfer only reviewed validation changes into the existing team Concept 4 folder after approval; preserve original/historical outputs and teammates' Concepts 1–3. The approved transfer includes validated source, tests, portable regression fixtures, documentation and final outputs only. Full backups remain validation-only. No commit or push has been performed; review the transfer before committing.
+
+Final single-axis presentation: the matching diagram uses one large axis, a focused wing-loading/power-loading window, distinct candidate markers with offset labels, a compact legend below the axis, a 300-dpi PNG and editable FIG, and a vector PDF. There is no separate zoom or subplot. Candidate coordinates, engineering curves and stall/span calculations are unchanged from the approved screens. A marker can lie slightly above the fixed-weight curve because its own converged weight differs from the 12,500-lb background; this is shown without relocating the marker and is not a matched-weight compliance determination. Local backups under `review_backups` are excluded from commits.
