@@ -1,5 +1,9 @@
 classdef Concept1Geom < GeometryBase
-%CONCEPT1GEOM  Concept 1 high-wing flying boat, T-tail and tip floats.
+%CONCEPT1GEOM Concept 1 geometry with optional evaluated OpenVSP surfaces.
+% OpenVSP mode fixes tail and body areas. Only the wing scales with S_ref
+% for sensitivity sweeps. CompGeom areas already include symmetry and trimming.
+% Float support struts are charged to float structure; propeller blade area
+% is excluded from the airframe wetted-area drag approximation.
 % CONCEPT 1 ADAPTATION NOTES
 % Retains professor's geometry interface and dependent-property design.
 % High wing and T-tail are placement choices not captured by planform
@@ -73,6 +77,7 @@ classdef Concept1Geom < GeometryBase
     end
 
     properties (SetAccess = immutable)
+        imported = struct()         % evaluated OpenVSP geometry, optional
         prop                        % injected TtpaProp, for the nacelle
 
         % --- wing shape, read from J.geometry ---
@@ -190,6 +195,10 @@ classdef Concept1Geom < GeometryBase
 
             J = jsondecode(fileread(json_path));
             G = J.geometry;
+            if isfield(G, 'openvsp')
+                obj.imported = G.openvsp;
+                obj.S_ref = obj.imported.wing.area_ft2;
+            end
 
             % Wing shape
             obj.AR            = G.AR;
@@ -282,14 +291,26 @@ classdef Concept1Geom < GeometryBase
         end
 
         function val = get.c_root(obj)
+            if isfield(obj.imported,'wing')
+                val = obj.imported.wing.root_chord_ft * sqrt(obj.S_ref / obj.imported.wing.area_ft2);
+                return
+            end
             val = GeometryBase.compute_root_chord(obj.S_ref, obj.b, obj.taper);
         end
 
         function val = get.c_tip(obj)
+            if isfield(obj.imported,'wing')
+                val = obj.imported.wing.tip_chord_ft * sqrt(obj.S_ref / obj.imported.wing.area_ft2);
+                return
+            end
             val = GeometryBase.compute_tip_chord(obj.c_root, obj.taper);
         end
 
         function val = get.MAC(obj)
+            if isfield(obj.imported,'wing')
+                val = obj.imported.wing.MAC_ft * sqrt(obj.S_ref / obj.imported.wing.area_ft2);
+                return
+            end
             val = GeometryBase.compute_mac(obj.c_root, obj.taper);
         end
 
@@ -322,6 +343,10 @@ classdef Concept1Geom < GeometryBase
         %% ---------------- Horizontal tail ----------------
 
         function val = get.S_ht(obj)
+            if isfield(obj.imported,'wing')
+                val = obj.imported.horizontal_tail.area_ft2;
+                return
+            end
         %GET.S_HT  Horizontal tail area by the volume-coefficient method.
         %
         %       V_h  = S_ht * L_ht / ( S_ref * MAC )     so
@@ -369,6 +394,10 @@ classdef Concept1Geom < GeometryBase
         %% ---------------- Vertical tail ----------------
 
         function val = get.S_vt(obj)
+            if isfield(obj.imported,'wing')
+                val = obj.imported.vertical_tail.area_ft2;
+                return
+            end
         %GET.S_VT  Vertical tail area by the volume-coefficient method.
         %
         %       V_v  = S_vt * L_vt / ( S_ref * b )       so
@@ -419,6 +448,10 @@ classdef Concept1Geom < GeometryBase
         end
 
         function val = get.S_wet_fuselage(obj)
+            if isfield(obj.imported,'wing')
+                val = obj.imported.wetted_areas_ft2.FuselageGeom;
+                return
+            end
         %GET.S_WET_FUSELAGE  Fuselage wetted area [ft^2].
         %
         %   [Raymer Eq. 7.13]   S_wet ~= 3.4 * (A_top + A_side) / 2
@@ -447,12 +480,20 @@ classdef Concept1Geom < GeometryBase
         %% ---------------- Flying boat hull and stabilizing floats ----------------
 
         function val = get.S_wet_hull(obj)
+            if isfield(obj.imported,'wing')
+                val = obj.imported.wetted_areas_ft2.FuselageGeom;
+                return
+            end
             % Screening-level proxy: base fuselage area times hull factor.
             % Replace with OpenVSP hull wetted area when available.
             val = obj.hull_wetted_factor * obj.S_wet_fuselage;
         end
 
         function val = get.S_wet_floats(obj)
+            if isfield(obj.imported,'wing')
+                val = obj.imported.wetted_areas_ft2.WingtipFloats + obj.imported.wetted_areas_ft2.FloatSupportStruts;
+                return
+            end
             % Two slender equivalent cylindrical floats, lateral area only.
             % Approximate: no detailed spray, strut or interference model.
             val = obj.n_floats * pi * obj.float_diameter_ft * ...
@@ -462,6 +503,10 @@ classdef Concept1Geom < GeometryBase
         %% ---------------- Nacelles ----------------
 
         function val = get.l_nacelle(obj)
+            if isfield(obj.imported,'wing')
+                val = obj.imported.nacelle.length_ft;
+                return
+            end
         %GET.L_NACELLE  Length of ONE nacelle [ft].
         %   The powerplant length comes from the propulsion model. For
         %   Concept 1 this is a preliminary fixed turboprop installation
@@ -472,6 +517,10 @@ classdef Concept1Geom < GeometryBase
         end
 
         function val = get.S_wet_nacelle(obj)
+            if isfield(obj.imported,'wing')
+                val = obj.imported.wetted_areas_ft2.EngineNacelle;
+                return
+            end
         %GET.S_WET_NACELLE  Wetted area of ALL nacelles [ft^2].
         %   Each nacelle is taken as a cylinder of diameter d_nacelle. The
         %   end faces are not wetted: the front is the propeller disc and
@@ -483,10 +532,18 @@ classdef Concept1Geom < GeometryBase
         %% ---------------- Wetted areas ----------------
 
         function val = get.S_wet_wing(obj)
+            if isfield(obj.imported,'wing')
+                val = obj.imported.wetted_areas_ft2.WingGeom * obj.S_ref / obj.imported.wing.area_ft2;
+                return
+            end
             val = Concept1Geom.wetted_from_exposed(obj.S_exposed_wing, obj.tc_mean);
         end
 
         function val = get.S_wet_ht(obj)
+            if isfield(obj.imported,'wing')
+                val = obj.imported.wetted_areas_ft2.HorizontalTail;
+                return
+            end
         %   The horizontal tail area from the volume coefficient is the
         %   theoretical planform. The strip inside the fuselage is not
         %   wetted, but it is small on a conventional tail, so the
@@ -498,6 +555,10 @@ classdef Concept1Geom < GeometryBase
         end
 
         function val = get.S_wet_vt(obj)
+            if isfield(obj.imported,'wing')
+                val = obj.imported.wetted_areas_ft2.VerticalTail;
+                return
+            end
             val = Concept1Geom.wetted_from_exposed(obj.S_vt, obj.tc_vt);
         end
 

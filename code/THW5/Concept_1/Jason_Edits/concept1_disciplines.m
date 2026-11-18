@@ -28,6 +28,7 @@ function [obj] = concept1_disciplines()
 %   The discipline objects are handle objects, so the sizing loop's writes
 %   to obj.prop.P_SL and obj.geom.S_ref are seen by every caller.
 
+    setup_jason_edits();
     json_path = concept1_requirements_path();
 
     prop = Concept1HybridProp(json_path);
@@ -36,7 +37,13 @@ function [obj] = concept1_disciplines()
     wts  = Concept1Weights(json_path, geom, prop);
     miss = MissionProfileReader.read_profile(json_path, 'std_mission');
     cons = concept1_rfp_constraints();
+    J = jsondecode(fileread(json_path));
+    if isfield(J,'analysis_design')
+        prop.P_SL = J.analysis_design.turbine_rating_hp;
+        prop.electric_power_ratio = J.analysis_design.electric_rating_hp / prop.P_SL;
+    end
 
     obj = struct('aero', aero, 'prop', prop, 'wts', wts, 'geom', geom, ...
-        'miss', miss, 'cons', cons);
+        'miss', miss, 'cons', cons, 'constraint_settings', J.constraints, ...
+        'sizing', J.sizing, 'analysis_design', J.analysis_design);
 end

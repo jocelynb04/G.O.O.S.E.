@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "status": "PRELIMINARY STUDY ASSUMPTIONS; not supplier-approved installation data",
+  "shaft_efficiency": 0.98,
+  "gearbox_hp_each": 1500,
+  "gearbox_rpm": 2080,
+  "battery_continuous_C": 3,
+  "battery_peak_C": 5,
+  "battery_charge_C": 1,
+  "battery_power_derating": 0.85,
+  "battery_energy_derating": 0.9,
+  "battery_specific_energy_Wh_kg": 200,
+  "charge_storage_efficiency": 0.97,
+  "charge_taper_start_soc": 0.8,
+  "periodic_soc_tolerance": 0.002,
+  "repeated_legs": 4,
+  "integration_step_min": 1,
+  "capacity_tolerance_kWh": 0.25,
+  "capacity_max_kWh": 3000,
+  "takeoff_min": 0.75,
+  "landing_min": 0.5,
+  "electric_climb_ktas": 90,
+  "electric_climb_fpm": 750,
+  "turbine_climb_ktas": 110,
+  "turbine_climb_fpm": 700,
+  "descent_ktas": 110,
+  "descent_fpm": 800,
+  "approach_ktas": 90,
+  "approach_fpm": 500,
+  "restart_delay_s": 60,
+  "restart_stored_energy_kWh_each": 0.3,
+  "restart_fuel_lb_each": 0.2,
+  "turbine_idle_fuel_lb_hr_each": 20,
+  "landing_motor_fraction": 0.1,
+  "taxi_motor_fraction": 0.1,
+  "turbine_takeoff_duration_min": 5,
+  "continuous_case_duration_min": 5,
+  "oei_checkpoint_duration_min": 2,
+  "feathered_drag_area_ft2_each": 0.35,
+  "span_limit_ft": 65,
+  "team_mass_cap_lbf": 12500,
+  "battery_bus": "two isolated strings with normally open cross-tie; surviving propulsor can access both healthy strings after isolated propulsor failure",
+  "additional_gearbox_mass_kg_per_kW": 0.2,
+  "generator_continuous_fraction": 1.0,
+  "accessories": [
+    {
+      "name": "avionics and flight instruments",
+      "kW": 0.5,
+      "duty": 1
+    },
+    {
+      "name": "communications navigation surveillance",
+      "kW": 0.3,
+      "duty": 1
+    },
+    {
+      "name": "exterior and cabin lights",
+      "kW": 0.2,
+      "duty": 1
+    },
+    {
+      "name": "fuel and lubrication auxiliaries",
+      "kW": 0.4,
+      "duty": 1
+    },
+    {
+      "name": "battery cooling pumps and fans",
+      "kW": 2,
+      "duty": 1
+    },
+    {
+      "name": "motor inverter cooling pumps and fans",
+      "kW": 1,
+      "duty": 1
+    },
+    {
+      "name": "controls actuators and miscellaneous allowance",
+      "kW": 0.6,
+      "duty": 1
+    }
+  ],
+  "sources": {
+    "battery_cell": {
+      "url": "https://www.molicel.com/wp-content/uploads/Product-Data-Sheet-of-INR-21700-P50B-80122.pdf",
+      "retrieved": "2026-11-08",
+      "facts": "5 Ah typical,18 Wh typical,60 A temperature-limited continuous discharge,5 A standard and25 A maximum charge,71 g maximum cell mass. Cell data only; pack limits below are engineering assumptions."
+    },
+    "motor": {
+      "url": "https://magnix.aero/electric-engines",
+      "retrieved": "2026-11-08",
+      "facts": "magni650:700 kW peak,515 kW continuous at2300 rpm,144 kg dry,500-850 VDC. No approved peak duration or hybrid generation/gearbox installation established."
+    },
+    "engine": {
+      "url": "https://www.easa.europa.eu/en/downloads/7685/en",
+      "retrieved": "2026-11-08",
+      "facts": "E.070 issue09. Consult applicable0983202 installation and0983302 operation manuals; build-configuration-specific manuals may differ. Five-minute takeoff limit. Custom installation/restart data unresolved."
+    },
+    "climb": {
+      "url": "https://www.ecfr.gov/current/title-14/section-23.2120",
+      "retrieved": "2026-11-08",
+      "facts": "Study interpretation:Level3 low-speed,4% AEO initial climb,1% after critical loss at400 ft gear retracted takeoff flaps,3% balked landing. Accepted means and complete certification basis unresolved."
+    },
+    "classification": {
+      "url": "https://www.ecfr.gov/current/title-14/section-23.2005",
+      "retrieved": "2026-11-08",
+      "facts": "7-9 passenger Level3. Low-speed category additionally depends on VNO/VMO and MMO; assumed for this study, not established by cruise KTAS alone."
+    },
+    "feathered_analogue": {
+      "url": "https://ntrs.nasa.gov/api/citations/19800013779/downloads/19800013779.pdf",
+      "facts": "Research lead for failed-propeller aerodynamics only; the assumed drag area is NOT extracted from this source."
+    },
+    "inverter": {
+      "url": "https://magnix.aero/power-electronics",
+      "retrieved": "2026-11-08",
+      "facts": "magniDrive100 public maximum175 kW,550-800 VDC,12.5 kg. Public page does not establish DC-throughput rating, continuous rating or approved parallel/multiwinding topology."
+    },
+    "aviation_battery": {
+      "url": "https://magnix.aero/batteries",
+      "retrieved": "2026-11-08",
+      "facts": "Samson300 public module13.7 kWh,45.6 kg,300 Wh/kg,819 V maximum,1C discharge. These specific-energy and discharge ratings must remain paired; they are not the5C study pack."
+    }
+  },
+  "assumptions": {
+    "mechanical": "0.98 extra shaft efficiency,1500 hp per hybrid gearbox at2080 rpm,0.20 kg/kW additional coupling mass are independent design assumptions. Turbine own gearbox rating is not hybrid combined rating.",
+    "pack": "3C continuous,5C peak,1C charge,200 Wh/kg,0.85 power and0.90 energy derating are proposed pack-level limits, not demonstrated P50B pack capability. A190S dual-string P50B reference layout operates from551V (2.9V/cell) to798V (4.2V/cell), inside the published magni650 and magniDrive100 voltage windows. Rate power is conservatively multiplied by2.9/3.6 to enforce current-rating power at the proposed minimum voltage. Nominal energy is rounded to complete190S strings with an even parallel-cell count. Usable energy above2.9V, cooling, insulation and pack failure protection remain unverified.",
+    "schedule": "Speeds,rates,takeoff/landing times and60s restart hold are proposed schedules. Restart consumes0.3 kWh stored energy and0.2 lb fuel per turbine; idle20 lb/hr each is an estimate, not GE data. Repeated legs include the full30-minute no-charge turnaround with6 kW auxiliary load; this is the RFP maximum-time energy exposure, not an assumed ground recharge.",
+    "thermal": "Continuous motor/generator ratings approximate adequate cooling. Peak timer includes adjacent peaks and resets only after10 min at<=80% continuous rating. This duty rule is a study assumption, not a thermal model.",
+    "failure": "One isolated propulsor failure removes half motor,inverter,gearbox and turbine output but leaves both battery strings accessible. Additional battery-string-loss case halves battery availability. Common-bus/containment and clutch-jam FMEA remains unresolved. Departure OEI diverts at5000 ft with a250 fpm turbine climb and carries45-minute reserve; it does not attempt the normal10000-ft/700-fpm two-engine schedule or combine a second go-around failure.",
+    "drag": "Feathered drag modeled asq*0.35 ft^2 per failed propeller, independently chosen study estimate. Sensitivity0.15-0.70 ft^2. Not stopped/windmilling drag.",
+    "accessories": "Every equipment kW and duty is a preliminary allowance, not a selected-equipment specification. Battery supplies auxiliaries in electric phases; turbine shaft supplies them during turbine operation, through0.90 shaft-to-DC efficiency.",
+    "fuel": "Existing0.6 lb/hp/hr constant BSFC remains an estimate. Explicit45-min reserve is counted once;1% contingency and1% unusable fuel follow requirements.",
+    "generation": "Bidirectional motor-generator operation is assumed with continuous generating shaft limit equal to motor continuous rating;0.90 stored-energy/extra-turbine-shaft efficiency already includes conversion and charging losses.",
+    "high_speed": "180 KTAS capability remains mandatory. Full-range 180 KTAS mission is optional and excluded from baseline energy sizing; enable include_high_speed_mission for that separate operating trade."
+  },
+  "sensitivities": [
+    {
+      "name": "lower_pack_power",
+      "battery_continuous_C": 2,
+      "battery_peak_C": 3,
+      "battery_charge_C": 0.5
+    },
+    {
+      "name": "higher_pack_power",
+      "battery_continuous_C": 4,
+      "battery_peak_C": 7,
+      "battery_charge_C": 2
+    },
+    {
+      "name": "lower_pack_energy",
+      "battery_specific_energy_Wh_kg": 160
+    },
+    {
+      "name": "restart_120_seconds",
+      "restart_delay_s": 120
+    },
+    {
+      "name": "higher_feathered_drag",
+      "feathered_drag_area_ft2_each": 0.7
+    },
+    {
+      "name": "battery_string_loss",
+      "failure_battery_fraction": 0.5
+    }
+  ],
+  "periodic_energy_tolerance_kWh": 0.1,
+  "oei_turbine_climb_fpm": 250,
+  "cell_series_count": 190,
+  "battery_string_count": 2,
+  "cell_nominal_energy_Wh": 18,
+  "cell_nominal_voltage": 3.6,
+  "cell_max_voltage": 4.2,
+  "cell_operating_min_voltage": 2.9,
+  "cell_capacity_Ah": 5,
+  "cell_mass_kg": 0.071,
+  "battery_voltage_power_factor": 0.8055555555555555,
+  "turnaround_min": 30,
+  "include_high_speed_mission": false,
+  "failure_battery_fraction": 1,
+  "wing_loading_sweep_psf": [
+    15,
+    17,
+    19,
+    21,
+    23,
+    25,
+    27,
+    29
+  ]
+}

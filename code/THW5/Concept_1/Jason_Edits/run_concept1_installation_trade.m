@@ -5,6 +5,12 @@ function [weights, power] = run_concept1_installation_trade()
 % and Optimization (NTRS 20240014710), combining gearbox and motor/generator.
 % Dedicated machine mass reference: https://www.h3x.tech/products/hpdm-30
 % 750 shp and 2200 rpm reference: PT6A-34 JCAB TADS 745.
+setup_jason_edits();
+current = jsondecode(fileread(concept1_requirements_path()));
+if isfield(current.geometry,'openvsp')
+    error('Concept1:HistoricalGeometryTrade', ...
+        'This runner defines the prior geometry trade. Run run_concept1_openvsp for the imported shape, or use the pre-import backup for this historical study.');
+end
 here = fileparts(mfilename('fullpath'));
 setup_jason_edits();
 cfg = jsondecode(fileread(concept1_requirements_path()));

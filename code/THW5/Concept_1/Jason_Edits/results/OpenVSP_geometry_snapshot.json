@@ -1,0 +1,177 @@
+{
+  "source_file": "C:\\Users\\Jason\\OneDrive - Virginia Tech\\Desktop\\Fall 2026\\Senior Design\\Git\\code\\THW5\\Concept_1\\Jason_Edits\\AmphibiousSeaplane_Concept1_Jason_Revised.vsp3",
+  "source_sha256": "62277460f8ce9d0f464c7fc25d3cec7eeea1f1c1bc34aeb9a1eb93349b787b78",
+  "openvsp_version": "3.54.0",
+  "units": "ft",
+  "units_basis": "Assumed feet from 45-unit fuselage, 60-unit wing and 8-unit propeller. OpenVSP shape coordinates have no authoritative physical unit.",
+  "reference_area_basis": "OpenVSP TotalArea, projected span used for AR; excludes rotating propeller surfaces from airframe wetted area.",
+  "wing": {
+    "area_ft2": 713.7142857142857,
+    "span_ft": 64.49999866356015,
+    "AR": 5.829012969014177,
+    "root_chord_ft": 14.74479638314198,
+    "tip_chord_ft": 7.37239819157099,
+    "MAC_ft": 11.468174964665984,
+    "taper_ratio": 0.5,
+    "sweep_quarter_chord_deg": -0.26973399032185585,
+    "dihedral_deg": 2.0,
+    "twist_deg": 0.0,
+    "incidence_deg": 0.0,
+    "thickness_ratio_root": 0.1,
+    "thickness_ratio_tip": 0.1,
+    "x_quarter_MAC_ft": 21.618679771686942,
+    "origin_ft": [
+      18.0,
+      0.0,
+      4.0
+    ]
+  },
+  "horizontal_tail": {
+    "area_ft2": 104.9999964060031,
+    "span_ft": 19.79898953437805,
+    "AR": 3.7333333333333334,
+    "root_chord_ft": 7.071067690849304,
+    "tip_chord_ft": 3.535533845424652,
+    "MAC_ft": 5.499719315105014,
+    "taper_ratio": 0.5,
+    "sweep_quarter_chord_deg": 4.974559766441312,
+    "dihedral_deg": 0.0,
+    "twist_deg": 0.0,
+    "incidence_deg": 0.0,
+    "thickness_ratio_root": 0.1,
+    "thickness_ratio_tip": 0.1,
+    "x_quarter_MAC_ft": 40.15072895003745,
+    "origin_ft": [
+      38.0,
+      0.0,
+      9.985281229019165
+    ]
+  },
+  "vertical_tail": {
+    "area_ft2": 59.99999794628749,
+    "span_ft": 8.485281229019165,
+    "AR": 1.2,
+    "root_chord_ft": 9.899494767189026,
+    "tip_chord_ft": 4.2426406145095825,
+    "MAC_ft": 7.448191301027935,
+    "taper_ratio": 0.42857142857142855,
+    "sweep_quarter_chord_deg": 16.680371110628965,
+    "dihedral_deg": 0.0,
+    "twist_deg": 0.0,
+    "incidence_deg": 0.0,
+    "thickness_ratio_root": 0.1,
+    "thickness_ratio_tip": 0.1,
+    "x_quarter_MAC_ft": 39.5766401933562,
+    "origin_ft": [
+      36.0,
+      0.0,
+      2.0
+    ]
+  },
+  "fuselage_sections": [
+    {
+      "x_ft": 0.0,
+      "z_center_ft": 0.0,
+      "width_ft": 0.0,
+      "height_ft": 0.0
+    },
+    {
+      "x_ft": 11.25,
+      "z_center_ft": 0.0,
+      "width_ft": 7.5,
+      "height_ft": 7.0
+    },
+    {
+      "x_ft": 22.5,
+      "z_center_ft": 0.0,
+      "width_ft": 7.5,
+      "height_ft": 7.0
+    },
+    {
+      "x_ft": 24.3,
+      "z_center_ft": 0.0,
+      "width_ft": 7.5,
+      "height_ft": 7.0
+    },
+    {
+      "x_ft": 29.25,
+      "z_center_ft": 0.75,
+      "width_ft": 6.5,
+      "height_ft": 5.3
+    },
+    {
+      "x_ft": 33.75,
+      "z_center_ft": 0.8,
+      "width_ft": 5.5,
+      "height_ft": 4.7
+    },
+    {
+      "x_ft": 45.0,
+      "z_center_ft": 1.125,
+      "width_ft": 0.0,
+      "height_ft": 0.0
+    }
+  ],
+  "wetted_areas_ft2": {
+    "FuselageGeom": 739.5389012512933,
+    "WingGeom": 1397.1229136843478,
+    "VerticalTail": 109.86621886392082,
+    "HorizontalTail": 211.83090533292378,
+    "EngineNacelle": 123.17062994633923,
+    "Propellers": 36.977363838325864,
+    "WingtipFloats": 125.11263226638053,
+    "FloatSupportStruts": 18.37218408312476
+  },
+  "external_volumes_ft3": {
+    "FuselageGeom": 1060.709687388866,
+    "WingGeom": 542.1246904928295,
+    "VerticalTail": 26.087199327032327,
+    "HorizontalTail": 38.944809853563626,
+    "EngineNacelle": 95.31503286264979,
+    "Propellers": 0.9249183033009347,
+    "WingtipFloats": 69.68475141347523,
+    "FloatSupportStruts": 3.2621599848024943
+  },
+  "nacelle": {
+    "count": 2,
+    "length_ft": 5,
+    "diameter_ft": 5,
+    "origin_ft": [
+      17,
+      10,
+      4.5
+    ]
+  },
+  "floats": {
+    "count": 2,
+    "length_ft": 9.0,
+    "diameter_ft": 3,
+    "origin_ft": [
+      18.0,
+      29.0426920232733,
+      -0.8
+    ]
+  },
+  "float_struts": {
+    "count": 2,
+    "length_ft": 4.5713324546813965,
+    "diameter_ft": 0.9,
+    "origin_ft": [
+      20.0,
+      29.0426920232733,
+      0.3
+    ]
+  },
+  "propellers": {
+    "count": 2,
+    "diameter_ft": 8,
+    "shaft_height_from_model_origin_ft": 4.5
+  },
+  "limitations": [
+    "CompGeom reports two open meshes merged; surface areas use the supplied default tessellation.",
+    "External hull volume is not watertight underfloor buoyancy or floodable compartment volume.",
+    "No static waterline, internal cabin boundaries, landing gear or engine integration envelope are established by these surfaces."
+  ],
+  "parent_model": "C:\\Users\\Jason\\OneDrive - Virginia Tech\\Desktop\\Fall 2026\\Senior Design\\Git\\OpenVSP Models\\AmphibiousSeaplane_Concept1.vsp3",
+  "revision_note": "Enlarged wing and tails, raised horizontal tail with taller fin, and moved floats/struts outboard with wing."
+}

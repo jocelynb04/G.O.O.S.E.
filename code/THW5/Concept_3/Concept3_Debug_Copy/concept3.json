@@ -1,54 +1,114 @@
 {
   "geometry": {
-    "AR": 9.722844484269217,
-    "taper_ratio": 0.615,
-    "sweep_quarter_chord_deg": 0,
-    "thickness_ratio_root": 0.18,
-    "thickness_ratio_tip": 0.09,
-    "twist_deg": -3,
-    "incidence_deg": 2,
-    "dihedral_deg": 5,
-
+    "AR": 6.774373259052924,
+    "taper_ratio": 0.8717413972888426,
+    "sweep_quarter_chord_deg": -0.5795345840341233,
+    "thickness_ratio_root": 0.1,
+    "thickness_ratio_tip": 0.1,
+    "twist_deg": 0,
+    "incidence_deg": 0,
+    "dihedral_deg": 0,
     "v_tail": {
-      "_comment": "Provisional IHW3 pitch and yaw coefficients. The common arm is the existing Concept 3 assumption.",
-      "horizontal_volume_coefficient": 0.8,
-      "vertical_volume_coefficient": 0.065,
-      "arm_ft": 17,
-      "AR": 4.0,
-      "taper_ratio": 0.75,
-      "thickness_ratio": 0.12,
-      "sweep_quarter_chord_deg": 0
+      "_comment": "Measured OpenVSP tail. Volume coefficients are derived geometry outputs, not stability targets.",
+      "horizontal_volume_coefficient": 0.263343068598828,
+      "vertical_volume_coefficient": 0.038934265031569916,
+      "arm_ft": 28.6998378602504,
+      "AR": 7.2,
+      "taper_ratio": 0.25,
+      "thickness_ratio": 0.1,
+      "sweep_quarter_chord_deg": 26.290151926293277
     },
-
     "fuselage": {
-      "width_ft": 5.75,
-      "height_ft": 5.5,
-      "nose_length_ft": 9.5,
-      "constant_length_ft": 16.75,
-      "tailcone_length_ft": 15.333333333333336,
-      "tailcone_end_width_ft": 0.5,
-      "tailcone_end_height_ft": 0.5
+      "width_ft": 10,
+      "height_ft": 6,
+      "nose_length_ft": 12.5,
+      "constant_length_ft": 25,
+      "tailcone_length_ft": 12.5,
+      "tailcone_end_width_ft": 0,
+      "tailcone_end_height_ft": 0
     },
-
-  "wingtip_float":{
-    "width_ft": 1,
-    "height_ft": 1,
-    "length_ft": 2,
-    "fuselage_offset_ft": 5
-  },
-
+    "wingtip_float": {
+      "width_ft": 1,
+      "height_ft": 1,
+      "length_ft": 10,
+      "fuselage_offset_ft": 24
+    },
     "nacelle": {
-      "diameter_ft": 0.0,
+      "diameter_ft": 0.5878787882515152,
       "length_over_engine_length": 1.0
     },
-
     "landing_gear": {
       "l_n_over_l_d": 0.9,
       "l_m_over_l_d": 0.15
+    },
+    "openvsp_reference": {
+      "source_file": "C:\\Users\\Jason\\OneDrive - Virginia Tech\\Desktop\\Fall 2026\\Senior Design\\Git\\OpenVSP Models\\concept3v2.vsp3",
+      "source_sha256": "00ab0182be9fdb3d4cd5649c9c4de253154d63efcfd897fb5c700343a6bd4e52",
+      "length_unit": "ft",
+      "wing_area_ft2": 343.7137818090199,
+      "wing_span_ft": 48.25396825396825,
+      "wing_mac_ft": 7.134164566476545,
+      "wing_offset_y_ft": 0.8196721311475414,
+      "tail_area_ft2": 45.0,
+      "tail_dihedral_deg": 45.0,
+      "wing_wet_ft2": 527.4912235807849,
+      "tail_wet_ft2": 72.4594043730711,
+      "fuselage_wet_ft2": 1111.450303532177,
+      "nacelle_wet_ft2": 128.32231532996627,
+      "float_wet_each_ft2": 44.267012413098264,
+      "float_strut_wet_ft2": 13.084874963021411,
+      "float_strut_area_ft2": 14.722222222222221,
+      "nacelle_length_ft": 8.818181823772727,
+      "propeller_diameter_ft": 3,
+      "propeller_blades": 3,
+      "propeller_positions_ft": [
+        [
+          15.25,
+          -7.0,
+          2.0
+        ],
+        [
+          15.25,
+          7.0,
+          2.0
+        ],
+        [
+          15.0,
+          -12.0,
+          2.0
+        ],
+        [
+          15.0,
+          12.0,
+          2.0
+        ],
+        [
+          15.0,
+          -17.0,
+          2.0
+        ],
+        [
+          15.0,
+          17.0,
+          2.0
+        ],
+        [
+          15.0,
+          -22.0,
+          2.0
+        ],
+        [
+          15.0,
+          22.0,
+          2.0
+        ]
+      ],
+      "tail_arm_ft": 28.6998378602504,
+      "wing_ac_x_ft": 19.693377207192906,
+      "tail_ac_x_ft": 48.39321506744331,
+      "assumptions": "Wetted areas from intersected OpenVSP CompGeom at baseline. Propeller blade surfaces excluded from Cfe airframe drag. Wing and tail areas scale in proportion to S_ref for sizing, wetted areas use the same scaling. Fuselage, nacelles, floats and float struts stay fixed. Tail arm is quarter-MAC separation, not a CG-based stability analysis. Model units interpreted as feet from OpenVSP CAD length settings."
     }
   },
-
-
   "aerodynamics": {
     "CD0_clean": 0.038,
     "Cfe": 0.0055,
@@ -63,33 +123,27 @@
     "delta_e_flaps_takeoff": -0.05,
     "delta_e_flaps_landing": -0.1
   },
-
-
   "propulsion": {
     "architecture": "series_hybrid",
     "n_motors": 8,
     "n_generators": 2,
     "P_SL_hp": 850.0,
     "BSFC_lb_per_hp_hr": 0.45,
-    
     "generator_continuous_fraction": 1.0,
     "motor_continuous_fraction": 0.85,
     "generator_lapse_exponent": 0.7,
-    
     "generator_efficiency": 0.95,
     "rectifier_efficiency": 0.98,
     "inverter_efficiency": 0.98,
     "motor_efficiency": 0.95,
     "battery_discharge_efficiency": 0.95,
     "battery_charge_efficiency": 0.93,
-    
     "battery_capacity_kwh": 150.0,
     "battery_initial_soc": 0.9,
     "battery_min_soc": 0.2,
     "battery_max_soc": 1.0,
     "battery_charge_power_limit_kw": 200.0,
     "battery_discharge_power_limit_kw": 500.0,
-    
     "battery_specific_energy_kwh_per_kg": 0.25,
     "battery_specific_power_kw_per_kg": 1.5,
     "motor_specific_power_kw_per_kg": 5.0,
@@ -97,21 +151,20 @@
     "generator_specific_power_kw_per_kg": 4.0,
     "turboshaft_specific_power_kw_per_kg": 3.5,
     "propeller_mass_kg_each": 15.0,
-    
     "eta_p_cruise": 0.8,
     "eta_p_loiter": 0.72,
     "eta_p_climb": 0.75,
     "P_TO_over_P_max_continuous": 1.0,
-    
     "engine_scaling_class": "turboshaft_provisional",
     "engine_weight_coefficient": 425,
     "engine_weight_exponent": 0.8,
     "engine_length_coefficient": 5.25,
     "engine_length_exponent": 0.4,
-    "bhp_range_of_validity": [500, 1100]
+    "bhp_range_of_validity": [
+      500,
+      1100
+    ]
   },
-
-
   "weights": {
     "W_payload_fixed": 800,
     "W_payload_expendable": 0,
@@ -126,18 +179,14 @@
     "statistical_OEW_exponent": 0.947,
     "fuel_density_lb_per_ft3": 50.15297537934329
   },
-
-
   "design_range_nmi": 500,
   "sizing": {
     "W_TO_guess_lbf": 9062,
-    "S_ref_guess_ft2": 279,
+    "S_ref_guess_ft2": 343.7137818090199,
     "tol_rel": 1e-05,
     "max_iter": 150,
     "relaxation": 0.3
   },
-
-
   "constraints": {
     "wing_loading_range_psf": [
       20,
@@ -148,8 +197,6 @@
       "wing_loading_psf": 32.48028673835125,
       "power_loading_lb_per_hp": 10.452133794694348
     },
-
-
     "conditions": [
       {
         "name": "Amphibian water takeoff surrogate",
@@ -268,6 +315,5 @@
       "credit_climb_distance": false
     }
   },
-  "model_assumptions": {
-  }
+  "model_assumptions": {}
 }

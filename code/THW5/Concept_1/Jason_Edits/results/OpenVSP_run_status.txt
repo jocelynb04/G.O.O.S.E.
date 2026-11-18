@@ -1,0 +1,3 @@
+Mission Calculated with the selected installed electric rating
+Imported design point satisfies all modeled constraints: 1
+Model units interpreted as feet. See OpenVSP_geometry_snapshot.json.

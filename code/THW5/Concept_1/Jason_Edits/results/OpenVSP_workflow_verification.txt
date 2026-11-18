@@ -1,0 +1,28 @@
+Concept 1 geometry verified: 64.500 ft span, 713.714 ft^2 wing, 0.01718 CD0.
+    WaterTakeoff_shp    BalkPeak_shp    MotorRated_shp    Pack_kWh    Battery_lbf    DepartureSOC_percent    MinSOC_percent    ArrivalSOC_percent    TotalDraw_kWh    TotalStoredCharge_kWh    ChargingFuel_lbf    MissionFuel_lbf    WeightBuildup_lbf    WeightGap_lbf    BalkTurbinePeak_shp    BalkFuel_lbf    NameplatePack_kWh    InstalledMissionWeight_lbf    RequiredElectricRating_hp    SelectedElectricRating_hp    SelectedMotorPowerPass
+    ________________    ____________    ______________    ________    ___________    ____________________    ______________    __________________    _____________    _____________________    ________________    _______________    _________________    _____________    ___________________    ____________    _________________    __________________________    _________________________    _________________________    ______________________
+
+         574.23            545.52           574.23         59.27        544.45              96.04                69.373              96.04               35.08                35.08                 32.379             2624.8               12032             -458.17             203.32              4.028             74.088                    12124                        574.23                       574.23                      true          
+
+    DesignWeight_lbf    WingArea_ft2    ProjectedSpan_ft    AspectRatio    WingLoading_lbf_ft2    TurbinePowerLoading_lbf_hp    HorizontalTailArea_ft2    VerticalTailArea_ft2    FuselageLength_ft    AirframeWetArea_ft2      CD0       SpanMinimumWingLoading    LandingMaximumWingLoading    LandingLimitedWeight_lbf    SpanPass    LandingPass    PowerConstraintsPass
+    ________________    ____________    ________________    ___________    ___________________    __________________________    ______________________    ____________________    _________________    ___________________    ________    ______________________    _________________________    ________________________    ________    ___________    ____________________
+
+         12490             713.71             64.5             5.829              17.5                      8.3267                       105                       60                    45                   2725            0.017181            17.232                     18.711                       13354               true          true               true         
+
+                   Requirement                    RequiredRatedShaft_hp    AvailableRatedShaft_hp    Pass 
+    __________________________________________    _____________________    ______________________    _____
+
+    "Cruise 180 KTAS at 10,000 ft DA"                    755.02                      1500            true 
+    "Best ROC 500 ft/min at 10,000 ft DA"                554.69                      1500            true 
+    "ROC 2000 ft/min at MSL"                             1219.6                      1500            true 
+    "OEI ROC 450 ft/min at MSL"                          1118.9                      1500            true 
+    "Water takeoff, 50 ft obstacle in 2000 ft"           535.85                    574.23            true 
+
+                   Requirement                    MaxWingLoading_lbf_ft2    ActualWingLoading_lbf_ft2    Pass 
+    __________________________________________    ______________________    _________________________    _____
+
+    "Water landing, 50 ft obstacle in 2000 ft"            18.711                      17.5               true 
+    "Land landing, 50 ft obstacle in 2000 ft"             37.714                      17.5               true 
+
+Calculated with the selected installed electric rating
+CONCEPT 1 WORKFLOW AND MISSION VERIFICATION PASSED

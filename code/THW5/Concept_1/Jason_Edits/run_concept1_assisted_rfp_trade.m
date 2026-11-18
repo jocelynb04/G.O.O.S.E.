@@ -1,6 +1,12 @@
 function study = run_concept1_assisted_rfp_trade()
 %RUN_CONCEPT1_ASSISTED_RFP_TRADE Screen landing lift and early-return power.
 % Turboprop assistance is assumed available at the go-around command.
+setup_jason_edits();
+current = jsondecode(fileread(concept1_requirements_path()));
+if isfield(current.geometry,'openvsp')
+    error('Concept1:HistoricalGeometryTrade', ...
+        'This runner defines the prior geometry trade. Run run_concept1_openvsp for the imported shape, or use the pre-import backup for this historical study.');
+end
 here = fileparts(mfilename('fullpath'));
 setup_jason_edits();
 W0 = 12490;

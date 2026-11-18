@@ -1,0 +1,22 @@
+C:\Program Files\MATLAB\R2026b\toolbox\aero\aero\atmosisa.m
+
+===== Concept 1 constraint analysis =====
+Clean CD0 = 0.0203, K = 0.0491, (L/D)max = 15.9
+Landing wall (W/S max) : 15.8 lbf/ft^2
+   Water landing, 50 ft obstacle in 2000 ft      15.8 lbf/ft^2
+   Land landing, 50 ft obstacle in 2000 ft       31.9 lbf/ft^2
+
+BEST POINT (optimum)
+  W/S = 12.50 lbf/ft^2,  W/P = 9.90 lbf/hp
+  Governing constraint: ROC 2000 ft/min at MSL
+
+CHOSEN DESIGN POINT
+  W/S = 12.50 lbf/ft^2,  W/P = 9.40 lbf/hp
+  Governing constraint at this W/S: ROC 2000 ft/min at MSL
+
+At the guessed W0 = 9000 lbf:
+  S_ref = 720 ft^2, installed reference power = 957 hp
+  span  = 75.9 ft  (RFP limit 65 ft) -> EXCEEDS LIMIT
+(CD0 above was evaluated at the seeded S_ref; the sizing loop
+ iterates S_ref, W0 and P_SL until they agree.)
+

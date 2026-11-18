@@ -8,6 +8,7 @@ classdef TtpaGeom < GeometryBase
 
     properties (SetAccess = immutable)
         prop                        % inject propulsion model (for nacelle)
+        openvsp_reference = struct() % baseline geometry imported from OpenVSP
 
         % Declare variables - wing geometry
         AR           
@@ -87,6 +88,8 @@ classdef TtpaGeom < GeometryBase
         S_wet_wing
         S_wet_v_tail
         S_wet_wingtip_float
+        S_wet_float_struts      % combined float-support wetted area [ft^2]
+        S_float_struts          % combined float-support planform area [ft^2]
         S_wet                   % total [ft^2]
         S_wet_over_S_ref        % [-], drives CD0 through Raymer 12.23
     end
@@ -105,6 +108,9 @@ classdef TtpaGeom < GeometryBase
             % find JSON file and geometry section
             J = jsondecode(fileread(json_path));
             G = J.geometry;
+            if isfield(G, 'openvsp_reference')
+                obj.openvsp_reference = G.openvsp_reference;
+            end
 
             % Pull values from json file - wing
             obj.AR            = G.AR;
@@ -204,6 +210,21 @@ classdef TtpaGeom < GeometryBase
         end
 
         function val = get.S_exposed_wing(obj)
+            if isfield(obj.openvsp_reference, 'wing_offset_y_ft')
+                % Integrate the tapered chord across the fuselage footprint.
+                halfspan = obj.b / 2;
+                offset = obj.openvsp_reference.wing_offset_y_ft;
+                left = max(-halfspan, -obj.w_fus/2 - offset);
+                right = min(halfspan, obj.w_fus/2 - offset);
+                slope = (obj.c_root - obj.c_tip) / halfspan;
+                covered = 0;
+                if right > left
+                    covered = obj.c_root * (right - left) ...
+                        - slope * (right*abs(right) - left*abs(left)) / 2;
+                end
+                val = obj.S_ref - covered;
+                return
+            end
             S_covered = obj.c_root * obj.w_fus * ...
                 (1 - (1 - obj.taper) * obj.w_fus / (2 * obj.b));
             val = obj.S_ref - S_covered;
@@ -213,19 +234,36 @@ classdef TtpaGeom < GeometryBase
         %% ---------------- v tail ----------------
 
         function val = get.S_v_tail_horizontal(obj)
+            if isfield(obj.openvsp_reference, 'tail_area_ft2')
+                val = obj.S_v_tail * cosd(obj.dihedral_v_tail_deg)^2;
+                return
+            end
             val = obj.V_v_tail_horizontal * obj.S_ref * obj.MAC / obj.L_v_tail;
         end
 
         function val = get.S_v_tail_vertical(obj)
+            if isfield(obj.openvsp_reference, 'tail_area_ft2')
+                val = obj.S_v_tail * sind(obj.dihedral_v_tail_deg)^2;
+                return
+            end
             val = obj.V_v_tail_vertical * obj.S_ref * obj.b / obj.L_v_tail;
         end
 
         function val = get.S_v_tail(obj)
+            if isfield(obj.openvsp_reference, 'tail_area_ft2')
+                val = obj.openvsp_reference.tail_area_ft2 ...
+                    * obj.S_ref / obj.openvsp_reference.wing_area_ft2;
+                return
+            end
             % The two equivalent areas are S*cos(dihedral)^2 and S*sin(dihedral)^2.
             val = obj.S_v_tail_horizontal + obj.S_v_tail_vertical;
         end
 
         function val = get.dihedral_v_tail_deg(obj)
+            if isfield(obj.openvsp_reference, 'tail_dihedral_deg')
+                val = obj.openvsp_reference.tail_dihedral_deg;
+                return
+            end
             val = atand(sqrt(obj.S_v_tail_vertical / obj.S_v_tail_horizontal));
         end
 
@@ -263,6 +301,10 @@ classdef TtpaGeom < GeometryBase
         end
 
         function val = get.S_wet_fuselage(obj)
+            if isfield(obj.openvsp_reference, 'fuselage_wet_ft2')
+                val = obj.openvsp_reference.fuselage_wet_ft2;
+                return
+            end
             % --- Projected TOP (plan) area of nose, cabin, cone ---
             A_top = 0.5 * obj.w_fus * obj.l_nose ...
                 + obj.w_fus * obj.l_cabin ...
@@ -287,10 +329,18 @@ classdef TtpaGeom < GeometryBase
         end
 
         function val = get.l_nacelle(obj)
+            if isfield(obj.openvsp_reference, 'nacelle_length_ft')
+                val = obj.openvsp_reference.nacelle_length_ft;
+                return
+            end
             val = obj.k_nacelle_length * obj.l_engine;
         end
 
         function val = get.S_wet_nacelle(obj)
+            if isfield(obj.openvsp_reference, 'nacelle_wet_ft2')
+                val = obj.openvsp_reference.nacelle_wet_ft2;
+                return
+            end
             val = obj.prop.n_motors * pi * obj.d_nacelle * obj.l_nacelle;
         end
 
@@ -298,23 +348,49 @@ classdef TtpaGeom < GeometryBase
         %% ---------------- Wetted areas ----------------
 
         function val = get.S_wet_wing(obj)
+            if isfield(obj.openvsp_reference, 'wing_wet_ft2')
+                val = obj.openvsp_reference.wing_wet_ft2 * obj.S_ref / obj.openvsp_reference.wing_area_ft2;
+                return
+            end
             val = TtpaGeom.wetted_from_exposed(obj.S_exposed_wing, obj.tc_mean);
         end
 
         function val = get.S_wet_v_tail(obj)
+            if isfield(obj.openvsp_reference, 'tail_wet_ft2')
+                val = obj.openvsp_reference.tail_wet_ft2 * obj.S_ref / obj.openvsp_reference.wing_area_ft2;
+                return
+            end
             val = TtpaGeom.wetted_from_exposed(obj.S_v_tail, obj.tc_v_tail);
         end
 
         function val = get.S_wet_wingtip_float(obj)
+            if isfield(obj.openvsp_reference, 'float_wet_each_ft2')
+                val = obj.openvsp_reference.float_wet_each_ft2;
+                return
+            end
             % Each wingtip float approximated as a cylinder
             d_avg = 0.5*(obj.w_wingtip_float + obj.h_wingtip_float);
             val = pi*d_avg*obj.l_wingtip_float;
         end
 
+        function val = get.S_float_struts(obj)
+            val = 0;
+            if isfield(obj.openvsp_reference, 'float_strut_area_ft2')
+                val = obj.openvsp_reference.float_strut_area_ft2;
+            end
+        end
+
+        function val = get.S_wet_float_struts(obj)
+            val = 0;
+            if isfield(obj.openvsp_reference, 'float_strut_wet_ft2')
+                val = obj.openvsp_reference.float_strut_wet_ft2;
+            end
+        end
+
         function val = get.S_wet(obj)
         %GET.S_WET  Total wetted area [ft^2].
         val = obj.S_wet_wing + obj.S_wet_v_tail + ...
-            obj.S_wet_fuselage + 2*obj.S_wet_wingtip_float + obj.S_wet_nacelle;
+            obj.S_wet_fuselage + 2*obj.S_wet_wingtip_float + obj.S_wet_nacelle + obj.S_wet_float_struts;
         end
 
         function val = get.S_wet_over_S_ref(obj)

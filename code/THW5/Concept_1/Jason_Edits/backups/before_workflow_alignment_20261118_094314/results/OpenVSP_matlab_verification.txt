@@ -1,0 +1,27 @@
+Imported geometry dimensions and exposed wetted areas match OpenVSP.
+    WaterTakeoff_shp    BalkPeak_shp    MotorRated_shp    Pack_kWh    Battery_lbf    DepartureSOC_percent    MinSOC_percent    ArrivalSOC_percent    TotalDraw_kWh    TotalStoredCharge_kWh    ChargingFuel_lbf    MissionFuel_lbf    WeightBuildup_lbf    WeightGap_lbf    BalkTurbinePeak_shp    BalkFuel_lbf    NameplatePack_kWh    InstalledMissionWeight_lbf    RequiredElectricRating_hp    SelectedElectricRating_hp    SelectedMotorPowerPass
+    ________________    ____________    ______________    ________    ___________    ____________________    ______________    __________________    _____________    _____________________    ________________    _______________    _________________    _____________    ___________________    ____________    _________________    __________________________    _________________________    _________________________    ______________________
+
+         987.67            597.03           987.67         101.94       936.45              98.075               71.408              98.075             47.098               47.098                 43.472             2132.5               11171             -1319.5                0                  0               127.43                    11236                        987.67                       574.23                      false         
+
+    DesignWeight_lbf    WingArea_ft2    ProjectedSpan_ft    AspectRatio    WingLoading_lbf_ft2    TurbinePowerLoading_lbf_hp    HorizontalTailArea_ft2    VerticalTailArea_ft2    FuselageLength_ft    AirframeWetArea_ft2      CD0       SpanMinimumWingLoading    LandingMaximumWingLoading    LandingLimitedWeight_lbf    SpanPass    LandingPass    PowerConstraintsPass
+    ________________    ____________    ________________    ___________    ___________________    __________________________    ______________________    ____________________    _________________    ___________________    ________    ______________________    _________________________    ________________________    ________    ___________    ____________________
+
+         12490              360              59.963           9.9878             34.694                     8.3267                       52.5                      30                    45                  1866.6           0.023333            29.526                     18.711                        6736               true          false              false        
+
+                   Requirement                    RequiredRatedShaft_hp    AvailableRatedShaft_hp    Pass 
+    __________________________________________    _____________________    ______________________    _____
+
+    "Cruise 180 KTAS at 10,000 ft DA"                    588.54                      1500            true 
+    "Best ROC 500 ft/min at 10,000 ft DA"                596.33                      1500            true 
+    "ROC 2000 ft/min at MSL"                             1255.4                      1500            true 
+    "OEI ROC 450 ft/min at MSL"                          1186.6                      1500            true 
+    "Water takeoff, 50 ft obstacle in 2000 ft"           938.28                    574.23            false
+
+                   Requirement                    MaxWingLoading_lbf_ft2    ActualWingLoading_lbf_ft2    Pass 
+    __________________________________________    ______________________    _________________________    _____
+
+    "Water landing, 50 ft obstacle in 2000 ft"            18.711                     34.694              false
+    "Land landing, 50 ft obstacle in 2000 ft"             37.714                     34.694              true 
+
+Calculated using resized electric power; see selected-power check
