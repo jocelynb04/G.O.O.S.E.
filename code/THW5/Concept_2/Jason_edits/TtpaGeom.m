@@ -1,62 +1,11 @@
 classdef TtpaGeom < GeometryBase
-%TTPAGEOM  Test Twin Propeller Aircraft Level-2 geometry model.
-%
-%   IHW3 UPDATE
-%   In IHW1 and IHW2 this class held two numbers, S_ref and S_wet, and both
-%   were NaN. It could afford to: the mission analysis never needed a wing,
-%   and the constraint analysis works entirely in RATIOS - W/S and W/P - so
-%   it never needed one either. size_from_design_point wrote S_ref in at the
-%   very end, once, and nothing ever read it back.
-%
-%   A sizing loop cannot work that way. It rebuilds the airplane from the
-%   takeoff weight on every iteration, so every span, chord, area and wetted
-%   area has to follow S_ref the instant the loop writes it. This version
-%   therefore carries the whole Level-2 planform:
-%
-%       wing        span, root and tip chord, MAC, y_MAC, exposed area
-%       tails       horizontal tail by volume; vertical tail fixed to the
-%                   selected Caravan-like dimensions (optional volume mode)
-%       fuselage    fixed by the cabin layout, so constant through the loop
-%       nacelles    envelope follows the selected turbine dimensions
-%       floats      enclosed volume and external area follow W_TO
-%       wetted      every component, and the total
-%
-%   INPUTS vs DERIVED
-%   S_ref and W_TO are mutable sizing inputs. Derived geometry is Dependent
-%   and recomputed on every read, so nothing can go stale when the
-%   sizing loop mutates the object. There is no cached copy of any derived
-%   quantity anywhere in this class and no set method on any of them:
-%   assigning to a Dependent property errors, which is correct - they are
-%   outputs, not inputs.
-%
-%   INJECTED PROPULSION
-%   The constructor takes the propulsion object, TtpaGeom(json_path, prop),
-%   because the nacelle is sized around the engine and the engine size is
-%   engine data, not airframe data. The nacelle length is therefore
-%   obtained from prop.engine_length(). Catalog hardware stays fixed;
-%   exploratory regression mode follows the turbine rating alone.
-%   Set geom.W_TO and geom.S_ref before evaluating aircraft wetted area.
-%
-%   Inheritance:
-%       GeometryBase -> TtpaGeom
-%
-%   Abstract interface implemented:
-%       get_S_ref()
-%       get_S_wet()
-%
-%   Equations
-%       Root chord, tip chord, MAC      Raymer Eqs. 7.6, 7.7, 7.8, through
-%                                       the GeometryBase statics
-%       Span                            AR = b^2/S_ref, definitional
-%       y_MAC                           b(1+2*lambda)/(6(1+lambda))
-%       Tail areas                      volume-coefficient method: Raymer
-%                                       Eqs. 6.29 (HT) and 6.28 (VT),
-%                                       coefficients Raymer Table 6.4,
-%                                       Roskam Part II Ch. 8, Nicolai and
-%                                       Carichner Table 11.1
-%       Lifting-surface wetted area     Raymer Eqs. 7.11 and 7.12
-%       Fuselage wetted area            Raymer Eq. 7.13
-%       Wing fuel volume                Torenbeek, in wing_fuel_volume()
+%TTPAGEOM Concept 2 geometry with a fixed OpenVSP baseline.
+% The imported wing scales with S_ref at fixed projected aspect ratio.
+% b is developed span; AR is projected-span squared / reference area.
+% Imported tails, fuselage, nacelles, floats and float struts remain fixed.
+% Native intersected CompGeom areas feed drag and the existing weight model.
+% Geometric float volume is checked against the intact-buoyancy requirement.
+% Legacy analytical getters remain available when no OpenVSP import is present.
 
     properties
         S_ref = NaN
@@ -69,7 +18,8 @@ classdef TtpaGeom < GeometryBase
     end
 
     properties (SetAccess = immutable)
-        prop                        % injected TtpaProp, for the nacelle
+        prop                        % injected TtpaProp
+        openvsp_reference = struct() % imported fixed geometry and surface areas
 
         % --- wing shape, read from J.geometry ---
         AR                          % <- J.geometry.AR
@@ -186,6 +136,9 @@ classdef TtpaGeom < GeometryBase
         S_wet_wing
         S_wet_ht
         S_wet_vt
+        S_wet_float_struts
+        V_required_enclosed_total
+        intact_buoyancy_met
         S_wet                       % total [ft^2]
         S_wet_over_S_ref            % [-], drives CD0 through Raymer 12.23
     end
@@ -210,6 +163,7 @@ classdef TtpaGeom < GeometryBase
 
             J = jsondecode(fileread(json_path));
             G = J.geometry;
+            if isfield(G,'openvsp_reference'), obj.openvsp_reference=G.openvsp_reference; end
 
             % Wing shape
             obj.AR            = G.AR;
@@ -346,18 +300,34 @@ classdef TtpaGeom < GeometryBase
         %% ---------------- Wing planform ----------------
 
         function val = get.b(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.wing.span_ft*sqrt(obj.S_ref/obj.openvsp_reference.wing.area_ft2);
+                return;
+            end
             val = GeometryBase.compute_span(obj.AR, obj.S_ref);
         end
 
         function val = get.c_root(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.wing.root_chord_ft*sqrt(obj.S_ref/obj.openvsp_reference.wing.area_ft2);
+                return;
+            end
             val = GeometryBase.compute_root_chord(obj.S_ref, obj.b, obj.taper);
         end
 
         function val = get.c_tip(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.wing.tip_chord_ft*sqrt(obj.S_ref/obj.openvsp_reference.wing.area_ft2);
+                return;
+            end
             val = GeometryBase.compute_tip_chord(obj.c_root, obj.taper);
         end
 
         function val = get.MAC(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.wing.MAC_ft*sqrt(obj.S_ref/obj.openvsp_reference.wing.area_ft2);
+                return;
+            end
             val = GeometryBase.compute_mac(obj.c_root, obj.taper);
         end
 
@@ -390,6 +360,10 @@ classdef TtpaGeom < GeometryBase
         %% ---------------- Horizontal tail ----------------
 
         function val = get.S_ht(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.horizontal_tail.area_ft2;
+                return;
+            end
         %GET.S_HT  Horizontal tail area by the volume-coefficient method.
         %
         %       V_h  = S_ht * L_ht / ( S_ref * MAC )     so
@@ -414,18 +388,34 @@ classdef TtpaGeom < GeometryBase
         end
 
         function val = get.b_ht(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.horizontal_tail.span_ft;
+                return;
+            end
             val = GeometryBase.compute_span(obj.AR_ht, obj.S_ht);
         end
 
         function val = get.c_root_ht(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.horizontal_tail.root_chord_ft;
+                return;
+            end
             val = GeometryBase.compute_root_chord(obj.S_ht, obj.b_ht, obj.taper_ht);
         end
 
         function val = get.c_tip_ht(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.horizontal_tail.tip_chord_ft;
+                return;
+            end
             val = GeometryBase.compute_tip_chord(obj.c_root_ht, obj.taper_ht);
         end
 
         function val = get.MAC_ht(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.horizontal_tail.MAC_ft;
+                return;
+            end
             val = GeometryBase.compute_mac(obj.c_root_ht, obj.taper_ht);
         end
 
@@ -471,6 +461,10 @@ classdef TtpaGeom < GeometryBase
         end
 
         function val = get.MAC_vt(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.vertical_tail.MAC_ft;
+                return;
+            end
             val = GeometryBase.compute_mac(obj.c_root_vt, obj.taper_vt);
         end
 
@@ -490,6 +484,10 @@ classdef TtpaGeom < GeometryBase
         end
 
         function val = get.S_rudder_vt(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.vertical_tail.rudder_planform_ft2;
+                return;
+            end
             val = obj.rudder_fraction_vt * obj.S_vt;
         end
 
@@ -527,6 +525,10 @@ classdef TtpaGeom < GeometryBase
         end
 
         function val = get.S_wet_fuselage(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.wetted_areas_ft2.FuselageGeom;
+                return;
+            end
         %GET.S_WET_FUSELAGE  Fuselage wetted area [ft^2].
         %
         %   [Raymer Eq. 7.13]   S_wet ~= 3.4 * (A_top + A_side) / 2
@@ -554,6 +556,10 @@ classdef TtpaGeom < GeometryBase
         %% ---------------- Nacelles ----------------
 
         function val = get.l_nacelle(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.nacelle.length_ft;
+                return;
+            end
         %GET.L_NACELLE  Length of ONE nacelle [ft].
         %   Catalog mode supplies fixed turbine length; regression mode
         %   scales from turbine power only. The multiplier is a preliminary
@@ -562,6 +568,10 @@ classdef TtpaGeom < GeometryBase
         end
 
         function val = get.S_wet_nacelle(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.wetted_areas_ft2.Engine_Nacelle;
+                return;
+            end
         %GET.S_WET_NACELLE  Wetted area of ALL nacelles [ft^2].
         %   Each nacelle is taken as a cylinder of diameter d_nacelle. The
         %   end faces are not wetted: the front is the propeller disc and
@@ -588,6 +598,10 @@ classdef TtpaGeom < GeometryBase
         end
 
         function val = get.V_enclosed_total(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.n_floats*obj.openvsp_reference.floats.enclosed_volume_each_ft3;
+                return;
+            end
         % Minimum intact enclosed buoyant volume; not flooded survivability.
             val = (1 + obj.excess_buoyancy) * obj.V_displaced_total;
         end
@@ -597,6 +611,10 @@ classdef TtpaGeom < GeometryBase
         end
 
         function val = get.b_float(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.floats.beam_ft;
+                return;
+            end
         % V = Cv*L*B*D with L/B and D/B fixed. No box coefficient is assumed.
             if isempty(obj.section_volume_coefficient)
                 error('TtpaGeom:FloatShapeNotSet', ...
@@ -608,15 +626,27 @@ classdef TtpaGeom < GeometryBase
         end
 
         function val = get.l_float(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.floats.length_ft;
+                return;
+            end
             val = obj.length_to_beam * obj.b_float;
         end
 
         function val = get.d_float(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.floats.depth_ft;
+                return;
+            end
         % Bounding envelope depth; operating draft requires hull hydrostatics.
             val = obj.depth_to_beam * obj.b_float;
         end
 
         function val = get.S_wet_floats(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.wetted_areas_ft2.Pontoon;
+                return;
+            end
         % Provisional external aerodynamic surface area of ALL floats.
         % This is not submerged wetted area or a water-resistance model.
         % Overall equivalent Cfe must be calibrated for struts/interference;
@@ -626,13 +656,35 @@ classdef TtpaGeom < GeometryBase
         end
 
 
+        function val = get.S_wet_float_struts(obj)
+            val=0;
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                r=obj.openvsp_reference.wetted_areas_ft2;
+                val=r.Foward_Pontoon_Strut+r.Rear_Pontoon_Strut;
+            end
+        end
+        function val = get.V_required_enclosed_total(obj)
+            val=(1+obj.excess_buoyancy)*obj.V_displaced_total;
+        end
+        function val = get.intact_buoyancy_met(obj)
+            val=obj.V_enclosed_total>=obj.V_required_enclosed_total-1e-8;
+        end
+
         %% ---------------- Wetted areas ----------------
 
         function val = get.S_wet_wing(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.wetted_areas_ft2.WingGeom*obj.S_ref/obj.openvsp_reference.wing.area_ft2;
+                return;
+            end
             val = TtpaGeom.wetted_from_exposed(obj.S_exposed_wing, obj.tc_mean);
         end
 
         function val = get.S_wet_ht(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.wetted_areas_ft2.Horizontal_Stabilizer;
+                return;
+            end
         %   The horizontal tail area from the volume coefficient is the
         %   theoretical planform. The strip inside the fuselage is not
         %   wetted, but it is small on a conventional tail, so the
@@ -642,6 +694,10 @@ classdef TtpaGeom < GeometryBase
         end
 
         function val = get.S_wet_vt(obj)
+            if ~isempty(fieldnames(obj.openvsp_reference))
+                val=obj.openvsp_reference.wetted_areas_ft2.Vertical_Stabilizer;
+                return;
+            end
             % Dorsal contributes drag/mass but no credited main-fin volume.
             val = TtpaGeom.wetted_from_exposed(obj.S_total_vt, obj.tc_vt);
         end
@@ -649,7 +705,7 @@ classdef TtpaGeom < GeometryBase
         function val = get.S_wet(obj)
         %GET.S_WET  Total wetted area [ft^2].
             val = obj.S_wet_wing + obj.S_wet_ht + obj.S_wet_vt ...
-                + obj.S_wet_fuselage + obj.S_wet_nacelle + obj.S_wet_floats;
+                + obj.S_wet_fuselage + obj.S_wet_nacelle + obj.S_wet_floats + obj.S_wet_float_struts;
         end
 
         function val = get.S_wet_over_S_ref(obj)

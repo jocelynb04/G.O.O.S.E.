@@ -139,9 +139,14 @@ function best = sizing_pass(obj,W_TO,WS_sweep,contexts,energy_model)
             'report',report,'mission',m,'OEW_breakdown',obj.wts.OEW_breakdown(W_TO));
         best.candidates(j).WS=WS;
         if isfield(m,'reasons'), best.candidates(j).reason=strjoin(m.reasons,'; '); end
-        ok=all(string({report.status})=="pass") && ...
+        geometry=concept2_geometry_validation(obj,W_TO);
+        ok=geometry.intact_buoyancy_met && all(string({report.status})=="pass") && ...
             isequal(m.mission_feasible,true) && isequal(m.failure_checks_complete,true);
         best.candidates(j).status="mission/source/failure unresolved or fail";
+        if ~geometry.intact_buoyancy_met
+            best.candidates(j).status="fixed OpenVSP float buoyancy fail";
+            best.candidates(j).reason="Imported enclosed float volume is below the required intact buoyancy.";
+        end
         if ~ok, continue; end
         bd=obj.wts.OEW_breakdown(W_TO);
         objective=bd.total+m.fuel_lb;

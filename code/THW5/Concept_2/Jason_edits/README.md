@@ -36,9 +36,9 @@ Separate motor and turbine plots remain necessary for the hybrid installation.
 Input edits require a new run. Default runs overwrite matching outputs only in
 this copy's `Results/Current` folder.
 
-The starting-aircraft study passes mission/constraints at 12,000 lb but estimates
-18,856 lb total mass. This is not a mass-closed design; inspect `mass_closed`
-before interpreting feasibility. Hardware and certification validation remain open.
+The starting-aircraft study uses 12,000 lb and imported OpenVSP geometry. The fixed
+float volume fails the current intact-buoyancy requirement. Inspect `geometry_validation`,
+`mass_closed` and the current mass budget before interpreting feasibility.
 
 
 ## Caravan-style combined hybrid diagram
@@ -65,3 +65,11 @@ The Caravan aircraft assumptions and mission dispatch are not copied into Concep
 The original source-specific motor, turbine and margin plots remain available.
 `hybrid_constraint_analysis.mat` stores the normalized curves and reference;
 `hybrid_reference_power.csv` records required/available power by condition.
+
+## OpenVSP geometry
+
+`concept2.json` now contains the dimensions, component locations and native
+CompGeom surface areas imported from `Concept_2.vsp3`. See
+`OpenVSP_Import/ALIGNMENT_REPORT.md` for the values and float-volume shortfall.
+Run `verify_openvsp_geometry` to check the active source and geometry.
+The baseline wing is 446.5728 ft², HT 112.3672 ft² and VT 95.581 ft².

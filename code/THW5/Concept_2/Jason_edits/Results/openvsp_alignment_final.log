@@ -1,0 +1,16 @@
+Error using assert
+Cannot verify the OpenVSP source hash: Get-FileHash : The term 'Get-FileHash' is not recognized as the name of a cmdlet, function, script file, or
+operable
+program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:2
++ (Get-FileHash -LiteralPath 'C:\Users\Jason\OneDrive - Virginia Tech\D ...
++  ~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Get-FileHash:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+
+
+Error in verify_openvsp_geometry (line 12)
+    assert(status==0,'Cannot verify the OpenVSP source hash: %s',hash);
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OPENVSP_ALIGNMENT_FAILED

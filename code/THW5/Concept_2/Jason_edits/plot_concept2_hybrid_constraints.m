@@ -71,6 +71,13 @@ function [fig,r]=plot_concept2_hybrid_constraints(d,peak_shp,visible)
         d.W_TO,peak_shp),'FontSize',10,'FontWeight','normal');
     legend(ax,'Location','northeast','FontSize',8,'NumColumns',2,'Interpreter','none');
     state="Weight not closed"; if d.metadata.weight_closed, state="Weight closure converged"; end
+    if isfield(d,'intact_buoyancy_met') && ~d.intact_buoyancy_met
+        state=state+sprintf(' | Float volume FAIL: %.1f / %.1f ft3 required', ...
+            d.float_volume_available_ft3,d.float_volume_required_ft3);
+    end
+    if d.metadata.capacity_is_failed_search_bound
+        state=state+" | Battery capacity search FAILED; pack value is a search bound";
+    end
     annotation(fig,'textbox',[.085,.008,.89,.06], ...
         'String',state+" | Green area: fixed-ratio reference; green line: installed hardware checks. Mission not re-simulated across sweep.", ...
         'EdgeColor','none','HorizontalAlignment','center','FontSize',9,'Interpreter','none');

@@ -85,6 +85,13 @@ function [result,hist]=run_concept2_study(varargin)
         end
         result.sensitivities=rows;
     end
+    result.geometry_validation=concept2_geometry_validation(obj,W);
+    if ~result.geometry_validation.intact_buoyancy_met
+        result.status="fixed OpenVSP float volume below required intact buoyancy";
+        fprintf('Float volume FAIL: %.2f ft3 available; %.2f ft3 required at %.0f lb.\n', ...
+            result.geometry_validation.float_volume_available_ft3, ...
+            result.geometry_validation.float_volume_required_ft3,W);
+    end
     result=label_concept2_sensitivities(result);
     result.audit_model_version="2026-11-11";
     out=char(A.output_dir);

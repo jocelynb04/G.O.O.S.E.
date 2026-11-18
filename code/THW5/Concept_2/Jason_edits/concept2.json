@@ -2,51 +2,49 @@
   "_comment": "G.O.O.S.E. Concept 2, twin-float amphibious seaplane, conventional tail, two wing-mounted parallel-hybrid engines. Built from Ttpa_requirements_IHW3.json, using information from RFP, textbook relations, and estimates for the initial sizing of the aircraft.",
   "_what_changed_from_IHW": "Concept 2 amphibian with retractable wheels, fixed catalog turbines and independently sized electric hardware. Active implementation: run_concept2_study. Mission/SOC and component weights exist; installation validation and full aircraft compliance remain open.",
   "geometry": {
-    "_comment": "Conceptual inputs. The active loop updates wing area and weight-dependent float volume/wetted area. Actual float shape, draft, flooded stability and cabin/CG fit remain unverified.",
-    "AR": 7.995457143,
-    "_src_AR": "Carried from the mission constraint analysis (SCR slide 15). A higher AR helps cruise L/D, but the wingspan is limited to 65 ft and the aircraft must still be able to dock wing-over-dock.",
-    "taper_ratio": 0.7,
-    "_src_taper_ratio": "Seaplanes typically have a more consistent chord across the length of the wing, so assuming a higher taper ratio for now.",
-    "sweep_quarter_chord_deg": 0,
+    "_comment": "Baseline geometry imported from Concept_2.vsp3; CompGeom wetted areas include fixed floats, nacelles and support struts. Wing sweep trades scale wing geometry only; all other imported geometry remains fixed.",
+    "AR": 7.4090327081911855,
+    "_src_AR": "OpenVSP projected span squared divided by its reference area. Developed span and chords are preserved separately in openvsp_reference.",
+    "taper_ratio": 0.7000328911303585,
+    "_src_taper_ratio": "Exact root/tip chord ratio from Concept_2.vsp3.",
+    "sweep_quarter_chord_deg": 0.0,
     "_src_sweep_quarter_chord_deg": "Mach number at 10,000 ft for 180 KTAS is about 0.282",
     "thickness_ratio_root": 0.19,
     "thickness_ratio_tip": 0.09,
     "_src_thickness_ratio": "NACA 23019 root (19 percent thickness) and NACA 23009 tip (9 percent); root corrected from 0.18 to match named airfoil. Airfoil selection and CLmax remain preliminary.",
-    "twist_deg": -3,
-    "incidence_deg": 2,
-    "dihedral_deg": 3,
-    "_src_twist_incidence_dihedral": "Dihedral reduced from 5 to 3 degrees based on the dihedral observed for typical seaplanes. Leaving twist and incidence angles the same as listed in IHWs.",
+    "twist_deg": -3.0,
+    "incidence_deg": 0,
+    "dihedral_deg": 3.0,
+    "_src_twist_incidence_dihedral": "OpenVSP wing section twist, wing transform incidence and dihedral.",
     "horizontal_tail": {
-      "volume_coefficient": 0.8,
-      "arm_ft": 21.5,
-      "AR": 5.5,
-      "taper_ratio": 0.75,
+      "volume_coefficient": 0.7086077605801481,
+      "arm_ft": 22.05559143876705,
+      "AR": 5.499999999999998,
+      "taper_ratio": 0.7485493230174081,
       "thickness_ratio": 0.12,
-      "sweep_quarter_chord_deg": 10,
-      "_src": "V_h = 0.8 from the Raymer Table 6.4 general aviation twin engine, unchanged from IHWs. Arm re-derived for the longer fuselage, Raymer sec 6.4 puts the tail arm at 50-55 percent of the fuselage length for wing mounted engines, and 0.51 x 42.0 ft = 21.5 ft. Conventional tail utilized for concept 2, it will need to be checked that the horizontal stabilizer is clear of spray."
+      "sweep_quarter_chord_deg": 10.0,
+      "_src": "Fixed OpenVSP horizontal tail. Quarter-MAC arm is geometric separation, not a CG-based stability result.",
+      "sizing_mode": "fixed_openvsp",
+      "area_ft2": 112.3672
     },
     "vertical_tail": {
-      "arm_ft": 21.5,
-      "AR": 1.8043587174348694,
-      "taper_ratio": 0.5086923658352229,
+      "arm_ft": 19.392203661520337,
+      "AR": 1.3000000000000003,
+      "taper_ratio": 0.55,
       "thickness_ratio": 0.12,
-      "sweep_quarter_chord_deg": 18.19283922001439,
-      "rudder_chord_fraction": 0.3,
-      "dorsal_area_fraction_of_main_fin": 0.08,
+      "sweep_quarter_chord_deg": 30.0,
+      "rudder_chord_fraction": 0.25,
+      "dorsal_area_fraction_of_main_fin": 0,
       "dorsal_height_fraction_of_fin": 0.25,
-      "_src": "User-selected Caravan-sized candidate: fixed 39.92 ft2 total planform and 8 ft 2 in height from Cessna 208B manufacturer data. A 6 ft main-fin root chord is the user-provided approximate comparator dimension, adopted as a design assumption. Replaces the former Vv=0.07 area-sizing baseline. Effective Vv is now an output that varies with wing size; no automatic tail growth during weight closure.",
+      "_src": "Fixed Concept_2.vsp3 vertical stabilizer, replacing the earlier Caravan-sized candidate.",
       "area_definition": "single exposed fin plus rudder planform; excludes buried area and separate dorsal/ventral fins",
-      "arm_definition": "wing aerodynamic center to vertical-tail aerodynamic center; 21.5 ft is a layout estimate, not a CG-envelope yaw-control arm",
-      "sizing_status": "fixed_caravan_sized_candidate_unvalidated_directional_control",
-      "_src_shape": "Cessna Grand Caravan EX Specification and Description, Feb 2016 Rev D, printed p6: vertical tail height 8 ft 2 in, area including dorsal 39.92 ft2, hinge sweep 9.437 deg. Source: https://africair.com/wp-content/uploads/2016/03/SD-Grand-Caravan-EX-Unit-5265-to-TBD-2016-Feb.pdf . Assumed dorsal/main split 0.08 gives main area 36.962963 ft2. Main AR=height^2/main area. Taper is derived to give a 6 ft main-fin root chord. Rudder chord fraction 0.30, dorsal height fraction 0.25 and t/c 0.12 remain preliminary assumptions. Quarter-chord sweep is converted from the 70%-chord hinge sweep with the single-panel identity. This is a simplified candidate, not a production drawing.",
+      "arm_definition": "Imported wing-to-fin quarter-chord separation; not a CG-based yaw-control arm.",
+      "sizing_status": "fixed_openvsp_geometry_unvalidated_directional_control",
+      "_src_shape": "OpenVSP single fin area, height, root/tip chords and quarter-chord sweep; no separate dorsal geometry exists in this file.",
       "_validation_needed": "Resolve CG envelope and fin/wing stations; calculate directional stability including fuselage, floats and struts; rudder authority and Vmc for failed full propulsor and turbine-only failures; crosswind/gust handling and water yaw control. Existing OEI power/climb checks do not establish directional control. No float penalty or water-rudder credit is quantified.",
       "sizing_mode": "fixed_dimensions",
-      "main_fin_area_ft2": 36.96296296296296,
-      "area_scale_sensitivity": [
-        0.9,
-        1,
-        1.1
-      ]
+      "main_fin_area_ft2": 95.581,
+      "_src_rudder": "OpenVSP trailing-edge control: 25% chord over the saved 20%-80% span interval. Imported planform area is used in reporting."
     },
     "fuselage": {
       "_comment": "This is driven by the cabin requirements. 2 pilots side by side, 9 passengers seated 1+1 with a center aisle between them in 5 rows. There are 4 rows of 2 and 1 single seat. Traditional fuselage since concept 2 is a floatplane.",
@@ -56,46 +54,206 @@
       "nose_length_ft": 9.5,
       "constant_length_ft": 17.5,
       "tailcone_length_ft": 15,
-      "_src_lengths": "Preliminary 42 ft total: 9.5 ft nose/cockpit, 17.5 ft constant section, 15 ft tailcone. Five rows at 35 in pitch suggest 14.6 ft before access and baggage allowances. Validate actual cockpit, seats, doors, baggage volume, structure and visibility; similar overall length to a comparator does not validate cabin fit.",
+      "_src_lengths": "42-ft OpenVSP fuselage. Existing 9.5/17.5/15-ft partition is retained as a bookkeeping approximation; exact surface wetted area is imported.",
       "tailcone_end_width_ft": 0.5,
       "tailcone_end_height_ft": 0.5,
       "_src_tailcone_end": "Unchanged from the IHW for now."
     },
     "nacelle": {
       "_comment": "Wing-mounted tractor nacelles, one per propulsor. Each has a turboprop engine and a coaxial electric motor on a shared gearbox since concept 2 uses parallel hybrid architecture.",
-      "diameter_ft": 2.8,
-      "_src_diameter_ft": "Kept at 2.8 ft for now, a PT6A-class turboprop is about 1.6 ft in diameter, plus the motor, inlet, and cowl.",
+      "diameter_ft": 5.0,
+      "_src_diameter_ft": "OpenVSP sampled nacelle surface envelope; length and wetted area are fixed independently of engine rating.",
       "length_over_engine_length": 1.8,
       "_src_length_over_engine_length": "The turboprop is longer than the opposed piston from IHWs, and the main gear lives in the floats rather than the nacelle, so the factor drops from 2 to 1.8. The motor length is not modeled yet.",
       "prop_tip_min_height_above_water_ft": 7,
-      "_src_prop_tip": "The lowest point of the wing and propulsor must be 6 ft above the dock and the dock is 1 ft above the water, so the min height above the water must be 7 ft."
+      "_src_prop_tip": "The lowest point of the wing and propulsor must be 6 ft above the dock and the dock is 1 ft above the water, so the min height above the water must be 7 ft.",
+      "length_ft": 5.0
     },
     "floats": {
-      "_comment": "Two main floats. Minimum intact enclosed volume = 1.8 W_TO / freshwater weight density, split equally. Operating displacement is W_TO / density. The model couples enclosed volume and aerodynamic wetted area to weight; hydrodynamic shape and stability are not implemented.",
+      "_comment": "Fixed OpenVSP float dimensions and enclosed geometric volume. This shape is not automatically enlarged with takeoff weight. Required intact volume is checked separately.",
       "n_floats": 2,
       "excess_buoyancy": 0.8,
       "_src_excess_buoyancy": "RFP/23.2310 intact buoyancy minimum, counting eligible volume below cabin floor. At 12000 lbf: approximately 346.6 ft^3 total enclosed volume, 173.3 ft^3 per float. This does not establish flooded survivability, operating draft, exit clearance or stability.",
       "water_density_fresh_lb_per_ft3": 62.316,
-      "length_to_beam": 9.0,
-      "_src_length_to_beam": "Provisional comparator-based ratio, rounded from Wipaire 8750 amphibian published length 31 ft 9 in / hull width 3 ft 6 in = 9.07. Overall length may include appendages; replace with actual hull dimensions.",
+      "length_to_beam": 8.333333333333334,
+      "_src_length_to_beam": "Imported 25-ft float length and sampled 3-ft beam.",
       "swet_over_volume_two_thirds": 7,
-      "_src_swet_over_volume_two_thirds": "Provisional external aerodynamic surface-area approximation: S_wet_per_float = 7 V_enclosed_per_float^(2/3). Calibrate against defined float geometry. Do not use this external area as submerged wetted area or as a hydrodynamic resistance model.",
+      "_src_swet_over_volume_two_thirds": "Legacy fallback only. Imported CompGeom wetted area is used for this fixed geometry.",
       "strut_delta_CD0": 0,
       "_src_strut_delta_CD0": "Zero additional increment is bookkeeping for the selected overall equivalent-Cfe approach, not evidence that struts have zero drag. Calibrate overall drag against complete amphibian installation including strut/interference effects before crediting this value.",
-      "depth_to_beam": 0.9285714285714286,
-      "_src_depth_to_beam": "Provisional bounding-envelope ratio from published 3 ft 3 in hull height / 3 ft 6 in width; not immersed draft.",
-      "section_volume_coefficient": null,
-      "_src_section_volume_coefficient": "Required shape input: V_enclosed = coefficient x length x beam x depth. Obtain from comparator hull geometry or a defined proposed hull; no box-filling coefficient is assumed."
+      "depth_to_beam": 0.8000000000000002,
+      "_src_depth_to_beam": "Imported sampled surface bounding depth; not submerged draft.",
+      "section_volume_coefficient": 0.6015384190552414,
+      "_src_section_volume_coefficient": "Derived from native OpenVSP CompGeom enclosed volume and sampled bounding dimensions."
     },
     "landing_gear": {
       "_comment": "Amphibious: wheels retract into floats.",
       "l_n_over_l_d": 0.9,
       "l_m_over_l_d": 0.15,
       "_src": "Retractable wheels in floats. Ratios 0.90 and 0.15 remain provisional maxima at potentially different CG limits; not simultaneous equilibrium reactions. Replace with actual float gear stations and CG envelope."
+    },
+    "openvsp_reference": {
+      "source_file": "C:\\Users\\Jason\\OneDrive - Virginia Tech\\Desktop\\Fall 2026\\Senior Design\\Git\\OpenVSP Models\\Concept_2.vsp3",
+      "source_sha256": "3aafa0563691d0c106ccdf1612b1000b7cbedc4b9ad45a49f51fa9501dbafece",
+      "length_unit": "ft",
+      "OpenVSP_version": "3.54.0",
+      "wing": {
+        "area_ft2": 446.57280000000003,
+        "span_ft": 57.6,
+        "projected_span_ft": 57.52106120186345,
+        "projected_AR": 7.4090327081911855,
+        "MAC_ft": 7.831773079834463,
+        "root_chord_ft": 9.121,
+        "tip_chord_ft": 6.385,
+        "taper": 0.7000328911303585,
+        "sweep_qc_deg": 0.0,
+        "dihedral_deg": 3.0,
+        "twist_deg": -3.0,
+        "ac_x_ft": 18.28025,
+        "position_ft": [
+          16.0,
+          0.0,
+          3.3
+        ]
+      },
+      "horizontal_tail": {
+        "area_ft2": 112.3672,
+        "span_ft": 24.859999999999996,
+        "projected_span_ft": 24.859999999999996,
+        "projected_AR": 5.499999999999998,
+        "MAC_ft": 4.551157817109145,
+        "root_chord_ft": 5.170000000000001,
+        "tip_chord_ft": 3.8700000000000006,
+        "taper": 0.7485493230174081,
+        "sweep_qc_deg": 10.0,
+        "dihedral_deg": 0.0,
+        "twist_deg": 0.0,
+        "ac_x_ft": 40.33584143876705,
+        "position_ft": [
+          38.0,
+          0.0,
+          0.5
+        ],
+        "arm_ft": 22.05559143876705
+      },
+      "vertical_tail": {
+        "area_ft2": 95.581,
+        "span_ft": 11.146986139759932,
+        "projected_span_ft": 11.146986139759932,
+        "projected_AR": 1.3000000000000003,
+        "MAC_ft": 8.815514533004729,
+        "root_chord_ft": 11.06400609405452,
+        "tip_chord_ft": 6.085203351729986,
+        "taper": 0.55,
+        "sweep_qc_deg": 30.0,
+        "dihedral_deg": 0.0,
+        "twist_deg": 0.0,
+        "ac_x_ft": 37.672453661520336,
+        "position_ft": [
+          32.0,
+          0.0,
+          0.5
+        ],
+        "arm_ft": 19.392203661520337,
+        "rudder_control": {
+          "Abs_Rel_Flag": 1.0,
+          "EndAngle": 103.62366312614968,
+          "EndAngleFlag": 0.0,
+          "EtaEnd": 0.7999999999999998,
+          "EtaFlag": 0.0,
+          "EtaStart": 0.20000000000000018,
+          "LE_Flag": 0.0,
+          "Length_C_End": 0.25,
+          "Length_C_Start": 0.25,
+          "Length_End": 1.7702409750487238,
+          "Length_Start": 2.517061386397403,
+          "SE_Const_Flag": 1.0,
+          "SameAngleFlag": 1.0,
+          "StartAngle": 103.62366312614968,
+          "StartAngleFlag": 0.0,
+          "Surf_Type": 2.0,
+          "Tess_Num": 15.0,
+          "Test_Type": 0.0,
+          "UEnd": 0.6,
+          "UStart": 0.4
+        },
+        "rudder_planform_ft2": 14.33714999999999
+      },
+      "fuselage": {
+        "length_ft": 42.0,
+        "width_ft": 5.5,
+        "height_ft": 6.0
+      },
+      "nacelle": {
+        "length_ft": 5.0,
+        "diameter_ft": 5.0,
+        "count": 2,
+        "positions_ft": [
+          [
+            14,
+            -12,
+            3.3
+          ],
+          [
+            14,
+            12,
+            3.3
+          ]
+        ]
+      },
+      "floats": {
+        "length_ft": 25.0,
+        "beam_ft": 3.0,
+        "depth_ft": 2.4000000000000004,
+        "enclosed_volume_each_ft3": 108.27691542994347,
+        "count": 2,
+        "positions_ft": [
+          [
+            9,
+            -5.5,
+            -7
+          ],
+          [
+            9,
+            5.5,
+            -7
+          ]
+        ]
+      },
+      "propellers": {
+        "count": 2,
+        "diameter_ft": 8.0,
+        "blades": 5,
+        "positions_ft": [
+          [
+            14,
+            -12,
+            3.3
+          ],
+          [
+            14,
+            12,
+            3.3
+          ]
+        ]
+      },
+      "float_strut_planform_ft2": 30.0,
+      "wetted_areas_ft2": {
+        "FuselageGeom": 576.5944608488882,
+        "WingGeom": 880.8936551317422,
+        "Horizontal_Stabilizer": 217.74926712159976,
+        "Vertical_Stabilizer": 182.80628753287974,
+        "Engine_Nacelle": 126.7668764387713,
+        "Foward_Pontoon_Strut": 24.304496744369054,
+        "Rear_Pontoon_Strut": 24.923056793707744,
+        "Pontoon": 390.0842603474961
+      },
+      "propeller_blade_wet_excluded_ft2": 46.22170479790725,
+      "notes": "Intersected CompGeom areas; propeller blades excluded from equivalent-Cfe airframe drag. Wing span is developed span; AR uses OpenVSP projected span. Wing sizing scales the imported planform; tails, fuselage, nacelles, floats and struts remain fixed. Tail arms are quarter-chord geometry separations, not CG-based control validation. Float volume is enclosed geometric volume, not submerged displacement."
     }
   },
   "aerodynamics": {
-    "_comment": "Proposed overall equivalent-Cfe model: CD0 = Cfe S_wet_external / S_ref, including float external area. Requires complete-installation calibration. Existing MATLAB omits floats.",
+    "_comment": "CD0 = equivalent Cfe times imported intersected external wetted area / wing reference area; excludes rotating propeller blades. Aerodynamic coefficients remain engineering assumptions.",
     "CD0_clean": 0.04,
     "_src_CD0_clean": "0.04 is a provisional reference cross-check, not an imposed CD0 or guaranteed conservative bound. Earlier landplane estimate 0.031 is not reproducible until weight, power, speed, propeller efficiency, induced drag and cargo-pod configuration are documented.",
     "Cfe": 0.0065,
@@ -308,8 +466,8 @@
     "_comment": "Same framework as IHWs",
     "W_TO_guess_lbf": 12000,
     "_src_W_TO_guess_lbf": "12000 lbf numerical initial guess. The 12500 lbf cap is a team/SCR target, not an explicit requirement in the supplied RFP; do not force closure to this guess or cap.",
-    "S_ref_guess_ft2": 415,
-    "_src_S_ref_guess_ft2": "Numerical starting guess only: current provisional landing approximation gives W/S about 29 psf, so 12000/29 is about 414 ft^2. Final wing area is a sizing output and changes when water-landing calibration changes.",
+    "S_ref_guess_ft2": 446.57280000000003,
+    "_src_S_ref_guess_ft2": "Fixed OpenVSP baseline wing reference area.",
     "tol_rel": 1e-06,
     "max_iter": 200,
     "relaxation": 0.45,

@@ -1,0 +1,12 @@
+Unrecognized function or variable 'setup_concept2'.
+
+Error in verify_openvsp_geometry (line 3)
+    setup_concept2();
+    ^^^^^^^^^^^^^^^^
+Error in finalize_vsp_reports (line 1)
+verify_openvsp_geometry;
+^^^^^^^^^^^^^^^^^^^^^^^
+Error in run (line 100)
+evalin('caller', strcat(scriptStem, ';'));
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OPENVSP_FINAL_REPORTS_FAILED
