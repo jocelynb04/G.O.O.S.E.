@@ -2,6 +2,9 @@ function [ledger, summary, earlyReturn, obj] = run_concept1_energy_trade(options
 %RUN_CONCEPT1_ENERGY_TRADE Screen a repeat mission with in-flight charging.
 % Run from Jason_Edits. Default options reproduce the electric reserve case.
 arguments
+    options.RequirementsPath (1,1) string = ""
+    options.ElectricRating (1,1) double {mustBeNonnegative,mustBeFinite} = 0
+    options.RequireFeasible (1,1) logical = true
     options.DesignWeight (1,1) double {mustBePositive,mustBeFinite} = 9000
     options.AspectRatio (1,1) double {mustBePositive,mustBeFinite} = 7.2
     options.LandingCLmax (1,1) double {mustBePositive,mustBeFinite} = 2.2
@@ -19,9 +22,15 @@ arguments
 end
 here = fileparts(mfilename('fullpath'));
 setup_jason_edits();
-cfg = jsondecode(fileread(concept1_requirements_path()));
+requirementsPath = options.RequirementsPath;
+if strlength(requirementsPath) == 0
+    requirementsPath = string(concept1_requirements_path());
+end
+cfg = jsondecode(fileread(requirementsPath));
 baseline = concept1_disciplines();
-cfg.geometry.AR = options.AspectRatio;
+if ~isfield(cfg.geometry,'openvsp')
+    cfg.geometry.AR = options.AspectRatio;
+end
 cfg.aerodynamics.CLmax_landing = options.LandingCLmax;
 cfg.aerodynamics.Cfe = cfg.aerodynamics.Cfe*options.SkinFrictionFactor;
 if options.PackWhPerKg > 0
@@ -54,12 +63,21 @@ balkGradient = 0.03;
 balkFlaps = "landing_flaps_gear_up";
 limits = struct('minimumSOC',0.20,'dischargeC',options.DischargeC,'chargeC',1, ...
     'chargerKW',options.ChargerKW,'generatorEfficiency',0.95,'chargeEfficiency',0.95);
-geom.S_ref = span^2/geom.AR;
+if isfield(cfg.geometry,'openvsp')
+    geom.S_ref = cfg.geometry.reference_area_ft2;
+else
+    geom.S_ref = span^2/geom.AR;
+end
 prop.P_SL = options.CombustionRating;
 WS = W0/geom.S_ref;
 [~,~,~,~,~,curves] = concept1_matching_envelope(WS,obj);
 water = startsWith(curves.names,"Water takeoff");
 waterTakeoffHp = W0/(0.95*curves.WP_all(water));
+if options.ElectricRating > 0
+    assert(options.ElectricRating>=waterTakeoffHp, ...
+        'Concept1:ElectricTakeoffPower','Selected electric rating is below the modeled takeoff power with margin.');
+    waterTakeoffHp = options.ElectricRating;
+end
 prop.electric_power_ratio = waterTakeoffHp/prop.P_SL;
 approach = obj.miss.electric_final_approach;
 segments = obj.miss.segments;
@@ -89,6 +107,10 @@ assist = struct('delay',options.AssistDelaySeconds,'electricCap',0.95*waterTakeo
     approach.end_alt_ft,approach.start_alt_ft,atand(balkGradient),balkFlaps, ...
     prop.eta_p_takeoff,assist);
 ratingHp = max(waterTakeoffHp,balkPeak/0.95);
+if options.ElectricRating > 0
+    assert(ratingHp<=options.ElectricRating, ...
+        'Concept1:ElectricBalkPower','Selected electric rating is below the modeled go-around requirement.');
+end
 prop.electric_power_ratio = ratingHp/prop.P_SL;
 requiredKw = max(takeoffKw,prop.battery_energy_kWh(balkPeak,1));
 packKWh = requiredKw/limits.dischargeC;
@@ -151,7 +173,10 @@ assert(min(soc)>=limits.minimumSOC,'Battery falls below the reserve SOC limit.')
 assert(all(peakBusKW <= limits.dischargeC*packKWh+1e-7),'Discharge limit exceeded.');
 assert(all(peak <= ratingHp),'Motor rating exceeded.');
 [~,~,~,~,~,curves] = concept1_matching_envelope(WS,obj);
-assert(curves.feasible && all(curves.WP_all(curves.is_curve)>=W0/prop.P_SL));
+if options.RequireFeasible
+    assert(curves.feasible && all(curves.WP_all(curves.is_curve)>=W0/prop.P_SL), ...
+        'The design fails one or more constraint checks. Run run_concept1_openvsp for diagnostics.');
+end
 
 turbineAssist = zeros(size(peak));
 turbineAssist(6) = balkTurbinePeak;

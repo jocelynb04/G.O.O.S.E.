@@ -1,0 +1,48 @@
+{
+  "_comment": "Public-data reference engines for Concept 2. Shaft hp only: thermodynamic hp and equivalent shaft hp are not used as propeller shaft output. Retrieved 2026-11-06. These are reference hardware choices, not a certification of the proposed hybrid installation.",
+  "sources": {
+    "GE_brochure": "https://www.geaerospace.com/sites/default/files/HSeries_datasheet.pdf",
+    "EASA_E070_issue09": "https://www.easa.europa.eu/en/downloads/7685/en",
+    "PT6A114A_Caravan_TCDS": "https://www.easa.europa.eu/en/downloads/7230/en"
+  },
+  "data_notes": {
+    "ratings": "GE brochure nominal 750/800 shp; EASA E.070 issue 09 p8 lists 560/597 kW for H75-100/H80-100 takeoff and maximum continuous, respectively. Nominal shp values are used to avoid spurious precision from rounded kW conversions. Do not substitute H80-200: its normal continuous rating is 522 kW, not 597 kW.",
+    "dimensions_mass": "EASA E.070 issue 09 p7: H75-100 and H80-100 dry mass 200 kg; overall length 1675 mm. Use these variant-specific TC values instead of the GE brochure basic dry mass 177 kg and approximate length 1670 mm. Installation equipment boundaries differ; installed-engine factor remains a separate preliminary assumption.",
+    "chart_reading": "GE brochure p2: sea-level and 10000-ft shaft-power curves against OAT. Anchor points below are manually read and rounded from plotted lines, not a tabulated engine deck. Approximate chart-reading allowance +/-15 shp is a study assumption, not a manufacturer tolerance.",
+    "interpolation": "Linear in OAT on each published altitude curve, then linear in pressure altitude between 0 and 10000 ft at the same ISA temperature deviation. Endpoint OATs follow their local ISA temperature plus that deviation. This avoids an artificial power dip along an ISA climb. Intermediate-altitude behavior is an engineering interpolation assumption. No altitude or temperature extrapolation.",
+    "continuous_curve": "Brochure does not give a separate maximum-continuous thermal map. Apply the brochure power ceiling capped by each variant's continuous rating as a preliminary assumption. ITT/RPM-specific continuous and cruise maps remain unresolved.",
+    "installation": "Public brochure reference output; no custom inlet, bleed, cooling, accessory or hybrid gearbox losses are established. The model returns turbine output before separately accounted custom installation loads. No ram-rise, restart, duration tracking or motor power is included.",
+    "fuel": "No fuel-flow map obtained from these sources. Retain requirements BSFC=0.6 lb/(shaft-hp hr) as an explicitly estimated constant; fuel-flow calculations are estimates, not GE data."
+  },
+  "engines": {
+    "GE_H75_100": {
+      "name": "GE H75-100",
+      "takeoff_hp_each": 750,
+      "continuous_hp_each": 750,
+      "takeoff_duration_min": 5,
+      "dry_mass_kg_each": 200,
+      "length_mm_each": 1675,
+      "sea_level_curve": {"oat_C": [-40, 46, 50], "shaft_hp_each": [750, 750, 720]},
+      "altitude_10000_curve": {"oat_C": [-40, 0, 40], "shaft_hp_each": [750, 750, 550]},
+      "power_basis": "GE H75 750-shp family brochure curve applied to H75-100; continuous thermal ceiling is provisional"
+    },
+    "GE_H80_100": {
+      "name": "GE H80-100",
+      "takeoff_hp_each": 800,
+      "continuous_hp_each": 800,
+      "takeoff_duration_min": 5,
+      "dry_mass_kg_each": 200,
+      "length_mm_each": 1675,
+      "sea_level_curve": {"oat_C": [-40, 38, 50], "shaft_hp_each": [800, 800, 725]},
+      "altitude_10000_curve": {"oat_C": [-40, -5, 40], "shaft_hp_each": [800, 800, 550]},
+      "power_basis": "GE H80 family brochure curve applied to H80-100; continuous thermal ceiling is provisional"
+    }
+  },
+  "other_candidate": {
+    "name": "Pratt & Whitney PT6A-114A",
+    "takeoff_hp_each": 675,
+    "continuous_hp_each": 675,
+    "source": "EASA IM.A.226 issue 15 p5/p15",
+    "status": "Researched alternative, not an executable altitude model: published rating limits alone do not define altitude power. No GE curve is borrowed for this engine."
+  }
+}

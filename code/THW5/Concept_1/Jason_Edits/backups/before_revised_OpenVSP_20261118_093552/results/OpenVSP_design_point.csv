@@ -1,0 +1,2 @@
+DesignWeight_lbf,WingArea_ft2,ProjectedSpan_ft,AspectRatio,WingLoading_lbf_ft2,TurbinePowerLoading_lbf_hp,HorizontalTailArea_ft2,VerticalTailArea_ft2,FuselageLength_ft,AirframeWetArea_ft2,CD0,SpanMinimumWingLoading,LandingMaximumWingLoading,LandingLimitedWeight_lbf,SpanPass,LandingPass,PowerConstraintsPass
+12490,360,59.9634496211457,9.98782025129912,34.6944444444444,8.32666666666667,52.5,30,45,1866.62231233242,0.0233327789041553,29.5261242458523,18.7109729365101,6735.95025714363,1,0,0

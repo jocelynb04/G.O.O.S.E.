@@ -1,0 +1,6 @@
+Requirement,RequiredRatedShaft_hp,AvailableRatedShaft_hp,Pass
+"Cruise 180 KTAS at 10,000 ft DA",588.542453242303,1500,1
+"Best ROC 500 ft/min at 10,000 ft DA",596.329035413906,1500,1
+"ROC 2000 ft/min at MSL",1255.3849358205,1500,1
+"OEI ROC 450 ft/min at MSL",1186.63212670379,1500,1
+"Water takeoff, 50 ft obstacle in 2000 ft",938.282919920744,574.229173947986,0

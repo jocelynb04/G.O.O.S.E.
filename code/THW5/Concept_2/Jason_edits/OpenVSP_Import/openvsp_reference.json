@@ -1,0 +1,159 @@
+{
+  "source_file": "C:\\Users\\Jason\\OneDrive - Virginia Tech\\Desktop\\Fall 2026\\Senior Design\\Git\\OpenVSP Models\\Concept_2.vsp3",
+  "source_sha256": "3aafa0563691d0c106ccdf1612b1000b7cbedc4b9ad45a49f51fa9501dbafece",
+  "length_unit": "ft",
+  "OpenVSP_version": "3.54.0",
+  "wing": {
+    "area_ft2": 446.57280000000003,
+    "span_ft": 57.6,
+    "projected_span_ft": 57.52106120186345,
+    "projected_AR": 7.4090327081911855,
+    "MAC_ft": 7.831773079834463,
+    "root_chord_ft": 9.121,
+    "tip_chord_ft": 6.385,
+    "taper": 0.7000328911303585,
+    "sweep_qc_deg": 0.0,
+    "dihedral_deg": 3.0,
+    "twist_deg": -3.0,
+    "ac_x_ft": 18.28025,
+    "position_ft": [
+      16.0,
+      0.0,
+      3.3
+    ]
+  },
+  "horizontal_tail": {
+    "area_ft2": 112.3672,
+    "span_ft": 24.859999999999996,
+    "projected_span_ft": 24.859999999999996,
+    "projected_AR": 5.499999999999998,
+    "MAC_ft": 4.551157817109145,
+    "root_chord_ft": 5.170000000000001,
+    "tip_chord_ft": 3.8700000000000006,
+    "taper": 0.7485493230174081,
+    "sweep_qc_deg": 10.0,
+    "dihedral_deg": 0.0,
+    "twist_deg": 0.0,
+    "ac_x_ft": 40.33584143876705,
+    "position_ft": [
+      38.0,
+      0.0,
+      0.5
+    ],
+    "arm_ft": 22.05559143876705
+  },
+  "vertical_tail": {
+    "area_ft2": 95.581,
+    "span_ft": 11.146986139759932,
+    "projected_span_ft": 11.146986139759932,
+    "projected_AR": 1.3000000000000003,
+    "MAC_ft": 8.815514533004729,
+    "root_chord_ft": 11.06400609405452,
+    "tip_chord_ft": 6.085203351729986,
+    "taper": 0.55,
+    "sweep_qc_deg": 30.0,
+    "dihedral_deg": 0.0,
+    "twist_deg": 0.0,
+    "ac_x_ft": 37.672453661520336,
+    "position_ft": [
+      32.0,
+      0.0,
+      0.5
+    ],
+    "arm_ft": 19.392203661520337,
+    "rudder_control": {
+      "Abs_Rel_Flag": 1.0,
+      "EndAngle": 103.62366312614968,
+      "EndAngleFlag": 0.0,
+      "EtaEnd": 0.7999999999999998,
+      "EtaFlag": 0.0,
+      "EtaStart": 0.20000000000000018,
+      "LE_Flag": 0.0,
+      "Length_C_End": 0.25,
+      "Length_C_Start": 0.25,
+      "Length_End": 1.7702409750487238,
+      "Length_Start": 2.517061386397403,
+      "SE_Const_Flag": 1.0,
+      "SameAngleFlag": 1.0,
+      "StartAngle": 103.62366312614968,
+      "StartAngleFlag": 0.0,
+      "Surf_Type": 2.0,
+      "Tess_Num": 15.0,
+      "Test_Type": 0.0,
+      "UEnd": 0.6,
+      "UStart": 0.4
+    },
+    "rudder_planform_ft2": 14.33714999999999
+  },
+  "fuselage": {
+    "length_ft": 42.0,
+    "width_ft": 5.5,
+    "height_ft": 6.0
+  },
+  "nacelle": {
+    "length_ft": 5.0,
+    "diameter_ft": 5.0,
+    "count": 2,
+    "positions_ft": [
+      [
+        14,
+        -12,
+        3.3
+      ],
+      [
+        14,
+        12,
+        3.3
+      ]
+    ]
+  },
+  "floats": {
+    "length_ft": 25.0,
+    "beam_ft": 3.0,
+    "depth_ft": 2.4000000000000004,
+    "enclosed_volume_each_ft3": 108.27691542994347,
+    "count": 2,
+    "positions_ft": [
+      [
+        9,
+        -5.5,
+        -7
+      ],
+      [
+        9,
+        5.5,
+        -7
+      ]
+    ]
+  },
+  "propellers": {
+    "count": 2,
+    "diameter_ft": 8.0,
+    "blades": 5,
+    "positions_ft": [
+      [
+        14,
+        -12,
+        3.3
+      ],
+      [
+        14,
+        12,
+        3.3
+      ]
+    ]
+  },
+  "float_strut_planform_ft2": 30.0,
+  "wetted_areas_ft2": {
+    "FuselageGeom": 576.5944608488882,
+    "WingGeom": 880.8936551317422,
+    "Horizontal_Stabilizer": 217.74926712159976,
+    "Vertical_Stabilizer": 182.80628753287974,
+    "Engine_Nacelle": 126.7668764387713,
+    "Foward_Pontoon_Strut": 24.304496744369054,
+    "Rear_Pontoon_Strut": 24.923056793707744,
+    "Pontoon": 390.0842603474961
+  },
+  "propeller_blade_wet_excluded_ft2": 46.22170479790725,
+  "notes": "Intersected CompGeom areas; propeller blades excluded from equivalent-Cfe airframe drag. Wing span is developed span; AR uses OpenVSP projected span. Wing sizing scales the imported planform; tails, fuselage, nacelles, floats and struts remain fixed. Tail arms are quarter-chord geometry separations, not CG-based control validation. Float volume is enclosed geometric volume, not submerged displacement."
+}

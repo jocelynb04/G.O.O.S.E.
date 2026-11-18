@@ -8,12 +8,11 @@ classdef TtpaWeights < WeightsBase
 %       W_fuselage       = rho_fuselage * S_wet_fuselage      lb/ft^2 x WETTED area
 %       W_wingtip_floats = 2 * rho_wingtip_floats * S_wet     lb/ft^2 x WETTED area
 %       W_gear           = f_gear * W_TO                      fraction of TOGW
-%       W_engines        = f_engines * W_bare_all_engines     x bare engine weight
+%       W_engines        = W_turboshafts + W_generators      series hybrid engine sets
 %       W_all_else       = f_all_else * W_TO                  fraction of TOGW
 %
-%   Four rows follow the geometry (wing, tail, fuselage, floats), one follows
-%   the engine (W_engines), and two follow the takeoff weight (gear, all
-%   else). That is what lets the sizing loop see the airplane it has drawn.
+%   Airframe weights follow the geometry. Propulsion component weights
+%   follow the series hybrid ratings, and gear and equipment follow TOGW.
 %   ------------------------------------------------------------------
     properties
         W_TO                 = NaN   % lbf, candidate gross takeoff weight
@@ -32,7 +31,7 @@ classdef TtpaWeights < WeightsBase
         rho_fuselage
         rho_wingtip_float
         f_landing_gear
-        f_installed_engine
+        f_installed_engine          % retained for legacy configuration access
         f_all_else_empty
         rho_fuel
     end
@@ -86,12 +85,10 @@ classdef TtpaWeights < WeightsBase
                 W_TO (1,1) double {mustBePositive}
             end
 
-            % engines (from propulsion model)
-            [W_bare_total, W_bare_each] = obj.prop.engine_weight();
-            bd.engine_bare_each  = W_bare_each;
-            bd.engine_bare_total = W_bare_total;
-
+            % Apply the same series hybrid masses to the totals and engine fields.
             masses = obj.prop.installed_mass_breakdown();
+            bd.engine_bare_total = masses.turboshafts_lb;
+            bd.engine_bare_each  = bd.engine_bare_total / obj.prop.n_generators;
             bd.battery          = masses.battery_lb;
             bd.motors           = masses.motors_lb;
             bd.motor_inverters  = masses.motor_inverters_lb;
@@ -103,18 +100,20 @@ classdef TtpaWeights < WeightsBase
             bd.wing             = obj.rho_wing * obj.geom.S_exposed_wing;
             bd.v_tail           = obj.rho_v_tail * obj.geom.S_v_tail;
             bd.fuselage         = obj.rho_fuselage * obj.geom.S_wet_fuselage;
+            % Float supports use the existing wing structural areal density.
+            bd.float_struts = obj.rho_wing * obj.geom.S_float_struts;
             bd.wingtip_floats   = 2 * obj.rho_wingtip_float * obj.geom.S_wet_wingtip_float;
 
             % gear, installed engines, hybrid electrical systems, and all else
             bd.landing_gear     = obj.f_landing_gear * W_TO;
-            bd.installed_engine = obj.f_installed_engine * W_bare_total;
+            bd.installed_engine = bd.turboshafts + bd.generators;
             bd.all_else_empty   = obj.f_all_else_empty * W_TO;
 
             % total
-            bd.total = bd.wing + bd.v_tail + bd.fuselage + bd.wingtip_floats + ...
+            bd.total = bd.wing + bd.v_tail + bd.fuselage + bd.wingtip_floats + bd.float_struts + ...
                        bd.landing_gear + bd.all_else_empty + ...
                        bd.battery + bd.motors + bd.motor_inverters + ...
-                       bd.generators + bd.turboshafts + bd.propellers;
+                       bd.installed_engine + bd.propellers;
         end
 
         %% Payload

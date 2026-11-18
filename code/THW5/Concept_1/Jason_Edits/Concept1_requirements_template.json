@@ -3,58 +3,61 @@
   "_what_changed_from_IHW2": "Three things that were FIXED in IHW1/IHW2 are now OUTPUTS of the loop. (1) W_TO was 5354 lbf, the converged answer of the IHW1 mission analysis, typed into the IHW2 driver by hand. (2) S_ref and P_SL were computed ONCE from that W_TO and a chosen design point. (3) OEW came from the regression 0.911*W_TO^0.947, so it depended on nothing but weight. In IHW3 the geometry is rebuilt from S_ref on every pass, OEW is built up from that geometry and that engine, CD0 follows the wetted area, the cruise constraint and the mission fuel both follow CD0, and the takeoff weight closes on all of it.",
   "_who_reads_what": "geometry -> TtpaGeom. aerodynamics -> TtpaAero. propulsion -> TtpaProp. weights -> TtpaWeights. sizing -> run_ttpa_sizing_mainloop, which hands it to sizing_mainloop. constraints.conditions -> ConstraintSetImporter.read_conditions, then get_con. constraints.design_point -> run_ttpa_sizing_mainloop, for the first power guess only. missions -> MissionProfileReader.read_profile, then get_miss_seg, run_mission_L2 and mission_fuel.",
   "geometry": {
-    "_comment": "EXTENDED IN IHW3. In IHW1 and IHW2 this block held one number, the aspect ratio, because neither homework had any real geometry: TtpaGeom carried S_ref = NaN and S_wet = NaN. The sizing loop has to rebuild the airplane from W_TO on every iteration, so the planform shape, the tail volume coefficients, the fuselage layout and the nacelle all live here now. Read by the TtpaGeom constructor; TtpaAero still reads AR from this block, exactly as it did in IHW2.",
+    "_comment": "Imported external geometry from AmphibiousSeaplane_Concept1.vsp3. Coordinates are interpreted as feet.",
     "_what_is_an_input_here": "Only SHAPE lives in this block - ratios, angles and the fixed cabin-driven fuselage. SIZE does not: S_ref is written by the sizing loop from W_TO and the wing loading, and every span, chord, area and wetted area is a Dependent property of TtpaGeom recomputed from S_ref on every read. No derived quantity is stored here or in the class.",
-    "AR": 8,
-    "_src_AR": "Carried over from IHW1/IHW2. Preliminary wing aspect-ratio design assumption.",
-    "taper_ratio": 0.4,
-    "_src_taper_ratio": "Raymer Sec. 4.3.3: an unswept wing normally takes a taper ratio near 0.4. Corroborated by Roskam Part II, Table 6.3.",
-    "sweep_quarter_chord_deg": 0,
-    "_src_sweep_quarter_chord_deg": "The airplane cruises near M = 0.3, so no sweep is needed. Raymer Fig. 4.2, Roskam Part II Table 6.3. Carried for reporting; the sizing loop does not read it.",
-    "thickness_ratio_root": 0.18,
-    "thickness_ratio_tip": 0.09,
-    "_src_thickness_ratio": "NACA 23018 at the root and NACA 23009 at the tip, Roskam Part II Table 8.3. The MEAN of the two is what Raymer Eq. 7.12 needs to turn exposed planform area into wetted area; the ROOT value is what the Torenbeek wing-fuel-volume equation needs.",
-    "twist_deg": -3,
-    "incidence_deg": 2,
-    "dihedral_deg": 5,
-    "_src_twist_incidence_dihedral": "Raymer Sec. 4.3.4 (-3 deg washout for stall behaviour), Sec. 4.3.5 (2 deg incidence), Table 4.2 with Roskam Part II Table 6.3 (5 deg dihedral). Reporting only - none of the three enters the sizing loop.",
+    "AR": 5.829012969014177,
+    "_src_AR": "Derived from the supplied OpenVSP model. See geometry.openvsp for source values, coordinates, units and limitations.",
+    "taper_ratio": 0.5,
+    "_src_taper_ratio": "Derived from the supplied OpenVSP model. See geometry.openvsp for source values, coordinates, units and limitations.",
+    "sweep_quarter_chord_deg": -0.26973399032185585,
+    "_src_sweep_quarter_chord_deg": "Derived from the supplied OpenVSP model. See geometry.openvsp for source values, coordinates, units and limitations.",
+    "thickness_ratio_root": 0.1,
+    "thickness_ratio_tip": 0.1,
+    "_src_thickness_ratio": "Derived from the supplied OpenVSP model. See geometry.openvsp for source values, coordinates, units and limitations.",
+    "twist_deg": 0.0,
+    "incidence_deg": 0.0,
+    "dihedral_deg": 2.0,
+    "_src_twist_incidence_dihedral": "Derived from the supplied OpenVSP model. See geometry.openvsp for source values, coordinates, units and limitations.",
     "horizontal_tail": {
-      "volume_coefficient": 0.8,
-      "arm_ft": 15.0,
-      "AR": 5.5,
-      "taper_ratio": 0.75,
-      "thickness_ratio": 0.12,
-      "sweep_quarter_chord_deg": 10,
-      "_src": "Volume coefficient and moment arm from Roskam Part II Table 8.3(a). CORROBORATED BY TWO INDEPENDENT SOURCES: Raymer Table 6.4 prints 0.80 for a general-aviation twin engine - an exact match - and Nicolai and Carichner Table 11.1 reports 0.64 to 1.07 across fourteen twin light reciprocating-propeller airplanes. Planform from Roskam Part II Table 8.13. NACA 0012 airfoil, hence t/c = 0.12. Equation: S_ht = V_h * S_ref * MAC / arm [Raymer Eq. 6.29, p. 159]. The area is THEORETICAL, carried to the aircraft centreline, which is the convention the method is defined in. The tail GROWS with the wing on every iteration - one of the two couplings the sizing loop exists to capture."
+      "volume_coefficient": 0.2377354948081725,
+      "arm_ft": 18.532049178350505,
+      "AR": 3.7333333333333334,
+      "taper_ratio": 0.5,
+      "thickness_ratio": 0.1,
+      "sweep_quarter_chord_deg": 4.974559766441312,
+      "_src": "OpenVSP fixed surface. Arm is distance between wing and tail quarter-MAC stations; it is not a CG-referenced stability validation.",
+      "area_ft2": 104.9999964060031
     },
     "vertical_tail": {
-      "volume_coefficient": 0.065,
-      "arm_ft": 17.0,
-      "AR": 1.3,
-      "taper_ratio": 0.55,
-      "thickness_ratio": 0.12,
-      "sweep_quarter_chord_deg": 30,
-      "_src": "Volume coefficient and moment arm from Roskam Part II Table 8.3(b). CORROBORATED: Raymer Table 6.4 prints 0.07 for a general-aviation twin engine, and the 0.065 used here sits inside the 0.045 to 0.080 band of Nicolai and Carichner Table 11.1 for the same class. Planform from Roskam Part II Table 8.13, NACA 0012. Equation: S_vt = V_v * S_ref * b / arm [Raymer Eq. 6.28, p. 159]. Note the length scale is the wing SPAN, not the MAC - that is the only difference between the two tail-volume definitions."
+      "volume_coefficient": 0.02340583559937875,
+      "arm_ft": 17.957960421669256,
+      "AR": 1.2,
+      "taper_ratio": 0.42857142857142855,
+      "thickness_ratio": 0.1,
+      "sweep_quarter_chord_deg": 16.680371110628965,
+      "_src": "OpenVSP fixed surface. Arm is distance between wing and tail quarter-MAC stations; it is not a CG-referenced stability validation.",
+      "area_ft2": 59.99999794628749
     },
     "fuselage": {
-      "_comment": "The fuselage is CABIN-DRIVEN, not weight-driven: two-abreast seating, three rows, six occupants. It therefore does NOT change during the sizing loop, which is what keeps the loop well behaved - the fuselage contributes a constant to the empty weight and to the wetted area while the wing and the tails grow. Every length below is fixed by the cabin layout and by the two fineness ratios, not by W_TO.",
-      "width_ft": 5.0,
-      "height_ft": 5.75,
-      "_src_width_height": "Cabin width 4.75 ft (two 1.75 ft seats plus a 1.25 ft aisle, Roskam Part III Table 3.1 and Raymer Table 9.1) plus 1.5 in of structural depth per side gives a 5.0 ft fuselage width. Cabin height 5 ft plus a floor allowance gives 5.75 ft, which is also the maximum fuselage diameter l_d.",
-      "nose_length_ft": 8.2,
-      "constant_length_ft": 9.0,
-      "tailcone_length_ft": 14.4,
-      "_src_lengths": "Total fuselage length 31.6 ft = 5.5 * l_d, the fuselage fineness ratio of Roskam Part II Table 4.1 / Part III Fig. 3.1. Tail cone 14.4 ft = 2.5 * l_d, the aft-body fineness ratio of Roskam Part II Table 4.1 / Part III Fig. 3.3. Constant section 9.0 ft = three rows at a 3 ft seat pitch (Roskam Part III Sec. 3.3.2.2). The nose is the remainder, 31.6 - 14.4 - 9.0 = 8.2 ft. The three lengths must sum to 31.6 ft; TtpaGeom checks that.",
-      "tailcone_end_width_ft": 0.5,
-      "tailcone_end_height_ft": 0.5,
-      "_src_tailcone_end": "Closure dimensions at the aft end of the tail cone. Raymer Eq. 7.13 works from the projected top and side areas, and a cone taken to a point understates both. A 10 deg upsweep over a 14.4 ft cone does not close completely."
+      "_comment": "OpenVSP external fuselage sections; 0-11.25 ft nose, 11.25-24.3 ft full-width region, 24.3-45 ft aft body. Internal usable cabin requires layout.",
+      "width_ft": 7.5,
+      "height_ft": 7,
+      "_src_width_height": "OpenVSP external fuselage sections; 0-11.25 ft nose, 11.25-24.3 ft full-width region, 24.3-45 ft aft body. Internal usable cabin requires layout.",
+      "nose_length_ft": 11.25,
+      "constant_length_ft": 13.05,
+      "tailcone_length_ft": 20.7,
+      "_src_lengths": "OpenVSP external fuselage sections; 0-11.25 ft nose, 11.25-24.3 ft full-width region, 24.3-45 ft aft body. Internal usable cabin requires layout.",
+      "tailcone_end_width_ft": 0,
+      "tailcone_end_height_ft": 0,
+      "_src_tailcone_end": "OpenVSP external fuselage sections; 0-11.25 ft nose, 11.25-24.3 ft full-width region, 24.3-45 ft aft body. Internal usable cabin requires layout."
     },
     "nacelle": {
-      "_comment": "Wing-mounted tractor nacelles, one per engine. The nacelle LENGTH tracks the engine, which grows with P_SL, so the nacelle wetted area is inside the sizing loop. The nacelle DIAMETER does not: Raymer Table 10.3 states that the width and the height of an opposed piston engine vary insignificantly over a +50 percent power change, so a fixed diameter is the right model here.",
-      "diameter_ft": 2.8,
-      "_src_diameter_ft": "Raymer Table 10.4, horizontally-opposed column: engine width 2.6-2.8 ft. The upper end is taken so the cowl encloses the engine and its cooling plenum.",
-      "length_over_engine_length": 2.0,
-      "_src_length_over_engine_length": "Layout assumption, NOT a textbook value. The nacelle runs from the spinner bulkhead to the aft cowl fairing and so is longer than the bare engine that Raymer Table 10.4 sizes. A factor of 2.0 reproduces the roughly 7 ft nacelle of a light twin of this class. It is the weakest number in this block: change it and the parasite drag moves."
+      "_comment": "OpenVSP external pod dimensions and evaluated wetted area. Check engine fit separately.",
+      "diameter_ft": 5,
+      "_src_diameter_ft": "OpenVSP external pod dimensions and evaluated wetted area. Check engine fit separately.",
+      "length_over_engine_length": 0.9694619486185168,
+      "_src_length_over_engine_length": "OpenVSP external pod dimensions and evaluated wetted area. Check engine fit separately.",
+      "length_ft": 5
     },
     "landing_gear": {
       "_comment": "Tricycle gear. These two ratios convert the converged takeoff weight into the static loads the struts and tyres are sized to. They are used AFTER the loop converges, not inside it - the gear WEIGHT inside the loop is the Raymer Table 15.2 fraction of W_TO.",
@@ -63,11 +66,190 @@
       "_src": "Raymer Ch. 11: the static load on the main gear is W * l_n/l_d and on the nose gear is W * l_m/l_d, where l_d is the nose-to-main wheelbase, l_n the aft-cg-to-nose-gear distance and l_m the forward-cg-to-main-gear distance. Until a weight-and-balance study fixes the cg envelope, 0.90 and 0.15 are the standard placeholders."
     },
     "concept1": {
-      "hull_wetted_factor": 1.15,
+      "hull_wetted_factor": 1,
       "n_floats": 2,
-      "float_length_ft": 5.0,
-      "float_diameter_ft": 1.0,
+      "float_length_ft": 9,
+      "float_diameter_ft": 3,
       "_note": "Screening geometry assumptions from the Concept 1 context. High-wing/T-tail placement and water hydrodynamics are not resolved by these parameters."
+    },
+    "reference_area_ft2": 713.7142857142857,
+    "reference_span_ft": 64.49999866356015,
+    "openvsp": {
+      "source_file": "C:\\Users\\Jason\\OneDrive - Virginia Tech\\Desktop\\Fall 2026\\Senior Design\\Git\\code\\THW5\\Concept_1\\Jason_Edits\\AmphibiousSeaplane_Concept1_Jason_Revised.vsp3",
+      "source_sha256": "62277460f8ce9d0f464c7fc25d3cec7eeea1f1c1bc34aeb9a1eb93349b787b78",
+      "openvsp_version": "3.54.0",
+      "units": "ft",
+      "units_basis": "Assumed feet from 45-unit fuselage, 60-unit wing and 8-unit propeller. OpenVSP shape coordinates have no authoritative physical unit.",
+      "reference_area_basis": "OpenVSP TotalArea, projected span used for AR; excludes rotating propeller surfaces from airframe wetted area.",
+      "wing": {
+        "area_ft2": 713.7142857142857,
+        "span_ft": 64.49999866356015,
+        "AR": 5.829012969014177,
+        "root_chord_ft": 14.74479638314198,
+        "tip_chord_ft": 7.37239819157099,
+        "MAC_ft": 11.468174964665984,
+        "taper_ratio": 0.5,
+        "sweep_quarter_chord_deg": -0.26973399032185585,
+        "dihedral_deg": 2.0,
+        "twist_deg": 0.0,
+        "incidence_deg": 0.0,
+        "thickness_ratio_root": 0.1,
+        "thickness_ratio_tip": 0.1,
+        "x_quarter_MAC_ft": 21.618679771686942,
+        "origin_ft": [
+          18.0,
+          0.0,
+          4.0
+        ]
+      },
+      "horizontal_tail": {
+        "area_ft2": 104.9999964060031,
+        "span_ft": 19.79898953437805,
+        "AR": 3.7333333333333334,
+        "root_chord_ft": 7.071067690849304,
+        "tip_chord_ft": 3.535533845424652,
+        "MAC_ft": 5.499719315105014,
+        "taper_ratio": 0.5,
+        "sweep_quarter_chord_deg": 4.974559766441312,
+        "dihedral_deg": 0.0,
+        "twist_deg": 0.0,
+        "incidence_deg": 0.0,
+        "thickness_ratio_root": 0.1,
+        "thickness_ratio_tip": 0.1,
+        "x_quarter_MAC_ft": 40.15072895003745,
+        "origin_ft": [
+          38.0,
+          0.0,
+          9.985281229019165
+        ]
+      },
+      "vertical_tail": {
+        "area_ft2": 59.99999794628749,
+        "span_ft": 8.485281229019165,
+        "AR": 1.2,
+        "root_chord_ft": 9.899494767189026,
+        "tip_chord_ft": 4.2426406145095825,
+        "MAC_ft": 7.448191301027935,
+        "taper_ratio": 0.42857142857142855,
+        "sweep_quarter_chord_deg": 16.680371110628965,
+        "dihedral_deg": 0.0,
+        "twist_deg": 0.0,
+        "incidence_deg": 0.0,
+        "thickness_ratio_root": 0.1,
+        "thickness_ratio_tip": 0.1,
+        "x_quarter_MAC_ft": 39.5766401933562,
+        "origin_ft": [
+          36.0,
+          0.0,
+          2.0
+        ]
+      },
+      "fuselage_sections": [
+        {
+          "x_ft": 0.0,
+          "z_center_ft": 0.0,
+          "width_ft": 0.0,
+          "height_ft": 0.0
+        },
+        {
+          "x_ft": 11.25,
+          "z_center_ft": 0.0,
+          "width_ft": 7.5,
+          "height_ft": 7.0
+        },
+        {
+          "x_ft": 22.5,
+          "z_center_ft": 0.0,
+          "width_ft": 7.5,
+          "height_ft": 7.0
+        },
+        {
+          "x_ft": 24.3,
+          "z_center_ft": 0.0,
+          "width_ft": 7.5,
+          "height_ft": 7.0
+        },
+        {
+          "x_ft": 29.25,
+          "z_center_ft": 0.75,
+          "width_ft": 6.5,
+          "height_ft": 5.3
+        },
+        {
+          "x_ft": 33.75,
+          "z_center_ft": 0.8,
+          "width_ft": 5.5,
+          "height_ft": 4.7
+        },
+        {
+          "x_ft": 45.0,
+          "z_center_ft": 1.125,
+          "width_ft": 0.0,
+          "height_ft": 0.0
+        }
+      ],
+      "wetted_areas_ft2": {
+        "FuselageGeom": 739.5389012512933,
+        "WingGeom": 1397.1229136843478,
+        "VerticalTail": 109.86621886392082,
+        "HorizontalTail": 211.83090533292378,
+        "EngineNacelle": 123.17062994633923,
+        "Propellers": 36.977363838325864,
+        "WingtipFloats": 125.11263226638053,
+        "FloatSupportStruts": 18.37218408312476
+      },
+      "external_volumes_ft3": {
+        "FuselageGeom": 1060.709687388866,
+        "WingGeom": 542.1246904928295,
+        "VerticalTail": 26.087199327032327,
+        "HorizontalTail": 38.944809853563626,
+        "EngineNacelle": 95.31503286264979,
+        "Propellers": 0.9249183033009347,
+        "WingtipFloats": 69.68475141347523,
+        "FloatSupportStruts": 3.2621599848024943
+      },
+      "nacelle": {
+        "count": 2,
+        "length_ft": 5,
+        "diameter_ft": 5,
+        "origin_ft": [
+          17,
+          10,
+          4.5
+        ]
+      },
+      "floats": {
+        "count": 2,
+        "length_ft": 9.0,
+        "diameter_ft": 3,
+        "origin_ft": [
+          18.0,
+          29.0426920232733,
+          -0.8
+        ]
+      },
+      "float_struts": {
+        "count": 2,
+        "length_ft": 4.5713324546813965,
+        "diameter_ft": 0.9,
+        "origin_ft": [
+          20.0,
+          29.0426920232733,
+          0.3
+        ]
+      },
+      "propellers": {
+        "count": 2,
+        "diameter_ft": 8,
+        "shaft_height_from_model_origin_ft": 4.5
+      },
+      "limitations": [
+        "CompGeom reports two open meshes merged; surface areas use the supplied default tessellation.",
+        "External hull volume is not watertight underfloor buoyancy or floodable compartment volume.",
+        "No static waterline, internal cabin boundaries, landing gear or engine integration envelope are established by these surfaces."
+      ],
+      "parent_model": "C:\\Users\\Jason\\OneDrive - Virginia Tech\\Desktop\\Fall 2026\\Senior Design\\Git\\OpenVSP Models\\AmphibiousSeaplane_Concept1.vsp3",
+      "revision_note": "Enlarged wing and tails, raised horizontal tail with taller fin, and moved floats/struts outboard with wing."
     }
   },
   "aerodynamics": {
@@ -80,7 +262,7 @@
     "_src_Cfe": "NEW IN IHW3. Raymer Table 12.3, equivalent skin-friction coefficient for a light TWIN-engine airplane (the single-engine row is 0.0055). Used with Raymer Eq. 12.23, CD0 = Cfe * S_wet / S_ref, to get the clean zero-lift drag of the airplane the loop has just laid out. This is the single equation that couples GEOMETRY to DRAG, and therefore to mission fuel and to takeoff weight.",
     "CLmax_clean": 1.5,
     "CLmax_takeoff": 1.8,
-    "CLmax_landing": 2.2,
+    "CLmax_landing": 2.6,
     "_src_CLmax": "Roskam Part I, Table 3.1 (twin-engine propeller-driven, FAR 23): clean 1.2-1.8, takeoff 1.4-2.0, landing 1.6-2.6. Mid-range values assumed for the TTPA. Pull the one that matches the configuration of the condition you are evaluating: clean for the engine-out climb, takeoff for the takeoff ground roll and the all-engines climb, landing for the landing ground roll and the balked landing.",
     "CL_stall_margin": 0.2,
     "_src_CL_stall_margin": "Roskam Part I, Sec. 3.3. The steepest climb is flown near CLmax, which is unsafe because the airplane is then close to the stall, so the climb lift coefficient is taken 0.2 below the CLmax of that configuration. Apply it inside get_config_polar so that no constraint function can forget it.",
@@ -92,7 +274,8 @@
     "delta_e_flaps_landing": -0.1,
     "_src_delta_e": "Roskam Part I, Table 3.6, Oswald-efficiency increments: about -0.05 with takeoff flaps and about -0.10 with landing flaps. Extending the gear does not change e.",
     "delta_CD0_propeller_stopped": 0.005,
-    "_src_delta_CD0_propeller_stopped": "Roskam Part I, Sec. 3.3: drag increment of the stopped propeller of the failed engine. Add it only when the condition sets propeller_stopped, which is the one-engine-inoperative climb."
+    "_src_delta_CD0_propeller_stopped": "Roskam Part I, Sec. 3.3: drag increment of the stopped propeller of the failed engine. Add it only when the condition sets propeller_stopped, which is the one-engine-inoperative climb.",
+    "_src_CLmax_landing": "Retained high-lift target, requires validation for the revised wing."
   },
   "propulsion": {
     "_comment": "Carried over from IHW2 with the engine-size regression added. IHW2 needed to know how much power the engine MAKES; the sizing loop also needs to know how much it WEIGHS and how long it is, because the first feeds the empty weight and the second feeds the nacelle wetted area, and both follow from P_SL - one of the two states the loop iterates on.",
@@ -105,7 +288,7 @@
     "_src_eta_p_mission": "Carried over from IHW1. Propeller efficiencies of the cruise and loiter mission segments.",
     "eta_p_climb": 0.8,
     "_src_eta_p_climb": "NEW. Propeller efficiency in a climb. The climb-gradient constraint needs it, and the mission analysis never did, because IHW1 modelled climb with a fixed weight fraction.",
-    "P_TO_over_P_max_continuous": 1.1,
+    "P_TO_over_P_max_continuous": 1,
     "_src_P_TO_over_P_max_continuous": "NEW. Roskam Part I, Sec. 3.3: for a typical piston engine the takeoff power is about 1.1 times the maximum continuous power. The all-engines climb must be flown at maximum continuous power, so the power available there is the takeoff power divided by this number.",
     "engine_scaling_class": "opposed",
     "engine_weight_coefficient": 5.47,
@@ -118,7 +301,7 @@
       500
     ],
     "_src_bhp_range_of_validity": "Raymer Table 10.4 prints 60-500 bhp as the applicable range of the opposed-engine regression. TtpaProp warns, and does not error, when the loop asks for a per-engine power outside it: an intermediate iterate can leave the band and come back.",
-    "turboprop_BSFC_lb_per_hp_hr": 0.55,
+    "turboprop_BSFC_lb_per_hp_hr": 0.62118,
     "eta_p_takeoff": 0.75,
     "eta_p_landing": 0.7,
     "electric_power_ratio": 1.0,
@@ -127,14 +310,15 @@
     "eta_inverter": 0.97,
     "eta_gearbox": 0.98,
     "usable_battery_fraction": 0.8,
-    "battery_specific_energy_Wh_kg": 250,
+    "battery_specific_energy_Wh_kg": 300,
     "motor_specific_power_kW_kg": 5,
     "turboprop_weight_lb_per_hp": 1.5,
-    "turboprop_dry_weight_lbf": null,
+    "turboprop_dry_weight_lbf": 340,
     "_src_turboprop_dry_weight_lbf": "Optional fixed dry weight per engine for a documented engine. Null uses the power-scaled estimate.",
-    "turboprop_length_ft": 4.0,
+    "turboprop_length_ft": 5.1575,
     "_concept1_power_note": "P_SL is the reference power. Each power source is provisionally rated to P_SL (ratios 1.0), so either source can independently provide that reference power. They are not summed in the current operating schedule.",
-    "_concept1_data_note": "BSFC, efficiencies, battery specific energy, motor specific power, turboprop specific weight, and length are preliminary assumptions from the project context, not supplier specifications."
+    "_concept1_data_note": "BSFC, efficiencies, battery specific energy, motor specific power, turboprop specific weight, and length are preliminary assumptions from the project context, not supplier specifications.",
+    "_src_selected_engine": "Prior selected twin PT6A-34 sensitivity, constant BSFC and flat altitude power remain screening assumptions. Geometry import does not establish installed engine performance."
   },
   "weights": {
     "_comment": "NEW IN IHW3. In IHW1 and IHW2 the empty weight was one line inside TtpaWeights, OEW = 0.911 * W_TO^0.947, and the payload was a literal 1200. That regression knows only the takeoff weight: build a bigger wing or hang a bigger engine on the same airplane and it returns the same answer. A sizing loop needs an empty weight that RESPONDS to the airplane it has just laid out, so IHW3 replaces it with the Raymer Table 15.2 component build-up. The old regression is kept below as a cross-check and is reported next to the build-up.",
@@ -171,11 +355,11 @@
   "sizing": {
     "_comment": "Everything the main sizing loop needs that is not a property of the airplane: where to start, when to stop, and how hard to damp each step. Read by run_ttpa_sizing_mainloop and passed to sizing_mainloop. No discipline class reads this block.",
     "_the_framework": "Three states are iterated to a consistent set: the takeoff weight W_0, the sea-level shaft power P_0, and the wing area S_ref. AR and taper are held constant. Each pass: (1) constraint analysis on the current airplane gives the least-engine corner (W/S, W/P); (2) S_ref = W_0/(W/S) and P_0 = W_0/(W/P); (3) the mission gives the fuel; (4) the build-up gives OEW; (5) W_0_new = W_payload/(1 - W_f/W_0 - OEW/W_0); (6) stop when W_0 and P_0 both stop moving, otherwise relax all three states and go again. S_ref is an OUTPUT.",
-    "W_TO_guess_lbf": 5000,
+    "W_TO_guess_lbf": 12490,
     "_src_W_TO_guess_lbf": "The same starting guess IHW1 used. The first power guess is W_TO_guess/(W/P) at constraints.design_point. The loop reaches the same answer from anywhere between 2500 and 10000 lbf, so this is a convenience, not an input to the answer. Change it and check that nothing moves: that is the test that the fixed point is real.",
-    "S_ref_guess_ft2": 128.47,
+    "S_ref_guess_ft2": 713.7142857142857,
     "_src_S_ref_guess_ft2": "Starting guess for the wing area only. The first pass replaces it with W_0/(W/S). Any value from 90 to 200 ft^2 reaches the same converged wing.",
-    "tol_rel": 1E-06,
+    "tol_rel": 1e-06,
     "max_iter": 200,
     "_src_tol_max_iter": "Relative tolerance on BOTH states. The loop stops only when |W_new - W_0|/W_new and |P_new - P_0|/P_new are both below tol_rel. 1e-6 is the metabook TOGW test. The loop takes about 35 passes, so 200 is a generous ceiling.",
     "relaxation": 0.45,
@@ -188,16 +372,14 @@
     "_note_power_setting": "power_setting is the throttle fraction of the rated power at that condition (1.0 = full power). The altitude power lapse, the maximum-continuous derate and the one-engine-inoperative split are NOT stored here: your TtpaProp applies them from n_engines, P_TO_over_P_max_continuous and the flags on the condition.",
     "_note_config": "config names the flap and landing-gear position. The five names your get_config_polar must accept are clean, takeoff_flaps_gear_up, takeoff_flaps_gear_down, landing_flaps_gear_up and landing_flaps_gear_down. They are the names the framework uses in AerodynamicsBase.get_config_polar.",
     "wing_loading_range_psf": [
-      15,
-      50
+      10,
+      45
     ],
     "wing_loading_points": 500,
     "_src_wing_loading_range_psf": "Wing-loading sweep of the matching diagram, lbf/ft^2, and the number of points on it. Read by the driver script, not by any constraint function: every constraint function receives the sweep as its first argument.",
     "design_point": {
-      "_comment": "The design point SELECTED from the matching diagram. It is a design decision, not a result. The analysis finds the corner of the feasible region, which is the smallest engine the requirements permit and which sits exactly on two constraints with no margin at all; the designer then backs away from that corner. Read by the driver script.",
-      "wing_loading_psf": 40,
-      "power_loading_lb_per_hp": 9.25,
-      "_src": "Design point read off the matching diagram, kept clear of the least-engine corner as a factor of safety on the preliminary sizing."
+      "wing_loading_psf": 32.48028673835125,
+      "power_loading_lb_per_hp": 10.452133794694348
     },
     "conditions": [
       {
@@ -272,7 +454,8 @@
         "_src_power_setting": "Inherited 0.80 cruise power setting from the professor baseline; not specified as a Concept 1 requirement. Review with the example mission.",
         "_src_beta": "Provisional beta = 1.0 (takeoff weight at cruise), conservative until the mission fuel fraction establishes cruise weight."
       }
-    ]
+    ],
+    "_workflow_note": "Plot settings mirror Concept 3 structure. Active RFP conditions are constructed in concept1_rfp_constraints.m, retaining the Concept 1 hybrid equations. design_point is the Caravan comparison reference, not the selected Concept 1 point."
   },
   "missions": {
     "_comment": "Carried over from IHW1 unchanged, so that your mission analysis runs against this file with no edit. Read with MissionProfileReader.read_profile(json_path, 'std_mission'), then one segment at a time with get_miss_seg. The constraint analysis needs the takeoff gross weight your mission analysis converges to.",
@@ -354,7 +537,7 @@
       "_src_cruise_distance": "Uses the 1,000 statute-mile design-range requirement (868.976 nmi), which is slightly longer than the BWI-to-New Orleans Lakefront airport-reference great-circle distance."
     }
   },
-  "_model_status": "Concept 1 starter input; mission route and electric durations remain provisional until the example mission is supplied.",
+  "_model_status": "Revised OpenVSP concept. Run run_concept1_openvsp for evaluated geometry and current pass/fail.",
   "_concept1_assumptions_note": "Values explicitly identified as inherited or provisional are assumptions, not new aircraft requirements.",
   "aircraft_requirements": {
     "passengers": 9,
@@ -391,5 +574,17 @@
     "route_note": "Airport reference points are geographic proxies only. Sizing cruise distance retains the 1,000 statute-mile minimum-range requirement, slightly longer than this direct route.",
     "altitude_ft": 10000,
     "altitude_note": "Uses the existing 10,000 ft cruise-density-altitude design point, below the 15,000 ft unpressurized operating ceiling."
+  },
+  "analysis_design": {
+    "takeoff_weight_lbf": 12490,
+    "turbine_rating_hp": 1500,
+    "electric_rating_hp": 574.229173947986,
+    "skin_friction_factor": 1,
+    "pack_Wh_kg": 300,
+    "discharge_C": 8,
+    "capacity_retention": 0.8,
+    "assist_delay_seconds": 0,
+    "hybrid_installation_allowance_lbf": 130,
+    "note": "Revised OpenVSP geometry with enlarged wing/tails; retains selected turbine, motor and pack targets. No drag reduction credited."
   }
 }

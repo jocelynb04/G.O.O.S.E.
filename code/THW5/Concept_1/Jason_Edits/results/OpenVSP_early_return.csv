@@ -1,0 +1,2 @@
+GoAroundWeight_lbf,PeakElectric_shp,PeakTurbine_shp,PeakBattery_kW,SOCafterBalk_percent,MotorWithinRating,BatteryWithinPowerLimit,SOCAboveMinimum,LandingLimit_lbf_ft2
+12490,545.517715250587,302.588600330428,450.455103631053,40.0478262998553,1,1,1,18.7109729365101

@@ -1,6 +1,12 @@
 function summary = run_concept1_go_around_trade()
 %RUN_CONCEPT1_GO_AROUND_TRADE Compare reserve power splits at 12,490 lbf.
 % The 10-second delay is a sensitivity, not an engine start-time claim.
+setup_jason_edits();
+current = jsondecode(fileread(concept1_requirements_path()));
+if isfield(current.geometry,'openvsp')
+    error('Concept1:HistoricalGeometryTrade', ...
+        'This runner defines the prior geometry trade. Run run_concept1_openvsp for the imported shape, or use the pre-import backup for this historical study.');
+end
 here = fileparts(mfilename('fullpath'));
 cases = ["Electric only";"Assist available at command";"Assist after 10 seconds"];
 delays = [Inf;0;10];

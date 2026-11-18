@@ -2,6 +2,12 @@ function study = run_concept1_weight_reduction_trade()
 %RUN_CONCEPT1_WEIGHT_REDUCTION_TRADE Screen pack and airframe drag targets.
 % Pack energy density, discharge rate, and retention are joint assumptions.
 % Drag reductions are sensitivity inputs for Cfe and need geometry evidence.
+setup_jason_edits();
+current = jsondecode(fileread(concept1_requirements_path()));
+if isfield(current.geometry,'openvsp')
+    error('Concept1:HistoricalGeometryTrade', ...
+        'This runner defines the prior geometry trade. Run run_concept1_openvsp for the imported shape, or use the pre-import backup for this historical study.');
+end
 here = fileparts(mfilename('fullpath'));
 setup_jason_edits();
 cfg = jsondecode(fileread(concept1_requirements_path()));
