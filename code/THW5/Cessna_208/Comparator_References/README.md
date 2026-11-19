@@ -21,7 +21,7 @@ The conventional PT6A-140 Grand Caravan EX Amphibian is the team's comparator. T
 
 ## Before the team PDF
 
-1. Add the two responsible students' names to the draft. Insert a labeled view of the conventional OpenVSP model.
+1. Review [rubric coverage and remaining evidence](Rubric_Review.md). Insert a labeled view of the conventional OpenVSP model.
 2. Export the original model's component and total wetted areas in ft² from OpenVSP Comp Geom. Save the CSV here and record the model revision, OpenVSP version, geometry set, and treatment of propeller blades and deployed gear. Apply the same convention to the twin if its wetted-area difference is discussed.
 3. Update the draft with the measured-from-geometry wetted-area estimate. Report separately whether the MATLAB drag model uses that value or the existing component-area approximation. If adopting the OpenVSP total, account for floats and other included components before applying any existing drag increments.
 4. Add an independent comparator check at matched conditions and any team-selected measures of merit. Include an AFM performance point if available. Use the published brochure conditions when interpreting the maximum figures.
