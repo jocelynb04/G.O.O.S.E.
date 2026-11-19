@@ -1,0 +1,2201 @@
+[
+  {
+    "name": "Main_Fuselage",
+    "type": "Fuselage",
+    "groups": {
+      "Attach": {
+        "Eta_Attach_Location": 0.0,
+        "L_01": 1.0,
+        "L_Attach_Location": 0.0,
+        "L_Attach_Location0Len": 0.0,
+        "M_Attach_Location": 0.5,
+        "N_Attach_Location": 0.5,
+        "R_01": 1.0,
+        "R_Attach_Location": 0.0,
+        "R_Attach_Location0N": 0.0,
+        "Rots_Attach_Flag": 0.0,
+        "S_Attach_Location": 0.5,
+        "T_Attach_Location": 0.5,
+        "Trans_Attach_Flag": 0.0,
+        "U_01": 1.0,
+        "U_Attach_Location": 0.0,
+        "U_Attach_Location0N": 0.0,
+        "V_Attach_Location": 0.0
+      },
+      "BBox": {
+        "X_Len": 41.00000000000001,
+        "X_Min": 0.0,
+        "Y_Len": 7.0,
+        "Y_Min": -3.5,
+        "Z_Len": 6.2,
+        "Z_Min": -3.1
+      },
+      "Design": {
+        "Length": 41.0,
+        "OrderPolicy": 0.0
+      },
+      "EndCap": {
+        "CapUMaxLength": 1.0,
+        "CapUMaxOffset": 0.0,
+        "CapUMaxOption": 0.0,
+        "CapUMaxStrength": 0.5,
+        "CapUMaxSweepFlag": 0.0,
+        "CapUMinLength": 1.0,
+        "CapUMinOffset": 0.0,
+        "CapUMinOption": 0.0,
+        "CapUMinStrength": 0.5,
+        "CapUMinSweepFlag": 0.0,
+        "CapUMinTess": 3.0
+      },
+      "EngineModel": {
+        "AutoExtensionFlag": 0.0,
+        "AutoExtensionSet": 1.0,
+        "EngineShowStationsFlag": 1.0,
+        "ExtensionDistance": 10.0,
+        "GeomIOType": 0.0,
+        "GeomInType": 0.0,
+        "GeomOutType": 1.0,
+        "InletFaceIndex": 0.0,
+        "InletFaceMode": 0.0,
+        "InletFaceU": 0.0,
+        "InletLipIndex": 0.0,
+        "InletLipMode": 0.0,
+        "InletLipU": 0.0,
+        "InletModeType": 3.0,
+        "OutletFaceIndex": 0.0,
+        "OutletFaceMode": 0.0,
+        "OutletFaceU": 0.0,
+        "OutletLipIndex": 0.0,
+        "OutletLipMode": 0.0,
+        "OutletLipU": 0.0,
+        "OutletModeType": 3.0,
+        "RotExtensionFlag": 0.0
+      },
+      "Index": {
+        "ActiveXSec": 3.0
+      },
+      "Mass_Props": {
+        "CGx": 0.0,
+        "CGy": 0.0,
+        "CGz": 0.0,
+        "Density": 1.0,
+        "Ixx": 0.0,
+        "Ixy": 0.0,
+        "Ixz": 0.0,
+        "Iyy": 0.0,
+        "Iyz": 0.0,
+        "Izz": 0.0,
+        "Mass_Area": 1.0,
+        "Mass_Prior": 0.0,
+        "PointMass": 0.0,
+        "Shell_Flag": 0.0
+      },
+      "Negative_Volume_Props": {
+        "Negative_Volume_Flag": 0.0
+      },
+      "ParasiteDragProps": {
+        "ExpandedList": 0.0,
+        "FFBodyEqnType": 3.0,
+        "FFUser": 1.0,
+        "FFWingEqnType": 3.0,
+        "IncorporatedGen": 0.0,
+        "PercLam": 0.0,
+        "Q": 1.0,
+        "Roughness": 0.0,
+        "TawTwRatio": 1.0,
+        "TeTwRatio": 1.0
+      },
+      "Shape": {
+        "Tess_U": 16.0,
+        "Tess_W": 17.0,
+        "Wake": 0.0
+      },
+      "Skinning": {
+        "ShowSkinningCurveFlag": 0.0,
+        "ShowSkinningTanFlag": 1.0
+      },
+      "Sym": {
+        "Flip_Flag": 0.0,
+        "Sym_Ancestor": 1.0,
+        "Sym_Ancestor_Origin_Flag": 1.0,
+        "Sym_Axial_Flag": 0.0,
+        "Sym_Planar_Flag": 0.0,
+        "Sym_Rot_N": 2.0
+      },
+      "WakeSettings": {
+        "WakeAngle": 0.0,
+        "WakeScale": 2.0
+      },
+      "XForm": {
+        "Abs_Or_Relitive_flag": 1.0,
+        "Last_Scale": 1.0,
+        "Origin": 0.0,
+        "Scale": 1.0,
+        "X_Location": 0.0,
+        "X_Rel_Location": 0.0,
+        "X_Rel_Rotation": 0.0,
+        "X_Rotation": 0.0,
+        "Y_Location": 0.0,
+        "Y_Rel_Location": 0.0,
+        "Y_Rel_Rotation": 0.0,
+        "Y_Rotation": 0.0,
+        "Z_Location": 0.0,
+        "Z_Rel_Location": 0.0,
+        "Z_Rel_Rotation": 0.0,
+        "Z_Rotation": 0.0
+      }
+    },
+    "sections": [
+      {
+        "XLocPercent": 0.0,
+        "ZLocPercent": 0.0,
+        "Area": 0.0
+      },
+      {
+        "XLocPercent": 0.25,
+        "ZLocPercent": 0.0,
+        "Area": 34.088854873167534
+      },
+      {
+        "XLocPercent": 0.5,
+        "ZLocPercent": 0.0,
+        "Area": 34.088854873167534
+      },
+      {
+        "XLocPercent": 0.75,
+        "ZLocPercent": 0.0,
+        "Area": 34.088854873167534
+      },
+      {
+        "XLocPercent": 1.0,
+        "ZLocPercent": 0.0,
+        "Area": 0.0
+      }
+    ]
+  },
+  {
+    "name": "Main_Wing",
+    "type": "Wing",
+    "groups": {
+      "Attach": {
+        "Eta_Attach_Location": 0.0,
+        "L_01": 1.0,
+        "L_Attach_Location": 0.0,
+        "L_Attach_Location0Len": 0.0,
+        "M_Attach_Location": 0.5,
+        "N_Attach_Location": 0.5,
+        "R_01": 1.0,
+        "R_Attach_Location": 0.0,
+        "R_Attach_Location0N": 0.0,
+        "Rots_Attach_Flag": 0.0,
+        "S_Attach_Location": 0.5,
+        "T_Attach_Location": 0.5,
+        "Trans_Attach_Flag": 0.0,
+        "U_01": 1.0,
+        "U_Attach_Location": 0.0,
+        "U_Attach_Location0N": 0.0,
+        "V_Attach_Location": 0.0
+      },
+      "BBox": {
+        "X_Len": 7.265141856794267,
+        "X_Min": 9.989322428920017,
+        "Y_Len": 63.99999999999999,
+        "Y_Min": -31.999999999999996,
+        "Z_Len": 1.3113822786588374,
+        "Z_Min": -0.5434358116508867
+      },
+      "Blending": {
+        "ShowBlendingFlag": 0.0
+      },
+      "EndCap": {
+        "CapUMaxLength": 1.0,
+        "CapUMaxOffset": 0.0,
+        "CapUMaxOption": 1.0,
+        "CapUMaxStrength": 0.5,
+        "CapUMaxSweepFlag": 0.0,
+        "CapUMinLength": 1.0,
+        "CapUMinOffset": 0.0,
+        "CapUMinOption": 1.0,
+        "CapUMinStrength": 0.5,
+        "CapUMinSweepFlag": 0.0,
+        "CapUMinTess": 3.0
+      },
+      "Index": {
+        "ActiveAirfoil": 1.0,
+        "ActiveXSec": 0.0
+      },
+      "Mass_Props": {
+        "CGx": 0.0,
+        "CGy": 0.0,
+        "CGz": 0.0,
+        "Density": 1.0,
+        "Ixx": 0.0,
+        "Ixy": 0.0,
+        "Ixz": 0.0,
+        "Iyy": 0.0,
+        "Iyz": 0.0,
+        "Izz": 0.0,
+        "Mass_Area": 1.0,
+        "Mass_Prior": 0.0,
+        "PointMass": 0.0,
+        "Shell_Flag": 0.0
+      },
+      "Negative_Volume_Props": {
+        "Negative_Volume_Flag": 0.0
+      },
+      "ParasiteDragProps": {
+        "ExpandedList": 0.0,
+        "FFBodyEqnType": 3.0,
+        "FFUser": 1.0,
+        "FFWingEqnType": 3.0,
+        "IncorporatedGen": 0.0,
+        "PercLam": 0.0,
+        "Q": 1.0,
+        "Roughness": 0.0,
+        "TawTwRatio": 1.0,
+        "TeTwRatio": 1.0
+      },
+      "Shape": {
+        "Tess_U": 16.0,
+        "Tess_W": 33.0,
+        "Wake": 0.0
+      },
+      "Skinning": {
+        "ShowSkinningCurveFlag": 0.0,
+        "ShowSkinningTanFlag": 1.0
+      },
+      "Sym": {
+        "Flip_Flag": 0.0,
+        "Sym_Ancestor": 1.0,
+        "Sym_Ancestor_Origin_Flag": 1.0,
+        "Sym_Axial_Flag": 0.0,
+        "Sym_Planar_Flag": 2.0,
+        "Sym_Rot_N": 2.0
+      },
+      "WakeSettings": {
+        "WakeAngle": 0.0,
+        "WakeScale": 2.0
+      },
+      "WingGeom": {
+        "CorrectAirfoilthicknessFlag": 1.0,
+        "CurvedArea": 324.99999999999994,
+        "LECluster": 0.25,
+        "MAC": 5.389030612244897,
+        "MaxGrowth": 1.4370057560838392,
+        "RelativeDihedralFlag": 0.0,
+        "RelativeTwistFlag": 0.0,
+        "RotateAirfoilMatchDideralFlag": 1.0,
+        "SmallPanelW": 0.0351473986330918,
+        "TECluster": 0.25,
+        "TotalAR": 12.60307692307692,
+        "TotalArea": 324.99999999999994,
+        "TotalChord": 5.078125,
+        "TotalProjectedSpan": 63.999999999999986,
+        "TotalSpan": 63.999999999999986,
+        "TwistAllInXZPlaneFlag": 0.0
+      },
+      "XForm": {
+        "Abs_Or_Relitive_flag": 1.0,
+        "Last_Scale": 1.0,
+        "Origin": 0.515748031496063,
+        "Scale": 1.0,
+        "X_Location": 14.995039990079981,
+        "X_Rel_Location": 10.0,
+        "X_Rel_Rotation": 0.0,
+        "X_Rotation": 0.0,
+        "Y_Location": 0.0,
+        "Y_Rel_Location": 0.0,
+        "Y_Rel_Rotation": 0.0,
+        "Y_Rotation": 0.0,
+        "Z_Location": 0.0,
+        "Z_Rel_Location": 0.0,
+        "Z_Rel_Rotation": 0.0,
+        "Z_Rotation": 0.0
+      }
+    },
+    "sections": [
+      {
+        "Area": 6.438910095009861,
+        "Dihedral": 0.0,
+        "Root_Chord": 1.0,
+        "Span": 1.0,
+        "Sweep": 0.0,
+        "Sweep_Location": 0.0,
+        "Tip_Chord": 7.254464285714286,
+        "Twist": 0.0,
+        "ThickChord": 0.18
+      },
+      {
+        "Area": 0.5151128307037565,
+        "Dihedral": 0.0,
+        "Root_Chord": 7.254464285714286,
+        "Span": 31.999999999999993,
+        "Sweep": 0.0,
+        "Sweep_Location": 0.0,
+        "Tip_Chord": 2.9017857142857144,
+        "Twist": 0.0,
+        "ThickChord": 0.09
+      }
+    ]
+  },
+  {
+    "name": "Cruciform_Vertical",
+    "type": "Wing",
+    "groups": {
+      "Attach": {
+        "Eta_Attach_Location": 0.0,
+        "L_01": 1.0,
+        "L_Attach_Location": 0.0,
+        "L_Attach_Location0Len": 0.0,
+        "M_Attach_Location": 0.5,
+        "N_Attach_Location": 0.5,
+        "R_01": 1.0,
+        "R_Attach_Location": 0.0,
+        "R_Attach_Location0N": 0.0,
+        "Rots_Attach_Flag": 0.0,
+        "S_Attach_Location": 0.5,
+        "T_Attach_Location": 0.5,
+        "Trans_Attach_Flag": 0.0,
+        "U_01": 1.0,
+        "U_Attach_Location": 0.0,
+        "U_Attach_Location0N": 0.0,
+        "V_Attach_Location": 0.0
+      },
+      "BBox": {
+        "X_Len": 9.149999999999999,
+        "X_Min": 32.0,
+        "Y_Len": 1.0984966454549794,
+        "Y_Min": -0.5492483227274894,
+        "Z_Len": 8.94,
+        "Z_Min": -2.1076151367787634e-17
+      },
+      "Blending": {
+        "ShowBlendingFlag": 0.0
+      },
+      "EndCap": {
+        "CapUMaxLength": 1.0,
+        "CapUMaxOffset": 0.0,
+        "CapUMaxOption": 1.0,
+        "CapUMaxStrength": 0.5,
+        "CapUMaxSweepFlag": 0.0,
+        "CapUMinLength": 1.0,
+        "CapUMinOffset": 0.0,
+        "CapUMinOption": 1.0,
+        "CapUMinStrength": 0.5,
+        "CapUMinSweepFlag": 0.0,
+        "CapUMinTess": 3.0
+      },
+      "Index": {
+        "ActiveAirfoil": 1.0,
+        "ActiveXSec": 1.0
+      },
+      "Mass_Props": {
+        "CGx": 0.0,
+        "CGy": 0.0,
+        "CGz": 0.0,
+        "Density": 1.0,
+        "Ixx": 0.0,
+        "Ixy": 0.0,
+        "Ixz": 0.0,
+        "Iyy": 0.0,
+        "Iyz": 0.0,
+        "Izz": 0.0,
+        "Mass_Area": 1.0,
+        "Mass_Prior": 0.0,
+        "PointMass": 0.0,
+        "Shell_Flag": 0.0
+      },
+      "Negative_Volume_Props": {
+        "Negative_Volume_Flag": 0.0
+      },
+      "ParasiteDragProps": {
+        "ExpandedList": 0.0,
+        "FFBodyEqnType": 3.0,
+        "FFUser": 1.0,
+        "FFWingEqnType": 3.0,
+        "IncorporatedGen": 0.0,
+        "PercLam": 0.0,
+        "Q": 1.0,
+        "Roughness": 0.0,
+        "TawTwRatio": 1.0,
+        "TeTwRatio": 1.0
+      },
+      "Shape": {
+        "Tess_U": 16.0,
+        "Tess_W": 33.0,
+        "Wake": 0.0
+      },
+      "Skinning": {
+        "ShowSkinningCurveFlag": 0.0,
+        "ShowSkinningTanFlag": 1.0
+      },
+      "Sym": {
+        "Flip_Flag": 0.0,
+        "Sym_Ancestor": 1.0,
+        "Sym_Ancestor_Origin_Flag": 1.0,
+        "Sym_Axial_Flag": 0.0,
+        "Sym_Planar_Flag": 0.0,
+        "Sym_Rot_N": 2.0
+      },
+      "WakeSettings": {
+        "WakeAngle": 0.0,
+        "WakeScale": 2.0
+      },
+      "WingGeom": {
+        "CorrectAirfoilthicknessFlag": 1.0,
+        "CurvedArea": 61.3731,
+        "LECluster": 0.25,
+        "MAC": 7.118519058023793,
+        "MaxGrowth": 1.4370057560838392,
+        "RelativeDihedralFlag": 0.0,
+        "RelativeTwistFlag": 0.0,
+        "RotateAirfoilMatchDideralFlag": 1.0,
+        "SmallPanelW": 0.04170303818546017,
+        "TECluster": 0.25,
+        "TotalAR": 1.302257829570284,
+        "TotalArea": 61.3731,
+        "TotalChord": 6.865,
+        "TotalProjectedSpan": 8.94,
+        "TotalSpan": 8.94,
+        "TwistAllInXZPlaneFlag": 0.0
+      },
+      "XForm": {
+        "Abs_Or_Relitive_flag": 1.0,
+        "Last_Scale": 1.0,
+        "Origin": 0.0,
+        "Scale": 1.0,
+        "X_Location": 32.0,
+        "X_Rel_Location": 32.0,
+        "X_Rel_Rotation": 90.0,
+        "X_Rotation": 90.0,
+        "Y_Location": 0.0,
+        "Y_Rel_Location": 0.0,
+        "Y_Rel_Rotation": 0.0,
+        "Y_Rotation": 0.0,
+        "Z_Location": 0.0,
+        "Z_Rel_Location": 0.0,
+        "Z_Rel_Rotation": 0.0,
+        "Z_Rotation": 0.0
+      }
+    },
+    "sections": [
+      {
+        "Area": 6.8202638189398535,
+        "Dihedral": 0.0,
+        "Root_Chord": 1.0,
+        "Span": 1.0,
+        "Sweep": 0.0,
+        "Sweep_Location": 0.0,
+        "Tip_Chord": 9.15,
+        "Twist": 0.0,
+        "ThickChord": 0.12
+      },
+      {
+        "Area": 1.7087949114229741,
+        "Dihedral": 0.0,
+        "Root_Chord": 9.15,
+        "Span": 8.94,
+        "Sweep": 20.0,
+        "Sweep_Location": 0.0,
+        "Tip_Chord": 4.58,
+        "Twist": 0.0,
+        "ThickChord": 0.12
+      }
+    ]
+  },
+  {
+    "name": "Cruciform_Horizontal",
+    "type": "Wing",
+    "groups": {
+      "Attach": {
+        "Eta_Attach_Location": 0.0,
+        "L_01": 1.0,
+        "L_Attach_Location": 0.0,
+        "L_Attach_Location0Len": 0.0,
+        "M_Attach_Location": 0.5,
+        "N_Attach_Location": 0.5,
+        "R_01": 1.0,
+        "R_Attach_Location": 0.0,
+        "R_Attach_Location0N": 0.0,
+        "Rots_Attach_Flag": 0.0,
+        "S_Attach_Location": 0.5,
+        "T_Attach_Location": 0.5,
+        "Trans_Attach_Flag": 0.0,
+        "U_01": 1.0,
+        "U_Attach_Location": 0.0,
+        "U_Attach_Location0N": 0.0,
+        "V_Attach_Location": 0.0
+      },
+      "BBox": {
+        "X_Len": 4.230000000000004,
+        "X_Min": 35.0,
+        "Y_Len": 18.6,
+        "Y_Min": -9.3,
+        "Z_Len": 0.4232455276835214,
+        "Z_Min": 4.708377236158239
+      },
+      "Blending": {
+        "ShowBlendingFlag": 0.0
+      },
+      "EndCap": {
+        "CapUMaxLength": 1.0,
+        "CapUMaxOffset": 0.0,
+        "CapUMaxOption": 1.0,
+        "CapUMaxStrength": 0.5,
+        "CapUMaxSweepFlag": 0.0,
+        "CapUMinLength": 1.0,
+        "CapUMinOffset": 0.0,
+        "CapUMinOption": 1.0,
+        "CapUMinStrength": 0.5,
+        "CapUMinSweepFlag": 0.0,
+        "CapUMinTess": 3.0
+      },
+      "Index": {
+        "ActiveAirfoil": 1.0,
+        "ActiveXSec": 0.0
+      },
+      "Mass_Props": {
+        "CGx": 0.0,
+        "CGy": 0.0,
+        "CGz": 0.0,
+        "Density": 1.0,
+        "Ixx": 0.0,
+        "Ixy": 0.0,
+        "Ixz": 0.0,
+        "Iyy": 0.0,
+        "Iyz": 0.0,
+        "Izz": 0.0,
+        "Mass_Area": 1.0,
+        "Mass_Prior": 0.0,
+        "PointMass": 0.0,
+        "Shell_Flag": 0.0
+      },
+      "Negative_Volume_Props": {
+        "Negative_Volume_Flag": 0.0
+      },
+      "ParasiteDragProps": {
+        "ExpandedList": 0.0,
+        "FFBodyEqnType": 3.0,
+        "FFUser": 1.0,
+        "FFWingEqnType": 3.0,
+        "IncorporatedGen": 0.0,
+        "PercLam": 0.0,
+        "Q": 1.0,
+        "Roughness": 0.0,
+        "TawTwRatio": 1.0,
+        "TeTwRatio": 1.0
+      },
+      "Shape": {
+        "Tess_U": 16.0,
+        "Tess_W": 33.0,
+        "Wake": 0.0
+      },
+      "Skinning": {
+        "ShowSkinningCurveFlag": 0.0,
+        "ShowSkinningTanFlag": 1.0
+      },
+      "Sym": {
+        "Flip_Flag": 0.0,
+        "Sym_Ancestor": 1.0,
+        "Sym_Ancestor_Origin_Flag": 1.0,
+        "Sym_Axial_Flag": 0.0,
+        "Sym_Planar_Flag": 2.0,
+        "Sym_Rot_N": 2.0
+      },
+      "WakeSettings": {
+        "WakeAngle": 0.0,
+        "WakeScale": 2.0
+      },
+      "WingGeom": {
+        "CorrectAirfoilthicknessFlag": 1.0,
+        "CurvedArea": 62.868,
+        "LECluster": 0.25,
+        "MAC": 3.451252465483235,
+        "MaxGrowth": 1.4370057560838392,
+        "RelativeDihedralFlag": 0.0,
+        "RelativeTwistFlag": 0.0,
+        "RotateAirfoilMatchDideralFlag": 1.0,
+        "SmallPanelW": 0.027644530753655694,
+        "TECluster": 0.25,
+        "TotalAR": 5.502958579881657,
+        "TotalArea": 62.868,
+        "TotalChord": 3.38,
+        "TotalProjectedSpan": 18.6,
+        "TotalSpan": 18.6,
+        "TwistAllInXZPlaneFlag": 0.0
+      },
+      "XForm": {
+        "Abs_Or_Relitive_flag": 1.0,
+        "Last_Scale": 1.0,
+        "Origin": 0.0,
+        "Scale": 1.0,
+        "X_Location": 35.0,
+        "X_Rel_Location": 35.0,
+        "X_Rel_Rotation": 0.0,
+        "X_Rotation": 0.0,
+        "Y_Location": 0.0,
+        "Y_Rel_Location": 0.0,
+        "Y_Rel_Rotation": 0.0,
+        "Y_Rotation": 0.0,
+        "Z_Location": 4.92,
+        "Z_Rel_Location": 4.92,
+        "Z_Rel_Rotation": 0.0,
+        "Z_Rotation": 0.0
+      }
+    },
+    "sections": [
+      {
+        "Area": 1.2146704909937214,
+        "Dihedral": 0.0,
+        "Root_Chord": 1.0,
+        "Span": 1.0,
+        "Sweep": 0.0,
+        "Sweep_Location": 0.0,
+        "Tip_Chord": 4.23,
+        "Twist": 0.0,
+        "ThickChord": 0.1
+      },
+      {
+        "Area": 0.434529022450341,
+        "Dihedral": 0.0,
+        "Root_Chord": 4.23,
+        "Span": 9.3,
+        "Sweep": 10.0,
+        "Sweep_Location": 0.0,
+        "Tip_Chord": 2.53,
+        "Twist": 0.0,
+        "ThickChord": 0.1
+      }
+    ]
+  },
+  {
+    "name": "Main_Pontoons",
+    "type": "Fuselage",
+    "groups": {
+      "Attach": {
+        "Eta_Attach_Location": 0.0,
+        "L_01": 1.0,
+        "L_Attach_Location": 0.0,
+        "L_Attach_Location0Len": 0.0,
+        "M_Attach_Location": 0.5,
+        "N_Attach_Location": 0.5,
+        "R_01": 1.0,
+        "R_Attach_Location": 0.0,
+        "R_Attach_Location0N": 0.0,
+        "Rots_Attach_Flag": 0.0,
+        "S_Attach_Location": 0.5,
+        "T_Attach_Location": 0.5,
+        "Trans_Attach_Flag": 0.0,
+        "U_01": 1.0,
+        "U_Attach_Location": 0.0,
+        "U_Attach_Location0N": 0.0,
+        "V_Attach_Location": 0.0
+      },
+      "BBox": {
+        "X_Len": 27.000000000000007,
+        "X_Min": 7.0,
+        "Y_Len": 16.0,
+        "Y_Min": -8.0,
+        "Z_Len": 3.0,
+        "Z_Min": -6.5
+      },
+      "Design": {
+        "Length": 27.0,
+        "OrderPolicy": 0.0
+      },
+      "EndCap": {
+        "CapUMaxLength": 1.0,
+        "CapUMaxOffset": 0.0,
+        "CapUMaxOption": 0.0,
+        "CapUMaxStrength": 0.5,
+        "CapUMaxSweepFlag": 0.0,
+        "CapUMinLength": 1.0,
+        "CapUMinOffset": 0.0,
+        "CapUMinOption": 0.0,
+        "CapUMinStrength": 0.5,
+        "CapUMinSweepFlag": 0.0,
+        "CapUMinTess": 3.0
+      },
+      "EngineModel": {
+        "AutoExtensionFlag": 0.0,
+        "AutoExtensionSet": 1.0,
+        "EngineShowStationsFlag": 1.0,
+        "ExtensionDistance": 10.0,
+        "GeomIOType": 0.0,
+        "GeomInType": 0.0,
+        "GeomOutType": 1.0,
+        "InletFaceIndex": 0.0,
+        "InletFaceMode": 0.0,
+        "InletFaceU": 0.0,
+        "InletLipIndex": 0.0,
+        "InletLipMode": 0.0,
+        "InletLipU": 0.0,
+        "InletModeType": 3.0,
+        "OutletFaceIndex": 0.0,
+        "OutletFaceMode": 0.0,
+        "OutletFaceU": 0.0,
+        "OutletLipIndex": 0.0,
+        "OutletLipMode": 0.0,
+        "OutletLipU": 0.0,
+        "OutletModeType": 3.0,
+        "RotExtensionFlag": 0.0
+      },
+      "Index": {
+        "ActiveXSec": 1.0
+      },
+      "Mass_Props": {
+        "CGx": 0.0,
+        "CGy": 0.0,
+        "CGz": 0.0,
+        "Density": 1.0,
+        "Ixx": 0.0,
+        "Ixy": 0.0,
+        "Ixz": 0.0,
+        "Iyy": 0.0,
+        "Iyz": 0.0,
+        "Izz": 0.0,
+        "Mass_Area": 1.0,
+        "Mass_Prior": 0.0,
+        "PointMass": 0.0,
+        "Shell_Flag": 0.0
+      },
+      "Negative_Volume_Props": {
+        "Negative_Volume_Flag": 0.0
+      },
+      "ParasiteDragProps": {
+        "ExpandedList": 0.0,
+        "FFBodyEqnType": 3.0,
+        "FFUser": 1.0,
+        "FFWingEqnType": 3.0,
+        "IncorporatedGen": 0.0,
+        "PercLam": 0.0,
+        "Q": 1.0,
+        "Roughness": 0.0,
+        "TawTwRatio": 1.0,
+        "TeTwRatio": 1.0
+      },
+      "Shape": {
+        "Tess_U": 16.0,
+        "Tess_W": 17.0,
+        "Wake": 0.0
+      },
+      "Skinning": {
+        "ShowSkinningCurveFlag": 0.0,
+        "ShowSkinningTanFlag": 1.0
+      },
+      "Sym": {
+        "Flip_Flag": 0.0,
+        "Sym_Ancestor": 1.0,
+        "Sym_Ancestor_Origin_Flag": 1.0,
+        "Sym_Axial_Flag": 0.0,
+        "Sym_Planar_Flag": 2.0,
+        "Sym_Rot_N": 2.0
+      },
+      "WakeSettings": {
+        "WakeAngle": 0.0,
+        "WakeScale": 2.0
+      },
+      "XForm": {
+        "Abs_Or_Relitive_flag": 1.0,
+        "Last_Scale": 1.0,
+        "Origin": 0.0,
+        "Scale": 1.0,
+        "X_Location": 7.0,
+        "X_Rel_Location": 7.0,
+        "X_Rel_Rotation": 0.0,
+        "X_Rotation": 0.0,
+        "Y_Location": 6.0,
+        "Y_Rel_Location": 6.0,
+        "Y_Rel_Rotation": 0.0,
+        "Y_Rotation": 0.0,
+        "Z_Location": -5.0,
+        "Z_Rel_Location": -5.0,
+        "Z_Rel_Rotation": 0.0,
+        "Z_Rotation": 0.0
+      }
+    },
+    "sections": [
+      {
+        "XLocPercent": 0.0,
+        "ZLocPercent": 0.0,
+        "Area": 0.0
+      },
+      {
+        "XLocPercent": 0.25,
+        "ZLocPercent": 0.0,
+        "Area": 9.425489826682266
+      },
+      {
+        "XLocPercent": 0.5,
+        "ZLocPercent": 0.0,
+        "Area": 9.425489826682266
+      },
+      {
+        "XLocPercent": 0.75,
+        "ZLocPercent": 0.0,
+        "Area": 9.424771921526682
+      },
+      {
+        "XLocPercent": 1.0,
+        "ZLocPercent": 0.0,
+        "Area": 0.0
+      }
+    ]
+  },
+  {
+    "name": "Front_Strut",
+    "type": "Wing",
+    "groups": {
+      "Attach": {
+        "Eta_Attach_Location": 0.0,
+        "L_01": 1.0,
+        "L_Attach_Location": 0.0,
+        "L_Attach_Location0Len": 0.0,
+        "M_Attach_Location": 0.5,
+        "N_Attach_Location": 0.5,
+        "R_01": 1.0,
+        "R_Attach_Location": 0.0,
+        "R_Attach_Location0N": 0.0,
+        "Rots_Attach_Flag": 0.0,
+        "S_Attach_Location": 0.5,
+        "T_Attach_Location": 0.5,
+        "Trans_Attach_Flag": 0.0,
+        "U_01": 1.0,
+        "U_Attach_Location": 0.0,
+        "U_Attach_Location0N": 0.0,
+        "V_Attach_Location": 0.0
+      },
+      "BBox": {
+        "X_Len": 4.756921938165306,
+        "X_Min": 10.0,
+        "Y_Len": 12.139537630683362,
+        "Y_Min": -6.069768815341681,
+        "Z_Len": 4.324771622422744,
+        "Z_Min": -4.175480263706061
+      },
+      "Blending": {
+        "ShowBlendingFlag": 0.0
+      },
+      "EndCap": {
+        "CapUMaxLength": 1.0,
+        "CapUMaxOffset": 0.0,
+        "CapUMaxOption": 1.0,
+        "CapUMaxStrength": 0.5,
+        "CapUMaxSweepFlag": 0.0,
+        "CapUMinLength": 1.0,
+        "CapUMinOffset": 0.0,
+        "CapUMinOption": 1.0,
+        "CapUMinStrength": 0.5,
+        "CapUMinSweepFlag": 0.0,
+        "CapUMinTess": 3.0
+      },
+      "Index": {
+        "ActiveAirfoil": 1.0,
+        "ActiveXSec": 1.0
+      },
+      "Mass_Props": {
+        "CGx": 0.0,
+        "CGy": 0.0,
+        "CGz": 0.0,
+        "Density": 1.0,
+        "Ixx": 0.0,
+        "Ixy": 0.0,
+        "Ixz": 0.0,
+        "Iyy": 0.0,
+        "Iyz": 0.0,
+        "Izz": 0.0,
+        "Mass_Area": 1.0,
+        "Mass_Prior": 0.0,
+        "PointMass": 0.0,
+        "Shell_Flag": 0.0
+      },
+      "Negative_Volume_Props": {
+        "Negative_Volume_Flag": 0.0
+      },
+      "ParasiteDragProps": {
+        "ExpandedList": 0.0,
+        "FFBodyEqnType": 3.0,
+        "FFUser": 1.0,
+        "FFWingEqnType": 3.0,
+        "IncorporatedGen": 0.0,
+        "PercLam": 0.0,
+        "Q": 1.0,
+        "Roughness": 0.0,
+        "TawTwRatio": 1.0,
+        "TeTwRatio": 1.0
+      },
+      "Shape": {
+        "Tess_U": 16.0,
+        "Tess_W": 33.0,
+        "Wake": 0.0
+      },
+      "Skinning": {
+        "ShowSkinningCurveFlag": 0.0,
+        "ShowSkinningTanFlag": 1.0
+      },
+      "Sym": {
+        "Flip_Flag": 0.0,
+        "Sym_Ancestor": 1.0,
+        "Sym_Ancestor_Origin_Flag": 1.0,
+        "Sym_Axial_Flag": 0.0,
+        "Sym_Planar_Flag": 2.0,
+        "Sym_Rot_N": 2.0
+      },
+      "WakeSettings": {
+        "WakeAngle": 0.0,
+        "WakeScale": 2.0
+      },
+      "WingGeom": {
+        "CorrectAirfoilthicknessFlag": 1.0,
+        "CurvedArea": 21.60000000000001,
+        "LECluster": 0.25,
+        "MAC": 1.68,
+        "MaxGrowth": 1.4370057560838392,
+        "RelativeDihedralFlag": 0.0,
+        "RelativeTwistFlag": 0.0,
+        "RotateAirfoilMatchDideralFlag": 1.0,
+        "SmallPanelW": 0.004112156488162988,
+        "TECluster": 0.25,
+        "TotalAR": 9.599999999999998,
+        "TotalArea": 21.600000000000005,
+        "TotalChord": 1.5000000000000002,
+        "TotalProjectedSpan": 14.4,
+        "TotalSpan": 14.4,
+        "TwistAllInXZPlaneFlag": 0.0
+      },
+      "XForm": {
+        "Abs_Or_Relitive_flag": 1.0,
+        "Last_Scale": 1.0,
+        "Origin": 0.0,
+        "Scale": 1.0,
+        "X_Location": 10.0,
+        "X_Rel_Location": 10.0,
+        "X_Rel_Rotation": -34.0,
+        "X_Rotation": -34.0,
+        "Y_Location": 0.0,
+        "Y_Rel_Location": 0.0,
+        "Y_Rel_Rotation": 0.0,
+        "Y_Rotation": 0.0,
+        "Z_Location": 0.0,
+        "Z_Rel_Location": 0.0,
+        "Z_Rel_Rotation": 0.0,
+        "Z_Rotation": 0.0
+      }
+    },
+    "sections": [
+      {
+        "Area": 0.5865316767093461,
+        "Dihedral": 0.0,
+        "Root_Chord": 1.0,
+        "Span": 1.0,
+        "Sweep": 0.0,
+        "Sweep_Location": 0.0,
+        "Tip_Chord": 2.4000000000000004,
+        "Twist": 0.0,
+        "ThickChord": 0.15
+      },
+      {
+        "Area": 0.036658229794334134,
+        "Dihedral": 0.0,
+        "Root_Chord": 2.4000000000000004,
+        "Span": 7.2,
+        "Sweep": 30.0,
+        "Sweep_Location": 0.0,
+        "Tip_Chord": 0.6000000000000001,
+        "Twist": 0.0,
+        "ThickChord": 0.15
+      }
+    ]
+  },
+  {
+    "name": "Back_Strut",
+    "type": "Wing",
+    "groups": {
+      "Attach": {
+        "Eta_Attach_Location": 0.0,
+        "L_01": 1.0,
+        "L_Attach_Location": 0.0,
+        "L_Attach_Location0Len": 0.0,
+        "M_Attach_Location": 0.5,
+        "N_Attach_Location": 0.5,
+        "R_01": 1.0,
+        "R_Attach_Location": 0.0,
+        "R_Attach_Location0N": 0.0,
+        "Rots_Attach_Flag": 0.0,
+        "S_Attach_Location": 0.5,
+        "T_Attach_Location": 0.5,
+        "Trans_Attach_Flag": 0.0,
+        "U_01": 1.0,
+        "U_Attach_Location": 0.0,
+        "U_Attach_Location0N": 0.0,
+        "V_Attach_Location": 0.0
+      },
+      "BBox": {
+        "X_Len": 4.556921938165306,
+        "X_Min": 24.0,
+        "Y_Len": 12.027646668507227,
+        "Y_Min": -6.013823334253614,
+        "Z_Len": 4.158886449171066,
+        "Z_Min": -4.092537677080222
+      },
+      "Blending": {
+        "ShowBlendingFlag": 0.0
+      },
+      "EndCap": {
+        "CapUMaxLength": 1.0,
+        "CapUMaxOffset": 0.0,
+        "CapUMaxOption": 1.0,
+        "CapUMaxStrength": 0.5,
+        "CapUMaxSweepFlag": 0.0,
+        "CapUMinLength": 1.0,
+        "CapUMinOffset": 0.0,
+        "CapUMinOption": 1.0,
+        "CapUMinStrength": 0.5,
+        "CapUMinSweepFlag": 0.0,
+        "CapUMinTess": 3.0
+      },
+      "Index": {
+        "ActiveAirfoil": 1.0,
+        "ActiveXSec": 1.0
+      },
+      "Mass_Props": {
+        "CGx": 0.0,
+        "CGy": 0.0,
+        "CGz": 0.0,
+        "Density": 1.0,
+        "Ixx": 0.0,
+        "Ixy": 0.0,
+        "Ixz": 0.0,
+        "Iyy": 0.0,
+        "Iyz": 0.0,
+        "Izz": 0.0,
+        "Mass_Area": 1.0,
+        "Mass_Prior": 0.0,
+        "PointMass": 0.0,
+        "Shell_Flag": 0.0
+      },
+      "Negative_Volume_Props": {
+        "Negative_Volume_Flag": 0.0
+      },
+      "ParasiteDragProps": {
+        "ExpandedList": 0.0,
+        "FFBodyEqnType": 3.0,
+        "FFUser": 1.0,
+        "FFWingEqnType": 3.0,
+        "IncorporatedGen": 0.0,
+        "PercLam": 0.0,
+        "Q": 1.0,
+        "Roughness": 0.0,
+        "TawTwRatio": 1.0,
+        "TeTwRatio": 1.0
+      },
+      "Shape": {
+        "Tess_U": 16.0,
+        "Tess_W": 33.0,
+        "Wake": 0.0
+      },
+      "Skinning": {
+        "ShowSkinningCurveFlag": 0.0,
+        "ShowSkinningTanFlag": 1.0
+      },
+      "Sym": {
+        "Flip_Flag": 0.0,
+        "Sym_Ancestor": 1.0,
+        "Sym_Ancestor_Origin_Flag": 1.0,
+        "Sym_Axial_Flag": 0.0,
+        "Sym_Planar_Flag": 2.0,
+        "Sym_Rot_N": 2.0
+      },
+      "WakeSettings": {
+        "WakeAngle": 0.0,
+        "WakeScale": 2.0
+      },
+      "WingGeom": {
+        "CorrectAirfoilthicknessFlag": 1.0,
+        "CurvedArea": 14.400000000000004,
+        "LECluster": 0.25,
+        "MAC": 1.12,
+        "MaxGrowth": 1.4370057560838392,
+        "RelativeDihedralFlag": 0.0,
+        "RelativeTwistFlag": 0.0,
+        "RotateAirfoilMatchDideralFlag": 1.0,
+        "SmallPanelW": 0.002741437658774437,
+        "TECluster": 0.25,
+        "TotalAR": 14.4,
+        "TotalArea": 14.4,
+        "TotalChord": 1.0,
+        "TotalProjectedSpan": 14.4,
+        "TotalSpan": 14.4,
+        "TwistAllInXZPlaneFlag": 0.0
+      },
+      "XForm": {
+        "Abs_Or_Relitive_flag": 1.0,
+        "Last_Scale": 1.0,
+        "Origin": 0.0,
+        "Scale": 1.0,
+        "X_Location": 24.0,
+        "X_Rel_Location": 24.0,
+        "X_Rel_Rotation": -34.0,
+        "X_Rotation": -34.0,
+        "Y_Location": 0.0,
+        "Y_Rel_Location": 0.0,
+        "Y_Rel_Rotation": 0.0,
+        "Y_Rotation": 0.0,
+        "Z_Location": 0.0,
+        "Z_Rel_Location": 0.0,
+        "Z_Rel_Rotation": 0.0,
+        "Z_Rotation": 0.0
+      }
+    },
+    "sections": [
+      {
+        "Area": 0.17378717015933293,
+        "Dihedral": 0.0,
+        "Root_Chord": 1.0,
+        "Span": 1.0,
+        "Sweep": 0.0,
+        "Sweep_Location": 0.0,
+        "Tip_Chord": 1.6,
+        "Twist": 0.0,
+        "ThickChord": 0.1
+      },
+      {
+        "Area": 0.016292546575259595,
+        "Dihedral": 0.0,
+        "Root_Chord": 1.6,
+        "Span": 7.2,
+        "Sweep": 30.0,
+        "Sweep_Location": 0.0,
+        "Tip_Chord": 0.4,
+        "Twist": 0.0,
+        "ThickChord": 0.15
+      }
+    ]
+  },
+  {
+    "name": "Engine_Inner",
+    "type": "Pod",
+    "groups": {
+      "Attach": {
+        "Eta_Attach_Location": 0.0,
+        "L_01": 1.0,
+        "L_Attach_Location": 0.0,
+        "L_Attach_Location0Len": 0.0,
+        "M_Attach_Location": 0.5,
+        "N_Attach_Location": 0.5,
+        "R_01": 1.0,
+        "R_Attach_Location": 0.0,
+        "R_Attach_Location0N": 0.0,
+        "Rots_Attach_Flag": 0.0,
+        "S_Attach_Location": 0.5,
+        "T_Attach_Location": 0.5,
+        "Trans_Attach_Flag": 0.0,
+        "U_01": 1.0,
+        "U_Attach_Location": 0.0,
+        "U_Attach_Location0N": 0.0,
+        "V_Attach_Location": 0.0
+      },
+      "BBox": {
+        "X_Len": 10.0,
+        "X_Min": 8.0,
+        "Y_Len": 15.333333333333334,
+        "Y_Min": -7.666666666666667,
+        "Z_Len": 1.3333333333333333,
+        "Z_Min": -0.6666666666666666
+      },
+      "Design": {
+        "FineRatio": 15.0,
+        "Length": 10.0
+      },
+      "EndCap": {
+        "CapUMaxLength": 1.0,
+        "CapUMaxOffset": 0.0,
+        "CapUMaxOption": 0.0,
+        "CapUMaxStrength": 0.5,
+        "CapUMaxSweepFlag": 0.0,
+        "CapUMinLength": 1.0,
+        "CapUMinOffset": 0.0,
+        "CapUMinOption": 0.0,
+        "CapUMinStrength": 0.5,
+        "CapUMinSweepFlag": 0.0,
+        "CapUMinTess": 3.0
+      },
+      "Mass_Props": {
+        "CGx": 0.0,
+        "CGy": 0.0,
+        "CGz": 0.0,
+        "Density": 1.0,
+        "Ixx": 0.0,
+        "Ixy": 0.0,
+        "Ixz": 0.0,
+        "Iyy": 0.0,
+        "Iyz": 0.0,
+        "Izz": 0.0,
+        "Mass_Area": 1.0,
+        "Mass_Prior": 0.0,
+        "PointMass": 0.0,
+        "Shell_Flag": 0.0
+      },
+      "Negative_Volume_Props": {
+        "Negative_Volume_Flag": 0.0
+      },
+      "ParasiteDragProps": {
+        "ExpandedList": 0.0,
+        "FFBodyEqnType": 3.0,
+        "FFUser": 1.0,
+        "FFWingEqnType": 3.0,
+        "IncorporatedGen": 0.0,
+        "PercLam": 0.0,
+        "Q": 1.0,
+        "Roughness": 0.0,
+        "TawTwRatio": 1.0,
+        "TeTwRatio": 1.0
+      },
+      "Shape": {
+        "Tess_U": 10.0,
+        "Tess_W": 9.0,
+        "Wake": 0.0
+      },
+      "Sym": {
+        "Flip_Flag": 0.0,
+        "Sym_Ancestor": 1.0,
+        "Sym_Ancestor_Origin_Flag": 1.0,
+        "Sym_Axial_Flag": 0.0,
+        "Sym_Planar_Flag": 2.0,
+        "Sym_Rot_N": 2.0
+      },
+      "WakeSettings": {
+        "WakeAngle": 0.0,
+        "WakeScale": 2.0
+      },
+      "XForm": {
+        "Abs_Or_Relitive_flag": 1.0,
+        "Last_Scale": 1.0,
+        "Origin": 0.0,
+        "Scale": 1.0,
+        "X_Location": 8.0,
+        "X_Rel_Location": 8.0,
+        "X_Rel_Rotation": 0.0,
+        "X_Rotation": 0.0,
+        "Y_Location": 7.0,
+        "Y_Rel_Location": 7.0,
+        "Y_Rel_Rotation": 0.0,
+        "Y_Rotation": 0.0,
+        "Z_Location": 0.0,
+        "Z_Rel_Location": 0.0,
+        "Z_Rel_Rotation": 0.0,
+        "Z_Rotation": 0.0
+      }
+    },
+    "sections": []
+  },
+  {
+    "name": "Engine_Middle",
+    "type": "Pod",
+    "groups": {
+      "Attach": {
+        "Eta_Attach_Location": 0.0,
+        "L_01": 1.0,
+        "L_Attach_Location": 0.0,
+        "L_Attach_Location0Len": 0.0,
+        "M_Attach_Location": 0.5,
+        "N_Attach_Location": 0.5,
+        "R_01": 1.0,
+        "R_Attach_Location": 0.0,
+        "R_Attach_Location0N": 0.0,
+        "Rots_Attach_Flag": 0.0,
+        "S_Attach_Location": 0.5,
+        "T_Attach_Location": 0.5,
+        "Trans_Attach_Flag": 0.0,
+        "U_01": 1.0,
+        "U_Attach_Location": 0.0,
+        "U_Attach_Location0N": 0.0,
+        "V_Attach_Location": 0.0
+      },
+      "BBox": {
+        "X_Len": 10.0,
+        "X_Min": 8.0,
+        "Y_Len": 29.333333333333332,
+        "Y_Min": -14.666666666666666,
+        "Z_Len": 1.3333333333333333,
+        "Z_Min": -0.6666666666666666
+      },
+      "Design": {
+        "FineRatio": 15.0,
+        "Length": 10.0
+      },
+      "EndCap": {
+        "CapUMaxLength": 1.0,
+        "CapUMaxOffset": 0.0,
+        "CapUMaxOption": 0.0,
+        "CapUMaxStrength": 0.5,
+        "CapUMaxSweepFlag": 0.0,
+        "CapUMinLength": 1.0,
+        "CapUMinOffset": 0.0,
+        "CapUMinOption": 0.0,
+        "CapUMinStrength": 0.5,
+        "CapUMinSweepFlag": 0.0,
+        "CapUMinTess": 3.0
+      },
+      "Mass_Props": {
+        "CGx": 0.0,
+        "CGy": 0.0,
+        "CGz": 0.0,
+        "Density": 1.0,
+        "Ixx": 0.0,
+        "Ixy": 0.0,
+        "Ixz": 0.0,
+        "Iyy": 0.0,
+        "Iyz": 0.0,
+        "Izz": 0.0,
+        "Mass_Area": 1.0,
+        "Mass_Prior": 0.0,
+        "PointMass": 0.0,
+        "Shell_Flag": 0.0
+      },
+      "Negative_Volume_Props": {
+        "Negative_Volume_Flag": 0.0
+      },
+      "ParasiteDragProps": {
+        "ExpandedList": 0.0,
+        "FFBodyEqnType": 3.0,
+        "FFUser": 1.0,
+        "FFWingEqnType": 3.0,
+        "IncorporatedGen": 0.0,
+        "PercLam": 0.0,
+        "Q": 1.0,
+        "Roughness": 0.0,
+        "TawTwRatio": 1.0,
+        "TeTwRatio": 1.0
+      },
+      "Shape": {
+        "Tess_U": 10.0,
+        "Tess_W": 9.0,
+        "Wake": 0.0
+      },
+      "Sym": {
+        "Flip_Flag": 0.0,
+        "Sym_Ancestor": 1.0,
+        "Sym_Ancestor_Origin_Flag": 1.0,
+        "Sym_Axial_Flag": 0.0,
+        "Sym_Planar_Flag": 2.0,
+        "Sym_Rot_N": 2.0
+      },
+      "WakeSettings": {
+        "WakeAngle": 0.0,
+        "WakeScale": 2.0
+      },
+      "XForm": {
+        "Abs_Or_Relitive_flag": 1.0,
+        "Last_Scale": 1.0,
+        "Origin": 0.0,
+        "Scale": 1.0,
+        "X_Location": 8.0,
+        "X_Rel_Location": 8.0,
+        "X_Rel_Rotation": 0.0,
+        "X_Rotation": 0.0,
+        "Y_Location": 14.0,
+        "Y_Rel_Location": 14.0,
+        "Y_Rel_Rotation": 0.0,
+        "Y_Rotation": 0.0,
+        "Z_Location": 0.0,
+        "Z_Rel_Location": 0.0,
+        "Z_Rel_Rotation": 0.0,
+        "Z_Rotation": 0.0
+      }
+    },
+    "sections": []
+  },
+  {
+    "name": "Engine_Outer",
+    "type": "Pod",
+    "groups": {
+      "Attach": {
+        "Eta_Attach_Location": 0.0,
+        "L_01": 1.0,
+        "L_Attach_Location": 0.0,
+        "L_Attach_Location0Len": 0.0,
+        "M_Attach_Location": 0.5,
+        "N_Attach_Location": 0.5,
+        "R_01": 1.0,
+        "R_Attach_Location": 0.0,
+        "R_Attach_Location0N": 0.0,
+        "Rots_Attach_Flag": 0.0,
+        "S_Attach_Location": 0.5,
+        "T_Attach_Location": 0.5,
+        "Trans_Attach_Flag": 0.0,
+        "U_01": 1.0,
+        "U_Attach_Location": 0.0,
+        "U_Attach_Location0N": 0.0,
+        "V_Attach_Location": 0.0
+      },
+      "BBox": {
+        "X_Len": 10.0,
+        "X_Min": 8.0,
+        "Y_Len": 43.333333333333336,
+        "Y_Min": -21.666666666666668,
+        "Z_Len": 1.3333333333333333,
+        "Z_Min": -0.6666666666666666
+      },
+      "Design": {
+        "FineRatio": 15.0,
+        "Length": 10.0
+      },
+      "EndCap": {
+        "CapUMaxLength": 1.0,
+        "CapUMaxOffset": 0.0,
+        "CapUMaxOption": 0.0,
+        "CapUMaxStrength": 0.5,
+        "CapUMaxSweepFlag": 0.0,
+        "CapUMinLength": 1.0,
+        "CapUMinOffset": 0.0,
+        "CapUMinOption": 0.0,
+        "CapUMinStrength": 0.5,
+        "CapUMinSweepFlag": 0.0,
+        "CapUMinTess": 3.0
+      },
+      "Mass_Props": {
+        "CGx": 0.0,
+        "CGy": 0.0,
+        "CGz": 0.0,
+        "Density": 1.0,
+        "Ixx": 0.0,
+        "Ixy": 0.0,
+        "Ixz": 0.0,
+        "Iyy": 0.0,
+        "Iyz": 0.0,
+        "Izz": 0.0,
+        "Mass_Area": 1.0,
+        "Mass_Prior": 0.0,
+        "PointMass": 0.0,
+        "Shell_Flag": 0.0
+      },
+      "Negative_Volume_Props": {
+        "Negative_Volume_Flag": 0.0
+      },
+      "ParasiteDragProps": {
+        "ExpandedList": 0.0,
+        "FFBodyEqnType": 3.0,
+        "FFUser": 1.0,
+        "FFWingEqnType": 3.0,
+        "IncorporatedGen": 0.0,
+        "PercLam": 0.0,
+        "Q": 1.0,
+        "Roughness": 0.0,
+        "TawTwRatio": 1.0,
+        "TeTwRatio": 1.0
+      },
+      "Shape": {
+        "Tess_U": 10.0,
+        "Tess_W": 9.0,
+        "Wake": 0.0
+      },
+      "Sym": {
+        "Flip_Flag": 0.0,
+        "Sym_Ancestor": 1.0,
+        "Sym_Ancestor_Origin_Flag": 1.0,
+        "Sym_Axial_Flag": 0.0,
+        "Sym_Planar_Flag": 2.0,
+        "Sym_Rot_N": 2.0
+      },
+      "WakeSettings": {
+        "WakeAngle": 0.0,
+        "WakeScale": 2.0
+      },
+      "XForm": {
+        "Abs_Or_Relitive_flag": 1.0,
+        "Last_Scale": 1.0,
+        "Origin": 0.0,
+        "Scale": 1.0,
+        "X_Location": 8.0,
+        "X_Rel_Location": 8.0,
+        "X_Rel_Rotation": 0.0,
+        "X_Rotation": 0.0,
+        "Y_Location": 21.0,
+        "Y_Rel_Location": 21.0,
+        "Y_Rel_Rotation": 0.0,
+        "Y_Rotation": 0.0,
+        "Z_Location": 0.0,
+        "Z_Rel_Location": 0.0,
+        "Z_Rel_Rotation": 0.0,
+        "Z_Rotation": 0.0
+      }
+    },
+    "sections": []
+  },
+  {
+    "name": "Prop_Inner",
+    "type": "Propeller",
+    "groups": {
+      "Attach": {
+        "Eta_Attach_Location": 0.0,
+        "L_01": 1.0,
+        "L_Attach_Location": 0.0,
+        "L_Attach_Location0Len": 0.0,
+        "M_Attach_Location": 0.5,
+        "N_Attach_Location": 0.5,
+        "R_01": 1.0,
+        "R_Attach_Location": 0.0,
+        "R_Attach_Location0N": 0.0,
+        "Rots_Attach_Flag": 0.0,
+        "S_Attach_Location": 0.5,
+        "T_Attach_Location": 0.5,
+        "TipMarkerScale": 1.0,
+        "TipMarkerScaleFlag": 0.0,
+        "Trans_Attach_Flag": 0.0,
+        "U_01": 1.0,
+        "U_Attach_Location": 0.0,
+        "U_Attach_Location0N": 0.0,
+        "V_Attach_Location": 0.0
+      },
+      "BBox": {
+        "X_Len": 0.19878775668773585,
+        "X_Min": 8.398839480026597,
+        "Y_Len": 18.007207186517483,
+        "Y_Min": -9.003603593258742,
+        "Z_Len": 3.594193131449682,
+        "Z_Min": -1.7970961676133397
+      },
+      "Design": {
+        "AF": 151.53843459288285,
+        "AFLimit": 0.2,
+        "AxFoldAx": 0.0,
+        "AzFoldDir": 0.0,
+        "BalanceX1": 0.0,
+        "BalanceX2": 0.0,
+        "Beta34": 20.0,
+        "BladeAz_2": 120.0,
+        "BladeAz_3": 240.0,
+        "BladeAzimuthDeltaFlag": 0.0,
+        "BladeAzimuthMode": 0.0,
+        "CLi": 0.5387977274373372,
+        "Chord": 0.17765625,
+        "ConstructXoC": 0.5,
+        "CylindricalSectionsFlag": 0.0,
+        "DeltaAz_2": 0.0,
+        "DeltaAz_3": 0.0,
+        "Diameter": 4.0,
+        "ElFoldDir": 0.0,
+        "Feather": 0.0,
+        "FeatherAxisXoC": 0.5,
+        "FeatherOffsetXoC": 0.0,
+        "FoldAngle": 0.0,
+        "FoldAngle_1": 0.0,
+        "FoldAngle_2": 0.0,
+        "InCluster": 1.0,
+        "IndividualBladeFoldFlag": 0.0,
+        "LECluster": 0.25,
+        "NumBlade": 3.0,
+        "OffFoldAx": 0.0,
+        "OutCluster": 1.0,
+        "PChord": 0.1942800443498498,
+        "PSolidity": 0.1855237764143475,
+        "Precone": 0.0,
+        "PropMode": 0.0,
+        "RFoldAx": 0.2,
+        "ReverseFlag": 0.0,
+        "Rotate": 0.0,
+        "Solidity": 0.1696492221520172,
+        "TChord": 0.192349861391129,
+        "TECluster": 0.25,
+        "TSolidity": 0.18368058746063456,
+        "UseBeta34Flag": 1.0
+      },
+      "EndCap": {
+        "CapUMaxLength": 1.0,
+        "CapUMaxOffset": 0.0,
+        "CapUMaxOption": 2.0,
+        "CapUMaxStrength": 1.0,
+        "CapUMaxSweepFlag": 0.0,
+        "CapUMinLength": 1.0,
+        "CapUMinOffset": 0.0,
+        "CapUMinOption": 1.0,
+        "CapUMinStrength": 0.5,
+        "CapUMinSweepFlag": 0.0,
+        "CapUMinTess": 3.0
+      },
+      "Index": {
+        "ActiveBlade": 1.0,
+        "ActiveXSec": 0.0
+      },
+      "Mass_Props": {
+        "CGx": 0.0,
+        "CGy": 0.0,
+        "CGz": 0.0,
+        "Density": 1.0,
+        "Ixx": 0.0,
+        "Ixy": 0.0,
+        "Ixz": 0.0,
+        "Iyy": 0.0,
+        "Iyz": 0.0,
+        "Izz": 0.0,
+        "Mass_Area": 1.0,
+        "Mass_Prior": 0.0,
+        "PointMass": 0.0,
+        "Shell_Flag": 0.0
+      },
+      "Negative_Volume_Props": {
+        "Negative_Volume_Flag": 0.0
+      },
+      "ParasiteDragProps": {
+        "ExpandedList": 0.0,
+        "FFBodyEqnType": 3.0,
+        "FFUser": 1.0,
+        "FFWingEqnType": 3.0,
+        "IncorporatedGen": 0.0,
+        "PercLam": 0.0,
+        "Q": 1.0,
+        "Roughness": 0.0,
+        "TawTwRatio": 1.0,
+        "TeTwRatio": 1.0
+      },
+      "PropGeom": {
+        "MaxGrowth": 1.9637694024546486,
+        "SmallPanelW": 0.0008949932190195243
+      },
+      "Shape": {
+        "Tess_U": 12.0,
+        "Tess_W": 17.0,
+        "Wake": 0.0
+      },
+      "Skinning": {
+        "ShowSkinningCurveFlag": 0.0,
+        "ShowSkinningTanFlag": 1.0
+      },
+      "Sym": {
+        "Flip_Flag": 0.0,
+        "Sym_Ancestor": 1.0,
+        "Sym_Ancestor_Origin_Flag": 1.0,
+        "Sym_Axial_Flag": 0.0,
+        "Sym_Planar_Flag": 2.0,
+        "Sym_Rot_N": 2.0
+      },
+      "WakeSettings": {
+        "WakeAngle": 0.0,
+        "WakeScale": 2.0
+      },
+      "XForm": {
+        "Abs_Or_Relitive_flag": 1.0,
+        "Last_Scale": 1.0,
+        "Origin": 0.0,
+        "Scale": 1.0,
+        "X_Location": 8.5,
+        "X_Rel_Location": 8.5,
+        "X_Rel_Rotation": 0.0,
+        "X_Rotation": 0.0,
+        "Y_Location": 7.0,
+        "Y_Rel_Location": 7.0,
+        "Y_Rel_Rotation": 0.0,
+        "Y_Rotation": 0.0,
+        "Z_Location": 0.0,
+        "Z_Rel_Location": 0.0,
+        "Z_Rel_Rotation": 0.0,
+        "Z_Rotation": 0.0
+      }
+    },
+    "sections": [
+      {
+        "Area": 0.01005385581512775
+      },
+      {
+        "Area": 0.011655636514261837,
+        "ThickChord": 0.14407407407407405
+      },
+      {
+        "Area": 0.0014806332511410425,
+        "ThickChord": 0.03
+      }
+    ]
+  },
+  {
+    "name": "Prop_Middle",
+    "type": "Propeller",
+    "groups": {
+      "Attach": {
+        "Eta_Attach_Location": 0.0,
+        "L_01": 1.0,
+        "L_Attach_Location": 0.0,
+        "L_Attach_Location0Len": 0.0,
+        "M_Attach_Location": 0.5,
+        "N_Attach_Location": 0.5,
+        "R_01": 1.0,
+        "R_Attach_Location": 0.0,
+        "R_Attach_Location0N": 0.0,
+        "Rots_Attach_Flag": 0.0,
+        "S_Attach_Location": 0.5,
+        "T_Attach_Location": 0.5,
+        "TipMarkerScale": 1.0,
+        "TipMarkerScaleFlag": 0.0,
+        "Trans_Attach_Flag": 0.0,
+        "U_01": 1.0,
+        "U_Attach_Location": 0.0,
+        "U_Attach_Location0N": 0.0,
+        "V_Attach_Location": 0.0
+      },
+      "BBox": {
+        "X_Len": 0.19878775668773585,
+        "X_Min": 8.398839480026597,
+        "Y_Len": 32.00720718651748,
+        "Y_Min": -16.00360359325874,
+        "Z_Len": 3.594193131449682,
+        "Z_Min": -1.7970961676133397
+      },
+      "Design": {
+        "AF": 151.53843459288285,
+        "AFLimit": 0.2,
+        "AxFoldAx": 0.0,
+        "AzFoldDir": 0.0,
+        "BalanceX1": 0.0,
+        "BalanceX2": 0.0,
+        "Beta34": 20.0,
+        "BladeAz_2": 120.0,
+        "BladeAz_3": 240.0,
+        "BladeAzimuthDeltaFlag": 0.0,
+        "BladeAzimuthMode": 0.0,
+        "CLi": 0.5387977274373372,
+        "Chord": 0.17765625,
+        "ConstructXoC": 0.5,
+        "CylindricalSectionsFlag": 0.0,
+        "DeltaAz_2": 0.0,
+        "DeltaAz_3": 0.0,
+        "Diameter": 4.0,
+        "ElFoldDir": 0.0,
+        "Feather": 0.0,
+        "FeatherAxisXoC": 0.5,
+        "FeatherOffsetXoC": 0.0,
+        "FoldAngle": 0.0,
+        "FoldAngle_1": 0.0,
+        "FoldAngle_2": 0.0,
+        "InCluster": 1.0,
+        "IndividualBladeFoldFlag": 0.0,
+        "LECluster": 0.25,
+        "NumBlade": 3.0,
+        "OffFoldAx": 0.0,
+        "OutCluster": 1.0,
+        "PChord": 0.1942800443498498,
+        "PSolidity": 0.1855237764143475,
+        "Precone": 0.0,
+        "PropMode": 0.0,
+        "RFoldAx": 0.2,
+        "ReverseFlag": 0.0,
+        "Rotate": 0.0,
+        "Solidity": 0.1696492221520172,
+        "TChord": 0.192349861391129,
+        "TECluster": 0.25,
+        "TSolidity": 0.18368058746063456,
+        "UseBeta34Flag": 1.0
+      },
+      "EndCap": {
+        "CapUMaxLength": 1.0,
+        "CapUMaxOffset": 0.0,
+        "CapUMaxOption": 2.0,
+        "CapUMaxStrength": 1.0,
+        "CapUMaxSweepFlag": 0.0,
+        "CapUMinLength": 1.0,
+        "CapUMinOffset": 0.0,
+        "CapUMinOption": 1.0,
+        "CapUMinStrength": 0.5,
+        "CapUMinSweepFlag": 0.0,
+        "CapUMinTess": 3.0
+      },
+      "Index": {
+        "ActiveBlade": 1.0,
+        "ActiveXSec": 0.0
+      },
+      "Mass_Props": {
+        "CGx": 0.0,
+        "CGy": 0.0,
+        "CGz": 0.0,
+        "Density": 1.0,
+        "Ixx": 0.0,
+        "Ixy": 0.0,
+        "Ixz": 0.0,
+        "Iyy": 0.0,
+        "Iyz": 0.0,
+        "Izz": 0.0,
+        "Mass_Area": 1.0,
+        "Mass_Prior": 0.0,
+        "PointMass": 0.0,
+        "Shell_Flag": 0.0
+      },
+      "Negative_Volume_Props": {
+        "Negative_Volume_Flag": 0.0
+      },
+      "ParasiteDragProps": {
+        "ExpandedList": 0.0,
+        "FFBodyEqnType": 3.0,
+        "FFUser": 1.0,
+        "FFWingEqnType": 3.0,
+        "IncorporatedGen": 0.0,
+        "PercLam": 0.0,
+        "Q": 1.0,
+        "Roughness": 0.0,
+        "TawTwRatio": 1.0,
+        "TeTwRatio": 1.0
+      },
+      "PropGeom": {
+        "MaxGrowth": 1.9637694024546486,
+        "SmallPanelW": 0.0008949932190195243
+      },
+      "Shape": {
+        "Tess_U": 12.0,
+        "Tess_W": 17.0,
+        "Wake": 0.0
+      },
+      "Skinning": {
+        "ShowSkinningCurveFlag": 0.0,
+        "ShowSkinningTanFlag": 1.0
+      },
+      "Sym": {
+        "Flip_Flag": 0.0,
+        "Sym_Ancestor": 1.0,
+        "Sym_Ancestor_Origin_Flag": 1.0,
+        "Sym_Axial_Flag": 0.0,
+        "Sym_Planar_Flag": 2.0,
+        "Sym_Rot_N": 2.0
+      },
+      "WakeSettings": {
+        "WakeAngle": 0.0,
+        "WakeScale": 2.0
+      },
+      "XForm": {
+        "Abs_Or_Relitive_flag": 1.0,
+        "Last_Scale": 1.0,
+        "Origin": 0.0,
+        "Scale": 1.0,
+        "X_Location": 8.5,
+        "X_Rel_Location": 8.5,
+        "X_Rel_Rotation": 0.0,
+        "X_Rotation": 0.0,
+        "Y_Location": 14.0,
+        "Y_Rel_Location": 14.0,
+        "Y_Rel_Rotation": 0.0,
+        "Y_Rotation": 0.0,
+        "Z_Location": 0.0,
+        "Z_Rel_Location": 0.0,
+        "Z_Rel_Rotation": 0.0,
+        "Z_Rotation": 0.0
+      }
+    },
+    "sections": [
+      {
+        "Area": 0.01005385581512775
+      },
+      {
+        "Area": 0.011655636514261837,
+        "ThickChord": 0.14407407407407405
+      },
+      {
+        "Area": 0.0014806332511410425,
+        "ThickChord": 0.03
+      }
+    ]
+  },
+  {
+    "name": "Prop_Outer",
+    "type": "Propeller",
+    "groups": {
+      "Attach": {
+        "Eta_Attach_Location": 0.0,
+        "L_01": 1.0,
+        "L_Attach_Location": 0.0,
+        "L_Attach_Location0Len": 0.0,
+        "M_Attach_Location": 0.5,
+        "N_Attach_Location": 0.5,
+        "R_01": 1.0,
+        "R_Attach_Location": 0.0,
+        "R_Attach_Location0N": 0.0,
+        "Rots_Attach_Flag": 0.0,
+        "S_Attach_Location": 0.5,
+        "T_Attach_Location": 0.5,
+        "TipMarkerScale": 1.0,
+        "TipMarkerScaleFlag": 0.0,
+        "Trans_Attach_Flag": 0.0,
+        "U_01": 1.0,
+        "U_Attach_Location": 0.0,
+        "U_Attach_Location0N": 0.0,
+        "V_Attach_Location": 0.0
+      },
+      "BBox": {
+        "X_Len": 0.19878775668773585,
+        "X_Min": 8.398839480026597,
+        "Y_Len": 46.00720718651748,
+        "Y_Min": -23.00360359325874,
+        "Z_Len": 3.594193131449682,
+        "Z_Min": -1.7970961676133397
+      },
+      "Design": {
+        "AF": 151.53843459288285,
+        "AFLimit": 0.2,
+        "AxFoldAx": 0.0,
+        "AzFoldDir": 0.0,
+        "BalanceX1": 0.0,
+        "BalanceX2": 0.0,
+        "Beta34": 20.0,
+        "BladeAz_2": 120.0,
+        "BladeAz_3": 240.0,
+        "BladeAzimuthDeltaFlag": 0.0,
+        "BladeAzimuthMode": 0.0,
+        "CLi": 0.5387977274373372,
+        "Chord": 0.17765625,
+        "ConstructXoC": 0.5,
+        "CylindricalSectionsFlag": 0.0,
+        "DeltaAz_2": 0.0,
+        "DeltaAz_3": 0.0,
+        "Diameter": 4.0,
+        "ElFoldDir": 0.0,
+        "Feather": 0.0,
+        "FeatherAxisXoC": 0.5,
+        "FeatherOffsetXoC": 0.0,
+        "FoldAngle": 0.0,
+        "FoldAngle_1": 0.0,
+        "FoldAngle_2": 0.0,
+        "InCluster": 1.0,
+        "IndividualBladeFoldFlag": 0.0,
+        "LECluster": 0.25,
+        "NumBlade": 3.0,
+        "OffFoldAx": 0.0,
+        "OutCluster": 1.0,
+        "PChord": 0.1942800443498498,
+        "PSolidity": 0.1855237764143475,
+        "Precone": 0.0,
+        "PropMode": 0.0,
+        "RFoldAx": 0.2,
+        "ReverseFlag": 0.0,
+        "Rotate": 0.0,
+        "Solidity": 0.1696492221520172,
+        "TChord": 0.192349861391129,
+        "TECluster": 0.25,
+        "TSolidity": 0.18368058746063456,
+        "UseBeta34Flag": 1.0
+      },
+      "EndCap": {
+        "CapUMaxLength": 1.0,
+        "CapUMaxOffset": 0.0,
+        "CapUMaxOption": 2.0,
+        "CapUMaxStrength": 1.0,
+        "CapUMaxSweepFlag": 0.0,
+        "CapUMinLength": 1.0,
+        "CapUMinOffset": 0.0,
+        "CapUMinOption": 1.0,
+        "CapUMinStrength": 0.5,
+        "CapUMinSweepFlag": 0.0,
+        "CapUMinTess": 3.0
+      },
+      "Index": {
+        "ActiveBlade": 1.0,
+        "ActiveXSec": 0.0
+      },
+      "Mass_Props": {
+        "CGx": 0.0,
+        "CGy": 0.0,
+        "CGz": 0.0,
+        "Density": 1.0,
+        "Ixx": 0.0,
+        "Ixy": 0.0,
+        "Ixz": 0.0,
+        "Iyy": 0.0,
+        "Iyz": 0.0,
+        "Izz": 0.0,
+        "Mass_Area": 1.0,
+        "Mass_Prior": 0.0,
+        "PointMass": 0.0,
+        "Shell_Flag": 0.0
+      },
+      "Negative_Volume_Props": {
+        "Negative_Volume_Flag": 0.0
+      },
+      "ParasiteDragProps": {
+        "ExpandedList": 0.0,
+        "FFBodyEqnType": 3.0,
+        "FFUser": 1.0,
+        "FFWingEqnType": 3.0,
+        "IncorporatedGen": 0.0,
+        "PercLam": 0.0,
+        "Q": 1.0,
+        "Roughness": 0.0,
+        "TawTwRatio": 1.0,
+        "TeTwRatio": 1.0
+      },
+      "PropGeom": {
+        "MaxGrowth": 1.9637694024546486,
+        "SmallPanelW": 0.0008949932190195243
+      },
+      "Shape": {
+        "Tess_U": 12.0,
+        "Tess_W": 17.0,
+        "Wake": 0.0
+      },
+      "Skinning": {
+        "ShowSkinningCurveFlag": 0.0,
+        "ShowSkinningTanFlag": 1.0
+      },
+      "Sym": {
+        "Flip_Flag": 0.0,
+        "Sym_Ancestor": 1.0,
+        "Sym_Ancestor_Origin_Flag": 1.0,
+        "Sym_Axial_Flag": 0.0,
+        "Sym_Planar_Flag": 2.0,
+        "Sym_Rot_N": 2.0
+      },
+      "WakeSettings": {
+        "WakeAngle": 0.0,
+        "WakeScale": 2.0
+      },
+      "XForm": {
+        "Abs_Or_Relitive_flag": 1.0,
+        "Last_Scale": 1.0,
+        "Origin": 0.0,
+        "Scale": 1.0,
+        "X_Location": 8.5,
+        "X_Rel_Location": 8.5,
+        "X_Rel_Rotation": 0.0,
+        "X_Rotation": 0.0,
+        "Y_Location": 21.0,
+        "Y_Rel_Location": 21.0,
+        "Y_Rel_Rotation": 0.0,
+        "Y_Rotation": 0.0,
+        "Z_Location": 0.0,
+        "Z_Rel_Location": 0.0,
+        "Z_Rel_Rotation": 0.0,
+        "Z_Rotation": 0.0
+      }
+    },
+    "sections": [
+      {
+        "Area": 0.01005385581512775
+      },
+      {
+        "Area": 0.011655636514261837,
+        "ThickChord": 0.14407407407407405
+      },
+      {
+        "Area": 0.0014806332511410425,
+        "ThickChord": 0.03
+      }
+    ]
+  },
+  {
+    "name": "MeshGeom",
+    "type": "Mesh",
+    "groups": {
+      "Attach": {
+        "Eta_Attach_Location": 0.0,
+        "L_01": 1.0,
+        "L_Attach_Location": 0.0,
+        "L_Attach_Location0Len": 0.0,
+        "M_Attach_Location": 0.5,
+        "N_Attach_Location": 0.5,
+        "R_01": 1.0,
+        "R_Attach_Location": 0.0,
+        "R_Attach_Location0N": 0.0,
+        "Rots_Attach_Flag": 0.0,
+        "S_Attach_Location": 0.5,
+        "T_Attach_Location": 0.5,
+        "Trans_Attach_Flag": 0.0,
+        "U_01": 1.0,
+        "U_Attach_Location": 0.0,
+        "U_Attach_Location0N": 0.0,
+        "V_Attach_Location": 0.0
+      },
+      "BBox": {
+        "X_Len": 41.14999999999999,
+        "X_Min": 0.0,
+        "Y_Len": 63.999999999999986,
+        "Y_Min": -31.999999999999993,
+        "Z_Len": 15.439999999999998,
+        "Z_Min": -6.5
+      },
+      "Debug": {
+        "Draw_Sub_UV": 0.0
+      },
+      "Draw": {
+        "Draw_Type": 4.0,
+        "MeshFlag": 1.0,
+        "SliceFlag": 1.0,
+        "StartColorDegree": 0.0
+      },
+      "EndCap": {
+        "CapUMaxLength": 1.0,
+        "CapUMaxOffset": 0.0,
+        "CapUMaxOption": 0.0,
+        "CapUMaxStrength": 0.5,
+        "CapUMaxSweepFlag": 0.0,
+        "CapUMinLength": 1.0,
+        "CapUMinOffset": 0.0,
+        "CapUMinOption": 0.0,
+        "CapUMinStrength": 0.5,
+        "CapUMinSweepFlag": 0.0,
+        "CapUMinTess": 3.0
+      },
+      "Mass_Props": {
+        "CGx": 0.0,
+        "CGy": 0.0,
+        "CGz": 0.0,
+        "Density": 1.0,
+        "Ixx": 0.0,
+        "Ixy": 0.0,
+        "Ixz": 0.0,
+        "Iyy": 0.0,
+        "Iyz": 0.0,
+        "Izz": 0.0,
+        "Mass_Area": 1.0,
+        "Mass_Prior": 0.0,
+        "PointMass": 0.0,
+        "Shell_Flag": 0.0
+      },
+      "Negative_Volume_Props": {
+        "Negative_Volume_Flag": 0.0
+      },
+      "ParasiteDragProps": {
+        "ExpandedList": 0.0,
+        "FFBodyEqnType": 3.0,
+        "FFUser": 1.0,
+        "FFWingEqnType": 3.0,
+        "IncorporatedGen": 0.0,
+        "PercLam": 0.0,
+        "Q": 1.0,
+        "Roughness": 0.0,
+        "TawTwRatio": 1.0,
+        "TeTwRatio": 1.0
+      },
+      "Shape": {
+        "Tess_U": 8.0,
+        "Tess_W": 9.0,
+        "Wake": 0.0
+      },
+      "Sym": {
+        "Flip_Flag": 0.0,
+        "Sym_Ancestor": 1.0,
+        "Sym_Ancestor_Origin_Flag": 1.0,
+        "Sym_Axial_Flag": 0.0,
+        "Sym_Planar_Flag": 0.0,
+        "Sym_Rot_N": 2.0
+      },
+      "WakeSettings": {
+        "WakeAngle": 0.0,
+        "WakeScale": 2.0
+      },
+      "XForm": {
+        "Abs_Or_Relitive_flag": 1.0,
+        "Last_Scale": 1.0,
+        "Origin": 0.0,
+        "Scale": 1.0,
+        "Scale_From_Original": 1.0,
+        "X_Location": 0.0,
+        "X_Rel_Location": 0.0,
+        "X_Rel_Rotation": 0.0,
+        "X_Rotation": 0.0,
+        "Y_Location": 0.0,
+        "Y_Rel_Location": 0.0,
+        "Y_Rel_Rotation": 0.0,
+        "Y_Rotation": 0.0,
+        "Z_Location": 0.0,
+        "Z_Rel_Location": 0.0,
+        "Z_Rel_Rotation": 0.0,
+        "Z_Rotation": 0.0
+      }
+    },
+    "sections": []
+  }
+]

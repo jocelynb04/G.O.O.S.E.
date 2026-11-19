@@ -1,0 +1,210 @@
+{
+  "source": {
+    "source_file": "C:\\Users\\Jason\\OneDrive - Virginia Tech\\Desktop\\Fall 2026\\Senior Design\\Git\\OpenVSP Models\\Seaplane_Concept04.vsp3",
+    "sha256": "da4af0149472c195cc7875d77d250385e1427bacb38e5282b14020d0237e6b51",
+    "units": "ft interpreted from model parameters; numerical dimensions retained"
+  },
+  "wing": {
+    "area_ft2": 324.99999999999994,
+    "span_ft": 63.999999999999986,
+    "AR": 12.60307692307692,
+    "MAC_ft": 5.389030612244897,
+    "root_chord_ft": 7.254464285714286,
+    "tip_chord_ft": 2.9017857142857144,
+    "taper_ratio": 0.4,
+    "thickness_root": 0.18,
+    "thickness_tip": 0.09,
+    "sweep_LE_deg": 0.0,
+    "sweep_quarter_deg": -1.94760976615005,
+    "dihedral_deg": 0.0,
+    "twist_deg": 0.0,
+    "root_LE_x_ft": 9.989322428920017,
+    "origin_ft": [
+      14.995039990079981,
+      0.0,
+      0.0
+    ],
+    "quarter_MAC_x_ft": 11.344148596938775
+  },
+  "horizontal_tail": {
+    "area_ft2": 62.868,
+    "span_ft": 18.6,
+    "AR": 5.502958579881657,
+    "MAC_ft": 3.451252465483235,
+    "root_chord_ft": 4.23,
+    "tip_chord_ft": 2.53,
+    "taper_ratio": 0.5981087470449171,
+    "thickness_root": 0.1,
+    "thickness_tip": 0.1,
+    "sweep_LE_deg": 10.0,
+    "sweep_quarter_deg": 7.442296200880215,
+    "dihedral_deg": 0.0,
+    "twist_deg": 0.0,
+    "root_LE_x_ft": 35.0,
+    "origin_ft": [
+      35.0,
+      0.0,
+      4.92
+    ],
+    "quarter_MAC_x_ft": 36.61603928715825,
+    "arm_ft": 25.27189069021948
+  },
+  "vertical_tail": {
+    "area_ft2": 61.3731,
+    "span_ft": 8.94,
+    "AR": 1.302257829570284,
+    "MAC_ft": 7.118519058023793,
+    "root_chord_ft": 9.15,
+    "tip_chord_ft": 4.58,
+    "taper_ratio": 0.5005464480874317,
+    "thickness_root": 0.12,
+    "thickness_tip": 0.12,
+    "sweep_LE_deg": 20.0,
+    "sweep_quarter_deg": 13.288269324297197,
+    "dihedral_deg": 0.0,
+    "twist_deg": 0.0,
+    "root_LE_x_ft": 32.0,
+    "origin_ft": [
+      32.0,
+      0.0,
+      0.0
+    ],
+    "quarter_MAC_x_ft": 35.2307533043774,
+    "arm_ft": 23.88660470743863
+  },
+  "fuselage": {
+    "length_ft": 41.00000000000001,
+    "width_ft": 7.0,
+    "height_ft": 6.2
+  },
+  "floats": {
+    "count": 2,
+    "length_ft": 27.0,
+    "beam_ft": 4.0,
+    "height_ft": 3.0,
+    "centerline_spacing_ft": 12,
+    "external_volume_total_ft3": 393.31690747033747,
+    "keel_z_ft": -6.5
+  },
+  "motor_nacelles": {
+    "count": 6,
+    "length_ft": 10.0,
+    "diameter_ft": 1.3333340000000007,
+    "positions_ft": [
+      [
+        8.0,
+        -7.0,
+        0.0
+      ],
+      [
+        8.0,
+        7.0,
+        0.0
+      ],
+      [
+        8.0,
+        -14.0,
+        0.0
+      ],
+      [
+        8.0,
+        14.0,
+        0.0
+      ],
+      [
+        8.0,
+        -21.0,
+        0.0
+      ],
+      [
+        8.0,
+        21.0,
+        0.0
+      ]
+    ]
+  },
+  "propellers": {
+    "count": 6,
+    "diameter_ft": 4.0,
+    "blades": 3,
+    "positions_ft": [
+      [
+        8.5,
+        -7.0,
+        0.0
+      ],
+      [
+        8.5,
+        7.0,
+        0.0
+      ],
+      [
+        8.5,
+        -14.0,
+        0.0
+      ],
+      [
+        8.5,
+        14.0,
+        0.0
+      ],
+      [
+        8.5,
+        -21.0,
+        0.0
+      ],
+      [
+        8.5,
+        21.0,
+        0.0
+      ]
+    ]
+  },
+  "wetted_areas_ft2": {
+    "wing": 509.9605793114733,
+    "horizontal_tail": 122.90153646884052,
+    "vertical_tail": 91.7979603798024,
+    "fuselage": 703.5089102556594,
+    "pontoons": 512.1163070200871,
+    "float_struts": 25.486857814259427,
+    "motor_nacelles": 135.7819900842626
+  },
+  "excluded_propeller_wetted_area_ft2": 20.79976715905824,
+  "native_component_wetted_areas_ft2": {
+    "Main_Fuselage": 703.5089102556594,
+    "Main_Wing": 509.9605793114733,
+    "Cruciform_Vertical": 91.7979603798024,
+    "Cruciform_Horizontal": 122.90153646884052,
+    "Main_Pontoons": 512.1163070200871,
+    "Front_Strut": 15.343147427707049,
+    "Back_Strut": 10.143710386552378,
+    "Engine_Inner": 37.61327327769785,
+    "Engine_Middle": 46.30027275668277,
+    "Engine_Outer": 51.86844404988198,
+    "Prop_Inner": 6.9332557196860725,
+    "Prop_Middle": 6.93325571968608,
+    "Prop_Outer": 6.933255719686091
+  },
+  "native_component_external_volumes_ft3": {
+    "Main_Fuselage": 1050.6982416533697,
+    "Main_Wing": 188.31129033571807,
+    "Cruciform_Vertical": 35.357611000474826,
+    "Cruciform_Horizontal": 14.632756734494611,
+    "Main_Pontoons": 393.31690747033747,
+    "Front_Strut": 3.670930516873476,
+    "Back_Strut": 1.1648375129066972,
+    "Engine_Inner": 15.294321297882096,
+    "Engine_Middle": 15.294321297882032,
+    "Engine_Outer": 15.294321297882096,
+    "Prop_Inner": 0.08671109093451967,
+    "Prop_Middle": 0.08671109093447117,
+    "Prop_Outer": 0.08671109093474948
+  },
+  "notes": [
+    "Native CompGeom intersected wetted areas; rotating propeller blade areas excluded from airframe parasite drag.",
+    "CAD dimensions are geometry only. Quarter-MAC arms are not CG-based stability derivatives.",
+    "Body and pod dimensions from native stored BBox validated by fresh native bounds; wing planform parameters from WingGeom.",
+    "Main wing only scales in the constraint family at fixed AR and taper. Tails, floats, struts, pods and fuselage remain fixed.",
+    "Stored MeshGeom was removed only in the transient OpenVSP analysis process; the source file was not written."
+  ]
+}

@@ -11,6 +11,7 @@ function [result,hist]=run_concept2_study(varargin)
     p.addParameter('overrides',struct(),@isstruct);
     p.addParameter('engine',"",@(x)ischar(x)||isstring(x));
     p.addParameter('plot',true,@islogical);
+    p.addParameter('range_analysis',false,@islogical);
     p.addParameter('plot_visible',false,@islogical);
     p.addParameter('output_dir',fullfile(root,'Results','Current'), ...
         @(x)ischar(x)||isstring(x));
@@ -103,6 +104,9 @@ function [result,hist]=run_concept2_study(varargin)
     if A.plot && isfield(b,'last_assessment')
         result.constraint_plot_files=plot_concept2_constraints(result, ...
             'visible',A.plot_visible,'output_dir',out);
+    end
+    if A.range_analysis
+        result.range=run_concept2_range(OutputDirectory=fullfile(out,'Range'));
     end
     save(fullfile(out,'concept2_study.mat'),'result','hist');
     write_json(fullfile(out,'concept2_study.json'),result);

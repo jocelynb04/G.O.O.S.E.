@@ -1,0 +1,9 @@
+void main()
+{
+ ReadVSPFile("Seaplane_Concept04.vsp3");
+ array<string>@ ids=FindGeoms();
+ for(uint i=0;i<ids.size();i++) { if(GetGeomName(ids[i])=="MeshGeom") DeleteGeom(ids[i]); }
+ Update();
+ SetComputationFileName(DEGEN_GEOM_CSV_TYPE,"degen.csv");
+ ComputeDegenGeom(SET_ALL,DEGEN_GEOM_CSV_TYPE);
+}

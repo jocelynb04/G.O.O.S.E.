@@ -163,25 +163,28 @@
     "bhp_range_of_validity": [
       500,
       1100
-    ]
+    ],
+    "generator_engine_shaft_power_sl_hp_each": 425,
+    "generator_rating_note": "Preserves the prior 850-hp total generator reference. Independent from the 850-hp total motor reference; neither is auto-increased to force feasibility."
   },
   "weights": {
-    "W_payload_fixed": 800,
+    "W_payload_fixed": 2430,
     "W_payload_expendable": 0,
     "unit_weight_wing_psf": 2.5,
     "unit_weight_v_tail_psf": 2.0,
     "unit_weight_fuselage_psf": 1.4,
     "unit_weight_wingtip_float_psf": 1.4,
-    "landing_gear_fraction": 0.0,
+    "landing_gear_fraction": 0.07125,
     "installed_engine_factor": 1.4,
     "all_else_empty_fraction": 0.1,
     "statistical_OEW_coefficient": 0.911,
     "statistical_OEW_exponent": 0.947,
-    "fuel_density_lb_per_ft3": 50.15297537934329
+    "fuel_density_lb_per_ft3": 50.15297537934329,
+    "landing_gear_note": "Provisional 0.057 x 1.25 amphibious allowance, replacing omitted gear. Not a measured installation."
   },
-  "design_range_nmi": 500,
+  "design_range_nmi": 868.9762419184253,
   "sizing": {
-    "W_TO_guess_lbf": 9062,
+    "W_TO_guess_lbf": 12490,
     "S_ref_guess_ft2": 343.7137818090199,
     "tol_rel": 1e-05,
     "max_iter": 150,
@@ -202,7 +205,7 @@
         "name": "Amphibian water takeoff surrogate",
         "type": "takeoff",
         "altitude_ft": 0,
-        "distance_ft": 3271,
+        "distance_ft": 2000,
         "config": "takeoff_flaps_gear_down",
         "beta": 1.0
       },
@@ -210,7 +213,7 @@
         "name": "Amphibian landing surrogate",
         "type": "landing",
         "altitude_ft": 0,
-        "distance_ft": 2004,
+        "distance_ft": 2000,
         "config": "landing_flaps_gear_down",
         "beta": 0.975
       },
@@ -249,10 +252,10 @@
         "beta": 0.975
       },
       {
-        "name": "150-KTAS demonstration cruise constraint",
+        "name": "RFP 180-KTAS capability screen",
         "type": "cruise_speed",
-        "altitude_ft": 8000,
-        "ktas": 150,
+        "altitude_ft": 10000,
+        "ktas": 180,
         "power_index": 1.4,
         "power_setting": 0.85,
         "method": "drag_based"
@@ -264,56 +267,170 @@
       "reserve_fuel_fraction": 0.0,
       "segments": [
         {
+          "type": "taxi",
+          "name": "Electric departure taxi",
+          "alt_ft": 0
+        },
+        {
           "type": "takeoff",
-          "name": "Takeoff",
+          "name": "Electric water takeoff",
           "alt_ft": 0
         },
         {
           "type": "climb",
-          "name": "Climb",
-          "alt_ft": 8000
+          "name": "En-route climb",
+          "alt_ft": 10000
         },
         {
           "type": "cruise",
-          "name": "Cruise",
-          "alt_ft": 8000,
+          "name": "Full payload range cruise",
+          "alt_ft": 10000,
           "ktas": 150,
-          "distance_nm": 500
+          "distance_nm": 868.9762419184253
         },
         {
           "type": "descent",
-          "name": "Descent",
+          "name": "Descent to electric approach",
+          "alt_ft": 1500
+        },
+        {
+          "type": "approach",
+          "name": "Electric approach",
           "alt_ft": 0
         },
         {
+          "type": "balked_landing",
+          "name": "Electric balked landing at reserve entry",
+          "alt_ft": 1500
+        },
+        {
           "type": "climb",
-          "name": "Climb",
+          "name": "Reserve climb",
           "alt_ft": 4000
         },
         {
           "type": "loiter",
-          "name": "Loiter",
+          "name": "45-minute IFR reserve",
           "alt_ft": 4000,
           "ktas": 110,
           "time_min": 45
         },
         {
           "type": "descent",
-          "name": "Descent",
+          "name": "Reserve descent",
+          "alt_ft": 1500
+        },
+        {
+          "type": "approach",
+          "name": "Electric final approach",
           "alt_ft": 0
         },
         {
           "type": "landing",
-          "name": "Landing",
+          "name": "Electric water landing",
+          "alt_ft": 0
+        },
+        {
+          "type": "taxi",
+          "name": "Electric arrival taxi",
           "alt_ft": 0
         }
       ],
       "method": "L2",
       "cruise_segments": 12,
       "climb_segments": 4,
-      "ground_segment_method": "roskam_fraction",
+      "ground_segment_method": "explicit_series_energy",
+      "credit_climb_distance": false
+    },
+    "normal_mission": {
+      "reserve_fuel_fraction": 0.0,
+      "segments": [
+        {
+          "type": "taxi",
+          "name": "Electric departure taxi",
+          "alt_ft": 0
+        },
+        {
+          "type": "takeoff",
+          "name": "Electric water takeoff",
+          "alt_ft": 0
+        },
+        {
+          "type": "climb",
+          "name": "En-route climb",
+          "alt_ft": 10000
+        },
+        {
+          "type": "cruise",
+          "name": "Full payload range cruise",
+          "alt_ft": 10000,
+          "ktas": 150,
+          "distance_nm": 868.9762419184253
+        },
+        {
+          "type": "descent",
+          "name": "Descent to electric approach",
+          "alt_ft": 1500
+        },
+        {
+          "type": "approach",
+          "name": "Electric approach",
+          "alt_ft": 0
+        },
+        {
+          "type": "landing",
+          "name": "Electric water landing",
+          "alt_ft": 0
+        },
+        {
+          "type": "taxi",
+          "name": "Electric arrival taxi",
+          "alt_ft": 0
+        }
+      ],
+      "method": "L2",
+      "cruise_segments": 12,
+      "climb_segments": 4,
+      "ground_segment_method": "explicit_series_energy",
       "credit_climb_distance": false
     }
   },
-  "model_assumptions": {}
+  "model_assumptions": {
+    "range_fix_note": "Distances are statute miles converted to nautical internally. A target input is not achieved range. run_concept3_range reports explicit grid feasibility. Full RFP performance, water resistance, failure endurance, restart and thermal qualification remain open."
+  },
+  "payload_definition": {
+    "passengers": 9,
+    "passenger_lb": 180,
+    "baggage_lb_per_passenger": 50,
+    "pilots": 2,
+    "pilot_lb": 180,
+    "total_lb": 2430
+  },
+  "design_range_statute_mi": 1000,
+  "range_analysis": {
+    "evaluation_weight_lb": 12490,
+    "maximum_certificated_weight_exclusive_lb": 12500,
+    "unusable_fuel_fraction": 0.02,
+    "repeated_legs": 4,
+    "turnaround_min": 30,
+    "periodic_soc_tolerance": 0.002
+  },
+  "mission_assumptions": {
+    "status": "PRELIMINARY schedules and accessory/aging assumptions, not validated performance",
+    "taxi_min": 5,
+    "taxi_hp": 85,
+    "takeoff_min": 2,
+    "takeoff_hp": 850,
+    "landing_min": 0.5,
+    "landing_hp": 85,
+    "climb_ktas": 110,
+    "climb_fpm": 700,
+    "approach_ktas": 90,
+    "approach_fpm": 500,
+    "balked_climb_fpm": 750,
+    "descent_fpm": 800,
+    "accessory_kw": 6,
+    "step_min": 1,
+    "capacity_retention": 0.8
+  }
 }

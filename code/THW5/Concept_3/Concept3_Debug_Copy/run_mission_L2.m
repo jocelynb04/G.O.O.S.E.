@@ -28,6 +28,16 @@ function [fuel_burned, segment_weight, segment_wf, detail] = run_mission_L2(W_TO
 %   segment_wf      1xN  weight fraction of each segment
 %   detail          1xN  struct: C_L, L/D, speed, time of the L2 segments
 
+% Series-hybrid missions must use source dispatch and SOC, not combustion
+% weight fractions. Preserve the legacy routine below for old bundles only.
+if isfield(obj,'mission_assumptions')
+    r=concept3_mission_energy(W_TO,obj);
+    fuel_burned=r.fuel_by_phase_lb;
+    segment_weight=r.segment_weight_lb;
+    segment_wf=segment_weight(2:end)./segment_weight(1:end-1);
+    detail=r.trace;
+    return;
+end
 n = numel(obj.miss.segments);
 
 fuel_burned    = zeros(1, n);

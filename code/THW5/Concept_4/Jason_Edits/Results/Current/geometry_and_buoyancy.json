@@ -1,0 +1,18 @@
+{
+  "geometry": {
+    "all_pass": true,
+    "source_sha256": "da4af0149472c195cc7875d77d250385e1427bacb38e5282b14020d0237e6b51",
+    "external_source_checked": true,
+    "scope": "Geometry agreement only; not aerodynamic or structural validation."
+  },
+  "buoyancy": {
+    "weight_lb": 12490,
+    "required_180pct_displacement_ft3": 360.28846153846155,
+    "external_float_volume_ft3": 393.31690747033747,
+    "external_float_only_screen_pass": true,
+    "verified_eligible_volume_ft3": [],
+    "rfp_below_cabin_floor_screen": "NOT_ASSESSED",
+    "adjacent_compartments_flooding": "NOT_ASSESSED",
+    "heel_20deg": "NOT_ASSESSED"
+  }
+}

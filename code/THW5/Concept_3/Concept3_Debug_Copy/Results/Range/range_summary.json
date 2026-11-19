@@ -1,0 +1,64 @@
+{
+  "status": "NO_FEASIBLE_RANGE_ON_DECLARED_GRID",
+  "payload_lb": 2430,
+  "target_statute_mi": 1000,
+  "maximum_range_statute_mi": null,
+  "maximum_range_nmi": null,
+  "range_resolution_mi": 50,
+  "maximum_range_searched_mi": 1800,
+  "weight_step_lb": 500,
+  "weight_ceiling_lb": 12490,
+  "best": [],
+  "target_case": {
+    "range_statute_mi": 1000,
+    "range_nmi": 868.97624191842533,
+    "evaluation_weight_lb": 12490,
+    "payload_lb": 2430,
+    "OEW_lb": 7357.7862642432183,
+    "fuel_capacity_by_weight_lb": 2702.2137357567817,
+    "required_loaded_fuel_lb": 2126.6728815074734,
+    "mass_margin_lb": 575.54085424930827,
+    "energy_feasible": false,
+    "range_feasible": false,
+    "minimum_SOC": 0.2948677819494912,
+    "final_SOC": 0.80133299303843419,
+    "reason": "balked_landing: battery power; balked_landing: motor rating; climb: motor rating; takeoff: battery power"
+  },
+  "rfp_compliance_established": false,
+  "scope": "Fixed hardware. Mission source/energy/fuel/mass/span screen only. No water-distance or failure certification claim.",
+  "hardware": {
+    "motor_total_hp": 850,
+    "generator_each_hp": 425,
+    "generator_count": 2,
+    "battery_bus_limit_kw": 500,
+    "battery_nameplate_kWh": 150,
+    "changed_from_config": false
+  },
+  "repeat_route": [
+    {
+      "leg": 1,
+      "final_SOC": 0.79883962702880484,
+      "feasible": false,
+      "reason": "climb: motor rating; takeoff: battery power"
+    },
+    {
+      "leg": 2,
+      "final_SOC": 0.79896203647384723,
+      "feasible": false,
+      "reason": "climb: motor rating; cruise: battery SOC floor; cruise: generator sustained-power shortfall; takeoff: battery power"
+    },
+    {
+      "leg": 3,
+      "final_SOC": 0.79896191739491773,
+      "feasible": false,
+      "reason": "climb: motor rating; cruise: battery SOC floor; cruise: generator sustained-power shortfall; takeoff: battery power"
+    },
+    {
+      "leg": 4,
+      "final_SOC": 0.798961917510757,
+      "feasible": false,
+      "reason": "climb: motor rating; cruise: battery SOC floor; cruise: generator sustained-power shortfall; takeoff: battery power"
+    }
+  ],
+  "repeated_route_feasible": false
+}

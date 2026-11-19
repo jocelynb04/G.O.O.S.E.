@@ -11,6 +11,7 @@ classdef TtpaProp < PropulsionBase2
         n_motors
         n_generators
         n_engines                    % Alias for n_generators (turboshaft count)
+        generator_engine_shaft_power_sl_hp_each % independent of motor rating
         
         % Efficiency chain parameters
         BSFC                         % [lbm/(hp*hr)] at rated turboshaft output
@@ -91,6 +92,11 @@ classdef TtpaProp < PropulsionBase2
             obj.n_engines  = P.n_generators;  % Turboshaft count
             
             obj.P_SL       = P.P_SL_hp;
+            if isfield(P,'generator_engine_shaft_power_sl_hp_each')
+                obj.generator_engine_shaft_power_sl_hp_each=P.generator_engine_shaft_power_sl_hp_each;
+            else
+                obj.generator_engine_shaft_power_sl_hp_each=P.P_SL_hp/P.n_generators;
+            end
             obj.BSFC       = P.BSFC_lb_per_hp_hr;
             
             % Efficiencies
@@ -146,7 +152,7 @@ classdef TtpaProp < PropulsionBase2
         
         %% Regression Guard
         function bhp = rated_bhp_per_engine(obj)
-            bhp = obj.P_SL / obj.n_engines;
+            bhp = obj.generator_engine_shaft_power_sl_hp_each;
             if isnan(bhp)
                 error('DhbProp:PowerNotSet', 'PSL not set yet');
             elseif (bhp < obj.bhp_range(1)) || (bhp > obj.bhp_range(2))
@@ -167,7 +173,7 @@ classdef TtpaProp < PropulsionBase2
             sigma = (1 - 6.8756e-6 * altitude_ft)^4.25588; 
             
             % FIXED: Use multiplication (*) instead of subtraction (-)
-            per_engine_hp = (obj.P_SL / obj.n_generators) ...
+            per_engine_hp = obj.generator_engine_shaft_power_sl_hp_each ...
                             * obj.generator_continuous_fraction ...
                             * (sigma ^ obj.generator_lapse_exponent);
             
@@ -191,7 +197,7 @@ classdef TtpaProp < PropulsionBase2
             bus_kw = obj.motor_bus_kw(obj.P_SL);
             
             % Total peak generator/turboshaft power sized accounting for continuous fraction
-            engine_kw = (obj.n_generators * (obj.P_SL / obj.n_generators)) * hp_to_kw;
+            engine_kw = obj.n_generators * obj.generator_engine_shaft_power_sl_hp_each * hp_to_kw;
             turboshaft_sized_kw = engine_kw * obj.generator_continuous_fraction;
             
             battery_lb = obj.battery_mass_lb();

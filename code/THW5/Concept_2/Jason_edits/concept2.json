@@ -460,7 +460,7 @@
       "source_reference": "wipaire_8750"
     }
   },
-  "design_range_nmi": 869,
+  "design_range_nmi": 868.9762419184253,
   "_src_design_range_nmi": "RFP requires 1000 statute miles, so this is approximately 869 nautical miles.",
   "sizing": {
     "_comment": "Same framework as IHWs",
@@ -684,7 +684,7 @@
           "alt_ft": 10000,
           "power_source": "turbine",
           "ktas": 150,
-          "distance_nm": 869
+          "distance_nm": 868.9762419184253
         },
         {
           "type": "descent",
@@ -992,5 +992,11 @@
       "boost_duration_min": null,
       "_comment": "Optional variant only; define power/duration before enabling and include boost energy, losses and recharge."
     }
+  },
+  "design_range_statute_mi": 1000,
+  "range_analysis": {
+    "evaluation_weight_lb": 12490,
+    "maximum_certificated_weight_exclusive_lb": 12500,
+    "note": "run_concept2_range evaluates normal/reserve range using mass-admissible packs. OEI/repeat-route/float gates remain separate and mandatory."
   }
 }

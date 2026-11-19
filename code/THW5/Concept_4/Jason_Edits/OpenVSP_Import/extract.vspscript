@@ -1,0 +1,21 @@
+void main()
+{
+ ReadVSPFile("Seaplane_Concept04.vsp3");
+ Update();
+ array<string>@ ids=FindGeoms();
+ for(uint i=0;i<ids.size();i++) {
+  if(GetGeomName(ids[i])=="MeshGeom") { Print("Excluded stored analysis mesh"); DeleteGeom(ids[i]); }
+ }
+ Update();
+ @ids=FindGeoms();
+ for(uint i=0;i<ids.size();i++) {
+  Print(GetGeomName(ids[i]));
+  Print(GetGeomBBoxMin(ids[i],0,true));
+  Print(GetGeomBBoxMax(ids[i],0,true));
+ }
+ string mesh=ComputeCompGeom(SET_ALL,false,0);
+ string rid=FindLatestResultsID("Comp_Geom");
+ WriteResultsCSVFile(rid,"compgeom.csv");
+ PrintResults(rid);
+ while(GetNumTotalErrors()>0) { ErrorObj err=PopLastError(); Print(err.GetErrorString()); }
+}
