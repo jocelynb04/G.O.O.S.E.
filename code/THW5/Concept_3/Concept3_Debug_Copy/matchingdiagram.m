@@ -12,13 +12,24 @@ function analysis = matchingdiagram()
     concept3 = struct('wing_loading_psf', W_TO / obj.geom.S_ref, ...
         'power_loading_lb_per_hp', W_TO / obj.prop.P_SL);
 
+    % Build a plotting x-vector that reaches WS_wall if it lies beyond sweep(2)
+    xmax_plot = sweep(2);
+    if isfinite(WS_wall) && WS_wall > xmax_plot
+        xmax_plot = WS_wall;
+    end
+    WS_plot = linspace(sweep(1), xmax_plot, settings.wing_loading_points);
+    if isfinite(WS_wall) && WS_wall >= sweep(1) && WS_wall <= xmax_plot
+        WS_plot = unique([WS_plot, WS_wall]);
+    end
+    [WP_limits_plot, ~, names_plot] = run_constraints(WS_plot, obj);
+
     figure('Name', 'Concept 3 Matching Diagram', 'Color', 'w');
     hold on;
     grid on;
 
-    % Include the wall itself in the fill when it falls inside the sweep.
-    feasible_WS = WS_sweep(WS_sweep <= WS_wall);
-    if isfinite(WS_wall) && WS_wall > sweep(1) && WS_wall < sweep(2)
+    % Include the wall itself in the fill when it falls inside the plotted range.
+    feasible_WS = WS_plot(WS_plot <= WS_wall);
+    if isfinite(WS_wall) && WS_wall > sweep(1) && WS_wall < xmax_plot
         feasible_WS = unique([feasible_WS, WS_wall]);
     end
     if numel(feasible_WS) > 1
@@ -28,8 +39,8 @@ function analysis = matchingdiagram()
             'FaceAlpha', 0.4, 'EdgeColor', 'none', 'DisplayName', 'Feasible region');
     end
 
-    for k = find(~all(isnan(WP_limits), 2)).'
-        plot(WS_sweep, WP_limits(k,:), 'LineWidth', 1.5, 'DisplayName', names(k));
+    for k = find(~all(isnan(WP_limits_plot), 2)).'
+        plot(WS_plot, WP_limits_plot(k,:), 'LineWidth', 1.5, 'DisplayName', names_plot(k));
     end
     if isfinite(WS_wall)
         xline(WS_wall, 'k--', 'LineWidth', 1.5, 'DisplayName', 'Landing wing-loading limit');
@@ -38,9 +49,7 @@ function analysis = matchingdiagram()
     plot(caravan.wing_loading_psf, caravan.power_loading_lb_per_hp, 'o', ...
         'MarkerEdgeColor', [0.75 0.15 0.15], 'MarkerSize', 12, 'LineWidth', 1.4, ...
         'DisplayName', 'Caravan reference');
-    plot(concept3.wing_loading_psf, concept3.power_loading_lb_per_hp, 'd', ...
-        'MarkerEdgeColor', [0.08 0.24 0.55], 'MarkerFaceColor', [0.08 0.24 0.55], ...
-        'MarkerSize', 6, 'DisplayName', 'Concept 3 design point');
+    
     if isfinite(WS_best)
         plot(WS_best, WP_best, 'kp', 'MarkerFaceColor', 'y', ...
             'MarkerSize', 10, 'DisplayName', 'Minimum installed power point');
@@ -51,7 +60,7 @@ function analysis = matchingdiagram()
     title('Concept 3 Seaplane Matching Diagram');
     xmax = max([sweep(2), caravan.wing_loading_psf, concept3.wing_loading_psf, ...
         WS_wall(isfinite(WS_wall))]);
-    xlim([0, xmax * 1.05]);
+    xlim([20, xmax * 1.05]);
     ylim([0, inf]);
     legend('Location', 'best');
     hold off;
